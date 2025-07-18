@@ -1135,3 +1135,51 @@
 2025-07-18 21:03:12,544 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-18 21:03:12,559 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-18 21:03:12,560 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 21:19:14,804 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 21:19:14,805 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 21:19:14,806 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 21:19:14,809 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 21:19:14,810 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 21:19:14,811 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 21:19:14,811 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 21:19:14,812 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 21:19:14,826 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 21:19:14,829 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 21:19:14,831 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 21:19:14,831 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 21:19:14,832 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-18 21:19:14,832 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 21:19:14,833 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 21:19:14,834 - INFO - [MITM] 🔀 Modifications: {'hello': 'HACK!', 'hi': 'NO', 'secret': 'PUBLIC', 'username': 'GARBAGE', 'password': 'GARBAGE', 'admin': 'GUEST', 'error': 'ALERT', 'login': 'ENTER', 'token': 'BADGE', 'abort': 'RETRY', 'accept': 'REJECT', 'delete': 'CREATE', 'access': 'DENIED', 'secure': 'PUBLIC', 'verify': 'IGNORE', 'server': 'CLIENT', 'upload': 'BACKUP', 'logout': 'LOGIN!', 'getkey': 'SETVAL', 'update': 'REBOOT'}
+2025-07-18 21:19:14,834 - INFO - [MITM] 💡 Compact modifications preserve TCP packet sizes
+2025-07-18 21:19:14,834 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 21:19:23,512 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 21:19:23,780 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44492 -> 192.168.0.125:9999
+2025-07-18 21:19:23,781 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hello'
+2025-07-18 21:19:23,782 - INFO - [SOCKET-DEBUG] Original packet size: 6 bytes
+2025-07-18 21:19:23,783 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hello'
+2025-07-18 21:19:23,784 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: 'HACK!'
+2025-07-18 21:19:23,784 - INFO - [SOCKET-DEBUG] Modified packet size: 6 bytes (preserved original: 6 bytes)
+2025-07-18 21:19:23,788 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 21:19:34,214 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 21:19:44,875 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 21:19:55,495 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 21:20:06,169 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-18 21:20:16,826 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-18 21:20:27,481 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-18 21:20:38,092 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-18 21:20:48,771 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-18 21:20:59,409 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-18 21:21:10,069 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-18 21:21:20,740 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-18 21:21:31,334 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-18 21:21:42,022 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-18 21:21:52,677 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-18 21:21:57,175 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 21:21:57,176 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 21:21:57,323 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 21:21:57,324 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 21:21:57,326 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 21:21:57,343 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 21:21:57,343 - INFO - [CLEANUP] Removing iptables rules...

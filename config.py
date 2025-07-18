@@ -193,6 +193,10 @@ class AttackConfig:
     ENABLE_PACKET_LOGGING = True
     ENABLE_GZIP_HANDLING = True
 
+    # Enable/disable DNS MITM features
+    ENABLE_DNS_REQUEST_MODIFICATION = True
+    ENABLE_DNS_RESPONSE_MODIFICATION = True
+
 # Create instance for backward compatibility
 AttackConfig = AttackConfig()
 

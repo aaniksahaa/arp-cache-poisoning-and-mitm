@@ -1,0 +1,14 @@
+TCP Socker Interception and Modification:
+=========================================
+
+First, run the tcp socket server and client
+
+Victim Server:
+python bidirectional_server.py 
+
+Victim Client:
+python bidirectional_client.py
+
+Attacker PC:
+sudo /home/aaniksahaa/miniconda3/bin/python bidirectional_tcp_interceptor.py
+

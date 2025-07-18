@@ -7,6 +7,10 @@ Set them up at config.py
 HTTP Traffic Interception and Modification:
 ===========================================
 
+In my end, it is working nicely, when I set up the server locally,
+say the server is listening at, 192.168.0.125:8000
+
+Then, at gateway ip, i need to put this ip 
 
 
 TCP Socket Interception and Modification:

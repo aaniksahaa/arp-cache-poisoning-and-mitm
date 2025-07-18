@@ -17687,3 +17687,1214 @@
 2025-07-18 13:10:02,024 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-18 13:10:02,035 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-18 13:10:02,035 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 23:30:25,431 - INFO - [ATTACK] 🚀 Starting ARP poisoning & MITM attack
+2025-07-18 23:30:25,432 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 23:30:25,433 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 23:30:25,436 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 23:30:25,438 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-18 23:30:25,438 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-18 23:30:25,439 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 23:30:25,441 - INFO - [ARP-POISON] Single victim mode: 192.168.0.125 <-> 192.168.0.1
+2025-07-18 23:30:28,440 - INFO - [SETUP] Setting up iptables rule for packet interception
+2025-07-18 23:30:28,443 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 23:30:28,443 - INFO - [MITM] 🚀 HTTP injection system started
+2025-07-18 23:30:28,444 - INFO - [MITM] 📡 Monitoring for HTTP traffic...
+2025-07-18 23:30:28,444 - INFO - [MITM] 🎯 Single victim mode: 192.168.0.125 -> gateway: 192.168.0.1
+2025-07-18 23:30:28,444 - INFO - [MITM] 💉 Injection payload: demo (222 bytes)
+2025-07-18 23:30:28,444 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 23:30:33,271 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:33,319 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:33,320 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:33,467 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:33,473 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:33,474 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:33,474 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:33,475 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:33,475 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:33,530 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:33,530 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:33,533 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:33,533 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:33,534 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:33,534 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:33,534 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:33,535 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:33,535 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:33,536 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:33,536 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:33,536 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:33,537 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:33,537 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:33,537 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:33,537 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:33,537 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:33,538 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:33,538 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:33,538 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:33,538 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:33,538 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:33,538 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:33,538 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:33,538 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:33,539 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:33,539 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:33,540 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:33,651 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:33,669 - INFO - [ARP-POISON] Sent 10 poison packets
+2025-07-18 23:30:33,893 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:33,899 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:34,065 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:34,066 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,082 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:34,083 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,100 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:30:34,101 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:34,102 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:34,102 - INFO - [HTTP-REQUEST] POST /s/wr3/pu0 HTTP/1.1
+2025-07-18 23:30:34,103 - INFO - [HTTP-REQUEST] Host: o.pki.goog
+2025-07-18 23:30:34,103 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:34,103 - INFO - [HTTP-SKIP] Non-HTML response: application/ocsp-request
+2025-07-18 23:30:34,108 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:34,109 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:34,109 - INFO - [HTTP-REQUEST] POST /s/wr3/pu0 HTTP/1.1
+2025-07-18 23:30:34,109 - INFO - [HTTP-REQUEST] Host: o.pki.goog
+2025-07-18 23:30:34,109 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:34,109 - INFO - [HTTP-SKIP] Non-HTML response: application/ocsp-request
+2025-07-18 23:30:34,257 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:34,258 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:34,258 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:34,259 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:34,260 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:34,260 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:34,261 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:34,261 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:34,262 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:34,262 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:34,263 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:34,263 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:34,263 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:34,264 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:34,264 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:34,264 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:34,264 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:34,265 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:34,265 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:34,265 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:34,265 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:34,265 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:34,265 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:34,265 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:34,266 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:34,266 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:34,268 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:34,268 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,269 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:34,269 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:34,271 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:34,271 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,277 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:34,277 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,430 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:34,432 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:30:34,434 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:34,436 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:30:34,437 - INFO - [HTTP-REQUEST] GET /success.txt?ipv4 HTTP/1.1
+2025-07-18 23:30:34,438 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:34,438 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:34,439 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:34,441 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:34,442 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,443 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 142.250.195.195 -> 192.168.0.125
+2025-07-18 23:30:34,443 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:34,444 - INFO - [HTTP-HEADER] Content-Type: application/ocsp-response
+2025-07-18 23:30:34,445 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:30:34 GMT
+2025-07-18 23:30:34,445 - INFO - [HTTP-HEADER] Cache-Control: public, max-age=14400
+2025-07-18 23:30:34,446 - INFO - [HTTP-HEADER] Content-Security-Policy-Report-Only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/sytroprc:52:0
+2025-07-18 23:30:34,446 - INFO - [HTTP-HEADER] Cross-Origin-Opener-Policy-Report-Only: same-origin; report-to=sytroprc:52:0
+2025-07-18 23:30:34,447 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:34,448 - INFO - [HTTP-200] Content-Type search result: content-type: application/ocsp-response
+2025-07-18 23:30:34,448 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:34,448 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:34,450 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:34,450 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:34,451 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 142.250.195.195 -> 192.168.0.125
+2025-07-18 23:30:34,452 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:34,452 - INFO - [HTTP-HEADER] Content-Type: application/ocsp-response
+2025-07-18 23:30:34,453 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:30:34 GMT
+2025-07-18 23:30:34,453 - INFO - [HTTP-HEADER] Cache-Control: public, max-age=14400
+2025-07-18 23:30:34,454 - INFO - [HTTP-HEADER] Content-Security-Policy-Report-Only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/sytroprc:52:0
+2025-07-18 23:30:34,454 - INFO - [HTTP-HEADER] Cross-Origin-Opener-Policy-Report-Only: same-origin; report-to=sytroprc:52:0
+2025-07-18 23:30:34,455 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:34,455 - INFO - [HTTP-200] Content-Type search result: content-type: application/ocsp-response
+2025-07-18 23:30:34,456 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:34,456 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:34,459 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:34,460 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:34,609 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:34,610 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:34,616 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:34,617 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:34,618 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:30:34,620 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:34,620 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:34,621 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:34,622 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:34,623 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:34,624 - INFO - [HTTP-HEADER] Content-Length: 8
+2025-07-18 23:30:34,624 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:34,625 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 09:51:29 GMT
+2025-07-18 23:30:34,626 - INFO - [HTTP-HEADER] Age: 27545
+2025-07-18 23:30:34,626 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:34,627 - INFO - [HTTP-200] Content-Type search result: content-type: text/plain
+2025-07-18 23:30:34,628 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:34,628 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:34,786 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:30:34,788 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:34,788 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:34,788 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:34,788 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:34,788 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:34,789 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:34,789 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:34,789 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:34,789 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:34,789 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:34,789 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:34,790 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:34,790 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:34,790 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:34,790 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:34,790 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:34,791 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:34,791 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:34,791 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:34,791 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:34,791 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:34,792 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:34,792 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:34,792 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:34,792 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:34,793 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:34,807 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:35,984 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:35,985 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:35,986 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:35,986 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:35,987 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:35,987 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:35,988 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:35,988 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:35,989 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:35,989 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:35,990 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:35,991 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:35,991 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:35,992 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:35,993 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:35,993 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:35,994 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:35,995 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:35,995 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:35,996 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:35,996 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:35,997 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:35,998 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:35,998 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:35,999 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:36,003 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:36,009 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:36,732 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:36,733 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:36,733 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:36,733 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:36,733 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:37,035 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:37,036 - INFO - [HTTP-REQUEST] POST /we2 HTTP/1.1
+2025-07-18 23:30:37,037 - INFO - [HTTP-REQUEST] Host: o.pki.goog
+2025-07-18 23:30:37,038 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:37,038 - INFO - [HTTP-SKIP] Non-HTML response: application/ocsp-request
+2025-07-18 23:30:37,049 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:37,051 - INFO - [HTTP-REQUEST] POST /we2 HTTP/1.1
+2025-07-18 23:30:37,051 - INFO - [HTTP-REQUEST] Host: o.pki.goog
+2025-07-18 23:30:37,052 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:37,053 - INFO - [HTTP-SKIP] Non-HTML response: application/ocsp-request
+2025-07-18 23:30:37,074 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:37,075 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:37,183 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:37,183 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:37,183 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:37,184 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:37,184 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:37,185 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:37,185 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:37,187 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:37,187 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:37,187 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 142.250.195.195 -> 192.168.0.125
+2025-07-18 23:30:37,187 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:37,188 - INFO - [HTTP-HEADER] Content-Type: application/ocsp-response
+2025-07-18 23:30:37,188 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:30:37 GMT
+2025-07-18 23:30:37,188 - INFO - [HTTP-HEADER] Cache-Control: public, max-age=14400
+2025-07-18 23:30:37,188 - INFO - [HTTP-HEADER] Content-Security-Policy-Report-Only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/sytroprc:52:0
+2025-07-18 23:30:37,189 - INFO - [HTTP-HEADER] Cross-Origin-Opener-Policy-Report-Only: same-origin; report-to=sytroprc:52:0
+2025-07-18 23:30:37,189 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:37,189 - INFO - [HTTP-200] Content-Type search result: content-type: application/ocsp-response
+2025-07-18 23:30:37,189 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:37,189 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:37,190 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:37,190 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:37,191 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 142.250.195.195 -> 192.168.0.125
+2025-07-18 23:30:37,191 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:37,191 - INFO - [HTTP-HEADER] Content-Type: application/ocsp-response
+2025-07-18 23:30:37,191 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:30:37 GMT
+2025-07-18 23:30:37,191 - INFO - [HTTP-HEADER] Cache-Control: public, max-age=14400
+2025-07-18 23:30:37,192 - INFO - [HTTP-HEADER] Content-Security-Policy-Report-Only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/sytroprc:52:0
+2025-07-18 23:30:37,192 - INFO - [HTTP-HEADER] Cross-Origin-Opener-Policy-Report-Only: same-origin; report-to=sytroprc:52:0
+2025-07-18 23:30:37,192 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:37,193 - INFO - [HTTP-200] Content-Type search result: content-type: application/ocsp-response
+2025-07-18 23:30:37,193 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:37,193 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:37,364 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:37,366 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:37,503 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:37,504 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:37,505 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:37,506 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:37,507 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:38,272 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:38,273 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:38,274 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:38,275 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:38,275 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:38,348 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:38,349 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:38,350 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:38,351 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:38,351 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:38,352 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:38,353 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:38,355 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:38,356 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:38,357 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:38,358 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:38,359 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:38,359 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:38,360 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:38,361 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:38,362 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:38,362 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:38,363 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:38,364 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:38,365 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:38,365 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:38,366 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:38,367 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:38,368 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:38,369 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:38,372 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:38,490 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:39,742 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:39,743 - INFO - [HTTP-REQUEST] POST /we2 HTTP/1.1
+2025-07-18 23:30:39,744 - INFO - [HTTP-REQUEST] Host: o.pki.goog
+2025-07-18 23:30:39,744 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:39,745 - INFO - [HTTP-SKIP] Non-HTML response: application/ocsp-request
+2025-07-18 23:30:39,783 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:39,784 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:39,808 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:39,809 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:39,810 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:39,810 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:39,811 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:39,814 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:39,815 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:39,816 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 142.250.195.195 -> 192.168.0.125
+2025-07-18 23:30:39,817 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:39,817 - INFO - [HTTP-HEADER] Content-Type: application/ocsp-response
+2025-07-18 23:30:39,818 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:30:39 GMT
+2025-07-18 23:30:39,819 - INFO - [HTTP-HEADER] Cache-Control: public, max-age=14400
+2025-07-18 23:30:39,819 - INFO - [HTTP-HEADER] Content-Security-Policy-Report-Only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/sytroprc:52:0
+2025-07-18 23:30:39,820 - INFO - [HTTP-HEADER] Cross-Origin-Opener-Policy-Report-Only: same-origin; report-to=sytroprc:52:0
+2025-07-18 23:30:39,820 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:39,821 - INFO - [HTTP-200] Content-Type search result: content-type: application/ocsp-response
+2025-07-18 23:30:39,822 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:39,822 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:39,828 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:42,899 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:30:42,902 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:42,902 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:42,903 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:42,903 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:42,903 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:43,708 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:43,708 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:43,709 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:43,710 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:43,711 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:43,711 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:43,712 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:43,713 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:43,713 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:43,714 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:43,714 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:43,715 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:43,716 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:43,717 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:43,718 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:43,718 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:43,719 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:43,720 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:43,720 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:43,721 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:43,722 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:43,723 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:43,723 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:43,724 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:43,725 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:43,729 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:43,884 - INFO - [ARP-POISON] Sent 20 poison packets
+2025-07-18 23:30:44,833 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:44,834 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:45,125 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:45,126 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:45,127 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:45,128 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:45,129 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:45,129 - INFO - [HTTP-HEADER] Content-Length: 8
+2025-07-18 23:30:45,130 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:45,130 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 09:51:29 GMT
+2025-07-18 23:30:45,131 - INFO - [HTTP-HEADER] Age: 27556
+2025-07-18 23:30:45,132 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:45,133 - INFO - [HTTP-200] Content-Type search result: content-type: text/plain
+2025-07-18 23:30:45,134 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:30:45,134 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:30:47,321 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:47,351 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:47,351 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:48,535 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48616 -> 146.190.62.39:80
+2025-07-18 23:30:48,794 - INFO - [HTTP-TRAFFIC] 146.190.62.39:80 -> 192.168.0.125:48616
+2025-07-18 23:30:48,795 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 146.190.62.39:80 -> 192.168.0.125
+2025-07-18 23:30:48,928 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48616 -> 146.190.62.39:80
+2025-07-18 23:30:49,331 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:49,332 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:30:49,333 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:30:49,334 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:30:49,334 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:50,466 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:30:50,565 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:30:50,566 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:53,435 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:30:53,436 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:53,437 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:30:53,438 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:30:53,439 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:30:53,440 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:30:53,440 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:30:53,441 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:30:53,441 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:30:53,442 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:30:53,442 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:30:53,443 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:30:53,444 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:30:53,444 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:30:53,445 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:30:53,446 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:30:53,446 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:30:53,447 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:30:53,447 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:30:53,448 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:30:53,449 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:30:53,449 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:30:53,450 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:30:53,450 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:30:53,451 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:30:53,454 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:30:53,537 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:30:53,537 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:30:54,104 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 23:30:55,586 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:30:55,588 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:30:55,689 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:30:55,690 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:30:57,307 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48086 -> 91.189.91.49:80
+2025-07-18 23:30:57,605 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:30:57,607 - INFO - [HTTP-TRAFFIC] 91.189.91.49:80 -> 192.168.0.125:48086
+2025-07-18 23:30:57,608 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 91.189.91.49:80 -> 192.168.0.125
+2025-07-18 23:30:57,640 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:30:57,640 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:30:57,905 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48086 -> 91.189.91.49:80
+2025-07-18 23:30:57,907 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48086 -> 91.189.91.49:80
+2025-07-18 23:30:57,908 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:30:57,908 - INFO - [HTTP-REQUEST] Host: connectivity-check.ubuntu.com.
+2025-07-18 23:30:57,909 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:30:58,208 - INFO - [HTTP-TRAFFIC] 91.189.91.49:80 -> 192.168.0.125:48086
+2025-07-18 23:30:58,209 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 91.189.91.49:80 -> 192.168.0.125
+2025-07-18 23:30:58,210 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 91.189.91.49 -> 192.168.0.125
+2025-07-18 23:30:58,210 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 204 No Content
+2025-07-18 23:30:58,211 - INFO - [HTTP-HEADER] server: nginx/1.14.0 (Ubuntu)
+2025-07-18 23:30:58,212 - INFO - [HTTP-HEADER] date: Fri, 18 Jul 2025 17:30:58 GMT
+2025-07-18 23:30:58,212 - INFO - [HTTP-HEADER] x-cache-status: from content-cache-1ss/1
+2025-07-18 23:30:58,213 - INFO - [HTTP-HEADER] x-networkmanager-status: online
+2025-07-18 23:30:58,214 - INFO - [HTTP-HEADER] connection: close
+2025-07-18 23:30:58,214 - INFO - [HTTP-OTHER] Non-injectable response: HTTP/1.1 204 No Content
+2025-07-18 23:30:58,216 - INFO - [HTTP-TRAFFIC] 91.189.91.49:80 -> 192.168.0.125:48086
+2025-07-18 23:30:58,217 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 91.189.91.49:80 -> 192.168.0.125
+2025-07-18 23:30:58,250 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48086 -> 91.189.91.49:80
+2025-07-18 23:30:58,252 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48086 -> 91.189.91.49:80
+2025-07-18 23:30:58,677 - INFO - [HTTP-TRAFFIC] 91.189.91.49:80 -> 192.168.0.125:48086
+2025-07-18 23:30:58,678 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 91.189.91.49:80 -> 192.168.0.125
+2025-07-18 23:31:01,117 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:31:01,217 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:31:01,217 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:01,324 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:01,422 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:01,422 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:01,626 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:01,627 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:01,628 - INFO - [HTTP-REQUEST] POST /we2 HTTP/1.1
+2025-07-18 23:31:01,628 - INFO - [HTTP-REQUEST] Host: o.pki.goog
+2025-07-18 23:31:01,628 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:31:01,628 - INFO - [HTTP-SKIP] Non-HTML response: application/ocsp-request
+2025-07-18 23:31:01,629 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:31:01,629 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:31:01,629 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:31:01,629 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:31:01,629 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:31:01,729 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:01,730 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:01,730 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:01,731 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:01,731 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 142.250.195.195 -> 192.168.0.125
+2025-07-18 23:31:01,731 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:31:01,731 - INFO - [HTTP-HEADER] Content-Type: application/ocsp-response
+2025-07-18 23:31:01,731 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:31:01 GMT
+2025-07-18 23:31:01,731 - INFO - [HTTP-HEADER] Cache-Control: public, max-age=14400
+2025-07-18 23:31:01,732 - INFO - [HTTP-HEADER] Content-Security-Policy-Report-Only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/sytroprc:52:0
+2025-07-18 23:31:01,732 - INFO - [HTTP-HEADER] Cross-Origin-Opener-Policy-Report-Only: same-origin; report-to=sytroprc:52:0
+2025-07-18 23:31:01,732 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:31:01,732 - INFO - [HTTP-200] Content-Type search result: content-type: application/ocsp-response
+2025-07-18 23:31:01,732 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:31:01,732 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:31:01,832 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:03,979 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:31:03,981 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:31:03,981 - INFO - [HTTP-REQUEST] Host: httpforever.com
+2025-07-18 23:31:03,982 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:31:03,983 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:31:04,360 - INFO - [ARP-POISON] Sent 40 poison packets
+2025-07-18 23:31:06,337 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:06,338 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:08,350 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:31:08,382 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:31:08,383 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:11,320 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:31:11,347 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:31:11,347 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:11,869 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:11,970 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:11,971 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:12,208 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:31:12,209 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:12,209 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:31:12,209 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:31:12,209 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:31:12,209 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:31:12,209 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:31:12,210 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:31:12,210 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:31:12,210 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:31:12,210 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:31:12,210 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:31:12,210 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:31:12,210 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:31:12,210 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:31:12,210 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:31:12,211 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:31:12,211 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:31:12,211 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:31:12,211 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:31:12,211 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:31:12,211 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:31:12,211 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:31:12,211 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:31:12,211 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:31:12,212 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:31:12,217 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:31:14,591 - INFO - [ARP-POISON] Sent 50 poison packets
+2025-07-18 23:31:16,069 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:31:16,607 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:16,609 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:16,989 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:16,990 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:18,541 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:31:18,573 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:31:18,574 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:21,616 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:31:21,645 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:31:21,646 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:22,100 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:22,127 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:22,128 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:24,802 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 23:31:26,197 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:31:26,197 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:31:26,198 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:31:26,198 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:31:26,198 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:31:26,709 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:31:27,196 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:27,198 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:27,247 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:27,247 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:28,759 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:31:28,796 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:31:28,797 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:31,885 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:31:31,916 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:31:31,916 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:32,362 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:32,393 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:32,393 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:34,992 - INFO - [ARP-POISON] Sent 70 poison packets
+2025-07-18 23:31:37,464 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:37,467 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:31:37,469 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:37,520 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:37,521 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:39,053 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:31:39,087 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:31:39,088 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:42,175 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:31:42,203 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:31:42,204 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:42,473 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:31:42,474 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:42,475 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:31:42,476 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:31:42,476 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:31:42,477 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:31:42,478 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:31:42,479 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:31:42,479 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:31:42,480 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:31:42,481 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:31:42,483 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:31:42,483 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:31:42,484 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:31:42,485 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:31:42,486 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:31:42,486 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:31:42,487 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:31:42,488 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:31:42,489 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:31:42,489 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:31:42,490 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:31:42,491 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:31:42,491 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:31:42,492 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:31:42,495 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:31:42,625 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:42,626 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:31:42,652 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:42,652 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:45,202 - INFO - [ARP-POISON] Sent 80 poison packets
+2025-07-18 23:31:47,715 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:47,717 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:47,814 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:47,815 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:48,224 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:31:49,260 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:31:49,303 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:31:49,304 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:49,659 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:49,660 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:31:49,661 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:31:49,662 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:31:49,662 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:31:49,770 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:49,774 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:49,775 - INFO - [HTTP-REQUEST] GET /success.txt?ipv4 HTTP/1.1
+2025-07-18 23:31:49,776 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:31:49,776 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:31:49,777 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:31:49,829 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:49,829 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:31:49,830 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:31:49,830 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:31:49,830 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:31:49,830 - INFO - [HTTP-HEADER] Content-Length: 8
+2025-07-18 23:31:49,830 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:31:49,830 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 09:51:29 GMT
+2025-07-18 23:31:49,830 - INFO - [HTTP-HEADER] Age: 27620
+2025-07-18 23:31:49,830 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:31:49,831 - INFO - [HTTP-200] Content-Type search result: content-type: text/plain
+2025-07-18 23:31:49,831 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:31:49,831 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:31:49,861 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:52,394 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:31:52,425 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:31:52,426 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:52,844 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:31:52,872 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:31:52,873 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:55,406 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 23:31:58,976 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:31:59,482 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:31:59,643 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:31:59,646 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:31:59,789 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:31:59,903 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:31:59,947 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:31:59,948 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:02,619 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:32:02,662 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:32:02,663 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:03,101 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:03,130 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:03,130 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:05,609 - INFO - [ARP-POISON] Sent 100 poison packets
+2025-07-18 23:32:09,833 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:32:09,833 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:10,345 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:32:10,346 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:32:10,447 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:32:10,447 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:12,635 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:32:12,636 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:12,637 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:32:12,638 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:32:12,638 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:32:12,639 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:32:12,640 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:32:12,640 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:32:12,641 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:32:12,641 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:32:12,642 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:32:12,643 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:32:12,644 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:32:12,644 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:32:12,645 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:32:12,646 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:32:12,646 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:32:12,647 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:32:12,647 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:32:12,648 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:32:12,649 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:32:12,650 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:32:12,650 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:32:12,651 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:32:12,651 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:32:12,654 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:32:12,700 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:32:13,430 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:13,432 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:32:13,465 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:13,466 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:13,468 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:32:13,469 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:15,800 - INFO - [ARP-POISON] Sent 110 poison packets
+2025-07-18 23:32:15,908 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:32:15,910 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:32:15,910 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:32:15,910 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:32:15,911 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:32:19,971 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:32:20,076 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:32:20,077 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:20,485 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:32:20,487 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:32:20,994 - INFO - [HTTP-TRAFFIC] 146.190.62.39:80 -> 192.168.0.125:48612
+2025-07-18 23:32:20,995 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 146.190.62.39:80 -> 192.168.0.125
+2025-07-18 23:32:20,997 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:32:21,001 - INFO - [HTTP-TRAFFIC] 192.168.0.125:48612 -> 146.190.62.39:80
+2025-07-18 23:32:21,061 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:32:21,062 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:21,406 - INFO - [HTTP-TRAFFIC] 146.190.62.39:80 -> 192.168.0.125:48612
+2025-07-18 23:32:21,407 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 146.190.62.39:80 -> 192.168.0.125
+2025-07-18 23:32:23,764 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:23,794 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:23,795 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:24,061 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:32:24,089 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:32:24,089 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:26,019 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 23:32:30,315 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:32:30,420 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:32:30,420 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:30,726 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:32:31,233 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:32:31,339 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:32:31,339 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:33,395 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:32:33,437 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39868
+2025-07-18 23:32:33,437 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:33,593 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39868 -> 142.250.195.195:80
+2025-07-18 23:32:35,282 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:32:35,314 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:39864
+2025-07-18 23:32:35,315 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:35,461 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:35,463 - INFO - [HTTP-TRAFFIC] 192.168.0.125:39864 -> 142.250.195.195:80
+2025-07-18 23:32:35,487 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:35,488 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:36,225 - INFO - [ARP-POISON] Sent 130 poison packets
+2025-07-18 23:32:41,171 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:32:41,583 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:32:41,683 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:32:41,684 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:42,913 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33244
+2025-07-18 23:32:42,913 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:42,914 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:32:42,915 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:32:42,916 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:32:42,916 - INFO - [HTTP-HEADER] Content-Length: 90
+2025-07-18 23:32:42,917 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:32:42,918 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 11:11:52 GMT
+2025-07-18 23:32:42,919 - INFO - [HTTP-HEADER] Age: 22721
+2025-07-18 23:32:42,919 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:32:42,919 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:32:42,919 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:32:42,920 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:32:42,920 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.107.221.82 to 192.168.0.125
+2025-07-18 23:32:42,920 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:32:42,921 - INFO - [HTTP-HEADERS] Content-Length: 90
+2025-07-18 23:32:42,921 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:32:42,921 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:32:42,922 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 90 bytes
+2025-07-18 23:32:42,922 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:32:42,922 - INFO - [HTML-PREVIEW] <meta http-equiv="refresh" content="0;url=https://support.mozilla.org/kb/captive-portal"/>...
+2025-07-18 23:32:42,922 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:32:42,922 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:32:42,923 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:32:42,923 - INFO - [HTTP-HEADERS] Updated Content-Length to 312
+2025-07-18 23:32:42,924 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:32:43,016 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33244 -> 34.107.221.82:80
+2025-07-18 23:32:45,575 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:45,677 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:45,678 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:46,420 - INFO - [ARP-POISON] Sent 140 poison packets
+2025-07-18 23:32:49,663 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:32:49,663 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:32:49,664 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:32:49,664 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:32:49,665 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:32:49,774 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:32:49,778 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:32:49,778 - INFO - [HTTP-REQUEST] GET /success.txt?ipv4 HTTP/1.1
+2025-07-18 23:32:49,778 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:32:49,778 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:32:49,778 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:32:49,877 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:32:49,878 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:32:49,879 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:32:49,880 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:32:49,880 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:32:49,881 - INFO - [HTTP-HEADER] Content-Length: 8
+2025-07-18 23:32:49,881 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:32:49,882 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 09:51:29 GMT
+2025-07-18 23:32:49,883 - INFO - [HTTP-HEADER] Age: 27680
+2025-07-18 23:32:49,884 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:32:49,885 - INFO - [HTTP-200] Content-Type search result: content-type: text/plain
+2025-07-18 23:32:49,886 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:32:49,887 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:32:55,829 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:55,919 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:55,920 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:56,598 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-18 23:32:57,266 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:57,442 - INFO - [HTTP-TRAFFIC] 142.250.195.195:80 -> 192.168.0.125:33780
+2025-07-18 23:32:57,443 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 142.250.195.195:80 -> 192.168.0.125
+2025-07-18 23:32:57,625 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33780 -> 142.250.195.195:80
+2025-07-18 23:32:59,905 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:00,419 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:00,518 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:00,518 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:06,770 - INFO - [ARP-POISON] Sent 160 poison packets
+2025-07-18 23:33:10,146 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:11,182 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:11,364 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:11,364 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:16,936 - INFO - [ARP-POISON] Sent 170 poison packets
+2025-07-18 23:33:20,389 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:21,424 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:21,464 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:21,464 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:27,129 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-18 23:33:30,767 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:31,666 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:31,816 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:31,817 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:37,332 - INFO - [ARP-POISON] Sent 190 poison packets
+2025-07-18 23:33:41,393 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:41,905 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:41,946 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:41,947 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:47,550 - INFO - [ARP-POISON] Sent 200 poison packets
+2025-07-18 23:33:51,625 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:52,204 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:52,244 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:52,244 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:55,621 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:55,622 - INFO - [HTTP-REQUEST] GET /canonical.html HTTP/1.1
+2025-07-18 23:33:55,622 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:33:55,623 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:33:55,623 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:33:55,726 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:33:55,730 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:55,731 - INFO - [HTTP-REQUEST] GET /success.txt?ipv4 HTTP/1.1
+2025-07-18 23:33:55,731 - INFO - [HTTP-REQUEST] Host: detectportal.firefox.com
+2025-07-18 23:33:55,731 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:33:55,731 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:33:55,782 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:33:55,783 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:33:55,783 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.107.221.82 -> 192.168.0.125
+2025-07-18 23:33:55,783 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:33:55,783 - INFO - [HTTP-HEADER] Server: nginx
+2025-07-18 23:33:55,784 - INFO - [HTTP-HEADER] Content-Length: 8
+2025-07-18 23:33:55,784 - INFO - [HTTP-HEADER] Via: 1.1 google
+2025-07-18 23:33:55,784 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 09:51:29 GMT
+2025-07-18 23:33:55,784 - INFO - [HTTP-HEADER] Age: 27746
+2025-07-18 23:33:55,785 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:33:55,785 - INFO - [HTTP-200] Content-Type search result: content-type: text/plain
+2025-07-18 23:33:55,785 - INFO - [HTTP-200] HTML content detected: False
+2025-07-18 23:33:55,785 - INFO - [HTTP-200] 200 response but not HTML content - skipping injection
+2025-07-18 23:33:55,832 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:33:57,712 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-18 23:34:05,827 - INFO - [HTTP-TRAFFIC] 192.168.0.125:43516 -> 34.107.221.82:80
+2025-07-18 23:34:05,976 - INFO - [HTTP-TRAFFIC] 192.168.0.125:33250 -> 34.107.221.82:80
+2025-07-18 23:34:06,015 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:34:06,016 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:34:07,891 - INFO - [ARP-POISON] Sent 220 poison packets
+2025-07-18 23:34:16,236 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:34:16,236 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:34:18,097 - INFO - [ARP-POISON] Sent 230 poison packets
+2025-07-18 23:34:20,299 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41116 -> 34.223.124.45:80
+2025-07-18 23:34:20,602 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:21,422 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41116 -> 34.223.124.45:80
+2025-07-18 23:34:21,626 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:22,447 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41116 -> 34.223.124.45:80
+2025-07-18 23:34:22,578 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41118
+2025-07-18 23:34:22,578 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:22,651 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:22,654 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:22,654 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:22,655 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:34:22,655 - INFO - [HTTP-REQUEST] Host: neverssl.com
+2025-07-18 23:34:22,655 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:34:22,655 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:34:22,749 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41116
+2025-07-18 23:34:22,750 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:22,762 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41116 -> 34.223.124.45:80
+2025-07-18 23:34:23,975 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41118
+2025-07-18 23:34:23,975 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:23,991 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:25,056 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41118
+2025-07-18 23:34:25,057 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:25,058 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41118
+2025-07-18 23:34:25,058 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:25,248 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:25,249 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:34:25,251 - INFO - [HTTP-REQUEST] Host: neverssl.com
+2025-07-18 23:34:25,252 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:34:25,252 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:34:25,256 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41118 -> 34.223.124.45:80
+2025-07-18 23:34:25,259 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41116 -> 34.223.124.45:80
+2025-07-18 23:34:25,260 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:34:25,260 - INFO - [HTTP-REQUEST] Host: neverssl.com
+2025-07-18 23:34:25,261 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:140.0) ...
+2025-07-18 23:34:25,262 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:34:25,596 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41116
+2025-07-18 23:34:25,596 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:25,598 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41116
+2025-07-18 23:34:25,599 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:25,599 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 34.223.124.45 -> 192.168.0.125
+2025-07-18 23:34:25,600 - INFO - [HTTP-RESPONSE] Status: HTTP/1.1 200 OK
+2025-07-18 23:34:25,601 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:34:25 GMT
+2025-07-18 23:34:25,602 - INFO - [HTTP-HEADER] Server: Apache/2.4.62 ()
+2025-07-18 23:34:25,602 - INFO - [HTTP-HEADER] Upgrade: h2,h2c
+2025-07-18 23:34:25,603 - INFO - [HTTP-HEADER] Connection: Upgrade, Keep-Alive
+2025-07-18 23:34:25,604 - INFO - [HTTP-HEADER] Last-Modified: Wed, 29 Jun 2022 00:23:33 GMT
+2025-07-18 23:34:25,604 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:34:25,605 - INFO - [HTTP-200] Content-Type search result: content-type: text/html; charset=utf-8
+2025-07-18 23:34:25,606 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:34:25,606 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:34:25,607 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 34.223.124.45 to 192.168.0.125
+2025-07-18 23:34:25,607 - INFO - [HTTP-HEADERS] Content-Type: text/html; charset=utf-8
+2025-07-18 23:34:25,608 - INFO - [HTTP-HEADERS] Content-Length: 1900
+2025-07-18 23:34:25,608 - INFO - [HTTP-HEADERS] Content-Encoding: gzip
+2025-07-18 23:34:25,608 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:34:25,609 - INFO - [HTTP-PROCESSING] Gzip: True, Chunked: False, Body size: 1055 bytes
+2025-07-18 23:34:25,609 - INFO - [HTTP-PROCESSING] Processing gzip-compressed response
+2025-07-18 23:34:25,610 - INFO - [GZIP] Decompressing 1055 bytes
+2025-07-18 23:34:25,610 - WARNING - [INJECTION] ⚠️ Gzip injection failed (likely incomplete response): Compressed file ended before the end-of-stream marker was reached
+2025-07-18 23:34:25,611 - INFO - [INJECTION] Skipping injection and passing through original packet
+2025-07-18 23:34:25,612 - INFO - [HTTP-TRAFFIC] 34.223.124.45:80 -> 192.168.0.125:41116
+2025-07-18 23:34:25,612 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:25,613 - INFO - [HTTP-FRAGMENT] Possible HTTP response fragment from 34.223.124.45:80 -> 192.168.0.125
+2025-07-18 23:34:25,613 - INFO - [DEBUG-RESPONSE] Return traffic from 34.223.124.45:80 but no HTTP headers detected
+2025-07-18 23:34:25,614 - INFO - [DEBUG-PAYLOAD] First 100 bytes: "o\x03\x03\x10ʒa!ۍum!ov.g(jΠg\x02ĴX\x06\rH-rcۖaΏ9w'\x00ѿ9tN\x1eZBG7\x1d\x1e\x0b7\x15d\x00*\u05eeFZ"
+2025-07-18 23:34:25,629 - INFO - [HTTP-TRAFFIC] 192.168.0.125:41116 -> 34.223.124.45:80
+2025-07-18 23:34:25,636 - INFO - [HTTP-TRAFFIC] 192.168.0.125:42220 -> 34.223.124.45:80
+2025-07-18 23:34:26,524 - INFO - [HTTP-TRAFFIC] 34.107.221.82:80 -> 192.168.0.125:33250
+2025-07-18 23:34:26,525 - WARNING - [RETURN-TRAFFIC] 🔄 HTTP Response detected: 34.107.221.82:80 -> 192.168.0.125
+2025-07-18 23:34:28,260 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 23:34:28,260 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 23:34:28,260 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.1 mapping
+2025-07-18 23:34:28,277 - INFO - [ARP-RESTORE] Restoring 192.168.0.1 -> 192.168.0.125 mapping
+2025-07-18 23:34:28,281 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-18 23:34:28,294 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 23:34:28,295 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 23:34:28,304 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 23:34:28,305 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 23:55:14,178 - INFO - [ATTACK] 🚀 Starting ARP poisoning & MITM attack
+2025-07-18 23:55:14,180 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 23:55:14,181 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 23:55:14,184 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 23:55:14,186 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-18 23:55:14,186 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-18 23:55:14,186 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 23:55:14,188 - INFO - [ARP-POISON] Single victim mode: 192.168.0.201 <-> 192.168.0.1
+2025-07-18 23:55:17,188 - INFO - [SETUP] Setting up iptables rule for packet interception
+2025-07-18 23:55:17,200 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 23:55:17,201 - INFO - [MITM] 🚀 HTTP injection system started
+2025-07-18 23:55:17,202 - INFO - [MITM] 📡 Monitoring for HTTP traffic...
+2025-07-18 23:55:17,203 - INFO - [MITM] 🎯 Single victim mode: 192.168.0.201 -> gateway: 192.168.0.1
+2025-07-18 23:55:17,204 - INFO - [MITM] 💉 Injection payload: demo (222 bytes)
+2025-07-18 23:55:17,205 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 23:55:22,399 - INFO - [ARP-POISON] Sent 10 poison packets
+2025-07-18 23:55:32,594 - INFO - [ARP-POISON] Sent 20 poison packets
+2025-07-18 23:56:09,317 - INFO - [ATTACK] 🚀 Starting ARP poisoning & MITM attack
+2025-07-18 23:56:09,318 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 23:56:09,318 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 23:56:09,319 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 23:56:09,319 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-18 23:56:09,320 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-18 23:56:09,320 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 23:56:09,320 - INFO - [ARP-POISON] Single victim mode: 192.168.0.201 <-> 192.168.0.125
+2025-07-18 23:56:12,320 - INFO - [SETUP] Setting up iptables rule for packet interception
+2025-07-18 23:56:12,333 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 23:56:12,334 - INFO - [MITM] 🚀 HTTP injection system started
+2025-07-18 23:56:12,335 - INFO - [MITM] 📡 Monitoring for HTTP traffic...
+2025-07-18 23:56:12,335 - INFO - [MITM] 🎯 Single victim mode: 192.168.0.201 -> gateway: 192.168.0.125
+2025-07-18 23:56:12,336 - INFO - [MITM] 💉 Injection payload: demo (222 bytes)
+2025-07-18 23:56:12,337 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 23:56:14,782 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:56:14,782 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:56:14,783 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:56:14,784 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:56:17,502 - INFO - [ARP-POISON] Sent 10 poison packets
+2025-07-18 23:56:19,801 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:56:19,801 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:56:19,802 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:56:19,803 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:56:19,951 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:56:19,952 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:56:19,952 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:56:19,953 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:56:19 GMT
+2025-07-18 23:56:19,954 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:56:19,955 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:56:19,955 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:56:19,956 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:56:19,956 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:56:19,957 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:56:19,958 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:56:19,959 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:56:19,959 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:56:19,960 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:56:19,961 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:56:19,961 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:56:19,962 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:56:19,963 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:56:19,963 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:56:19,964 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:56:19,965 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:56:19,966 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:56:19,967 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:56:19,970 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:56:22,943 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:56:22,944 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:56:22,945 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:56:22,946 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:56:23,177 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:56:23,178 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:56:23,179 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:56:23,179 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:56:22 GMT
+2025-07-18 23:56:23,180 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:56:23,180 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:56:23,181 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:56:23,181 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:56:23,182 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:56:23,182 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:56:23,183 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:56:23,183 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:56:23,184 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:56:23,185 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:56:23,185 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:56:23,185 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:56:23,186 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:56:23,186 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:56:23,186 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:56:23,187 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:56:23,187 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:56:23,188 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:56:23,188 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:56:23,189 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:56:25,138 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:56:25,138 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:56:25,139 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:56:25,140 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:56:25,221 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:56:25,221 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:56:25,222 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:56:25,222 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:56:25 GMT
+2025-07-18 23:56:25,223 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:56:25,223 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:56:25,224 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:56:25,224 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:56:25,224 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:56:25,224 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:56:25,225 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:56:25,225 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:56:25,225 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:56:25,225 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:56:25,226 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:56:25,226 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:56:25,226 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:56:25,226 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:56:25,227 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:56:25,227 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:56:25,227 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:56:25,227 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:56:25,228 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:56:25,229 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:56:27,480 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:56:27,481 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:56:27,482 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:56:27,483 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:56:27,569 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:56:27,570 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:56:27,571 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:56:27,571 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:56:27 GMT
+2025-07-18 23:56:27,572 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:56:27,573 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:56:27,573 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:56:27,574 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:56:27,575 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:56:27,575 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:56:27,576 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:56:27,576 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:56:27,577 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:56:27,578 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:56:27,578 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:56:27,579 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:56:27,580 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:56:27,581 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:56:27,582 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:56:27,582 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:56:27,583 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:56:27,584 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:56:27,584 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:56:27,587 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:56:27,737 - INFO - [ARP-POISON] Sent 20 poison packets
+2025-07-18 23:56:36,384 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:56:36,385 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:56:36,386 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:56:36,387 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:56:36,798 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:56:36,798 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:56:36,798 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:56:36,798 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:56:36 GMT
+2025-07-18 23:56:36,798 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:56:36,799 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:56:36,799 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:56:36,799 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:56:36,799 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:56:36,799 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:56:36,799 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:56:36,799 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:56:36,799 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:56:36,800 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:56:36,800 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:56:36,800 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:56:36,800 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:56:36,800 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:56:36,800 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:56:36,800 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:56:36,800 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:56:36,800 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:56:36,801 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:56:36,801 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:56:37,949 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 23:56:48,166 - INFO - [ARP-POISON] Sent 40 poison packets
+2025-07-18 23:56:58,404 - INFO - [ARP-POISON] Sent 50 poison packets
+2025-07-18 23:57:08,649 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 23:57:18,895 - INFO - [ARP-POISON] Sent 70 poison packets
+2025-07-18 23:57:29,120 - INFO - [ARP-POISON] Sent 80 poison packets
+2025-07-18 23:57:39,369 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 23:57:47,769 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:57:47,770 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:57:47,770 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:57:47,771 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:57:47,919 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:57:47,920 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:57:47,921 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:57:47,921 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:57:47 GMT
+2025-07-18 23:57:47,922 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:57:47,922 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:57:47,923 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:57:47,924 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:57:47,925 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:57:47,925 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:57:47,926 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:57:47,927 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:57:47,927 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:57:47,927 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:57:47,928 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:57:47,928 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:57:47,928 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:57:47,928 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:57:47,928 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:57:47,928 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:57:47,928 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:57:47,928 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:57:47,929 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:57:47,929 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:57:49,609 - INFO - [ARP-POISON] Sent 100 poison packets
+2025-07-18 23:57:59,837 - INFO - [ARP-POISON] Sent 110 poison packets
+2025-07-18 23:58:04,361 - INFO - [HTTP-REQUEST] GET / HTTP/1.1
+2025-07-18 23:58:04,362 - INFO - [HTTP-REQUEST] Host: 192.168.0.125:8000
+2025-07-18 23:58:04,363 - INFO - [HTTP-REQUEST] User-Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537...
+2025-07-18 23:58:04,363 - INFO - [HTTP-SKIP] Non-HTML response: None
+2025-07-18 23:58:04,456 - INFO - [HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: 192.168.0.125 -> 192.168.0.201
+2025-07-18 23:58:04,457 - INFO - [HTTP-RESPONSE] Status: HTTP/1.0 200 OK
+2025-07-18 23:58:04,458 - INFO - [HTTP-HEADER] Server: SimpleHTTP/0.6 Python/3.13.5
+2025-07-18 23:58:04,459 - INFO - [HTTP-HEADER] Date: Fri, 18 Jul 2025 17:58:04 GMT
+2025-07-18 23:58:04,460 - INFO - [HTTP-HEADER] Content-type: text/html
+2025-07-18 23:58:04,461 - INFO - [HTTP-HEADER] Content-Length: 305
+2025-07-18 23:58:04,461 - INFO - [HTTP-HEADER] Last-Modified: Fri, 18 Jul 2025 17:52:47 GMT
+2025-07-18 23:58:04,462 - INFO - [HTTP-200] Detected 200 response, checking for HTML content...
+2025-07-18 23:58:04,463 - INFO - [HTTP-200] Content-Type search result: content-type: text/html
+2025-07-18 23:58:04,464 - INFO - [HTTP-200] HTML content detected: True
+2025-07-18 23:58:04,465 - WARNING - [HTTP-200] 🎯 Found 200 HTML response - processing for injection
+2025-07-18 23:58:04,465 - INFO - [HTTP-HTML] 🎯 Processing HTML response from 192.168.0.125 to 192.168.0.201
+2025-07-18 23:58:04,466 - INFO - [HTTP-HEADERS] Content-Type: text/html
+2025-07-18 23:58:04,466 - INFO - [HTTP-HEADERS] Content-Length: 305
+2025-07-18 23:58:04,467 - INFO - [HTTP-HEADERS] Content-Encoding: 
+2025-07-18 23:58:04,468 - INFO - [HTTP-HEADERS] Transfer-Encoding: 
+2025-07-18 23:58:04,468 - INFO - [HTTP-PROCESSING] Gzip: False, Chunked: False, Body size: 0 bytes
+2025-07-18 23:58:04,469 - INFO - [HTTP-PROCESSING] Processing non-gzip response
+2025-07-18 23:58:04,469 - INFO - [HTML-PREVIEW] ...
+2025-07-18 23:58:04,470 - INFO - [INJECTION] Attempting injection...
+2025-07-18 23:58:04,471 - WARNING - [INJECTION] No <body> tag found, prepending to content
+2025-07-18 23:58:04,472 - INFO - [INJECTION] ✅ Successfully injected 222 bytes
+2025-07-18 23:58:04,472 - INFO - [HTTP-HEADERS] Updated Content-Length to 222
+2025-07-18 23:58:04,476 - INFO - [INJECTION] ✅ Non-gzip injection successful
+2025-07-18 23:58:10,048 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 23:58:20,257 - INFO - [ARP-POISON] Sent 130 poison packets
+2025-07-18 23:58:21,806 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 23:58:21,806 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 23:58:21,807 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-18 23:58:21,821 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-18 23:58:21,839 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 23:58:21,840 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 23:58:21,852 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 23:58:21,853 - INFO - [CLEANUP] Removing iptables rules...

@@ -109,23 +109,27 @@ class AttackConfig:
     # ===== BIDIRECTIONAL ATTACK TARGETS =====
     
     # Target 1: Primary device to intercept
-    POISON_TARGET_1 = DeviceRegistry.laptop  # Change this to your target device
-    
+    POISON_TARGET_1 = DeviceRegistry.laptop  
+
     # Target 2: Secondary device to intercept  
-    POISON_TARGET_2 = DeviceRegistry.phone   # Change this to your target device
-    
+    POISON_TARGET_2 = DeviceRegistry.phone   
+
     # Gateway device (router)
     GATEWAY_DEVICE = DeviceRegistry.gateway
+
+    # # for http injection 
+    # # in case of local server, we need to put the local ip address
+    # GATEWAY_DEVICE = DeviceRegistry.laptop
     
     # ===== BACKWARDS COMPATIBILITY =====
     # Keep old variable names for existing scripts
     @property
     def VICTIM_IP(self):
-        return self.POISON_TARGET_1.ip
+        return self.POISON_TARGET_2.ip
     
     @property 
     def VICTIM_MAC(self):
-        return self.POISON_TARGET_1.mac
+        return self.POISON_TARGET_2.mac
         
     @property
     def GATEWAY_IP(self):

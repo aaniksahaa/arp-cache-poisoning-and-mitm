@@ -1,0 +1,35 @@
+2025-07-18 23:48:16,545 - INFO - [ATTACK] 🚀 Starting simple ARP poisoning & HTTP injection
+2025-07-18 23:48:16,545 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 23:48:16,546 - INFO - [ARP] 🎯 Starting ARP poisoning
+2025-07-18 23:48:19,546 - INFO - [SETUP] Setting up iptables rules
+2025-07-18 23:48:19,560 - INFO - [SETUP] ✅ iptables rule added successfully
+2025-07-18 23:48:19,561 - INFO - [MITM] 🚀 Simple HTTP interceptor started
+2025-07-18 23:48:19,561 - INFO - [MITM] 🎯 Target: 192.168.0.201
+2025-07-18 23:48:19,562 - INFO - [MITM] 💡 Visit HTTP-only sites for best results
+2025-07-18 23:48:19,562 - INFO - [MITM] 🛑 Press Ctrl+C to stop
+2025-07-18 23:48:24,734 - INFO - [ARP] Sent 10 poison packets
+2025-07-18 23:48:25,036 - INFO - [HTTP] Processing response from 100.21.215.181
+2025-07-18 23:48:25,038 - INFO - [HTTP] Skipping gzip response (fragmentation issues)
+2025-07-18 23:48:29,625 - INFO - [HTTP] Processing response from 100.21.215.181
+2025-07-18 23:48:29,626 - INFO - [HTTP] Skipping gzip response (fragmentation issues)
+2025-07-18 23:48:34,951 - INFO - [ARP] Sent 20 poison packets
+2025-07-18 23:48:45,194 - INFO - [ARP] Sent 30 poison packets
+2025-07-18 23:48:51,331 - INFO - [HTTP] Processing response from 146.190.62.39
+2025-07-18 23:48:51,332 - INFO - [HTTP] Skipping non-HTML response
+2025-07-18 23:48:54,854 - INFO - [HTTP] Processing response from 146.190.62.39
+2025-07-18 23:48:54,855 - INFO - [HTTP] Skipping non-HTML response
+2025-07-18 23:48:55,436 - INFO - [ARP] Sent 40 poison packets
+2025-07-18 23:49:05,671 - INFO - [ARP] Sent 50 poison packets
+2025-07-18 23:49:15,877 - INFO - [ARP] Sent 60 poison packets
+2025-07-18 23:49:26,078 - INFO - [ARP] Sent 70 poison packets
+2025-07-18 23:49:36,310 - INFO - [ARP] Sent 80 poison packets
+2025-07-18 23:49:46,517 - INFO - [ARP] Sent 90 poison packets
+2025-07-18 23:49:56,718 - INFO - [ARP] Sent 100 poison packets
+2025-07-18 23:50:06,951 - INFO - [ARP] Sent 110 poison packets
+2025-07-18 23:50:17,175 - INFO - [ARP] Sent 120 poison packets
+2025-07-18 23:50:26,593 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-18 23:50:26,593 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.1 mapping
+2025-07-18 23:50:26,611 - INFO - [ARP-RESTORE] Restoring 192.168.0.1 -> 192.168.0.201 mapping
+2025-07-18 23:50:26,629 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 23:50:26,637 - INFO - [CLEANUP] ✅ Cleanup complete

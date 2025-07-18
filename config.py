@@ -1,31 +1,103 @@
 #!/usr/bin/env python3
 """
-Configuration File for ARP Cache Poisoning & MITM Tools
-Centralized configuration for attack, defense, and network discovery tools
+Centralized Configuration System
+Manages all settings for ARP poisoning, MITM attacks, and defense systems
 """
 
 import os
+import sys
 from datetime import datetime
+
+class Device:
+    """Represents a network device with IP and MAC address"""
+    def __init__(self, name, ip, mac, device_type="unknown", description=""):
+        self.name = name
+        self.ip = ip
+        self.mac = mac
+        self.device_type = device_type  # laptop, phone, tablet, router, etc.
+        self.description = description
+        
+    def __str__(self):
+        return f"{self.name} ({self.ip}) - {self.device_type}"
+    
+    def __repr__(self):
+        return f"Device('{self.name}', '{self.ip}', '{self.mac}', '{self.device_type}')"
 
 # ==========================================
 # NETWORK CONFIGURATION
 # ==========================================
 
 class NetworkConfig:
-    """Network interface and IP configuration"""
+    """Basic network configuration"""
     
-    # Default network interface (change based on your system)
-    # Use 'ip addr show' or 'iwconfig' to find your interface
-    INTERFACE = "wlp2s0"
+    # Network interface (automatically detect or specify)
+    INTERFACE = "wlp2s0"  # Change this to your network interface
     
-    # Network range for scanning (auto-detected if None)
-    NETWORK_RANGE = "192.168.0.0/24"
+    # Network range for scanning
+    NETWORK_RANGE = "192.168.0.0/24"  # Adjust to your network
     
-    # Timeout settings
-    PING_TIMEOUT = 3        # seconds
-    ARP_TIMEOUT = 2         # seconds
-    NMAP_TIMEOUT = 30       # seconds
-    HTTP_REQUEST_TIMEOUT = 5 # seconds
+    # Connection timeouts
+    ARP_TIMEOUT = 3
+    TCP_TIMEOUT = 5
+    SCAN_TIMEOUT = 2
+
+# ==========================================
+# DEVICE DEFINITIONS
+# ==========================================
+
+class DeviceRegistry:
+    """Registry of all known devices on the network"""
+    
+    # Define your devices here
+    laptop = Device(
+        name="laptop",
+        ip="192.168.0.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="laptop",
+        description="Lenovo LOQ Laptop"
+    )
+    
+    phone = Device(
+        name="phone", 
+        ip="192.168.0.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Xiaomi Redmi Note 10"
+    )
+    
+    gateway = Device(
+        name="gateway",
+        ip="192.168.0.1",
+        mac="60:a4:b7:a9:77:05", 
+        device_type="router",
+        description="WiFi Router/Gateway"
+    )
+    
+    # Add more devices as needed
+    # desktop = Device("desktop", "192.168.0.XXX", "XX:XX:XX:XX:XX:XX", "desktop")
+    
+    @classmethod
+    def get_device(cls, name):
+        """Get device by name"""
+        return getattr(cls, name, None)
+    
+    @classmethod
+    def list_devices(cls):
+        """List all registered devices"""
+        devices = []
+        for attr_name in dir(cls):
+            attr = getattr(cls, attr_name)
+            if isinstance(attr, Device):
+                devices.append(attr)
+        return devices
+    
+    @classmethod
+    def find_device_by_ip(cls, ip):
+        """Find device by IP address"""
+        for device in cls.list_devices():
+            if device.ip == ip:
+                return device
+        return None
 
 # ==========================================
 # ATTACK CONFIGURATION
@@ -34,22 +106,51 @@ class NetworkConfig:
 class AttackConfig:
     """Configuration for ARP poisoning and MITM attacks"""
     
-    # Target Configuration (CHANGE THESE FOR YOUR NETWORK)
-    VICTIM_IP = "192.168.0.201"
-    VICTIM_MAC = "f4:30:8b:91:d6:1f"
+    # ===== BIDIRECTIONAL ATTACK TARGETS =====
     
-    # Router AP 
-    GATEWAY_IP = "192.168.0.1"
-    GATEWAY_MAC = "60:a4:b7:a9:77:05"
-
-    # Lenovo Laptop 
-    # GATEWAY_IP = "192.168.0.125"
-    # GATEWAY_MAC = "24:b2:b9:3e:22:13"
+    # Target 1: Primary device to intercept
+    POISON_TARGET_1 = DeviceRegistry.laptop  # Change this to your target device
+    
+    # Target 2: Secondary device to intercept  
+    POISON_TARGET_2 = DeviceRegistry.phone   # Change this to your target device
+    
+    # Gateway device (router)
+    GATEWAY_DEVICE = DeviceRegistry.gateway
+    
+    # ===== BACKWARDS COMPATIBILITY =====
+    # Keep old variable names for existing scripts
+    @property
+    def VICTIM_IP(self):
+        return self.POISON_TARGET_1.ip
+    
+    @property 
+    def VICTIM_MAC(self):
+        return self.POISON_TARGET_1.mac
+        
+    @property
+    def GATEWAY_IP(self):
+        return self.GATEWAY_DEVICE.ip
+        
+    @property
+    def GATEWAY_MAC(self):
+        return self.GATEWAY_DEVICE.mac
     
     # Attack timing
     ARP_POISON_INTERVAL = 2  # seconds between ARP poison packets
     
-    # HTTP Injection Configuration
+    # Socket interception configuration
+    SOCKET_PORTS = [9999, 8080, 12345, 22, 23, 21]  # Ports to intercept
+    ENABLE_BIDIRECTIONAL_INTERCEPTION = True
+    
+    # TCP Socket Modifications
+    SOCKET_MODIFICATIONS = {
+        'hello': 'Bye',
+        'hi': 'Goodbye', 
+        'secret': 'INTERCEPTED_SECRET',
+        'password': 'HACKED_PASSWORD'
+    }
+    
+    # HTTP Injection Configuration (for backward compatibility)
     INJECTION_CODE = b"""
     <div style='position:fixed;top:0;left:0;width:100%;background:red;color:white;
     text-align:center;padding:10px;z-index:9999;font-size:18px;'>
@@ -74,90 +175,61 @@ class AttackConfig:
     ENABLE_PACKET_LOGGING = True
     ENABLE_GZIP_HANDLING = True
 
+# Create instance for backward compatibility
+AttackConfig = AttackConfig()
+
 # ==========================================
-# DEFENSE CONFIGURATION
+# DEFENSE CONFIGURATION  
 # ==========================================
 
 class DefenseConfig:
-    """Configuration for defense and monitoring tools"""
-    
-    # Alert thresholds
-    ALERT_THRESHOLD = 3              # Number of suspicious events before alert
-    TIME_WINDOW = 60                 # Time window for alert counting (seconds)
-    MAC_CHANGE_THRESHOLD = 60        # Seconds - rapid MAC changes are suspicious
+    """Configuration for defense and monitoring systems"""
     
     # Monitoring settings
-    ARP_MONITOR_INTERVAL = 5         # Seconds between ARP table checks
-    GATEWAY_VALIDATION_INTERVAL = 30 # Seconds between gateway checks
+    ENABLE_ARP_MONITORING = True
+    ENABLE_STATIC_ARP = True
+    ALERT_THRESHOLD = 3  # Number of suspicious events before alert
     
-    # Defense features
-    ENABLE_COUNTERMEASURES = True    # Send counter-ARP packets
-    ENABLE_STATIC_ARP = True         # Set static ARP entries
-    ENABLE_EMAIL_ALERTS = False      # Email notifications
+    # Defense timing
+    MONITORING_INTERVAL = 1  # seconds
+    CACHE_TIMEOUT = 300  # seconds (5 minutes)
+    
+    # Alert settings
+    ENABLE_EMAIL_ALERTS = False
     ENABLE_DESKTOP_NOTIFICATIONS = True
+    ENABLE_LOG_ALERTS = True
     
-    # Validation settings
-    VALIDATION_THRESHOLD = 3         # Minimum validations before trusting
-    CACHE_TIMEOUT = 300              # ARP cache timeout (seconds)
-    MULTIPLE_VALIDATION = True       # Send multiple ARP requests for validation
-    DNS_VALIDATION = True            # Cross-check with DNS
+    # Log levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
+    LOG_LEVEL = "INFO"
     
-    # Trusted DNS servers
-    TRUSTED_DNS_SERVERS = ["8.8.8.8", "1.1.1.1", "208.67.222.222"]
-    
-    # Notification settings
-    NOTIFICATION_EMAIL = None        # Set to email address for alerts
-    LOG_LEVEL = "INFO"              # DEBUG, INFO, WARNING, ERROR, CRITICAL
+    # Trusted devices (automatically populated from DeviceRegistry)
+    @classmethod
+    def get_trusted_devices(cls):
+        """Get dictionary of trusted IP -> MAC mappings"""
+        trusted = {}
+        for device in DeviceRegistry.list_devices():
+            trusted[device.ip] = device.mac
+        return trusted
 
 # ==========================================
-# NETWORK DISCOVERY CONFIGURATION
+# SCANNER CONFIGURATION
 # ==========================================
 
 class ScannerConfig:
-    """Configuration for network device scanner"""
+    """Configuration for network device scanning"""
     
-    # Scanning options
-    DETAILED_SCAN = False           # Enable nmap scanning (slower)
-    PING_SWEEP_THREADS = 50         # Number of parallel ping threads
+    # Scanning behavior
+    DETAILED_SCAN = True
+    PING_SWEEP_THREADS = 50
+    INCLUDE_DEVICE_TYPE_DETECTION = True
     
-    # MAC vendor database
-    MAC_VENDOR_URLS = [
-        "https://maclookup.app/downloads/json-database/get-db",
-        "https://raw.githubusercontent.com/deepakthoughtwin/MAC-Address-Dataset/master/mac_vendor.json",
-        "https://raw.githubusercontent.com/wireshark/wireshark/master/manuf"
-    ]
-    
-    # Cache settings
-    MAC_VENDOR_CACHE_FILE = "mac_vendors.json"
-    SCAN_RESULTS_FILE = "network_scan_results.json"
-    
-    # Display options
-    DEFAULT_SORT = "ip"             # ip, type, vendor
+    # Output settings
+    DEFAULT_SORT = "ip"  # ip, type, vendor, name
     SHOW_ENHANCED_VENDOR_INFO = True
-
-# ==========================================
-# FILE AND PATH CONFIGURATION
-# ==========================================
-
-class PathConfig:
-    """File paths and logging configuration"""
     
-    # Base directory
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    
-    # Log files
-    ARP_DEFENSE_LOG = "arp_defense.log"
-    NETWORK_MONITOR_LOG = "network_monitor.log"
-    ATTACK_LOG = "attack.log"
-    
-    # Configuration files
-    ARP_DEFENSE_CONFIG = "arp_defense_config.json"
-    SECURE_ARP_CONFIG = "secure_arp_config.json"
-    NETWORK_BASELINE = "network_baseline.json"
-    
-    # Database files
-    MAC_VENDOR_DB = "mac_vendors.json"
-    TRUSTED_DEVICES_DB = "trusted_devices.json"
+    # File paths
+    MAC_VENDOR_CACHE_FILE = "mac_vendor_cache.json"
+    SCAN_RESULTS_FILE = "network_scan_results.json"
 
 # ==========================================
 # SECURITY CONFIGURATION
@@ -167,105 +239,119 @@ class SecurityConfig:
     """Security and safety settings"""
     
     # Safety checks
-    REQUIRE_CONFIRMATION = True     # Require user confirmation before attacks
-    MAX_ATTACK_DURATION = 3600      # Maximum attack duration (1 hour)
-    AUTO_CLEANUP = True             # Automatically cleanup on exit
+    REQUIRE_CONFIRMATION = True
+    AUTO_CLEANUP = True
+    MAX_ATTACK_DURATION = 1800  # 30 minutes
     
-    # Legal and ethical settings
-    SHOW_LEGAL_WARNING = True       # Show legal disclaimer
-    LOG_ACTIVITIES = True           # Log all activities for audit
+    # Legal compliance
+    SHOW_LEGAL_WARNING = True
+    REQUIRE_LEGAL_ACKNOWLEDGMENT = True
     
     # Restricted networks (will refuse to attack these)
-    RESTRICTED_NETWORKS = [
+    PROTECTED_NETWORKS = [
         "10.0.0.0/8",
-        "172.16.0.0/12",
+        "172.16.0.0/12", 
         "169.254.0.0/16"  # Link-local
     ]
 
 # ==========================================
-# UTILITY FUNCTIONS
+# PATH CONFIGURATION
 # ==========================================
 
-def get_current_config_summary():
-    """Get a summary of current configuration"""
-    return {
-        'timestamp': datetime.now().isoformat(),
-        'network': {
-            'interface': NetworkConfig.INTERFACE,
-            'network_range': NetworkConfig.NETWORK_RANGE
-        },
-        'attack_target': {
-            'victim_ip': AttackConfig.VICTIM_IP,
-            'gateway_ip': AttackConfig.GATEWAY_IP
-        },
-        'defense': {
-            'countermeasures_enabled': DefenseConfig.ENABLE_COUNTERMEASURES,
-            'static_arp_enabled': DefenseConfig.ENABLE_STATIC_ARP
-        },
-        'security': {
-            'require_confirmation': SecurityConfig.REQUIRE_CONFIRMATION,
-            'auto_cleanup': SecurityConfig.AUTO_CLEANUP
-        }
-    }
-
-def validate_config():
-    """Validate configuration settings"""
-    errors = []
+class PathConfig:
+    """File paths for logs, databases, and output"""
     
-    # Check required network settings
-    if not NetworkConfig.INTERFACE:
-        errors.append("Network interface not specified")
+    # Log files
+    ATTACK_LOG = "attack.log"
+    DEFENSE_LOG = "arp_defense.log"
+    NETWORK_MONITOR_LOG = "network_monitor.log"
+    TCP_SOCKET_LOG = "tcp_socket_attack.log"
+    
+    # Database files
+    TRUSTED_DEVICES_DB = "trusted_devices.json"
+    NETWORK_BASELINE = "network_baseline.json"
+    MAC_VENDOR_DB = "mac_vendors.json"
+    
+    # Output directories
+    SCAN_OUTPUT_DIR = "scans/"
+    LOG_OUTPUT_DIR = "logs/"
+    
+    # Configuration files
+    USER_CONFIG_FILE = "user_config.py"
+    
+    @classmethod
+    def ensure_directories(cls):
+        """Create necessary directories"""
+        os.makedirs(cls.SCAN_OUTPUT_DIR, exist_ok=True)
+        os.makedirs(cls.LOG_OUTPUT_DIR, exist_ok=True)
+
+# ==========================================
+# CONFIGURATION VALIDATION
+# ==========================================
+
+def validate_configuration():
+    """Validate the current configuration"""
+    errors = []
+    warnings = []
+    
+    # Check device configurations
+    for device in DeviceRegistry.list_devices():
+        if not device.ip or not device.mac:
+            errors.append(f"Device {device.name} missing IP or MAC address")
+        
+        # Basic IP validation
+        if device.ip and not device.ip.replace('.', '').replace(':', '').isalnum():
+            warnings.append(f"Device {device.name} IP format may be invalid: {device.ip}")
     
     # Check attack targets
-    if AttackConfig.VICTIM_IP == AttackConfig.GATEWAY_IP:
-        errors.append("Victim and gateway IP cannot be the same")
+    if not AttackConfig.POISON_TARGET_1:
+        errors.append("POISON_TARGET_1 not configured")
+    if not AttackConfig.POISON_TARGET_2: 
+        errors.append("POISON_TARGET_2 not configured")
+    if not AttackConfig.GATEWAY_DEVICE:
+        errors.append("GATEWAY_DEVICE not configured")
     
-    # Check MAC addresses format
-    import re
-    mac_pattern = re.compile(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')
+    # Check if targets are the same
+    if (AttackConfig.POISON_TARGET_1 and AttackConfig.POISON_TARGET_2 and
+        AttackConfig.POISON_TARGET_1.ip == AttackConfig.POISON_TARGET_2.ip):
+        warnings.append("POISON_TARGET_1 and POISON_TARGET_2 have the same IP")
     
-    if not mac_pattern.match(AttackConfig.VICTIM_MAC):
-        errors.append("Invalid victim MAC address format")
+    # Check network interface
+    if not NetworkConfig.INTERFACE:
+        errors.append("Network interface not configured")
     
-    if not mac_pattern.match(AttackConfig.GATEWAY_MAC):
-        errors.append("Invalid gateway MAC address format")
-    
-    return errors
+    return errors, warnings
 
-def load_config_from_file(config_file="user_config.py"):
-    """Load user-specific configuration overrides"""
-    try:
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("user_config", config_file)
-        if spec and spec.loader:
-            user_config = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(user_config)
-            
-            # Apply user overrides
-            if hasattr(user_config, 'NETWORK_INTERFACE'):
-                NetworkConfig.INTERFACE = user_config.NETWORK_INTERFACE
-            
-            if hasattr(user_config, 'VICTIM_IP'):
-                AttackConfig.VICTIM_IP = user_config.VICTIM_IP
-            
-            if hasattr(user_config, 'VICTIM_MAC'):
-                AttackConfig.VICTIM_MAC = user_config.VICTIM_MAC
-            
-            if hasattr(user_config, 'GATEWAY_IP'):
-                AttackConfig.GATEWAY_IP = user_config.GATEWAY_IP
-            
-            if hasattr(user_config, 'GATEWAY_MAC'):
-                AttackConfig.GATEWAY_MAC = user_config.GATEWAY_MAC
-            
-            print(f"✅ Loaded user configuration from {config_file}")
-            return True
-            
-    except FileNotFoundError:
-        print(f"ℹ️  No user config file found at {config_file}")
-    except Exception as e:
-        print(f"⚠️  Error loading user config: {e}")
+def display_configuration():
+    """Display current configuration"""
+    print("=" * 70)
+    print("🔧 NETWORK SECURITY TOOLKIT CONFIGURATION")
+    print("=" * 70)
     
-    return False
+    print("\n📡 Network Settings:")
+    print(f"  Interface: {NetworkConfig.INTERFACE}")
+    print(f"  Network Range: {NetworkConfig.NETWORK_RANGE}")
+    
+    print("\n🎯 Attack Targets:")
+    print(f"  Target 1: {AttackConfig.POISON_TARGET_1}")
+    print(f"  Target 2: {AttackConfig.POISON_TARGET_2}")
+    print(f"  Gateway: {AttackConfig.GATEWAY_DEVICE}")
+    
+    print("\n🔌 Socket Interception:")
+    print(f"  Ports: {AttackConfig.SOCKET_PORTS}")
+    print(f"  Bidirectional: {AttackConfig.ENABLE_BIDIRECTIONAL_INTERCEPTION}")
+    print(f"  Modifications: {AttackConfig.SOCKET_MODIFICATIONS}")
+    
+    print("\n🛡️ Security Settings:")
+    print(f"  Require Confirmation: {SecurityConfig.REQUIRE_CONFIRMATION}")
+    print(f"  Auto Cleanup: {SecurityConfig.AUTO_CLEANUP}")
+    print(f"  Max Duration: {SecurityConfig.MAX_ATTACK_DURATION}s")
+    
+    print("\n📱 Registered Devices:")
+    for device in DeviceRegistry.list_devices():
+        print(f"  {device}")
+    
+    print("=" * 70)
 
 def create_user_config_template():
     """Create a template user configuration file"""
@@ -275,27 +361,70 @@ User Configuration Template
 Copy this file and modify the values for your network
 """
 
-# Network Configuration
-NETWORK_INTERFACE = "wlp2s0"  # Your network interface
-NETWORK_RANGE = "192.168.0.0/24"  # Your network range
+from config import Device, DeviceRegistry, AttackConfig, NetworkConfig
 
-# Attack Target Configuration
-VICTIM_IP = "192.168.0.105"
-VICTIM_MAC = "9a:be:d0:91:f3:76"
+# ==========================================
+# NETWORK CONFIGURATION
+# ==========================================
 
-GATEWAY_IP = "192.168.0.1"
-GATEWAY_MAC = "40:ed:00:4a:67:44"
+# Your network interface (find with: ip addr show)
+NetworkConfig.INTERFACE = "wlp2s0"  # Change to your interface
+NetworkConfig.NETWORK_RANGE = "192.168.0.0/24"  # Change to your network
 
-# Custom injection payload
-CUSTOM_INJECTION = b"<h1>Custom Attack Payload</h1>"
+# ==========================================
+# DEVICE REGISTRY
+# ==========================================
 
-# Safety settings
-REQUIRE_CONFIRMATION = True
-MAX_ATTACK_DURATION = 1800  # 30 minutes
+# Define your actual devices here
+DeviceRegistry.laptop = Device(
+    name="ubuntu_server",
+    ip="192.168.0.105",           # Replace with actual IP
+    mac="XX:XX:XX:XX:XX:XX",      # Replace with actual MAC
+    device_type="laptop",
+    description="Ubuntu Server Laptop"
+)
 
-# Defense settings
-ENABLE_EMAIL_ALERTS = False
-NOTIFICATION_EMAIL = None  # "admin@example.com"
+DeviceRegistry.phone = Device(
+    name="windows_client", 
+    ip="192.168.0.150",           # Replace with actual IP
+    mac="YY:YY:YY:YY:YY:YY",      # Replace with actual MAC
+    device_type="laptop",
+    description="Windows Client Laptop"
+)
+
+DeviceRegistry.gateway = Device(
+    name="router",
+    ip="192.168.0.1",             # Replace with actual router IP
+    mac="ZZ:ZZ:ZZ:ZZ:ZZ:ZZ",      # Replace with actual router MAC
+    device_type="router",
+    description="WiFi Router"
+)
+
+# ==========================================
+# ATTACK CONFIGURATION
+# ==========================================
+
+# Set your attack targets (which devices to intercept between)
+AttackConfig.POISON_TARGET_1 = DeviceRegistry.laptop  # Server
+AttackConfig.POISON_TARGET_2 = DeviceRegistry.phone   # Client
+AttackConfig.GATEWAY_DEVICE = DeviceRegistry.gateway
+
+# Custom socket modifications (what to replace in messages)
+AttackConfig.SOCKET_MODIFICATIONS = {
+    'hello': 'Bye',
+    'hi': 'Goodbye',
+    'secret': 'INTERCEPTED',
+    'password': 'HACKED'
+}
+
+# Ports to monitor for socket communication
+AttackConfig.SOCKET_PORTS = [9999, 8080, 12345]
+
+print("✅ User configuration loaded successfully!")
+print("🎯 Attack targets configured:")
+print(f"   Target 1: {AttackConfig.POISON_TARGET_1}")
+print(f"   Target 2: {AttackConfig.POISON_TARGET_2}")
+print(f"   Gateway: {AttackConfig.GATEWAY_DEVICE}")
 '''
     
     try:
@@ -306,61 +435,63 @@ NOTIFICATION_EMAIL = None  # "admin@example.com"
     except Exception as e:
         print(f"❌ Failed to create template: {e}")
 
-# ==========================================
-# INITIALIZATION
-# ==========================================
-
-def initialize_config():
-    """Initialize configuration system"""
-    print("🔧 Initializing configuration system...")
-    
-    # Validate current config
-    errors = validate_config()
-    if errors:
-        print("⚠️  Configuration validation warnings:")
-        for error in errors:
-            print(f"   • {error}")
-    
-    # Try to load user config
-    load_config_from_file()
-    
-    # Create template if it doesn't exist
-    if not os.path.exists('user_config_template.py'):
-        create_user_config_template()
-    
-    print("✅ Configuration system initialized")
-
-# Auto-initialize when imported
-if __name__ != "__main__":
-    initialize_config()
+def load_user_config():
+    """Load user configuration if it exists"""
+    try:
+        if os.path.exists('user_config.py'):
+            # Import user configuration
+            sys.path.insert(0, '.')
+            import user_config
+            print("✅ Loaded user configuration from user_config.py")
+            return True
+        else:
+            print("💡 No user_config.py found - using default configuration")
+            print("💡 Run: cp user_config_template.py user_config.py")
+            return False
+    except Exception as e:
+        print(f"❌ Error loading user configuration: {e}")
+        print("💡 Check your user_config.py for syntax errors")
+        return False
 
 # ==========================================
-# MAIN FUNCTION FOR TESTING
+# MAIN CONFIGURATION FUNCTION
 # ==========================================
 
-if __name__ == "__main__":
-    print("🔧 ARP Cache Poisoning & MITM Tools - Configuration")
-    print("=" * 60)
+def main():
+    """Main configuration function"""
+    print("🔧 Network Security Toolkit Configuration")
+    print("=" * 50)
     
-    # Initialize and validate
-    initialize_config()
+    # Ensure directories exist
+    PathConfig.ensure_directories()
     
-    # Show current configuration
-    import json
-    config_summary = get_current_config_summary()
-    print(f"\n📋 Current Configuration Summary:")
-    print(json.dumps(config_summary, indent=2))
+    # Load user configuration
+    load_user_config()
     
     # Validate configuration
-    errors = validate_config()
+    errors, warnings = validate_configuration()
+    
     if errors:
-        print(f"\n❌ Configuration Errors:")
+        print("❌ Configuration Errors:")
         for error in errors:
             print(f"   • {error}")
-    else:
-        print(f"\n✅ Configuration is valid")
     
-    print(f"\n📝 To customize configuration:")
-    print(f"   1. Copy user_config_template.py to user_config.py")
-    print(f"   2. Modify the values in user_config.py")
-    print(f"   3. The tools will automatically load your settings") 
+    if warnings:
+        print("⚠️ Configuration Warnings:")
+        for warning in warnings:
+            print(f"   • {warning}")
+    
+    if not errors:
+        print("✅ Configuration is valid!")
+        display_configuration()
+    
+    # Offer to create template if no user config exists
+    if not os.path.exists('user_config.py'):
+        response = input("\n🤔 Create user configuration template? (y/n): ")
+        if response.lower() in ['y', 'yes']:
+            create_user_config_template()
+    
+    return len(errors) == 0
+
+if __name__ == "__main__":
+    main() 

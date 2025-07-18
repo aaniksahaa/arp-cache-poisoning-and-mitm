@@ -1,0 +1,322 @@
+2025-07-18 19:45:12,396 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 19:45:12,397 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 19:45:12,398 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 19:45:12,403 - WARNING - [SETUP] ⚠️ IP forwarding may not be enabled
+2025-07-18 19:45:12,404 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 19:45:12,404 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 19:45:12,404 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 19:45:12,404 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 19:45:12,412 - WARNING - [SETUP] ⚠️ iptables rule may not have been added correctly
+2025-07-18 19:46:06,761 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 19:46:06,762 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 19:46:06,763 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 19:46:06,766 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 19:46:06,768 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 19:46:06,768 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 19:46:06,769 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 19:46:06,770 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 19:46:06,784 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 19:46:06,785 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 19:46:06,786 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 19:46:06,786 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 19:46:06,787 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.111) - phone
+2025-07-18 19:46:06,788 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 19:46:06,788 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 19:46:06,788 - INFO - [MITM] 🔀 Modifications: {'hello': 'Bye', 'hi': 'Goodbye', 'secret': 'INTERCEPTED_SECRET', 'password': 'HACKED_PASSWORD'}
+2025-07-18 19:46:06,789 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 19:46:15,405 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 19:46:26,068 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 19:46:36,744 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 19:46:47,454 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 19:46:58,146 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-18 19:47:08,838 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-18 19:47:19,512 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-18 19:47:30,220 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-18 19:47:40,911 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-18 19:47:51,554 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-18 19:48:02,235 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-18 19:48:12,911 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-18 19:48:23,622 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-18 19:48:34,366 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-18 19:48:45,063 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-18 19:48:55,734 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-18 19:49:06,388 - INFO - [ARP-POISON] Sent 510 poison packets
+2025-07-18 19:49:17,114 - INFO - [ARP-POISON] Sent 540 poison packets
+2025-07-18 19:49:27,782 - INFO - [ARP-POISON] Sent 570 poison packets
+2025-07-18 19:49:38,375 - INFO - [ARP-POISON] Sent 600 poison packets
+2025-07-18 19:49:48,979 - INFO - [ARP-POISON] Sent 630 poison packets
+2025-07-18 19:49:53,659 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 19:49:53,660 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 19:49:53,815 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 19:49:53,816 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 19:49:53,818 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:49:53,836 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 19:49:53,837 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:50:01,350 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 19:50:01,351 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 19:50:01,352 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 19:50:01,355 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 19:50:01,357 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 19:50:01,358 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 19:50:01,358 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 19:50:01,360 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 19:50:01,372 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 19:50:01,375 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 19:50:01,377 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 19:50:01,377 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 19:50:01,378 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-18 19:50:01,379 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 19:50:01,379 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 19:50:01,379 - INFO - [MITM] 🔀 Modifications: {'hello': 'Bye', 'hi': 'Goodbye', 'secret': 'INTERCEPTED_SECRET', 'password': 'HACKED_PASSWORD'}
+2025-07-18 19:50:01,380 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 19:50:04,596 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:04,597 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:04,599 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:04,600 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:04,603 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:04,844 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:04,845 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:04,846 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:04,846 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:04,849 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:05,052 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:05,052 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:05,052 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:05,052 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:05,053 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:05,535 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:05,536 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:05,537 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:05,538 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:05,541 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:06,616 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:06,617 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:06,618 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:06,619 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:06,622 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:08,459 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:08,460 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:08,461 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:08,461 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:08,464 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:10,008 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 19:50:11,831 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:11,832 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:11,833 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:11,834 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:11,837 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:12,129 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:12,129 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:12,129 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:12,129 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:12,130 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:12,283 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:12,283 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:12,284 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:12,284 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:12,285 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:12,444 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:12,445 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:12,446 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:12,447 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:12,449 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:13,175 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:13,175 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:13,176 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:13,176 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:13,177 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:14,605 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:14,606 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:14,607 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:14,608 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:14,610 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:17,468 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:17,469 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:17,470 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:17,471 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:17,473 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:20,541 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:20,542 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:20,543 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:20,543 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:20,547 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:20,716 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 19:50:22,787 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:22,788 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:22,789 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:22,789 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:22,792 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:31,365 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 19:50:34,069 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44070
+2025-07-18 19:50:34,070 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:50:11] Server: hello'
+2025-07-18 19:50:34,070 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:50:11] Server: hello'
+2025-07-18 19:50:34,071 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:50:11] Server: Bye'
+2025-07-18 19:50:34,073 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:50:35,868 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:50:35,870 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:50:35,870 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:50:35,871 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:50:35,875 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:50:42,029 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 19:50:52,728 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-18 19:50:55,271 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 19:50:55,272 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 19:50:55,430 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 19:50:55,431 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 19:50:55,433 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:50:55,449 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 19:50:55,449 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:51:00,502 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 19:51:00,503 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 19:51:00,504 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 19:51:00,507 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 19:51:00,508 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 19:51:00,509 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 19:51:00,509 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 19:51:00,511 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 19:51:00,524 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 19:51:00,525 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 19:51:00,526 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 19:51:00,527 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 19:51:00,527 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-18 19:51:00,528 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 19:51:00,531 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 19:51:00,531 - INFO - [MITM] 🔀 Modifications: {'hello': 'Bye', 'hi': 'Goodbye', 'secret': 'INTERCEPTED_SECRET', 'password': 'HACKED_PASSWORD'}
+2025-07-18 19:51:00,532 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 19:51:06,633 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:51:06,634 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:51:06,636 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:51:06,636 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:51:06,638 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:51:09,161 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 19:51:19,856 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 19:51:30,535 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 19:51:37,247 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44070 -> 192.168.0.125:9999
+2025-07-18 19:51:37,247 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'secrethihi'
+2025-07-18 19:51:37,248 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'secrethihi'
+2025-07-18 19:51:37,249 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] INTERCEPTED_SECRETGoodbyeGoodbye'
+2025-07-18 19:51:37,252 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:51:40,163 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 19:51:40,163 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 19:51:40,317 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 19:51:40,318 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 19:51:40,321 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:51:40,336 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 19:51:40,337 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:51:55,900 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 19:51:55,902 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 19:51:55,902 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 19:51:55,906 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 19:51:55,907 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 19:51:55,908 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 19:51:55,908 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 19:51:55,910 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 19:51:55,922 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 19:51:55,923 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 19:51:55,924 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 19:51:55,927 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 19:51:55,928 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-18 19:51:55,929 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 19:51:55,929 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 19:51:55,930 - INFO - [MITM] 🔀 Modifications: {'hello': 'Bye', 'hi': 'Goodbye', 'secret': 'INTERCEPTED_SECRET', 'password': 'HACKED_PASSWORD'}
+2025-07-18 19:51:55,931 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 19:51:59,371 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:51:59,372 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:51:59,374 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:51:59,374 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:51:59,377 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:51:59,760 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:51:59,761 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:51:59,762 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:51:59,763 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:51:59,765 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:00,270 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:52:00,271 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:52:00,272 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:52:00,272 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:52:00,275 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:01,443 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:52:01,444 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:52:01,445 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:52:01,445 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:52:01,448 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:03,451 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:52:03,452 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:52:03,453 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:52:03,453 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:52:03,457 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:04,559 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 19:52:07,559 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:52:07,560 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:52:07,561 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:52:07,562 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:52:07,565 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:12,677 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:12,678 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:12,678 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:12,679 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:12,682 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:12,882 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:12,883 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:12,884 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:12,885 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:12,887 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:13,059 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:13,060 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:13,061 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:13,062 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:13,064 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:13,599 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:13,600 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:13,601 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:13,602 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:13,604 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:14,500 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:14,500 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:14,500 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:14,500 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:14,501 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:15,186 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 19:52:15,713 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:52:15,714 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:52:15,715 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:52:15,715 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:52:15,718 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:16,357 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:16,357 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:16,357 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:16,358 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:16,359 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:20,258 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:20,259 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:20,260 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:20,261 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:20,263 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:25,850 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 19:52:27,723 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:27,723 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:27,724 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:27,724 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:27,724 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:32,547 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44086 -> 192.168.0.125:9999
+2025-07-18 19:52:32,548 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:52:32,549 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:52:32,549 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[MITM:phone→laptop] Goodbye'
+2025-07-18 19:52:32,552 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:52:36,556 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 19:52:43,299 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44086
+2025-07-18 19:52:43,300 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:52:12] Server: hi'
+2025-07-18 19:52:43,301 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:52:12] Server: hi'
+2025-07-18 19:52:43,302 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[MITM:laptop→phone] [19:52:12] Server: Goodbye'
+2025-07-18 19:52:43,305 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:52:43,843 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 19:52:43,844 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 19:52:43,982 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 19:52:43,982 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 19:52:43,983 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:52:43,997 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 19:52:43,997 - INFO - [CLEANUP] Removing iptables rules...

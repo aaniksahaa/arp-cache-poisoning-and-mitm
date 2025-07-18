@@ -142,13 +142,31 @@ class AttackConfig:
     SOCKET_PORTS = [9999, 8080, 12345, 22, 23, 21]  # Ports to intercept
     ENABLE_BIDIRECTIONAL_INTERCEPTION = True
     
-    # TCP Socket Modifications
+    # TCP Socket Modifications (ultra-compact, size-preserving)
+    # number of characters must match to the original
     SOCKET_MODIFICATIONS = {
-        'hello': 'bye',
-        'hi': 'bye', 
-        'secret': 'INTERCEPTED_SECRET',
-        'password': 'HACKED_PASSWORD'
+        'hello':    'HACK!',
+        'hi':       'NO',
+        'secret':   'PUBLIC',
+        'username': 'GARBAGE',
+        'password': 'GARBAGE',
+        'admin':    'GUEST',
+        'error':    'ALERT',
+        'login':    'ENTER',
+        'token':    'BADGE',
+        'abort':    'RETRY',
+        'accept':   'REJECT',
+        'delete':   'CREATE',
+        'access':   'DENIED',
+        'secure':   'PUBLIC',
+        'verify':   'IGNORE',
+        'server':   'CLIENT',
+        'upload':   'BACKUP',
+        'logout':   'LOGIN!',
+        'getkey':   'SETVAL',
+        'update':   'REBOOT'
     }
+
     
     # HTTP Injection Configuration (for backward compatibility)
     INJECTION_CODE = b"""
@@ -412,9 +430,9 @@ AttackConfig.GATEWAY_DEVICE = DeviceRegistry.gateway
 # Custom socket modifications (what to replace in messages)
 AttackConfig.SOCKET_MODIFICATIONS = {
     'hello': 'Bye',
-    'hi': 'Goodbye',
-    'secret': 'INTERCEPTED',
-    'password': 'HACKED'
+    'hi': 'OK',
+    'secret': 'HACK',
+    'password': 'PWNED'
 }
 
 # Ports to monitor for socket communication

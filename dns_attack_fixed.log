@@ -1609,3 +1609,167 @@
 2025-07-18 22:51:21,557 - INFO - [CLEANUP] Removing iptables rules
 2025-07-18 22:51:21,561 - INFO - [CLEANUP] Disabling IP forwarding
 2025-07-18 22:51:21,562 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 22:53:07,645 - INFO - [ATTACK] 🚀 Starting simplified DNS interceptor
+2025-07-18 22:53:07,645 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 22:53:07,646 - INFO - [SETUP] Setting up iptables rules
+2025-07-18 22:53:07,653 - INFO - [SETUP] ✅ iptables rules configured
+2025-07-18 22:53:07,654 - INFO - [ARP] 🎯 Starting ARP poisoning
+2025-07-18 22:53:07,654 - INFO - [DNS] 🚀 Starting DNS interception
+2025-07-18 22:53:10,325 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:53:10,329 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:53:10,330 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:53:10,331 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:53:10,332 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:53:10,333 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:53:10,338 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:53:10,340 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:53:10,343 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:53:17,002 - INFO - [ARP] Sent 30 poison packets
+2025-07-18 22:53:27,720 - INFO - [ARP] Sent 60 poison packets
+2025-07-18 22:53:37,088 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:53:37,093 - INFO - [DNS-ANSWER] chat.cdn.whatsapp.net -> 57.144.143.33
+2025-07-18 22:53:37,094 - INFO - [DNS-PASS] No redirection for chat.cdn.whatsapp.net
+2025-07-18 22:53:37,095 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:53:37,600 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:53:37,604 - INFO - [DNS-ANSWER] dgw-mini.c10r.facebook.com -> 57.144.142.3
+2025-07-18 22:53:37,605 - WARNING - [DNS-REDIRECT] 🎯 dgw-mini.c10r.facebook.com: 57.144.142.3 -> 142.250.77.142
+2025-07-18 22:53:37,606 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:53:37,610 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:53:38,481 - INFO - [ARP] Sent 90 poison packets
+2025-07-18 22:53:43,033 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:53:43,038 - INFO - [DNS-ANSWER] star.c10r.facebook.com -> 57.144.142.141
+2025-07-18 22:53:43,039 - WARNING - [DNS-REDIRECT] 🎯 star.c10r.facebook.com: 57.144.142.141 -> 142.250.77.142
+2025-07-18 22:53:43,040 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:53:43,046 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:53:49,198 - INFO - [ARP] Sent 120 poison packets
+2025-07-18 22:53:59,877 - INFO - [ARP] Sent 150 poison packets
+2025-07-18 22:54:09,244 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:54:09,248 - INFO - [DNS-ANSWER] dgw-mini.c10r.facebook.com -> 57.144.142.3
+2025-07-18 22:54:09,249 - WARNING - [DNS-REDIRECT] 🎯 dgw-mini.c10r.facebook.com: 57.144.142.3 -> 142.250.77.142
+2025-07-18 22:54:09,250 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:54:09,256 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:54:10,511 - INFO - [ARP] Sent 180 poison packets
+2025-07-18 22:54:19,786 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:54:19,797 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:54:21,169 - INFO - [ARP] Sent 210 poison packets
+2025-07-18 22:54:31,870 - INFO - [ARP] Sent 240 poison packets
+2025-07-18 22:54:37,320 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:54:37,321 - INFO - [DNS-ANSWER] chat-fallback.cdn.whatsapp.net -> 157.240.15.61
+2025-07-18 22:54:37,321 - INFO - [DNS-PASS] No redirection for chat-fallback.cdn.whatsapp.net
+2025-07-18 22:54:37,322 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:54:42,532 - INFO - [ARP] Sent 270 poison packets
+2025-07-18 22:54:49,576 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:54:49,581 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.34.223
+2025-07-18 22:54:49,582 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:54:49,583 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.36.223
+2025-07-18 22:54:49,583 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:54:49,584 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.32.223
+2025-07-18 22:54:49,584 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:54:49,585 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.38.223
+2025-07-18 22:54:49,586 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:54:49,586 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:54:53,221 - INFO - [ARP] Sent 300 poison packets
+2025-07-18 22:55:03,898 - INFO - [ARP] Sent 330 poison packets
+2025-07-18 22:55:10,436 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:55:10,439 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:55:10,443 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:55:10,447 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:55:10,448 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:55:10,449 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:55:10,450 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:55:10,451 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:55:10,456 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:55:15,479 - INFO - [ARP] Sent 360 poison packets
+2025-07-18 22:55:26,157 - INFO - [ARP] Sent 390 poison packets
+2025-07-18 22:55:27,477 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:55:27,481 - INFO - [DNS-ANSWER] connectivitycheck.gstatic.com -> 142.251.223.3
+2025-07-18 22:55:27,482 - INFO - [DNS-PASS] No redirection for connectivitycheck.gstatic.com
+2025-07-18 22:55:27,483 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:55:36,771 - INFO - [ARP] Sent 420 poison packets
+2025-07-18 22:55:44,072 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:55:44,077 - INFO - [DNS-ANSWER] dgw-mini.c10r.facebook.com -> 57.144.142.3
+2025-07-18 22:55:44,078 - WARNING - [DNS-REDIRECT] 🎯 dgw-mini.c10r.facebook.com: 57.144.142.3 -> 142.250.77.142
+2025-07-18 22:55:44,079 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:55:44,085 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:55:47,412 - INFO - [ARP] Sent 450 poison packets
+2025-07-18 22:55:58,104 - INFO - [ARP] Sent 480 poison packets
+2025-07-18 22:56:02,848 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:02,849 - INFO - [DNS-ANSWER] www.google.com -> 142.250.183.164
+2025-07-18 22:56:02,849 - INFO - [DNS-PASS] No redirection for www.google.com
+2025-07-18 22:56:02,850 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:02,851 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:02,852 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:08,701 - INFO - [ARP] Sent 510 poison packets
+2025-07-18 22:56:09,664 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:09,665 - INFO - [DNS-ANSWER] connectivitycheck.gstatic.com -> 142.251.223.3
+2025-07-18 22:56:09,665 - INFO - [DNS-PASS] No redirection for connectivitycheck.gstatic.com
+2025-07-18 22:56:09,665 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:19,344 - INFO - [ARP] Sent 540 poison packets
+2025-07-18 22:56:29,998 - INFO - [ARP] Sent 570 poison packets
+2025-07-18 22:56:34,194 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:34,195 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:34,213 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:34,215 - INFO - [DNS-ANSWER] clientservices.googleapis.com -> 142.250.66.3
+2025-07-18 22:56:34,215 - INFO - [DNS-PASS] No redirection for clientservices.googleapis.com
+2025-07-18 22:56:34,215 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:38,166 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:38,169 - INFO - [DNS-ANSWER] e11.whatsapp.net -> 3.33.221.48
+2025-07-18 22:56:38,170 - INFO - [DNS-PASS] No redirection for e11.whatsapp.net
+2025-07-18 22:56:38,171 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:40,706 - INFO - [ARP] Sent 600 poison packets
+2025-07-18 22:56:47,271 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:47,275 - INFO - [DNS-ANSWER] dgw-mini.c10r.facebook.com -> 57.144.142.3
+2025-07-18 22:56:47,276 - WARNING - [DNS-REDIRECT] 🎯 dgw-mini.c10r.facebook.com: 57.144.142.3 -> 142.250.77.142
+2025-07-18 22:56:47,277 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:56:47,282 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:56:51,482 - INFO - [ARP] Sent 630 poison packets
+2025-07-18 22:56:54,515 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:56:54,518 - INFO - [DNS-ANSWER] api.x.com.cdn.cloudflare.net -> 162.159.140.229
+2025-07-18 22:56:54,518 - WARNING - [DNS-REDIRECT] 🎯 api.x.com.cdn.cloudflare.net: 162.159.140.229 -> 142.250.77.142
+2025-07-18 22:56:54,518 - INFO - [DNS-ANSWER] api.x.com.cdn.cloudflare.net -> 172.66.0.227
+2025-07-18 22:56:54,519 - WARNING - [DNS-REDIRECT] 🎯 api.x.com.cdn.cloudflare.net: 172.66.0.227 -> 142.250.77.142
+2025-07-18 22:56:54,519 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:56:54,521 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:56:54,522 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:56:54,523 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:54,524 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:56:54,525 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:55,580 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:55,583 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.36.223
+2025-07-18 22:56:55,584 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:56:55,584 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.32.223
+2025-07-18 22:56:55,584 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:56:55,585 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.34.223
+2025-07-18 22:56:55,585 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:56:55,586 - INFO - [DNS-ANSWER] play.googleapis.com -> 216.239.38.223
+2025-07-18 22:56:55,586 - INFO - [DNS-PASS] No redirection for play.googleapis.com
+2025-07-18 22:56:55,586 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:59,285 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:59,289 - INFO - [DNS-ANSWER] clients.l.google.com -> 142.250.67.46
+2025-07-18 22:56:59,290 - INFO - [DNS-PASS] No redirection for clients.l.google.com
+2025-07-18 22:56:59,291 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:56:59,406 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:56:59,410 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:02,135 - INFO - [ARP] Sent 660 poison packets
+2025-07-18 22:57:03,017 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:03,018 - INFO - [DNS-ANSWER] www.google.com -> 142.250.183.164
+2025-07-18 22:57:03,018 - INFO - [DNS-PASS] No redirection for www.google.com
+2025-07-18 22:57:03,018 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:03,019 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:03,020 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:05,784 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:05,788 - INFO - [DNS-ANSWER] clientservices.googleapis.com -> 142.250.66.3
+2025-07-18 22:57:05,788 - INFO - [DNS-PASS] No redirection for clientservices.googleapis.com
+2025-07-18 22:57:05,789 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:05,792 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:05,796 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:08,446 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:08,450 - INFO - [DNS-ANSWER] e16.whatsapp.net -> 15.197.206.217
+2025-07-18 22:57:08,453 - INFO - [DNS-PASS] No redirection for e16.whatsapp.net
+2025-07-18 22:57:08,454 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:13,385 - INFO - [ARP] Sent 690 poison packets
+2025-07-18 22:57:18,749 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:18,753 - INFO - [DNS-ANSWER] dgw-mini.c10r.facebook.com -> 57.144.142.3
+2025-07-18 22:57:18,753 - WARNING - [DNS-REDIRECT] 🎯 dgw-mini.c10r.facebook.com: 57.144.142.3 -> 142.250.77.142
+2025-07-18 22:57:18,754 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:57:18,758 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded

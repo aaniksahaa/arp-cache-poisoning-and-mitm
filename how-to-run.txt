@@ -1,4 +1,15 @@
-TCP Socker Interception and Modification:
+Setup:
+======
+
+At first, run network_device_scanner.py to find device IP and MACs
+Set them up at config.py 
+
+HTTP Traffic Interception and Modification:
+===========================================
+
+
+
+TCP Socket Interception and Modification:
 =========================================
 
 First, run the tcp socket server and client
@@ -11,4 +22,10 @@ python bidirectional_client.py
 
 Attacker PC:
 sudo /home/aaniksahaa/miniconda3/bin/python bidirectional_tcp_interceptor.py
+
+DNS Interception and Modification:
+==================================
+
+Attacker PC:
+sudo /home/aaniksahaa/miniconda3/bin/python dns_interceptor.py
 

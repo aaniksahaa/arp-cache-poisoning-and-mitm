@@ -38,8 +38,13 @@ class AttackConfig:
     VICTIM_IP = "192.168.0.201"
     VICTIM_MAC = "f4:30:8b:91:d6:1f"
     
+    # Router AP 
     GATEWAY_IP = "192.168.0.1"
     GATEWAY_MAC = "60:a4:b7:a9:77:05"
+
+    # Lenovo Laptop 
+    # GATEWAY_IP = "192.168.0.125"
+    # GATEWAY_MAC = "24:b2:b9:3e:22:13"
     
     # Attack timing
     ARP_POISON_INTERVAL = 2  # seconds between ARP poison packets

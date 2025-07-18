@@ -1773,3 +1773,1066 @@
 2025-07-18 22:57:18,753 - WARNING - [DNS-REDIRECT] 🎯 dgw-mini.c10r.facebook.com: 57.144.142.3 -> 142.250.77.142
 2025-07-18 22:57:18,754 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
 2025-07-18 22:57:18,758 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:57:23,906 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:23,906 - INFO - [DNS-ANSWER] connectivitycheck.gstatic.com -> 142.251.223.3
+2025-07-18 22:57:23,907 - INFO - [DNS-PASS] No redirection for connectivitycheck.gstatic.com
+2025-07-18 22:57:23,907 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:24,156 - INFO - [ARP] Sent 720 poison packets
+2025-07-18 22:57:31,129 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:31,132 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:31,275 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:31,279 - INFO - [DNS-ANSWER] ab.chatgpt.com -> 172.64.155.209
+2025-07-18 22:57:31,280 - WARNING - [DNS-REDIRECT] 🎯 ab.chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:57:31,281 - INFO - [DNS-ANSWER] ab.chatgpt.com -> 104.18.32.47
+2025-07-18 22:57:31,282 - WARNING - [DNS-REDIRECT] 🎯 ab.chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:57:31,283 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:57:31,287 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:57:31,450 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:31,452 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:31,453 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.201
+2025-07-18 22:57:31,455 - INFO - [DNS-ANSWER] accounts.google.com -> 142.251.10.84
+2025-07-18 22:57:31,455 - INFO - [DNS-PASS] No redirection for accounts.google.com
+2025-07-18 22:57:31,455 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:34,891 - INFO - [ARP] Sent 750 poison packets
+2025-07-18 22:57:40,557 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:57:40,569 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.17
+2025-07-18 22:57:40,570 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,571 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.18
+2025-07-18 22:57:40,572 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,573 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.96
+2025-07-18 22:57:40,573 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,574 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.98
+2025-07-18 22:57:40,575 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,575 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.48
+2025-07-18 22:57:40,576 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,576 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.98
+2025-07-18 22:57:40,577 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,578 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.49
+2025-07-18 22:57:40,578 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,579 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.97
+2025-07-18 22:57:40,579 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,580 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.48
+2025-07-18 22:57:40,580 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,581 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.97
+2025-07-18 22:57:40,581 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,581 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.96
+2025-07-18 22:57:40,582 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,582 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.49
+2025-07-18 22:57:40,582 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:57:40,583 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:57:45,603 - INFO - [ARP] Sent 780 poison packets
+2025-07-18 22:57:56,316 - INFO - [ARP] Sent 810 poison packets
+2025-07-18 22:58:02,610 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:02,611 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:02,612 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:02,613 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:02,613 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:02,613 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:02,613 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:02,613 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:02,614 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:02,614 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:02,615 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:02,617 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:02,618 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:02,619 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:02,620 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:02,621 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:02,622 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:02,623 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:02,624 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:02,624 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:02,625 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:02,627 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,040 - INFO - [ARP] Sent 840 poison packets
+2025-07-18 22:58:07,529 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,531 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,533 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,536 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,539 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,542 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,543 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,545 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,547 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,551 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:07,551 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:07,552 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,554 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,557 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:07,557 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:07,558 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:07,558 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:07,559 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:07,559 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:07,559 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:07,559 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:07,560 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,698 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,704 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:07,705 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:07,705 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:07,712 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:07,718 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:12,651 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:12,654 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:12,657 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:12,659 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:12,659 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:12,659 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:12,661 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:12,662 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:12,663 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:12,665 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:12,666 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:12,666 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:12,666 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:12,666 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:12,666 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:12,667 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:12,667 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:12,667 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:12,669 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:12,670 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:12,671 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:12,673 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:13,162 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:13,168 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:13,169 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:13,170 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:13,176 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:13,183 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:14,492 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:14,493 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:14,493 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:14,493 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:14,494 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:14,494 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:14,495 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:14,496 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:14,497 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,570 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:17,573 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,579 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:17,584 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:17,584 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:17,584 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,586 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:17,587 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,588 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:17,590 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,591 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:17,592 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:17,592 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:17,592 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:17,592 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:17,593 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:17,593 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:17,593 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:17,593 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:17,593 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,594 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:17,595 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:17,820 - INFO - [ARP] Sent 870 poison packets
+2025-07-18 22:58:18,213 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:18,219 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:18,220 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:18,221 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:18,348 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:18,356 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:19,247 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:19,252 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:19,252 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:19,253 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:19,254 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:19,254 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:19,260 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:22,584 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:22,587 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:22,593 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:22,599 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:22,600 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:22,601 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:22,606 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:22,610 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:22,614 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:22,617 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:22,620 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:22,623 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:22,625 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:22,627 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:22,627 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:22,627 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:22,627 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:22,627 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:22,628 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:22,628 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:22,628 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:22,628 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:23,506 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:23,512 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:23,519 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:23,526 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:23,527 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:23,527 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:24,275 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:24,279 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:24,284 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:24,288 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:24,290 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:24,291 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:24,291 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:24,292 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:24,296 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:27,556 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:27,559 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:27,565 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:27,570 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:27,577 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:27,583 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:27,584 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:27,584 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:27,590 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:27,596 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:27,596 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:27,597 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:27,598 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:27,599 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:27,600 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:27,600 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:27,601 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:27,601 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:27,605 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:27,608 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:27,610 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:27,612 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:28,577 - INFO - [ARP] Sent 900 poison packets
+2025-07-18 22:58:28,758 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:28,765 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:28,766 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:28,766 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:28,773 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:28,779 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:29,356 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:29,357 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:29,357 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:29,357 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:29,357 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:29,357 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:29,358 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:29,359 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:29,360 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:32,723 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:32,725 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:32,727 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:32,728 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:32,728 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:32,728 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:32,729 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:32,729 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:32,729 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:32,729 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:32,729 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:32,729 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:32,731 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:32,732 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:32,734 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:32,735 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:32,735 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:32,735 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:32,736 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:32,737 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:32,738 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:32,738 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:33,851 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:33,853 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:33,855 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:33,857 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:33,857 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:33,857 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:34,590 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:34,591 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:34,592 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:34,593 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:34,593 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:34,593 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:34,593 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:34,593 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:34,594 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:39,319 - INFO - [ARP] Sent 930 poison packets
+2025-07-18 22:58:39,366 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,369 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,374 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,380 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,385 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,390 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:39,391 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:39,391 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,396 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,400 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,404 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,406 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:39,406 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:39,407 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,408 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,410 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,412 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,414 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:39,414 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:39,414 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:39,414 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:39,414 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:39,414 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:39,415 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:39,415 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:39,415 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,437 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,439 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,440 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,441 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:39,442 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:39,443 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:39,443 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:39,443 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:39,443 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:39,443 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:39,444 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:42,549 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:42,552 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:42,557 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:42,562 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:42,563 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:42,563 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:42,569 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:42,575 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:42,581 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:42,586 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:42,587 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:42,588 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:42,589 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:42,589 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:42,590 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:42,591 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:42,591 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:42,592 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:42,599 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:42,603 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:42,606 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:42,608 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:43,882 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:43,885 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:43,888 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:43,892 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:43,892 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:43,892 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:44,498 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:44,502 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:44,506 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:44,510 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:44,511 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:44,512 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:44,513 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:44,514 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:44,516 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:47,670 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:47,674 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:47,679 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:47,685 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:47,685 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:47,686 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:47,692 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:47,697 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:47,703 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:47,709 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:47,715 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:47,719 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:47,720 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:47,720 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:47,721 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:47,721 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:47,721 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:47,722 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:47,722 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:47,723 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:47,726 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:47,728 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:49,212 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:49,214 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:49,216 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:49,218 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:49,218 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:49,218 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:49,662 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:49,664 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:49,666 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:49,668 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:49,669 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:49,669 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:49,670 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:49,670 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:49,673 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:50,066 - INFO - [ARP] Sent 960 poison packets
+2025-07-18 22:58:52,689 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:52,692 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:52,698 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:52,703 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:52,704 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:52,705 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:52,711 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:52,717 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:52,721 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:52,725 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:52,725 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:52,726 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:52,726 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:52,726 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:52,727 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:52,727 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:52,727 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:52,727 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:52,729 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:52,731 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:52,732 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:52,734 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:54,249 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:54,252 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:54,255 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:54,257 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:54,258 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:54,258 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:54,739 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:54,743 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:54,744 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:54,745 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:54,745 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:54,746 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:54,752 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:58:54,756 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:54,760 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:57,502 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:57,506 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:57,511 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:57,516 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:58:57,518 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:58:57,518 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:57,524 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:57,530 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:57,535 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:57,540 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:57,544 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:57,547 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:57,550 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:57,552 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:58:57,553 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:57,553 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:58:57,553 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:57,553 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:58:57,554 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:57,554 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:58:57,554 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:58:57,554 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:59,758 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:59,765 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:59,771 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:59,778 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:58:59,779 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:58:59,780 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:59,784 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:59,787 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:58:59,790 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:58:59,792 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:58:59,793 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:58:59,793 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:58:59,793 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:58:59,794 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:58:59,796 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:00,766 - INFO - [ARP] Sent 990 poison packets
+2025-07-18 22:59:02,651 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:02,654 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:02,660 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:02,666 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:02,672 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:02,679 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:02,679 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:02,680 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:02,680 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:02,680 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:02,681 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:02,681 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:02,681 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:02,682 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:02,685 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:02,686 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:02,687 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:02,688 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:02,689 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:02,691 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:02,691 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:02,691 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:04,701 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:04,705 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:04,709 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:04,714 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:04,715 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:04,715 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:04,716 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:04,717 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:04,722 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:04,728 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:04,734 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:04,738 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:04,741 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:04,742 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:04,742 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:08,154 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:08,159 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:08,160 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:08,160 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:08,165 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:08,171 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:08,175 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:08,178 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:08,183 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:08,188 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:08,193 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:08,197 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:08,198 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:08,198 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:08,199 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:08,199 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:08,200 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:08,200 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:08,200 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:08,201 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:08,203 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:08,205 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:13,339 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:13,344 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:13,352 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:13,358 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:13,359 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:13,360 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:13,360 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:13,362 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:13,362 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:13,363 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:13,363 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:13,364 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:13,369 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:13,375 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:13,379 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:13,382 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:13,387 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:13,390 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:13,393 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:13,395 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:13,395 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:13,396 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:15,135 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:15,139 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:15,142 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:15,146 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:15,147 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:15,147 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:15,148 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:15,149 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:15,154 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:15,160 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:15,165 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:15,166 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:15,167 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:15,171 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:15,174 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:18,698 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:18,700 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:18,701 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:18,702 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:18,702 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:18,702 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:18,703 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:18,703 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:18,705 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:18,706 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:18,707 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:18,708 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:18,709 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:18,710 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:18,711 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:18,711 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:18,711 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:18,711 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:18,711 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:18,711 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:18,711 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:18,712 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:19,585 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:19,588 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,695 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,699 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,703 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,707 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:23,708 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:23,709 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:23,710 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:23,711 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:23,715 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:23,720 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,723 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,726 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,729 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:23,729 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:23,730 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:23,730 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:23,730 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:23,730 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:23,731 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:23,731 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:23,731 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,733 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,734 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,736 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,737 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:23,737 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:23,737 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,739 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,740 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,741 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,741 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,742 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,743 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:23,743 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:23,744 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:23,745 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:23,746 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:24,460 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:24,475 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:25,703 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:25,710 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:25,716 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:25,720 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:25,722 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:25,723 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:25,723 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:25,724 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:25,728 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:25,734 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:25,738 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:25,743 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:25,747 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:25,748 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:25,748 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:27,803 - INFO - [ARP] Sent 1020 poison packets
+2025-07-18 22:59:29,245 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,250 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:29,256 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,262 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:29,268 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,274 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:29,274 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:29,275 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:29,275 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:29,276 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:29,276 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:29,277 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:29,277 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:29,277 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:29,280 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,282 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:29,285 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,286 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:29,287 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:29,287 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:29,288 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,289 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:29,765 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:29,775 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:34,265 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:34,267 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:34,268 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:34,270 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:34,270 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:34,271 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:34,273 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:34,275 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:34,277 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:34,280 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:34,281 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:34,282 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:34,283 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:34,283 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:34,283 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:34,283 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:34,283 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:34,283 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:34,284 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:34,284 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:34,285 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:34,286 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:35,015 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:35,018 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:36,418 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:36,425 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:36,430 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:36,434 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:36,435 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:36,436 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:36,437 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:36,438 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:36,443 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:36,449 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:36,454 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:36,455 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:36,456 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:36,459 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:36,463 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:39,693 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:39,699 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:39,703 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:39,708 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:39,708 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:39,709 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:39,712 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:39,714 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:39,719 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:39,723 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:39,726 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:39,729 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:39,731 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:39,734 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:39,734 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:39,734 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:39,734 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:39,735 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:39,735 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:39,735 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:39,735 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:39,735 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:40,313 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:40,325 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,259 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,261 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:44,261 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:44,261 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,263 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,264 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,266 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,267 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,268 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,269 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:44,269 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:44,269 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:44,269 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:44,269 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:44,270 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:44,428 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,430 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,433 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,436 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.17
+2025-07-18 22:59:44,436 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,436 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.96
+2025-07-18 22:59:44,437 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,437 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.96
+2025-07-18 22:59:44,437 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,437 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.48
+2025-07-18 22:59:44,437 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,437 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.97
+2025-07-18 22:59:44,437 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,437 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.48
+2025-07-18 22:59:44,438 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,438 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.49
+2025-07-18 22:59:44,438 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,438 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.49
+2025-07-18 22:59:44,438 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,439 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.98
+2025-07-18 22:59:44,439 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,439 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.97
+2025-07-18 22:59:44,439 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,439 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.98
+2025-07-18 22:59:44,440 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,440 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.18
+2025-07-18 22:59:44,440 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:44,440 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,703 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,706 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,710 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,713 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,715 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,717 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:44,718 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:44,718 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,720 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,721 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,723 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,725 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:44,725 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:44,725 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:44,725 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:44,725 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:44,725 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:44,726 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:44,726 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:44,726 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:44,728 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:44,729 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:45,457 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:45,469 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:46,688 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:46,696 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:46,697 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:46,697 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:46,702 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:46,706 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:46,710 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:46,714 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:46,715 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:46,715 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:46,716 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:46,716 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:46,719 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:46,722 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:46,725 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:49,627 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:49,635 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.17
+2025-07-18 22:59:49,636 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,637 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.48
+2025-07-18 22:59:49,638 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,638 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.49
+2025-07-18 22:59:49,639 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,639 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.49
+2025-07-18 22:59:49,640 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,640 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.96
+2025-07-18 22:59:49,641 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,641 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.96
+2025-07-18 22:59:49,642 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,642 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.98
+2025-07-18 22:59:49,643 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,644 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.97
+2025-07-18 22:59:49,644 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,645 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.97
+2025-07-18 22:59:49,645 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,646 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.48
+2025-07-18 22:59:49,646 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,647 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.98
+2025-07-18 22:59:49,647 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,647 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.18
+2025-07-18 22:59:49,648 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:49,648 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:49,650 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:49,653 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,031 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,034 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,039 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,046 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:50,047 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:50,048 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,053 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,059 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,064 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,068 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,072 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,074 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,077 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,079 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:50,080 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:50,080 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:50,080 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:50,080 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:50,080 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:50,081 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:50,081 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:50,081 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:50,755 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:50,767 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:52,187 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:52,188 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:52,189 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:52,189 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:52,190 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:52,192 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:52,193 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:52,194 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:52,194 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:52,194 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:52,194 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:52,194 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:52,195 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:52,196 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:52,197 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:54,462 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:54,475 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:54,485 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:54,495 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.48
+2025-07-18 22:59:54,495 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,496 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.17
+2025-07-18 22:59:54,496 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,497 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.96
+2025-07-18 22:59:54,497 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,497 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.49
+2025-07-18 22:59:54,498 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,498 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.48
+2025-07-18 22:59:54,498 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,498 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.98
+2025-07-18 22:59:54,499 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,499 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.97
+2025-07-18 22:59:54,499 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,499 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.49
+2025-07-18 22:59:54,500 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,500 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.97
+2025-07-18 22:59:54,500 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,500 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.98
+2025-07-18 22:59:54,500 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,501 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.96
+2025-07-18 22:59:54,501 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,501 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.18
+2025-07-18 22:59:54,501 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:54,502 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,137 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,140 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,145 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,150 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,156 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,161 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 22:59:55,162 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 22:59:55,163 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,168 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,173 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,179 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,184 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 22:59:55,185 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:55,186 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 22:59:55,186 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:55,187 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 22:59:55,188 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:55,188 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 22:59:55,189 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 22:59:55,189 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,195 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,200 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:55,915 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:55,918 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:57,266 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:57,272 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 22:59:57,273 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 22:59:57,274 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:57,284 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:57,294 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:57,300 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:57,304 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 22:59:57,304 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 22:59:57,305 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 22:59:57,306 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 22:59:57,306 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 22:59:57,309 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 22:59:57,311 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:57,313 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:59,691 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:59,694 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.97
+2025-07-18 22:59:59,695 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,695 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.49
+2025-07-18 22:59:59,695 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,695 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.96
+2025-07-18 22:59:59,695 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,695 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.98
+2025-07-18 22:59:59,696 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,696 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.96
+2025-07-18 22:59:59,696 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,696 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.49
+2025-07-18 22:59:59,696 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,696 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.18
+2025-07-18 22:59:59,696 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,696 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.97
+2025-07-18 22:59:59,697 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,697 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.48
+2025-07-18 22:59:59,697 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,697 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.48
+2025-07-18 22:59:59,697 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,697 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.17
+2025-07-18 22:59:59,698 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,698 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.98
+2025-07-18 22:59:59,698 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 22:59:59,698 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 22:59:59,701 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 22:59:59,704 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:00,481 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:00,486 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-18 23:00:00,487 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-18 23:00:00,487 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:00,494 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:00,499 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:00,502 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:00,505 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:00,510 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:00,514 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:00,517 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:00,520 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:00,522 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:00,525 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-18 23:00:00,525 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 23:00:00,525 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-18 23:00:00,525 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 23:00:00,526 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-18 23:00:00,526 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 23:00:00,526 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-18 23:00:00,526 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-18 23:00:00,526 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:01,305 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:01,316 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:02,216 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:02,219 - INFO - [DNS-ANSWER] facebook.com -> 57.144.142.1
+2025-07-18 23:00:02,220 - WARNING - [DNS-REDIRECT] 🎯 facebook.com: 57.144.142.1 -> 142.250.77.142
+2025-07-18 23:00:02,221 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 23:00:02,225 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 23:00:02,633 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:02,639 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:02,647 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:02,656 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-18 23:00:02,657 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-18 23:00:02,658 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:02,662 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:02,668 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-18 23:00:02,669 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-18 23:00:02,670 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-18 23:00:02,673 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-18 23:00:02,676 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-18 23:00:02,681 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-18 23:00:02,686 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:02,691 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:04,911 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:04,923 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:04,934 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-18 23:00:04,940 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.17
+2025-07-18 23:00:04,940 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,941 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.97
+2025-07-18 23:00:04,941 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,941 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.49
+2025-07-18 23:00:04,942 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,942 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.49
+2025-07-18 23:00:04,942 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,942 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.96
+2025-07-18 23:00:04,942 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,943 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.97
+2025-07-18 23:00:04,943 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,943 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.48
+2025-07-18 23:00:04,943 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,943 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.98
+2025-07-18 23:00:04,944 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,944 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.18
+2025-07-18 23:00:04,944 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,944 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.98
+2025-07-18 23:00:04,944 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,944 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 91.189.91.96
+2025-07-18 23:00:04,945 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,945 - INFO - [DNS-ANSWER] connectivity-check.ubuntu.com -> 185.125.190.48
+2025-07-18 23:00:04,945 - INFO - [DNS-PASS] No redirection for connectivity-check.ubuntu.com
+2025-07-18 23:00:04,945 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-18 23:00:09,248 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-18 23:00:09,249 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-18 23:00:11,068 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-18 23:00:11,069 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-18 23:00:11,342 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-18 23:00:11,343 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-18 23:00:11,585 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-18 23:00:11,586 - INFO - [CLEANUP] Restoring ARP tables

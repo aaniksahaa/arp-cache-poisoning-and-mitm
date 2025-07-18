@@ -10,6 +10,10 @@ import threading
 import time
 import sys
 
+# Configuration
+SERVER_IP = "192.168.0.125"  # Change this to your server's IP address
+SERVER_PORT = 9999
+
 def receive_messages(client, client_name="Client"):
     """Thread to receive messages from server"""
     while True:
@@ -50,18 +54,12 @@ def send_messages(client, client_name="Client"):
 def run_client():
     """Main client function with bidirectional communication"""
     
-    # Get server IP
-    server_ip = input("Enter server IP (e.g., 192.168.0.105): ").strip()
-    if not server_ip:
-        print("❌ No IP address provided")
-        return
-    
-    server_port = 9999
-    client_name = input("Enter your name (default: Client): ").strip() or "Client"
+    # Use default client name
+    client_name = "Client"
     
     print("💻 Bidirectional TCP Client Started")
     print("=" * 50)
-    print(f"Connecting to: {server_ip}:{server_port}")
+    print(f"Connecting to: {SERVER_IP}:{SERVER_PORT}")
     print(f"Client Name: {client_name}")
     print(f"Time: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 50)
@@ -69,7 +67,7 @@ def run_client():
     try:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.settimeout(10)  # 10 second timeout for connection
-        client.connect((server_ip, server_port))
+        client.connect((SERVER_IP, SERVER_PORT))
         client.settimeout(None)  # Remove timeout for normal operation
         
         print(f"✅ Connected to server!")
@@ -114,13 +112,16 @@ def run_client():
                     break
                     
     except ConnectionRefused:
-        print(f"❌ Could not connect to {server_ip}:{server_port}")
-        print("💡 Make sure the server is running")
+        print(f"❌ Could not connect to {SERVER_IP}:{SERVER_PORT}")
+        print("💡 Make sure the server is running on that address")
+        print(f"🔧 To change server IP, edit SERVER_IP = \"{SERVER_IP}\" at the top of this file")
     except socket.timeout:
-        print(f"❌ Connection timeout to {server_ip}:{server_port}")
-        print("💡 Check if the server is reachable")
+        print(f"❌ Connection timeout to {SERVER_IP}:{SERVER_PORT}")
+        print("💡 Check if the server is reachable at that address")
+        print(f"🔧 To change server IP, edit SERVER_IP = \"{SERVER_IP}\" at the top of this file")
     except Exception as e:
         print(f"❌ Error: {e}")
+        print(f"🔧 To change server IP, edit SERVER_IP = \"{SERVER_IP}\" at the top of this file")
     finally:
         try:
             client.close()
@@ -130,9 +131,6 @@ def run_client():
 
 def test_interception_keywords():
     """Send predefined test messages to test interception"""
-    server_ip = input("Enter server IP: ").strip()
-    if not server_ip:
-        return
     
     test_messages = [
         "hello world",
@@ -151,7 +149,7 @@ def test_interception_keywords():
     try:
         client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client.settimeout(10)
-        client.connect((server_ip, 9999))
+        client.connect((SERVER_IP, SERVER_PORT))
         client.settimeout(5)  # 5 second timeout for responses
         print(f"✅ Connected! Sending test messages...")
         
@@ -198,12 +196,4 @@ def test_interception_keywords():
 
 if __name__ == "__main__":
     print("🎯 Bidirectional TCP Socket Interception Test Client")
-    print("1. Interactive bidirectional mode (like your example)")
-    print("2. Auto-test mode (predefined messages)")
-    
-    choice = input("Choose mode (1 or 2): ").strip()
-    
-    if choice == "2":
-        test_interception_keywords()
-    else:
-        run_client() 
+    run_client() 

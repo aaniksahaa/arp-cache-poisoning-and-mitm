@@ -14,7 +14,7 @@
 
 - **Enhanced File Organization**
   - Renamed files to descriptive, professional names:
-    - `x.py` → `arp_mitm_attack.py`
+    - `x.py` → `http_interceptor.py`
     - `y.py` → `arp_restore.py` 
     - `inj.py` → `http_injection_mitmproxy.py`
     - `raw/get-mac-from-ip.py` → consolidated into `network_device_scanner.py`
@@ -86,7 +86,7 @@
    ```
 
 2. **Update Script References**:
-   - `x.py` → `arp_mitm_attack.py`
+   - `x.py` → `http_interceptor.py`
    - `y.py` → `arp_restore.py`
    - `inj.py` → `http_injection_mitmproxy.py`
    - `raw/get-mac-from-ip.py` → `network_device_scanner.py`

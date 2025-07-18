@@ -127,7 +127,7 @@ arp -a
 #### 3.2 Launch Attack
 ```bash
 # Run the main attack script (requires root)
-sudo python3 arp_mitm_attack.py
+sudo python3 http_interceptor.py
 
 # Expected output:
 # [*] Starting ARP poisoning & MITM attack
@@ -283,7 +283,7 @@ python3 -c "from config import load_config_from_file; load_config_from_file()"
 ### Issue 2: Permission Denied
 ```bash
 # Ensure running as root
-sudo python3 arp_mitm_attack.py
+sudo python3 http_interceptor.py
 
 # Check file permissions
 chmod +x *.py

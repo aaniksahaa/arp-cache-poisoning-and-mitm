@@ -214,7 +214,7 @@ def show_attack_configuration():
     
     if not issues:
         print("   🟢 READY FOR ATTACK - All systems check passed")
-        print("   ▶️  Run: sudo python3 arp_mitm_attack.py")
+        print("   ▶️  Run: sudo python3 http_interceptor.py")
     else:
         print("   🔴 ISSUES DETECTED:")
         for issue in issues:

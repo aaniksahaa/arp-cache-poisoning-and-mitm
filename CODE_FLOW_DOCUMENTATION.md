@@ -6,7 +6,7 @@ This project implements an ARP cache poisoning attack combined with HTTP packet 
 ## Project Structure
 
 ### Files Overview
-- **`arp_mitm_attack.py`** - Main attack script (ARP poisoning + HTTP injection)
+- **`http_interceptor.py`** - Main attack script (ARP poisoning + HTTP injection)
 - **`http_injection_mitmproxy.py`** - Alternative HTTP injection using mitmproxy
 - **`arp_restore.py`** - ARP table restoration utility
 - **`raw/mac_address_discovery.py`** - MAC address discovery utility
@@ -43,7 +43,7 @@ nano user_config.py
 
 ## Detailed Code Flow Analysis
 
-### 1. Main Attack Script (`arp_mitm_attack.py`)
+### 1. Main Attack Script (`http_interceptor.py`)
 
 #### Configuration Import
 ```python

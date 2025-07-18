@@ -26,7 +26,7 @@ This suite demonstrates:
 ## 📁 Project Structure
 
 ### Core Attack Tools
-- **`arp_mitm_attack.py`** - Main ARP poisoning and HTTP injection attack
+- **`http_interceptor.py`** - Main ARP poisoning and HTTP injection attack
 - **`http_injection_mitmproxy.py`** - Alternative HTTP injection using mitmproxy framework
 - **`arp_restore.py`** - ARP table restoration utility for cleanup
 
@@ -139,7 +139,7 @@ python3 network_device_scanner.py --save my_network.json
 
 ```bash
 # Launch ARP poisoning attack (requires root)
-sudo python3 arp_mitm_attack.py
+sudo python3 http_interceptor.py
 
 # Alternative: Use mitmproxy-based injection
 sudo python3 http_injection_mitmproxy.py
@@ -210,7 +210,7 @@ python3 network_device_scanner.py -i eth0
 
 ## ⚙️ Attack Capabilities
 
-### ARP Cache Poisoning (`arp_mitm_attack.py`)
+### ARP Cache Poisoning (`http_interceptor.py`)
 - **Bidirectional Poisoning**: Intercepts traffic in both directions
 - **Automatic IP Forwarding**: Maintains network connectivity
 - **Graceful Cleanup**: Restores ARP tables on exit
@@ -301,7 +301,7 @@ python3 -c "from config import load_config_from_file; load_config_from_file()"
 #### Permission Issues
 ```bash
 # Ensure running as root for packet manipulation
-sudo python3 arp_mitm_attack.py
+sudo python3 http_interceptor.py
 
 # Check file permissions
 chmod +x *.py

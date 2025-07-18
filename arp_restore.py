@@ -1,10 +1,24 @@
 from scapy.all import ARP, Ether, sendp
 
-def restore_arp(victim_ip, victim_mac, gateway_ip, gateway_mac, interface):
+# Import centralized configuration
+from config import NetworkConfig, AttackConfig
+
+def restore_arp(victim_ip=None, victim_mac=None, gateway_ip=None, gateway_mac=None, interface=None):
     """
     Restore the ARP tables of victim and gateway by sending correct ARP replies.
+    Uses config values as defaults if parameters not provided.
     """
+    # Use config defaults if not provided
+    victim_ip = victim_ip or AttackConfig.VICTIM_IP
+    victim_mac = victim_mac or AttackConfig.VICTIM_MAC
+    gateway_ip = gateway_ip or AttackConfig.GATEWAY_IP
+    gateway_mac = gateway_mac or AttackConfig.GATEWAY_MAC
+    interface = interface or NetworkConfig.INTERFACE
+    
     print("[*] Restoring ARP tables...")
+    print(f"    Victim: {victim_ip} -> {victim_mac}")
+    print(f"    Gateway: {gateway_ip} -> {gateway_mac}")
+    print(f"    Interface: {interface}")
 
     # Correct ARP reply to victim: gateway IP → gateway MAC
     pkt_to_victim = Ether(dst=victim_mac) / ARP(
@@ -28,9 +42,6 @@ def restore_arp(victim_ip, victim_mac, gateway_ip, gateway_mac, interface):
 
     print("[+] ARP tables restored.")
 
-
-restore_arp(victim_ip="192.168.0.105",
-            victim_mac="9a:be:d0:91:f3:76",
-            gateway_ip="192.168.0.1",
-            gateway_mac="40:ed:00:4a:67:44",
-            interface="wlo1")
+if __name__ == "__main__":
+    # Use configuration values
+    restore_arp()

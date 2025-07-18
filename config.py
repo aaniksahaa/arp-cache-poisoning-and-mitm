@@ -144,8 +144,8 @@ class AttackConfig:
     
     # TCP Socket Modifications
     SOCKET_MODIFICATIONS = {
-        'hello': 'Bye',
-        'hi': 'Goodbye', 
+        'hello': 'bye',
+        'hi': 'bye', 
         'secret': 'INTERCEPTED_SECRET',
         'password': 'HACKED_PASSWORD'
     }

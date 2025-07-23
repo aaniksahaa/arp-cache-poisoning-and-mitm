@@ -27,6 +27,9 @@ python bidirectional_client.py
 Attacker PC:
 sudo /home/aaniksahaa/miniconda3/bin/python bidirectional_tcp_interceptor.py
 
+sudo "$HOME/miniconda3/bin/python" bidirectional_tcp_interceptor.py
+
+
 DNS Interception and Modification:
 ==================================
 

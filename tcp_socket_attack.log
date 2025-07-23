@@ -1232,3 +1232,162 @@
 2025-07-19 00:01:37,850 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-19 00:01:37,871 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-19 00:01:37,871 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:25:02,186 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-24 00:26:13,204 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-24 00:26:13,205 - INFO - [ATTACK] Attacker MAC: 24:b2:b9:3e:22:13
+2025-07-24 00:26:13,205 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:26:13,206 - WARNING - [SETUP] ⚠️ IP forwarding may not be enabled
+2025-07-24 00:26:13,206 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:26:13,206 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:26:13,206 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:26:13,207 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:26:13,222 - WARNING - [SETUP] ⚠️ iptables rule may not have been added correctly
+2025-07-24 00:27:24,895 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-24 00:27:24,895 - INFO - [ATTACK] Attacker MAC: 24:b2:b9:3e:22:13
+2025-07-24 00:27:24,895 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:27:24,896 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:27:24,896 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:27:24,896 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:27:24,896 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:27:24,896 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:27:25,002 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:27:25,008 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:27:25,009 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:27:25,009 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.197) - laptop
+2025-07-24 00:27:25,009 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:27:25,009 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:27:25,009 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-24 00:27:25,009 - INFO - [MITM] 🔀 Modifications: {'hello': 'HACK!', 'hi': 'NO', 'secret': 'PUBLIC', 'username': 'GARBAGE', 'password': 'GARBAGE', 'admin': 'GUEST', 'error': 'ALERT', 'login': 'ENTER', 'token': 'BADGE', 'abort': 'RETRY', 'accept': 'REJECT', 'delete': 'CREATE', 'access': 'DENIED', 'secure': 'PUBLIC', 'verify': 'IGNORE', 'server': 'CLIENT', 'upload': 'BACKUP', 'logout': 'LOGIN!', 'getkey': 'SETVAL', 'update': 'REBOOT'}
+2025-07-24 00:27:25,009 - INFO - [MITM] 💡 Compact modifications preserve TCP packet sizes
+2025-07-24 00:27:25,009 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:27:33,676 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:27:44,508 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 00:27:55,314 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 00:28:06,104 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 00:28:09,786 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.159:50678 -> 192.168.0.197:9999
+2025-07-24 00:28:09,786 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:28:11]: Hello'
+2025-07-24 00:28:09,787 - INFO - [SOCKET-DEBUG] Original packet size: 17 bytes
+2025-07-24 00:28:09,787 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:28:11]: Hello'
+2025-07-24 00:28:09,787 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:28:11]: HACK!'
+2025-07-24 00:28:09,787 - INFO - [SOCKET-DEBUG] Modified packet size: 17 bytes (preserved original: 17 bytes)
+2025-07-24 00:28:09,788 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:28:16,882 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 00:28:27,572 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 00:28:38,293 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 00:28:49,084 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 00:28:59,897 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 00:29:06,098 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.159:50678 -> 192.168.0.197:9999
+2025-07-24 00:29:06,098 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:29:07]: My credentials: username: admin, password: 123'
+2025-07-24 00:29:06,121 - INFO - [SOCKET-DEBUG] Original packet size: 58 bytes
+2025-07-24 00:29:06,122 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:29:07]: My credentials: username: admin, password: 123'
+2025-07-24 00:29:06,123 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:29:07]: My credentials: GARBAGE: GUEST, GARBAGE: 123'
+2025-07-24 00:29:06,123 - INFO - [SOCKET-DEBUG] Modified packet size: 58 bytes (preserved original: 58 bytes)
+2025-07-24 00:29:06,125 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:29:10,636 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 00:29:19,922 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.159:50678 -> 192.168.0.197:9999
+2025-07-24 00:29:19,923 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:29:21]: Please verify my identity'
+2025-07-24 00:29:19,923 - INFO - [SOCKET-DEBUG] Original packet size: 37 bytes
+2025-07-24 00:29:19,924 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:29:21]: Please verify my identity'
+2025-07-24 00:29:19,924 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:29:21]: Please IGNORE my identity'
+2025-07-24 00:29:19,924 - INFO - [SOCKET-DEBUG] Modified packet size: 37 bytes (preserved original: 37 bytes)
+2025-07-24 00:29:19,925 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:29:21,354 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 00:29:32,162 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 00:29:42,041 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.197:9999 -> 192.168.0.159:50678
+2025-07-24 00:29:42,041 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:29:44]: I accept your identity'
+2025-07-24 00:29:42,041 - INFO - [SOCKET-DEBUG] Original packet size: 34 bytes
+2025-07-24 00:29:42,042 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:29:44]: I accept your identity'
+2025-07-24 00:29:42,042 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:29:44]: I REJECT your identity'
+2025-07-24 00:29:42,042 - INFO - [SOCKET-DEBUG] Modified packet size: 34 bytes (preserved original: 34 bytes)
+2025-07-24 00:29:42,043 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:29:42,948 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-24 00:29:51,504 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 00:29:51,504 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 00:29:51,659 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, laptop, and gateway
+2025-07-24 00:29:51,659 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 00:29:51,661 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:29:51,681 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 00:29:51,682 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:30:48,969 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception
+2025-07-24 00:30:48,970 - INFO - [ATTACK] Attacker MAC: 24:b2:b9:3e:22:13
+2025-07-24 00:30:48,970 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:30:48,972 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:30:48,973 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:30:48,973 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:30:48,974 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:30:48,974 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:30:48,982 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:30:48,983 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:30:48,983 - INFO - [MITM] 📡 Monitoring socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:30:48,983 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.197) - laptop
+2025-07-24 00:30:48,983 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:30:48,983 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:30:48,983 - INFO - [MITM] 🔧 Bidirectional: Enabled
+2025-07-24 00:30:48,984 - INFO - [MITM] 🔀 Modifications: {'hello': 'HACK!', 'hi': 'NO', 'secret': 'PUBLIC', 'username': 'GARBAGE', 'password': 'GARBAGE', 'admin': 'GUEST', 'error': 'ALERT', 'login': 'ENTER', 'token': 'BADGE', 'abort': 'RETRY', 'accept': 'REJECT', 'delete': 'CREATE', 'access': 'DENIED', 'secure': 'PUBLIC', 'verify': 'IGNORE', 'server': 'CLIENT', 'upload': 'BACKUP', 'logout': 'LOGIN!', 'getkey': 'SETVAL', 'update': 'REBOOT', 'welcome': 'GETOUT!'}
+2025-07-24 00:30:48,984 - INFO - [MITM] 💡 Compact modifications preserve TCP packet sizes
+2025-07-24 00:30:48,984 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:30:57,800 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:31:03,586 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.159:50692 -> 192.168.0.197:9999
+2025-07-24 00:31:03,586 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:31:05]: Hello'
+2025-07-24 00:31:03,609 - INFO - [SOCKET-DEBUG] Original packet size: 17 bytes
+2025-07-24 00:31:03,609 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:31:05]: Hello'
+2025-07-24 00:31:03,610 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:31:05]: HACK!'
+2025-07-24 00:31:03,610 - INFO - [SOCKET-DEBUG] Modified packet size: 17 bytes (preserved original: 17 bytes)
+2025-07-24 00:31:03,612 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:31:08,590 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 00:31:19,352 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 00:31:24,134 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.159:50692 -> 192.168.0.197:9999
+2025-07-24 00:31:24,135 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:31:26]: My credentials - username: admin, password: 123'
+2025-07-24 00:31:24,135 - INFO - [SOCKET-DEBUG] Original packet size: 59 bytes
+2025-07-24 00:31:24,135 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:31:26]: My credentials - username: admin, password: 123'
+2025-07-24 00:31:24,136 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:31:26]: My credentials - GARBAGE: GUEST, GARBAGE: 123'
+2025-07-24 00:31:24,136 - INFO - [SOCKET-DEBUG] Modified packet size: 59 bytes (preserved original: 59 bytes)
+2025-07-24 00:31:24,138 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:31:30,135 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 00:31:32,121 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.159:50692 -> 192.168.0.197:9999
+2025-07-24 00:31:32,121 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:31:34]: Please verify my identity'
+2025-07-24 00:31:32,121 - INFO - [SOCKET-DEBUG] Original packet size: 37 bytes
+2025-07-24 00:31:32,122 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:31:34]: Please verify my identity'
+2025-07-24 00:31:32,122 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:31:34]: Please IGNORE my identity'
+2025-07-24 00:31:32,122 - INFO - [SOCKET-DEBUG] Modified packet size: 37 bytes (preserved original: 37 bytes)
+2025-07-24 00:31:32,123 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:31:40,787 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.197:9999 -> 192.168.0.159:50692
+2025-07-24 00:31:40,787 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:31:42]: I accept your identity'
+2025-07-24 00:31:40,787 - INFO - [SOCKET-DEBUG] Original packet size: 34 bytes
+2025-07-24 00:31:40,788 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:31:42]: I accept your identity'
+2025-07-24 00:31:40,788 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:31:42]: I REJECT your identity'
+2025-07-24 00:31:40,788 - INFO - [SOCKET-DEBUG] Modified packet size: 34 bytes (preserved original: 34 bytes)
+2025-07-24 00:31:40,789 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:31:40,923 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 00:31:41,028 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.197:9999 -> 192.168.0.159:50692
+2025-07-24 00:31:41,028 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:31:42]: I accept your identity'
+2025-07-24 00:31:41,028 - INFO - [SOCKET-DEBUG] Original packet size: 34 bytes
+2025-07-24 00:31:41,028 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:31:42]: I accept your identity'
+2025-07-24 00:31:41,029 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:31:42]: I REJECT your identity'
+2025-07-24 00:31:41,029 - INFO - [SOCKET-DEBUG] Modified packet size: 34 bytes (preserved original: 34 bytes)
+2025-07-24 00:31:41,029 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:31:44,818 - INFO - [SOCKET-TRAFFIC] 🎯 laptop → laptop | 192.168.0.197:9999 -> 192.168.0.159:50692
+2025-07-24 00:31:44,819 - WARNING - [SOCKET-MESSAGE] 📨 laptop → laptop | Intercepted: '[00:31:46]: Welcome'
+2025-07-24 00:31:44,819 - INFO - [SOCKET-DEBUG] Original packet size: 19 bytes
+2025-07-24 00:31:44,819 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Original: '[00:31:46]: Welcome'
+2025-07-24 00:31:44,819 - INFO - [SOCKET-MODIFY] 🔧 laptop → laptop | Modified: '[00:31:46]: GETOUT!'
+2025-07-24 00:31:44,819 - INFO - [SOCKET-DEBUG] Modified packet size: 19 bytes (preserved original: 19 bytes)
+2025-07-24 00:31:44,821 - INFO - [SOCKET-MODIFY] ✅ laptop → laptop | Message successfully modified!
+2025-07-24 00:31:51,727 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 00:32:02,488 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 00:32:13,302 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 00:32:24,191 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 00:32:34,959 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 00:32:45,784 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 00:32:56,591 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 00:33:07,359 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-24 00:33:18,132 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-24 00:33:28,904 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-24 00:33:39,787 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-24 00:33:50,586 - INFO - [ARP-POISON] Sent 510 poison packets
+2025-07-24 00:34:01,314 - INFO - [ARP-POISON] Sent 540 poison packets
+2025-07-24 00:34:12,097 - INFO - [ARP-POISON] Sent 570 poison packets
+2025-07-24 00:34:22,871 - INFO - [ARP-POISON] Sent 600 poison packets
+2025-07-24 00:34:33,718 - INFO - [ARP-POISON] Sent 630 poison packets
+2025-07-24 00:34:44,482 - INFO - [ARP-POISON] Sent 660 poison packets

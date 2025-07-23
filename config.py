@@ -31,7 +31,11 @@ class NetworkConfig:
     """Basic network configuration"""
     
     # Network interface (automatically detect or specify)
-    INTERFACE = "wlp2s0"  # Change this to your network interface
+    # hp
+    # INTERFACE = "wlp2s0"
+
+    # lenovo
+    INTERFACE = "wlp8s0"
     
     # Network range for scanning
     NETWORK_RANGE = "192.168.0.0/24"  # Adjust to your network
@@ -49,15 +53,31 @@ class DeviceRegistry:
     """Registry of all known devices on the network"""
     
     # Define your devices here
-    laptop = Device(
+    laptop_lenovo = Device(
         name="laptop",
         ip="192.168.0.125",
         mac="24:b2:b9:3e:22:13",
         device_type="laptop",
         description="Lenovo LOQ Laptop"
     )
+
+    laptop_hp = Device(
+        name="laptop",
+        ip="192.168.0.197",
+        mac="d4:1b:81:20:a1:f3",
+        device_type="laptop",
+        description="HP Laptop"
+    )
+
+    laptop_dell = Device(
+        name="laptop",
+        ip="192.168.0.159",
+        mac="54:35:30:a5:98:59",
+        device_type="laptop",
+        description="Dell Laptop"
+    )
     
-    phone = Device(
+    phone_redmi = Device(
         name="phone", 
         ip="192.168.0.201",
         mac="f4:30:8b:91:d6:1f",
@@ -108,11 +128,11 @@ class AttackConfig:
     
     # ===== BIDIRECTIONAL ATTACK TARGETS =====
     
-    # Target 1: Primary device to intercept
-    POISON_TARGET_1 = DeviceRegistry.laptop  
+    # POISON_TARGET_1 = DeviceRegistry.laptop_lenovo  
+    # POISON_TARGET_2 = DeviceRegistry.phone_redmi
 
-    # Target 2: Secondary device to intercept  
-    POISON_TARGET_2 = DeviceRegistry.phone   
+    POISON_TARGET_1 = DeviceRegistry.laptop_hp 
+    POISON_TARGET_2 = DeviceRegistry.laptop_dell
 
     # Gateway device (router)
     GATEWAY_DEVICE = DeviceRegistry.gateway
@@ -168,7 +188,8 @@ class AttackConfig:
         'upload':   'BACKUP',
         'logout':   'LOGIN!',
         'getkey':   'SETVAL',
-        'update':   'REBOOT'
+        'update':   'REBOOT',
+        'welcome': 'GETOUT!'
     }
 
     

@@ -19,7 +19,7 @@ def send_messages(client):
            message = input("🧑 You: ")
            if not message:
                continue
-           timestamped = f"[{time.strftime('%H:%M:%S')}] Server: {message}"
+           timestamped = f"[{time.strftime('%H:%M:%S')}]: {message}"
            client.send(timestamped.encode('utf-8'))
        except:
            break

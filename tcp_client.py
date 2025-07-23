@@ -43,7 +43,7 @@ def send_messages(client, client_name="Client"):
                 break
                 
             # Add timestamp to message
-            timestamped = f"[{time.strftime('%H:%M:%S')}] {client_name}: {message}"
+            timestamped = f"[{time.strftime('%H:%M:%S')}]: {message}"
             client.send(timestamped.encode('utf-8'))
             print(f"📤 Sent ({len(timestamped)} bytes): '{timestamped}'")
             
@@ -111,7 +111,7 @@ def run_client():
                     print("❌ Too many connection errors, exiting...")
                     break
                     
-    except ConnectionRefused:
+    except ConnectionRefusedError:
         print(f"❌ Could not connect to {SERVER_IP}:{SERVER_PORT}")
         print("💡 Make sure the server is running on that address")
         print(f"🔧 To change server IP, edit SERVER_IP = \"{SERVER_IP}\" at the top of this file")

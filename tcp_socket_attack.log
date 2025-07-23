@@ -1391,3 +1391,446 @@
 2025-07-24 00:34:22,871 - INFO - [ARP-POISON] Sent 600 poison packets
 2025-07-24 00:34:33,718 - INFO - [ARP-POISON] Sent 630 poison packets
 2025-07-24 00:34:44,482 - INFO - [ARP-POISON] Sent 660 poison packets
+2025-07-24 00:48:13,963 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket intercepting & modifying
+2025-07-24 00:48:13,963 - INFO - [ATTACK] 🔧 TCP Mode: TAMPER
+2025-07-24 00:48:13,964 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 00:48:13,964 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:48:13,965 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:48:13,966 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:48:13,966 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:48:13,966 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:48:13,967 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:48:13,990 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:48:14,006 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:48:14,007 - INFO - [MITM] 🔧 Intercepting and modifying socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:48:14,007 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 00:48:14,008 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:48:14,008 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:48:14,008 - INFO - [MITM] 🔧 Mode: TAMPER
+2025-07-24 00:48:14,009 - INFO - [MITM] 🔀 Modifications: {'hello': 'HACK!', 'hi': 'NO', 'secret': 'PUBLIC', 'username': 'GARBAGE', 'password': 'GARBAGE', 'admin': 'GUEST', 'error': 'ALERT', 'login': 'ENTER', 'token': 'BADGE', 'abort': 'RETRY', 'accept': 'REJECT', 'delete': 'CREATE', 'access': 'DENIED', 'secure': 'PUBLIC', 'verify': 'IGNORE', 'server': 'CLIENT', 'upload': 'BACKUP', 'logout': 'LOGIN!', 'getkey': 'SETVAL', 'update': 'REBOOT', 'welcome': 'GETOUT!'}
+2025-07-24 00:48:14,009 - INFO - [MITM] 💡 Modifications preserve TCP packet sizes
+2025-07-24 00:48:14,009 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:48:22,658 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:48:33,352 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 00:48:44,055 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 00:48:54,727 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 00:49:05,413 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 00:49:05,428 - INFO - [TAMPER] 🔧 00:49:05 | laptop → laptop | 192.168.0.159:50783 → 192.168.0.125:9999
+2025-07-24 00:49:05,429 - INFO - [TAMPER] 📨 Original: '[00:49:05]: hello'
+2025-07-24 00:49:05,431 - INFO - [TAMPER] 🎯 Modified: '[00:49:05]: HACK!'
+2025-07-24 00:49:05,435 - INFO - [TAMPER] ✅ Message successfully modified and forwarded!
+2025-07-24 00:49:09,937 - INFO - [TAMPER] 🔧 00:49:09 | laptop → laptop | 192.168.0.159:50783 → 192.168.0.125:9999
+2025-07-24 00:49:09,938 - INFO - [TAMPER] 📨 Original: '[00:49:09]: welcome'
+2025-07-24 00:49:09,939 - INFO - [TAMPER] 🎯 Modified: '[00:49:09]: GETOUT!'
+2025-07-24 00:49:09,941 - INFO - [TAMPER] ✅ Message successfully modified and forwarded!
+2025-07-24 00:49:16,084 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 00:49:22,329 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 00:49:22,330 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 00:49:22,520 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, laptop, and gateway
+2025-07-24 00:49:22,520 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 00:49:22,524 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:49:22,540 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 00:49:22,541 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:50:34,584 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket monitoring & logging
+2025-07-24 00:50:34,586 - INFO - [ATTACK] 🔧 TCP Mode: MONITOR
+2025-07-24 00:50:34,587 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 00:50:34,588 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:50:34,592 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:50:34,594 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:50:34,594 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:50:34,595 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:50:34,596 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:50:34,611 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:50:34,612 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:50:34,613 - INFO - [MITM] 👁️  Monitoring and logging socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:50:34,614 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 00:50:34,615 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:50:34,616 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:50:34,617 - INFO - [MITM] 🔧 Mode: MONITOR
+2025-07-24 00:50:34,618 - INFO - [MITM] 👁️  Passive monitoring - no packet modification
+2025-07-24 00:50:34,621 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:50:43,270 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:50:52,668 - INFO - [MONITOR] 👁️  00:50:52 | laptop → laptop | 192.168.0.159:50788 → 192.168.0.125:9999
+2025-07-24 00:50:52,669 - INFO - [MONITOR] 💬 Message: '[00:50:52]: Hello'
+2025-07-24 00:50:53,936 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 00:51:04,593 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 00:51:08,532 - INFO - [MONITOR] 👁️  00:51:08 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50788
+2025-07-24 00:51:08,533 - INFO - [MONITOR] 💬 Message: '[00:51:08]: Hi'
+2025-07-24 00:51:12,914 - INFO - [MONITOR] 👁️  00:51:12 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50788
+2025-07-24 00:51:12,915 - INFO - [MONITOR] 💬 Message: '[00:51:12]: How are you doing?'
+2025-07-24 00:51:13,213 - INFO - [MONITOR] 👁️  00:51:13 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50788
+2025-07-24 00:51:13,214 - INFO - [MONITOR] 💬 Message: '[00:51:12]: How are you doing?'
+2025-07-24 00:51:15,282 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 00:51:25,964 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 00:51:36,681 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 00:51:47,385 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 00:51:58,031 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 00:52:08,735 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 00:52:12,233 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 00:52:12,234 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 00:52:12,383 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, laptop, and gateway
+2025-07-24 00:52:12,384 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 00:52:12,386 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:52:12,405 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 00:52:12,406 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:53:24,747 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket monitoring & logging
+2025-07-24 00:53:24,749 - INFO - [ATTACK] 🔧 TCP Mode: MONITOR
+2025-07-24 00:53:24,749 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 00:53:24,750 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:53:24,754 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:53:24,756 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:53:24,756 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:53:24,757 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:53:24,758 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:53:24,771 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:53:24,772 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:53:24,773 - INFO - [MITM] 👁️  Monitoring and logging socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:53:24,774 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 00:53:24,774 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:53:24,775 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:53:24,776 - INFO - [MITM] 🔧 Mode: MONITOR
+2025-07-24 00:53:24,776 - INFO - [MITM] 👁️  Passive monitoring - no packet modification
+2025-07-24 00:53:24,779 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:53:30,548 - INFO - [MONITOR] 👁️  00:53:30 | laptop → laptop | 192.168.0.159:50797 → 192.168.0.125:9999
+2025-07-24 00:53:30,549 - INFO - [MONITOR] 💬 Message: '[00:53:30]: Hello'
+2025-07-24 00:53:33,521 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:53:44,215 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 00:53:54,899 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 00:53:58,090 - INFO - [MONITOR] 👁️  00:53:58 | laptop → laptop | 192.168.0.159:50797 → 192.168.0.125:9999
+2025-07-24 00:53:58,091 - INFO - [MONITOR] 💬 Message: '[00:53:57]: My credentials - username: admin, password: 123'
+2025-07-24 00:54:05,603 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 00:54:10,105 - INFO - [MONITOR] 👁️  00:54:10 | laptop → laptop | 192.168.0.159:50797 → 192.168.0.125:9999
+2025-07-24 00:54:10,106 - INFO - [MONITOR] 💬 Message: '[00:54:10]: Please verify my identity'
+2025-07-24 00:54:16,345 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 00:54:21,258 - INFO - [MONITOR] 👁️  00:54:21 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50797
+2025-07-24 00:54:21,259 - INFO - [MONITOR] 💬 Message: '[00:54:21]: I accept your identity'
+2025-07-24 00:54:23,519 - INFO - [MONITOR] 👁️  00:54:23 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50797
+2025-07-24 00:54:23,519 - INFO - [MONITOR] 💬 Message: '[00:54:23]: Welcome'
+2025-07-24 00:54:27,010 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 00:54:37,673 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 00:54:48,338 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 00:54:59,039 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 00:55:09,753 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 00:55:20,469 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 00:55:31,170 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 00:55:41,877 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-24 00:55:52,603 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-24 00:56:03,293 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-24 00:57:01,686 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket monitoring & logging
+2025-07-24 00:57:01,687 - INFO - [ATTACK] 🔧 TCP Mode: MONITOR
+2025-07-24 00:57:01,688 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 00:57:01,688 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:57:01,692 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:57:01,693 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:57:01,693 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:57:01,695 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:57:01,698 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:57:01,710 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:57:01,711 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:57:01,711 - INFO - [MITM] 👁️  Monitoring and logging socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:57:01,715 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 00:57:01,717 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:57:01,718 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:57:01,719 - INFO - [MITM] 🔧 Mode: MONITOR
+2025-07-24 00:57:01,721 - INFO - [MITM] 👁️  Passive monitoring - no packet modification
+2025-07-24 00:57:01,725 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:57:10,375 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:57:21,080 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 00:57:31,796 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 00:57:42,504 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 00:57:53,192 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 00:58:03,902 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 00:58:14,599 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 00:58:25,292 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 00:58:36,010 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 00:58:46,799 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 00:58:57,580 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 00:59:08,271 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 00:59:19,034 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-24 00:59:29,792 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-24 00:59:35,674 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 00:59:35,675 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 00:59:35,824 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, laptop, and gateway
+2025-07-24 00:59:35,825 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 00:59:35,828 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:59:35,845 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 00:59:35,846 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 00:59:40,509 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket monitoring & logging
+2025-07-24 00:59:40,510 - INFO - [ATTACK] 🔧 TCP Mode: MONITOR
+2025-07-24 00:59:40,510 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 00:59:40,511 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 00:59:40,515 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 00:59:40,517 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 00:59:40,518 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 00:59:40,518 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 00:59:40,520 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 00:59:40,534 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 00:59:40,536 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 00:59:40,536 - INFO - [MITM] 👁️  Monitoring and logging socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 00:59:40,538 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 00:59:40,539 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 00:59:40,540 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 00:59:40,541 - INFO - [MITM] 🔧 Mode: MONITOR
+2025-07-24 00:59:40,542 - INFO - [MITM] 👁️  Passive monitoring - no packet modification
+2025-07-24 00:59:40,544 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 00:59:43,735 - INFO - [MONITOR] 👁️  00:59:43 | laptop → laptop | 192.168.0.159:50817 → 192.168.0.125:9999
+2025-07-24 00:59:43,736 - INFO - [MONITOR] 💬 Message: '[00:59:43]: Hello'
+2025-07-24 00:59:49,207 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 00:59:59,905 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 01:00:00,814 - INFO - [MONITOR] 👁️  01:00:00 | laptop → laptop | 192.168.0.159:50817 → 192.168.0.125:9999
+2025-07-24 01:00:00,815 - INFO - [MONITOR] 💬 Message: '[01:00:00]: My credentials - username: admin, password: 123'
+2025-07-24 01:00:06,294 - INFO - [MONITOR] 👁️  01:00:06 | laptop → laptop | 192.168.0.159:50817 → 192.168.0.125:9999
+2025-07-24 01:00:06,294 - INFO - [MONITOR] 💬 Message: '[01:00:06]: Please verify my identity'
+2025-07-24 01:00:10,588 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 01:00:15,275 - INFO - [MONITOR] 👁️  01:00:15 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50817
+2025-07-24 01:00:15,276 - INFO - [MONITOR] 💬 Message: '[01:00:15]: I accept your identity'
+2025-07-24 01:00:17,530 - INFO - [MONITOR] 👁️  01:00:17 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50817
+2025-07-24 01:00:17,531 - INFO - [MONITOR] 💬 Message: '[01:00:17]: Welcome'
+2025-07-24 01:00:21,384 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 01:00:32,139 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 01:00:42,836 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 01:00:53,544 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 01:01:04,139 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 01:01:14,811 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 01:01:25,552 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 01:01:36,316 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 01:01:46,995 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 01:01:47,216 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 01:01:47,217 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 01:01:47,373 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, laptop, and gateway
+2025-07-24 01:01:47,374 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:01:47,377 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 01:01:47,399 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:01:47,400 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 01:02:32,959 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket intercepting & dropping
+2025-07-24 01:02:32,961 - INFO - [ATTACK] 🔧 TCP Mode: DROP
+2025-07-24 01:02:32,962 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 01:02:32,962 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 01:02:32,966 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 01:02:32,968 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 01:02:32,968 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 01:02:32,969 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 01:02:32,971 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 01:02:32,986 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 01:02:32,987 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 01:02:32,988 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 01:02:32,990 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 01:02:32,992 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 01:02:32,993 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 01:02:32,997 - INFO - [MITM] 🔧 Mode: DROP
+2025-07-24 01:02:32,998 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
+2025-07-24 01:02:32,999 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 01:02:41,670 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 01:02:44,233 - INFO - [DROP] ❌ 01:02:44 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:44,234 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:44,235 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:44,556 - INFO - [DROP] ❌ 01:02:44 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:44,557 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:44,558 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:44,855 - INFO - [DROP] ❌ 01:02:44 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:44,857 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:44,857 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:45,453 - INFO - [DROP] ❌ 01:02:45 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:45,453 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:45,454 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:46,572 - INFO - [DROP] ❌ 01:02:46 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:46,573 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:46,574 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:47,782 - INFO - [DROP] ❌ 01:02:47 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:47,783 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:47,784 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:48,994 - INFO - [DROP] ❌ 01:02:48 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:48,994 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:48,995 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:51,407 - INFO - [DROP] ❌ 01:02:51 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:51,408 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:51,409 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:02:52,370 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 01:02:56,283 - INFO - [DROP] ❌ 01:02:56 | laptop → laptop | 192.168.0.159:50838 → 192.168.0.125:9999
+2025-07-24 01:02:56,284 - INFO - [DROP] 🚫 DROPPED: '[01:02:44]: Hello'
+2025-07-24 01:02:56,285 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:03:03,027 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 01:03:13,676 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 01:03:24,396 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 01:03:35,060 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 01:03:45,725 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 01:03:50,443 - INFO - [DROP] ❌ 01:03:50 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:03:50,444 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi'
+2025-07-24 01:03:50,445 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:03:51,043 - INFO - [DROP] ❌ 01:03:51 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:03:51,043 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi'
+2025-07-24 01:03:51,044 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:03:51,804 - INFO - [DROP] ❌ 01:03:51 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:03:51,805 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi'
+2025-07-24 01:03:51,806 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:03:53,342 - INFO - [DROP] ❌ 01:03:53 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:03:53,342 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi'
+2025-07-24 01:03:53,343 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:03:56,469 - INFO - [DROP] ❌ 01:03:56 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:03:56,471 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi[01:03:55]: hi'
+2025-07-24 01:03:56,472 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:03:56,590 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 01:04:02,603 - INFO - [DROP] ❌ 01:04:02 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:04:02,604 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi[01:03:55]: hi[01:03:59]: can you hearme'
+2025-07-24 01:04:02,604 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:07,241 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 01:04:08,546 - INFO - [DROP] ❌ 01:04:08 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:08,547 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:08,547 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:08,747 - INFO - [DROP] ❌ 01:04:08 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:08,747 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:08,748 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:08,952 - INFO - [DROP] ❌ 01:04:08 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:08,952 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:08,953 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:09,361 - INFO - [DROP] ❌ 01:04:09 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:09,362 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:09,363 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:10,181 - INFO - [DROP] ❌ 01:04:10 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:10,182 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:10,182 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:11,931 - INFO - [DROP] ❌ 01:04:11 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:11,932 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:11,933 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:14,782 - INFO - [DROP] ❌ 01:04:14 | laptop → laptop | 192.168.0.159:50840 → 192.168.0.125:9999
+2025-07-24 01:04:14,783 - INFO - [DROP] 🚫 DROPPED: '[01:03:50]: hi[01:03:55]: hi[01:03:59]: can you hearme'
+2025-07-24 01:04:14,784 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:15,302 - INFO - [DROP] ❌ 01:04:15 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:15,303 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:15,304 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:17,967 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 01:04:22,164 - INFO - [DROP] ❌ 01:04:22 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:22,165 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:22,167 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:28,611 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 01:04:36,088 - INFO - [DROP] ❌ 01:04:36 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50838
+2025-07-24 01:04:36,089 - INFO - [DROP] 🚫 DROPPED: '[01:04:08]: hi'
+2025-07-24 01:04:36,092 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:04:39,271 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 01:04:49,907 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-24 01:05:00,483 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-24 01:05:00,490 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 01:05:00,491 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 01:05:00,631 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, laptop, and gateway
+2025-07-24 01:05:00,632 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:05:00,635 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 01:05:00,654 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:05:00,655 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 01:08:30,985 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket intercepting & dropping
+2025-07-24 01:08:30,987 - INFO - [ATTACK] 🔧 TCP Mode: DROP
+2025-07-24 01:08:30,988 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 01:08:30,988 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 01:08:30,992 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 01:08:30,994 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-24 01:08:30,994 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-24 01:08:30,995 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 01:08:30,997 - INFO - [ARP-POISON] Targets: laptop ↔ laptop
+2025-07-24 01:08:31,010 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 01:08:31,014 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-24 01:08:31,015 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-24 01:08:31,016 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-24 01:08:31,017 - INFO - [MITM] 🎯 Target 2: laptop (192.168.0.159) - laptop
+2025-07-24 01:08:31,018 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-24 01:08:31,019 - INFO - [MITM] 🔧 Mode: DROP
+2025-07-24 01:08:31,021 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
+2025-07-24 01:08:31,022 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-24 01:08:35,002 - INFO - [DROP] ❌ 01:08:35 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:35,003 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello'
+2025-07-24 01:08:35,004 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:35,293 - INFO - [DROP] ❌ 01:08:35 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:35,294 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello'
+2025-07-24 01:08:35,295 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:35,651 - INFO - [DROP] ❌ 01:08:35 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:35,652 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello'
+2025-07-24 01:08:35,653 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:36,199 - INFO - [DROP] ❌ 01:08:36 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:36,200 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello'
+2025-07-24 01:08:36,201 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:37,508 - INFO - [DROP] ❌ 01:08:37 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:37,508 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello'
+2025-07-24 01:08:37,509 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:39,707 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 01:08:39,822 - INFO - [DROP] ❌ 01:08:39 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:39,823 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello'
+2025-07-24 01:08:39,824 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:44,628 - INFO - [DROP] ❌ 01:08:44 | laptop → laptop | 192.168.0.159:50860 → 192.168.0.125:9999
+2025-07-24 01:08:44,629 - INFO - [DROP] 🚫 DROPPED: '[01:08:34]: Hello[01:08:41]: Are you there?'
+2025-07-24 01:08:44,630 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:49,538 - INFO - [DROP] ❌ 01:08:49 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:49,539 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:49,540 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:49,666 - INFO - [DROP] ❌ 01:08:49 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:49,667 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:49,668 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:49,946 - INFO - [DROP] ❌ 01:08:49 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:49,947 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:49,947 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:50,359 - INFO - [DROP] ❌ 01:08:50 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:50,360 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:50,361 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:50,363 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-24 01:08:51,182 - INFO - [DROP] ❌ 01:08:51 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:51,183 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:51,184 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:52,923 - INFO - [DROP] ❌ 01:08:52 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:52,925 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:52,926 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:08:56,098 - INFO - [DROP] ❌ 01:08:56 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:08:56,099 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:08:56,100 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:09:01,065 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-24 01:09:02,857 - INFO - [DROP] ❌ 01:09:02 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:09:02,858 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:09:02,858 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:09:11,810 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-24 01:09:16,066 - INFO - [DROP] ❌ 01:09:16 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:09:16,068 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:09:16,069 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:09:22,529 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-24 01:09:33,266 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-24 01:09:42,171 - INFO - [DROP] ❌ 01:09:42 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:09:42,172 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:09:42,173 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:09:43,960 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-24 01:09:54,688 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-24 01:10:05,378 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-24 01:10:16,135 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-24 01:10:26,811 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-24 01:10:37,490 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-24 01:10:38,055 - INFO - [DROP] ❌ 01:10:38 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:10:38,056 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:10:38,057 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:10:48,098 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-24 01:10:58,807 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-24 01:11:09,462 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-24 01:11:20,073 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-24 01:11:30,730 - INFO - [ARP-POISON] Sent 510 poison packets
+2025-07-24 01:11:41,427 - INFO - [ARP-POISON] Sent 540 poison packets
+2025-07-24 01:11:52,074 - INFO - [ARP-POISON] Sent 570 poison packets
+2025-07-24 01:12:02,761 - INFO - [ARP-POISON] Sent 600 poison packets
+2025-07-24 01:12:13,381 - INFO - [ARP-POISON] Sent 630 poison packets
+2025-07-24 01:12:24,075 - INFO - [ARP-POISON] Sent 660 poison packets
+2025-07-24 01:12:24,479 - INFO - [DROP] ❌ 01:12:24 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:12:24,480 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:12:24,481 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:12:34,731 - INFO - [ARP-POISON] Sent 690 poison packets
+2025-07-24 01:12:45,398 - INFO - [ARP-POISON] Sent 720 poison packets
+2025-07-24 01:12:56,119 - INFO - [ARP-POISON] Sent 750 poison packets
+2025-07-24 01:13:06,910 - INFO - [ARP-POISON] Sent 780 poison packets
+2025-07-24 01:13:17,539 - INFO - [ARP-POISON] Sent 810 poison packets
+2025-07-24 01:13:28,220 - INFO - [ARP-POISON] Sent 840 poison packets
+2025-07-24 01:13:38,933 - INFO - [ARP-POISON] Sent 870 poison packets
+2025-07-24 01:13:49,661 - INFO - [ARP-POISON] Sent 900 poison packets
+2025-07-24 01:14:00,384 - INFO - [ARP-POISON] Sent 930 poison packets
+2025-07-24 01:14:11,256 - INFO - [ARP-POISON] Sent 960 poison packets
+2025-07-24 01:14:22,009 - INFO - [ARP-POISON] Sent 990 poison packets
+2025-07-24 01:14:27,470 - INFO - [DROP] ❌ 01:14:27 | laptop → laptop | 192.168.0.125:9999 → 192.168.0.159:50860
+2025-07-24 01:14:27,471 - INFO - [DROP] 🚫 DROPPED: '[01:08:49]: Hi'
+2025-07-24 01:14:27,472 - INFO - [DROP] ✂️  Packet intercepted and discarded
+2025-07-24 01:14:32,692 - INFO - [ARP-POISON] Sent 1020 poison packets
+2025-07-24 01:14:43,385 - INFO - [ARP-POISON] Sent 1050 poison packets

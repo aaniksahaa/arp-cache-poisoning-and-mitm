@@ -32,10 +32,10 @@ class NetworkConfig:
     
     # Network interface (automatically detect or specify)
     # hp
-    # INTERFACE = "wlp2s0"
+    INTERFACE = "wlp2s0"
 
     # lenovo
-    INTERFACE = "wlp8s0"
+    # INTERFACE = "wlp8s0"
     
     # Network range for scanning
     NETWORK_RANGE = "192.168.0.0/24"  # Adjust to your network
@@ -131,7 +131,10 @@ class AttackConfig:
     # POISON_TARGET_1 = DeviceRegistry.laptop_lenovo  
     # POISON_TARGET_2 = DeviceRegistry.phone_redmi
 
-    POISON_TARGET_1 = DeviceRegistry.laptop_hp 
+    # POISON_TARGET_1 = DeviceRegistry.laptop_hp 
+    # POISON_TARGET_2 = DeviceRegistry.laptop_dell
+
+    POISON_TARGET_1 = DeviceRegistry.laptop_lenovo 
     POISON_TARGET_2 = DeviceRegistry.laptop_dell
 
     # Gateway device (router)
@@ -165,6 +168,10 @@ class AttackConfig:
     # Socket interception configuration
     SOCKET_PORTS = [9999, 8080, 12345, 22, 23, 21]  # Ports to intercept
     ENABLE_BIDIRECTIONAL_INTERCEPTION = True
+    
+    # TCP Attack Modes: MONITOR, TAMPER, DROP
+    ALLOWED_TCP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
+    TCP_ATTACK_MODE = ALLOWED_TCP_ATTACK_MODES[2]
     
     # TCP Socket Modifications (ultra-compact, size-preserving)
     # number of characters must match to the original
@@ -466,6 +473,9 @@ AttackConfig.SOCKET_MODIFICATIONS = {
 
 # Ports to monitor for socket communication
 AttackConfig.SOCKET_PORTS = [9999, 8080, 12345]
+
+# TCP Attack Mode: MONITOR (log only), tamper (modify), DROP (block)
+AttackConfig.TCP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
 
 print("✅ User configuration loaded successfully!")
 print("🎯 Attack targets configured:")

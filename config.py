@@ -183,7 +183,7 @@ class AttackConfig:
     
     # HTTP Attack Modes: MONITOR, TAMPER, DROP
     ALLOWED_HTTP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
-    HTTP_ATTACK_MODE = ALLOWED_HTTP_ATTACK_MODES[2]
+    HTTP_ATTACK_MODE = ALLOWED_HTTP_ATTACK_MODES[1]
     
     # TCP Socket Modifications (ultra-compact, size-preserving)
     # number of characters must match to the original

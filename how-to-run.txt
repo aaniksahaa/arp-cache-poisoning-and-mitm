@@ -18,7 +18,9 @@ sudo /home/aaniksahaa/miniconda3/bin/python simple_http_interceptor.py
 
 sudo /home/aaniksahaa/miniconda3/bin/python new_http_interceptor.py 
 
-sudo /home/aaniksahaa/miniconda3/bin/python new_http_interceptor.py 
+sudo /home/aaniksahaa/miniconda3/bin/python new_http_interceptor.py
+
+sudo /home/aaniksahaa/miniconda3/bin/python http_interceptor.py
 
 sudo /home/aaniksahaa/miniconda3/bin/python debug_http_interceptor.py 
 

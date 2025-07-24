@@ -214,10 +214,15 @@ class AttackConfig:
     
     # HTTP Injection Configuration (for backward compatibility)
     INJECTION_CODE = b"""
-    <div style='position:fixed;top:0;left:0;width:100%;background:red;color:white;
-    text-align:center;padding:10px;z-index:9999;font-size:18px;'>
-    NETWORK SECURITY DEMONSTRATION - TRAFFIC INTERCEPTED
-    </div>
+    <div style='position:fixed;top:0;left:0;width:100%;background:red;padding:15px 10px;z-index:9999;box-sizing:border-box;'>
+ <div style='background:white;color:black;text-align:center;padding:12px 8px;font-size:clamp(16px,5vw,24px);font-weight:bold;border-radius:8px;word-break:break-word;'>
+ YOU HAVE BEEN HACKED!
+ </div>
+</div></div>
+    """
+
+    INJECTION_CODE = b"""
+    <img src='https://upload.wikimedia.org/wikipedia/commons/2/26/You_Have_Been_Hacked%21.jpg?20150818015327' style='position:fixed;top:0;left:0;width:100%;height:40%;z-index:9999;'>
     """
     
     # New HTML Block Injection - Injected after <body> tag while keeping original content

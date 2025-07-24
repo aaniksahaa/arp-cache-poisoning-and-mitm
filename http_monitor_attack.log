@@ -356,3 +356,94 @@
 2025-07-24 15:54:36,580 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-24 15:54:36,594 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-24 15:54:36,597 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:56:16,591 - INFO - [ATTACK] 🚀 Starting HTTP MONITOR attack
+2025-07-24 16:56:16,592 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:56:16,593 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:56:16,594 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:56:16,597 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:56:16,599 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:56:16,599 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:56:16,600 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:56:19,601 - INFO - [SETUP] Setting up iptables rules for HTTP MONITOR mode
+2025-07-24 16:56:19,645 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:56:20,373 - DEBUG - [TCP-DEBUG] TCP packet: 192.168.0.201:45188 -> 192.168.0.125:8000, payload: 492 bytes
+2025-07-24 16:56:20,374 - DEBUG - [PORT-DEBUG] Port 80/8000 traffic but not HTTP response: 192.168.0.201:45188 -> 192.168.0.125:8000
+2025-07-24 16:56:20,375 - DEBUG - [PORT-DEBUG] Payload preview: GET / HTTP/1.1
+Host: 192.168.0.125:8000
+Connecti
+2025-07-24 16:56:20,375 - DEBUG - [PORT-DEBUG] Payload doesn't start with HTTP/ - might be request or fragment
+2025-07-24 16:56:20,544 - DEBUG - [TCP-DEBUG] TCP packet: 192.168.0.125:8000 -> 192.168.0.201:45188, payload: 269 bytes
+2025-07-24 16:56:20,545 - INFO - [HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from 192.168.0.125:8000 -> 192.168.0.201:45188
+2025-07-24 16:56:20,546 - INFO - [HTTP-RESPONSE-FOUND] Payload size: 269 bytes
+2025-07-24 16:56:20,546 - INFO - [MODE-HANDLER] Processing HTTP response in MONITOR mode
+2025-07-24 16:56:20,547 - INFO - [HTTP-RESPONSE] INCOMING HTTP/1.0 200 OK - Type: text/html
+2025-07-24 16:56:20,549 - DEBUG - [TCP-DEBUG] TCP packet: 192.168.0.125:8000 -> 192.168.0.201:45188, payload: 1119 bytes
+2025-07-24 16:56:20,549 - DEBUG - [PORT-DEBUG] Port 80/8000 traffic but not HTTP response: 192.168.0.125:8000 -> 192.168.0.201:45188
+2025-07-24 16:56:20,550 - DEBUG - [PORT-DEBUG] Payload preview: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta 
+2025-07-24 16:56:20,551 - DEBUG - [PORT-DEBUG] Payload doesn't start with HTTP/ - might be request or fragment
+2025-07-24 16:56:24,609 - DEBUG - [TCP-DEBUG] TCP packet: 192.168.0.201:45190 -> 192.168.0.125:8000, payload: 492 bytes
+2025-07-24 16:56:24,610 - DEBUG - [PORT-DEBUG] Port 80/8000 traffic but not HTTP response: 192.168.0.201:45190 -> 192.168.0.125:8000
+2025-07-24 16:56:24,611 - DEBUG - [PORT-DEBUG] Payload preview: GET / HTTP/1.1
+Host: 192.168.0.125:8000
+Connecti
+2025-07-24 16:56:24,612 - DEBUG - [PORT-DEBUG] Payload doesn't start with HTTP/ - might be request or fragment
+2025-07-24 16:56:24,677 - DEBUG - [TCP-DEBUG] TCP packet: 192.168.0.125:8000 -> 192.168.0.201:45190, payload: 269 bytes
+2025-07-24 16:56:24,679 - INFO - [HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from 192.168.0.125:8000 -> 192.168.0.201:45190
+2025-07-24 16:56:24,680 - INFO - [HTTP-RESPONSE-FOUND] Payload size: 269 bytes
+2025-07-24 16:56:24,681 - INFO - [MODE-HANDLER] Processing HTTP response in MONITOR mode
+2025-07-24 16:56:24,682 - INFO - [HTTP-RESPONSE] INCOMING HTTP/1.0 200 OK - Type: text/html
+2025-07-24 16:56:24,688 - DEBUG - [TCP-DEBUG] TCP packet: 192.168.0.125:8000 -> 192.168.0.201:45190, payload: 1119 bytes
+2025-07-24 16:56:24,695 - DEBUG - [PORT-DEBUG] Port 80/8000 traffic but not HTTP response: 192.168.0.125:8000 -> 192.168.0.201:45190
+2025-07-24 16:56:24,700 - DEBUG - [PORT-DEBUG] Payload preview: <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta 
+2025-07-24 16:56:24,703 - DEBUG - [PORT-DEBUG] Payload doesn't start with HTTP/ - might be request or fragment
+2025-07-24 16:56:35,064 - DEBUG - [ARP-POISON] Sent 20 poison packets
+2025-07-24 16:56:55,477 - DEBUG - [ARP-POISON] Sent 40 poison packets
+2025-07-24 16:57:15,905 - DEBUG - [ARP-POISON] Sent 60 poison packets
+2025-07-24 16:57:36,337 - DEBUG - [ARP-POISON] Sent 80 poison packets
+2025-07-24 16:57:56,756 - DEBUG - [ARP-POISON] Sent 100 poison packets
+2025-07-24 16:58:17,199 - DEBUG - [ARP-POISON] Sent 120 poison packets
+2025-07-24 16:58:37,602 - DEBUG - [ARP-POISON] Sent 140 poison packets
+2025-07-24 16:58:58,063 - DEBUG - [ARP-POISON] Sent 160 poison packets
+2025-07-24 16:59:18,480 - DEBUG - [ARP-POISON] Sent 180 poison packets
+2025-07-24 16:59:38,883 - DEBUG - [ARP-POISON] Sent 200 poison packets
+2025-07-24 16:59:59,315 - DEBUG - [ARP-POISON] Sent 220 poison packets
+2025-07-24 17:00:19,767 - DEBUG - [ARP-POISON] Sent 240 poison packets
+2025-07-24 17:00:33,681 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 17:00:33,682 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 17:00:33,683 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 17:00:33,708 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 17:00:33,745 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 17:00:33,750 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 17:00:33,773 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 17:00:33,775 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 17:00:38,459 - INFO - [ATTACK] 🚀 Starting HTTP MONITOR attack
+2025-07-24 17:00:38,460 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 17:00:38,460 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 17:00:38,461 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 17:00:38,464 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 17:00:38,465 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 17:00:38,466 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 17:00:41,469 - INFO - [SETUP] Setting up iptables rules for HTTP MONITOR mode
+2025-07-24 17:00:41,496 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 17:00:43,634 - INFO - [HTTP] HTTP response detected from 192.168.0.125:8000
+2025-07-24 17:00:43,635 - INFO - [HTTP-RESPONSE] INCOMING HTTP/1.0 200 OK - Type: text/html
+2025-07-24 17:00:45,375 - INFO - [HTTP] HTTP response detected from 192.168.0.125:8000
+2025-07-24 17:00:45,376 - INFO - [HTTP-RESPONSE] INCOMING HTTP/1.0 200 OK - Type: text/html
+2025-07-24 17:00:52,543 - INFO - [HTTP] HTTP response detected from 192.168.0.125:8000
+2025-07-24 17:00:52,545 - INFO - [HTTP-RESPONSE] INCOMING HTTP/1.0 200 OK - Type: text/html
+2025-07-24 17:01:42,340 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 17:01:42,341 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 17:01:42,342 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 17:01:42,364 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 17:01:42,398 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 17:01:42,401 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 17:01:42,419 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 17:01:42,423 - INFO - [CLEANUP] Removing iptables rules...

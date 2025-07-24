@@ -943,3 +943,114 @@
 2025-07-24 16:42:53,093 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-24 16:42:53,109 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-24 16:42:53,112 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:50:33,360 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:50:33,361 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:50:33,362 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:50:33,363 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:50:33,366 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:50:33,368 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:50:33,368 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:50:33,369 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:50:36,370 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:50:36,397 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:50:42,571 - INFO - [HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from 192.168.0.125:8000 -> 192.168.0.201:45156
+2025-07-24 16:50:42,572 - INFO - [HTTP-RESPONSE-FOUND] Payload size: 269 bytes
+2025-07-24 16:50:42,574 - INFO - [MODE-HANDLER] Processing HTTP response in TAMPER mode
+2025-07-24 16:50:42,574 - INFO - [TAMPER-MODE] Calling tamper_http_packet function
+2025-07-24 16:50:42,575 - INFO - [TAMPER-DEBUG] Starting tamper attempt on packet from 192.168.0.125:8000 -> 192.168.0.201:45156
+2025-07-24 16:50:42,576 - INFO - [TAMPER-DEBUG] Payload size: 269 bytes
+2025-07-24 16:50:42,577 - INFO - [TAMPER-DEBUG] Payload starts with: b'HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6 Python/3.1'
+2025-07-24 16:50:42,577 - INFO - [TAMPER-DEBUG] ✅ Confirmed HTTP response
+2025-07-24 16:50:42,578 - INFO - [TAMPER-DEBUG] Split successful - Headers: 265 bytes, Body: 0 bytes
+2025-07-24 16:50:42,579 - INFO - [TAMPER-DEBUG] Headers decoded successfully
+2025-07-24 16:50:42,579 - INFO - [TAMPER-DEBUG] Status line: HTTP/1.0 200 OK
+2025-07-24 16:50:42,580 - INFO - [TAMPER-DEBUG] Parsed 8 headers
+2025-07-24 16:50:42,582 - INFO - [TAMPER-DEBUG] Content-Type: 'text/html'
+2025-07-24 16:50:42,583 - INFO - [TAMPER-DEBUG] Content-Length: '1119'
+2025-07-24 16:50:42,584 - INFO - [TAMPER-DEBUG] Content-Encoding: ''
+2025-07-24 16:50:42,584 - INFO - [TAMPER-DEBUG] ✅ HTML content detected!
+2025-07-24 16:50:42,585 - INFO - [TAMPER-DEBUG] ✅ No gzip encoding, proceeding with injection
+2025-07-24 16:50:42,586 - INFO - [TAMPER-DEBUG] Body preview (first 200 chars): 
+2025-07-24 16:50:42,587 - INFO - [TAMPER-DEBUG] Attempting injection with 188 bytes of payload
+2025-07-24 16:50:42,588 - INFO - [TAMPER-DEBUG] Injection result: Original 0 bytes -> 188 bytes (increase: 188)
+2025-07-24 16:50:42,589 - INFO - [TAMPER-DEBUG] ✅ Injection successful!
+2025-07-24 16:50:42,590 - INFO - [TAMPER-DEBUG] Updating Content-Length: 1119 -> 188
+2025-07-24 16:50:42,591 - INFO - [TAMPER-DEBUG] Content-Length header updated
+2025-07-24 16:50:42,593 - INFO - [TAMPER-DEBUG] Rebuilt payload: 456 bytes total
+2025-07-24 16:50:42,593 - INFO - [TAMPER-DEBUG] ✅ Successfully created tampered packet!
+2025-07-24 16:50:42,594 - INFO - [TAMPER-MODE] Tampering successful, updating packet
+2025-07-24 16:50:42,599 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:51:58,632 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:51:58,633 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:51:58,634 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:51:58,634 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:51:58,638 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:51:58,639 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:51:58,640 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:51:58,640 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:52:01,644 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:52:01,681 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:52:05,601 - INFO - [HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from 192.168.0.125:8000 -> 192.168.0.201:45160
+2025-07-24 16:52:05,602 - INFO - [HTTP-RESPONSE-FOUND] Payload size: 269 bytes
+2025-07-24 16:52:05,602 - INFO - [MODE-HANDLER] Processing HTTP response in TAMPER mode
+2025-07-24 16:52:05,603 - INFO - [TAMPER-MODE] Calling tamper_http_packet function
+2025-07-24 16:52:05,604 - INFO - [TAMPER-DEBUG] Starting tamper attempt on packet from 192.168.0.125:8000 -> 192.168.0.201:45160
+2025-07-24 16:52:05,605 - INFO - [TAMPER-DEBUG] Payload size: 269 bytes
+2025-07-24 16:52:05,606 - INFO - [TAMPER-DEBUG] Payload starts with: b'HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6 Python/3.1'
+2025-07-24 16:52:05,607 - INFO - [TAMPER-DEBUG] ✅ Confirmed HTTP response
+2025-07-24 16:52:05,607 - INFO - [TAMPER-DEBUG] Split successful - Headers: 265 bytes, Body: 0 bytes
+2025-07-24 16:52:05,608 - INFO - [TAMPER-DEBUG] Headers decoded successfully
+2025-07-24 16:52:05,609 - INFO - [TAMPER-DEBUG] Status line: HTTP/1.0 200 OK
+2025-07-24 16:52:05,611 - INFO - [TAMPER-DEBUG] Parsed 8 headers
+2025-07-24 16:52:05,612 - INFO - [TAMPER-DEBUG] Content-Type: 'text/html'
+2025-07-24 16:52:05,613 - INFO - [TAMPER-DEBUG] Content-Length: '1119'
+2025-07-24 16:52:05,614 - INFO - [TAMPER-DEBUG] Content-Encoding: ''
+2025-07-24 16:52:05,615 - INFO - [TAMPER-DEBUG] ✅ HTML content detected!
+2025-07-24 16:52:05,616 - INFO - [TAMPER-DEBUG] ✅ No gzip encoding, proceeding with injection
+2025-07-24 16:52:05,617 - INFO - [TAMPER-DEBUG] Body preview (first 200 chars): 
+2025-07-24 16:52:05,618 - INFO - [TAMPER-DEBUG] Attempting injection with 188 bytes of payload
+2025-07-24 16:52:05,619 - INFO - [TAMPER-DEBUG] Injection result: Original 0 bytes -> 188 bytes (increase: 188)
+2025-07-24 16:52:05,621 - INFO - [TAMPER-DEBUG] ✅ Injection successful!
+2025-07-24 16:52:05,622 - INFO - [TAMPER-DEBUG] Updating Content-Length: 1119 -> 188
+2025-07-24 16:52:05,624 - INFO - [TAMPER-DEBUG] Content-Length header updated
+2025-07-24 16:52:05,625 - INFO - [TAMPER-DEBUG] Rebuilt payload: 456 bytes total
+2025-07-24 16:52:05,626 - INFO - [TAMPER-DEBUG] ✅ Successfully created tampered packet!
+2025-07-24 16:52:05,626 - INFO - [TAMPER-MODE] Tampering successful, updating packet
+2025-07-24 16:52:05,630 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:53:26,835 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:53:26,837 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:53:26,837 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:53:26,838 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:53:26,841 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:53:26,843 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:53:26,843 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:53:26,843 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:53:29,845 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:53:29,892 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:53:33,672 - INFO - [HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from 192.168.0.125:8000 -> 192.168.0.201:45164
+2025-07-24 16:53:33,673 - INFO - [HTTP-RESPONSE-FOUND] Payload size: 269 bytes
+2025-07-24 16:53:33,674 - INFO - [MODE-HANDLER] Processing HTTP response in TAMPER mode
+2025-07-24 16:53:33,675 - INFO - [TAMPER-MODE] Calling tamper_http_packet function
+2025-07-24 16:53:33,676 - INFO - [TAMPER-DEBUG] Starting tamper attempt on packet from 192.168.0.125:8000 -> 192.168.0.201:45164
+2025-07-24 16:53:33,676 - INFO - [TAMPER-DEBUG] Payload size: 269 bytes
+2025-07-24 16:53:33,677 - INFO - [TAMPER-DEBUG] Payload starts with: b'HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6 Python/3.1'
+2025-07-24 16:53:33,677 - INFO - [TAMPER-DEBUG] ✅ Confirmed HTTP response
+2025-07-24 16:53:33,678 - INFO - [TAMPER-DEBUG] Split successful - Headers: 265 bytes, Body: 0 bytes
+2025-07-24 16:53:33,679 - INFO - [TAMPER-DEBUG] Headers decoded successfully
+2025-07-24 16:53:33,679 - INFO - [TAMPER-DEBUG] Status line: HTTP/1.0 200 OK
+2025-07-24 16:53:33,680 - INFO - [TAMPER-DEBUG] Parsed 8 headers
+2025-07-24 16:53:33,680 - INFO - [TAMPER-DEBUG] Content-Type: 'text/html'
+2025-07-24 16:53:33,681 - INFO - [TAMPER-DEBUG] Content-Length: '1119'
+2025-07-24 16:53:33,682 - INFO - [TAMPER-DEBUG] Content-Encoding: ''
+2025-07-24 16:53:33,683 - INFO - [TAMPER-DEBUG] ✅ HTML content detected!
+2025-07-24 16:53:33,683 - INFO - [TAMPER-DEBUG] ✅ No gzip encoding, proceeding with injection
+2025-07-24 16:53:33,684 - INFO - [TAMPER-DEBUG] Body preview (first 200 chars): 
+2025-07-24 16:53:33,685 - INFO - [TAMPER-DEBUG] Attempting injection with 188 bytes of payload
+2025-07-24 16:53:33,686 - INFO - [TAMPER-DEBUG] Injection result: Original 0 bytes -> 188 bytes (increase: 188)
+2025-07-24 16:53:33,687 - INFO - [TAMPER-DEBUG] ✅ Injection successful!
+2025-07-24 16:53:33,688 - INFO - [TAMPER-DEBUG] Updating Content-Length: 1119 -> 188
+2025-07-24 16:53:33,689 - INFO - [TAMPER-DEBUG] Content-Length header updated
+2025-07-24 16:53:33,690 - INFO - [TAMPER-DEBUG] Rebuilt payload: 456 bytes total
+2025-07-24 16:53:33,691 - INFO - [TAMPER-DEBUG] ✅ Successfully created tampered packet!
+2025-07-24 16:53:33,692 - INFO - [TAMPER-MODE] Tampering successful, updating packet
+2025-07-24 16:53:33,695 - INFO - [TAMPER] ✅ Packet modified and forwarded

@@ -1,0 +1,40 @@
+2025-07-24 17:02:02,245 - INFO - [ATTACK] 🚀 Starting HTTP DROP attack
+2025-07-24 17:02:02,246 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 17:02:02,247 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 17:02:02,248 - INFO - [DROP-MODE] Skipping IP forwarding to enhance blocking effect
+2025-07-24 17:02:02,250 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 17:02:02,250 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 17:02:05,253 - INFO - [SETUP] Setting up iptables rules for HTTP DROP mode
+2025-07-24 17:02:05,281 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 17:04:36,709 - INFO - [ATTACK] 🚀 Starting HTTP DROP attack
+2025-07-24 17:04:36,710 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 17:04:36,711 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 17:04:36,711 - INFO - [DROP-MODE] Skipping IP forwarding to enhance blocking effect
+2025-07-24 17:04:36,712 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 17:04:36,712 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 17:04:39,715 - INFO - [SETUP] Setting up iptables rules for HTTP DROP mode
+2025-07-24 17:04:39,753 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 17:05:47,340 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 17:05:47,341 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 17:05:47,342 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 17:05:47,361 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 17:05:47,393 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 17:05:47,404 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 17:05:47,410 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 17:05:53,204 - INFO - [ATTACK] 🚀 Starting HTTP DROP attack
+2025-07-24 17:05:53,205 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 17:05:53,206 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 17:05:53,206 - INFO - [DROP-MODE] Skipping IP forwarding to enhance blocking effect
+2025-07-24 17:05:53,208 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 17:05:53,208 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 17:05:56,211 - INFO - [SETUP] Setting up iptables rules for HTTP DROP mode
+2025-07-24 17:05:56,239 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 17:06:30,824 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 17:06:30,825 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 17:06:30,826 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 17:06:30,854 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 17:06:30,887 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 17:06:30,906 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 17:06:30,911 - INFO - [CLEANUP] Removing iptables rules...

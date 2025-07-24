@@ -1,0 +1,458 @@
+2025-07-24 15:56:33,508 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 15:56:33,508 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 15:56:33,509 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 15:56:33,509 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 15:56:33,510 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 15:56:33,511 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 15:56:33,511 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 15:56:33,511 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 15:56:36,512 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 15:56:36,538 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 15:56:36,932 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 15:56:37,084 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 15:56:37,085 - INFO - [TAMPER] Successfully injected 222 bytes
+2025-07-24 15:56:37,087 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 15:56:37,090 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 15:56:53,108 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 15:56:53,189 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 15:56:53,191 - INFO - [TAMPER] Successfully injected 222 bytes
+2025-07-24 15:56:53,191 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 15:56:53,195 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 15:58:15,147 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 15:58:15,148 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 15:58:15,148 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 15:58:15,171 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 15:58:15,202 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 15:58:15,207 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 15:58:15,224 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 15:58:15,226 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:05:30,445 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:05:30,446 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:05:30,447 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:05:30,448 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:05:30,451 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:05:30,453 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:05:30,453 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:05:30,454 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:05:33,455 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:05:33,481 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:05:38,572 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:05:38,581 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:38,583 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:38,584 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:38,585 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:38,586 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:38,591 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:38,660 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:38,662 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:38,663 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:38,664 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:38,664 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:38,667 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:40,096 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:40,097 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:40,098 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:40,099 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:40,100 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:40,103 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:42,905 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:42,906 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:42,906 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:42,907 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:42,908 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:42,910 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:48,275 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:48,276 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:48,276 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:48,277 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:48,278 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:48,280 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:54,445 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:05:54,457 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:54,459 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:54,459 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:54,460 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:54,461 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:54,466 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:54,735 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:54,736 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:54,737 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:54,737 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:54,738 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:54,741 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:55,956 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:55,957 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:55,958 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:55,959 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:55,959 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:55,962 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:58,514 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:58,515 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:58,516 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:58,517 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:58,517 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:58,520 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:05:59,600 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:05:59,601 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:05:59,602 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:05:59,603 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:05:59,604 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:05:59,607 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:03,634 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:03,635 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:03,636 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:03,637 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:03,637 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:03,640 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:11,001 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:06:11,002 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:06:11,003 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:06:11,031 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:06:11,056 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:06:11,060 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:06:11,079 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:06:11,081 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:06:15,251 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:06:15,252 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:06:15,253 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:06:15,254 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:06:15,257 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:06:15,258 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:06:15,258 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:06:15,259 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:06:18,260 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:06:18,286 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:06:21,360 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:06:21,370 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:21,372 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:21,373 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:21,374 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:21,375 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:21,380 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:21,419 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:21,420 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:21,421 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:21,421 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:21,422 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:21,425 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:21,564 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:21,565 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:21,565 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:21,566 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:21,566 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:21,569 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:22,075 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:22,075 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:22,076 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:22,077 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:22,077 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:22,081 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:23,463 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:23,464 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:23,465 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:23,466 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:23,468 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:23,473 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:25,965 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:25,966 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:25,966 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:25,966 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:25,967 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:25,968 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:31,284 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:31,285 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:31,286 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:31,287 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:31,288 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:31,291 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:41,525 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:41,526 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:41,526 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:41,527 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:41,528 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:41,531 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:53,512 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:06:53,647 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:53,648 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:53,649 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:53,650 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:53,651 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:53,655 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:53,714 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:53,715 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:53,716 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:53,717 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:53,718 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:53,721 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:55,027 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:55,028 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:55,028 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:55,028 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:55,029 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:55,030 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:06:57,602 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:06:57,603 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:06:57,604 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:06:57,605 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:06:57,606 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:06:57,609 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:07:02,025 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:07:02,026 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:07:02,026 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:07:02,027 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:07:02,028 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:07:02,031 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:07:03,073 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:07:03,074 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:07:03,074 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:07:03,074 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:07:03,075 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:07:03,076 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:07:07,746 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:07:07,747 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:07:07,747 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:07:07,747 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:07:07,748 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:07:07,749 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:07:13,335 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:07:13,336 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:07:13,336 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:07:13,337 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:07:13,337 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:07:13,339 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:07:33,758 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:07:33,759 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:07:33,760 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:07:33,761 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:07:33,761 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:07:33,765 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:07:44,502 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:07:44,502 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:07:44,503 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:07:44,503 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:07:44,503 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:07:44,504 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:08:17,283 - INFO - [TAMPER] Processing HTML response: text/html
+2025-07-24 16:08:17,284 - WARNING - [INJECTION] Content appears empty or invalid, using minimal injection
+2025-07-24 16:08:17,284 - INFO - [TAMPER] Successfully injected 2021 bytes of HTML block
+2025-07-24 16:08:17,284 - INFO - [TAMPER] Original page content preserved with injected banner
+2025-07-24 16:08:17,285 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:08:17,287 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:08:58,135 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:08:58,136 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:08:58,137 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:08:58,159 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:08:58,188 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:08:58,191 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:08:58,209 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:08:58,211 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:09:02,142 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:09:02,144 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:09:02,144 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:09:02,145 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:09:02,149 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:09:02,150 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:09:02,151 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:09:02,151 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:09:05,152 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:09:05,179 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:09:05,940 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:09:09,035 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:09:23,946 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:10:37,968 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:10:37,969 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:10:37,969 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:10:38,000 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:10:38,020 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:10:38,022 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:10:38,034 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:10:38,036 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:11:45,238 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:11:45,239 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:11:45,240 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:11:45,240 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:11:45,243 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:11:45,244 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:11:45,244 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:11:45,245 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:11:48,246 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:11:48,272 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:11:49,061 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:11:51,964 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:11:53,459 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:14:42,181 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:14:42,182 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:14:42,183 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:14:42,204 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:14:42,227 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:14:42,230 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:14:42,247 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:14:42,250 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:14:46,394 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:14:46,395 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:14:46,396 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:14:46,396 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:14:46,399 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:14:46,400 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:14:46,401 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:14:46,401 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:14:49,402 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:14:49,415 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:14:51,538 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:14:51,545 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:51,546 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:51,547 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:51,550 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:51,568 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:51,569 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:51,570 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:51,573 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:51,831 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:51,832 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:51,833 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:51,836 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:52,240 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:52,241 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:52,242 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:52,245 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:53,163 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:53,164 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:53,164 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:53,167 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:54,905 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:54,906 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:54,907 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:54,910 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:58,281 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:58,281 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:58,281 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:58,282 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:14:58,853 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:14:58,995 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:14:58,996 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:14:58,997 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:14:59,000 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:15:00,331 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:15:00,332 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:15:00,333 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:15:00,336 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:15:01,056 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:15:01,261 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:15:01,262 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:15:01,263 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:15:01,266 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:15:01,456 - INFO - [TAMPER] Processing HTML response: text/html (0 bytes)
+2025-07-24 16:15:01,457 - INFO - [TAMPER] Successfully injected 1867 bytes of HTML block
+2025-07-24 16:15:01,458 - INFO - [TAMPER] ✅ Successfully tampered with HTTP response
+2025-07-24 16:15:01,460 - INFO - [TAMPER] ✅ Packet modified and forwarded
+2025-07-24 16:15:01,498 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:15:01,499 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:15:01,499 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:15:01,531 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:15:01,556 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:15:01,561 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:15:01,579 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:15:01,582 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:16:14,366 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:16:14,367 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:16:14,368 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:16:14,369 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:16:14,372 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:16:14,374 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:16:14,374 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:16:14,375 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:16:17,376 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:16:17,402 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:16:19,407 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:16:21,248 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:16:23,504 - INFO - [HTTP-REQUEST] OUTGOING GET / - Host: 192.168.0.125:8000
+2025-07-24 16:16:28,055 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:16:28,056 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:16:28,057 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:16:28,085 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:16:28,108 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:16:28,111 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:16:28,132 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:16:28,135 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:19:24,730 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:19:24,731 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:19:24,732 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:19:24,733 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:19:24,736 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:19:24,738 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:19:24,738 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:19:24,739 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:19:27,739 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:19:27,749 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:22:11,051 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:22:11,052 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:22:11,052 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:22:11,071 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:22:11,092 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:22:11,093 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:22:11,106 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:22:11,107 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:22:17,614 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:22:17,615 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:22:17,616 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:22:17,616 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:22:17,619 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:22:17,621 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:22:17,621 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:22:17,622 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:22:20,626 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:22:20,690 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:22:30,837 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 16:22:30,838 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 16:22:30,839 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-24 16:22:30,873 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
+2025-07-24 16:22:30,909 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 16:22:30,917 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:22:30,943 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 16:22:30,946 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 16:24:38,818 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
+2025-07-24 16:24:38,819 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
+2025-07-24 16:24:38,820 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 16:24:38,821 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 16:24:38,824 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 16:24:38,826 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 16:24:38,826 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 16:24:38,827 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 16:24:41,828 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
+2025-07-24 16:24:41,854 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 16:24:43,906 - INFO - [HTTP-RESPONSE-FOUND] 🎯 HTTP response detected from 192.168.0.125:8000 -> 192.168.0.201:45016
+2025-07-24 16:24:43,907 - INFO - [HTTP-RESPONSE-FOUND] Payload size: 268 bytes
+2025-07-24 16:24:43,908 - INFO - [MODE-HANDLER] Processing HTTP response in TAMPER mode
+2025-07-24 16:24:43,908 - INFO - [TAMPER-MODE] Calling tamper_http_packet function
+2025-07-24 16:24:43,909 - INFO - [TAMPER-DEBUG] Starting tamper attempt on packet from 192.168.0.125:8000 -> 192.168.0.201:45016
+2025-07-24 16:24:43,910 - INFO - [TAMPER-DEBUG] Payload size: 268 bytes
+2025-07-24 16:24:43,910 - INFO - [TAMPER-DEBUG] Payload starts with: b'HTTP/1.0 200 OK\r\nServer: SimpleHTTP/0.6 Python/3.1'
+2025-07-24 16:24:43,911 - INFO - [TAMPER-DEBUG] ✅ Confirmed HTTP response
+2025-07-24 16:24:43,911 - INFO - [TAMPER-DEBUG] Split successful - Headers: 264 bytes, Body: 0 bytes
+2025-07-24 16:24:43,912 - INFO - [TAMPER-DEBUG] Headers decoded successfully
+2025-07-24 16:24:43,912 - INFO - [TAMPER-DEBUG] Status line: HTTP/1.0 200 OK
+2025-07-24 16:24:43,913 - INFO - [TAMPER-DEBUG] Parsed 8 headers
+2025-07-24 16:24:43,914 - INFO - [TAMPER-DEBUG] Content-Type: 'text/html'
+2025-07-24 16:24:43,915 - INFO - [TAMPER-DEBUG] Content-Length: '305'
+2025-07-24 16:24:43,915 - INFO - [TAMPER-DEBUG] Content-Encoding: ''
+2025-07-24 16:24:43,916 - INFO - [TAMPER-DEBUG] ✅ HTML content detected!
+2025-07-24 16:24:43,917 - INFO - [TAMPER-DEBUG] ✅ No gzip encoding, proceeding with injection
+2025-07-24 16:24:43,917 - INFO - [TAMPER-DEBUG] Body preview (first 200 chars): 
+2025-07-24 16:24:43,918 - INFO - [TAMPER-DEBUG] Attempting injection with 222 bytes of payload
+2025-07-24 16:24:43,919 - INFO - [TAMPER-DEBUG] Injection result: Original 0 bytes -> 222 bytes (increase: 222)
+2025-07-24 16:24:43,920 - INFO - [TAMPER-DEBUG] ✅ Injection successful!
+2025-07-24 16:24:43,921 - INFO - [TAMPER-DEBUG] Updating Content-Length: 305 -> 222
+2025-07-24 16:24:43,922 - INFO - [TAMPER-DEBUG] Content-Length header updated
+2025-07-24 16:24:43,923 - INFO - [TAMPER-DEBUG] Rebuilt payload: 490 bytes total
+2025-07-24 16:24:43,924 - INFO - [TAMPER-DEBUG] ✅ Successfully created tampered packet!
+2025-07-24 16:24:43,924 - INFO - [TAMPER-MODE] Tampering successful, updating packet
+2025-07-24 16:24:43,928 - INFO - [TAMPER] ✅ Packet modified and forwarded

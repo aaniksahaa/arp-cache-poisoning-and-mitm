@@ -141,8 +141,16 @@ class AttackConfig:
     GATEWAY_DEVICE = DeviceRegistry.gateway
 
     # # for http injection 
-    # # in case of local server, we need to put the local ip address
-    # GATEWAY_DEVICE = DeviceRegistry.laptop
+    # in case of local server, 
+    # we need to put the local server at gateway
+    # and the victim at poison_target_1
+    GATEWAY_DEVICE = DeviceRegistry.laptop_lenovo
+
+    # POISON_TARGET_1 = DeviceRegistry.laptop_dell 
+    # POISON_TARGET_2 = DeviceRegistry.laptop_dell 
+
+    POISON_TARGET_1 = DeviceRegistry.phone_redmi
+    POISON_TARGET_2 = DeviceRegistry.phone_redmi
     
     # ===== BACKWARDS COMPATIBILITY =====
     # Keep old variable names for existing scripts
@@ -172,6 +180,10 @@ class AttackConfig:
     # TCP Attack Modes: MONITOR, TAMPER, DROP
     ALLOWED_TCP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
     TCP_ATTACK_MODE = ALLOWED_TCP_ATTACK_MODES[2]
+    
+    # HTTP Attack Modes: MONITOR, TAMPER, DROP
+    ALLOWED_HTTP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
+    HTTP_ATTACK_MODE = ALLOWED_HTTP_ATTACK_MODES[1]
     
     # TCP Socket Modifications (ultra-compact, size-preserving)
     # number of characters must match to the original
@@ -207,6 +219,86 @@ class AttackConfig:
     NETWORK SECURITY DEMONSTRATION - TRAFFIC INTERCEPTED
     </div>
     """
+    
+    # New HTML Block Injection - Injected after <body> tag while keeping original content
+    HTML_INJECTION_BLOCK = b"""
+    <!-- INJECTED CONTENT START -->
+    <div style="position: fixed; top: 0; left: 0; width: 100%; background: linear-gradient(135deg, #ff4444, #cc0000); 
+                color: white; padding: 15px; z-index: 999999; box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
+                font-family: 'Arial', sans-serif; border-bottom: 3px solid #990000;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center;">
+                <img src="https://cdn-icons-png.flaticon.com/512/159/159469.png" 
+                     alt="Warning" style="width: 32px; height: 32px; margin-right: 15px;">
+                <div>
+                    <h3 style="margin: 0; font-size: 18px; font-weight: bold;">SECURITY ALERT</h3>
+                    <p style="margin: 0; font-size: 14px; opacity: 0.9;">Your HTTP traffic has been intercepted via ARP poisoning</p>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 12px;">
+                <p style="margin: 0;">Attack Type: MITM</p>
+                <p style="margin: 0;">Time: <span id="attack-time"></span></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Push original content down to avoid overlap -->
+    <div style="height: 80px;"></div>
+    
+    <script>
+        // Update timestamp
+        document.getElementById('attack-time').textContent = new Date().toLocaleTimeString();
+        
+        // Optional: Show alert (can be disabled)
+        // alert('Your HTTP traffic has been intercepted!');
+        
+        // Log to console for demonstration
+        console.log('MITM Attack Detected: HTTP content has been modified');
+        console.log('Original page content preserved below injected banner');
+    </script>
+    <!-- INJECTED CONTENT END -->
+    """
+    
+    # Alternative injection blocks for different scenarios
+    HTML_INJECTION_BLOCKS = {
+        'security_banner': HTML_INJECTION_BLOCK,
+        
+        'simple_warning': b"""
+        <div style="background: #ff6b6b; color: white; padding: 10px; text-align: center; 
+                    position: sticky; top: 0; z-index: 999999; border-bottom: 2px solid #ff5252;">
+            <strong>HTTP TRAFFIC INTERCEPTED</strong> - This page has been modified via MITM attack
+        </div>
+        """,
+        
+        'fake_update': b"""
+        <div style="background: #4CAF50; color: white; padding: 15px; margin: 10px; border-radius: 8px; 
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.2); font-family: Arial, sans-serif;">
+            <h3 style="margin: 0 0 10px 0;">Important Security Update Available</h3>
+            <p style="margin: 0 0 10px 0;">Your browser security needs to be updated. Click below to install the latest security patch.</p>
+            <button style="background: #45a049; color: white; border: none; padding: 10px 20px; 
+                           border-radius: 4px; cursor: pointer; font-size: 14px;">
+                Install Security Update
+            </button>
+        </div>
+        """,
+        
+        'data_collection': b"""
+        <div style="background: #2196F3; color: white; padding: 15px; margin: 10px; border-radius: 8px;">
+            <h3 style="margin: 0 0 10px 0;">Network Analysis in Progress</h3>
+            <p style="margin: 0;">Collecting network statistics for security analysis...</p>
+            <div style="background: rgba(255,255,255,0.2); height: 20px; border-radius: 10px; margin-top: 10px; overflow: hidden;">
+                <div style="background: #4CAF50; height: 100%; width: 75%; border-radius: 10px; 
+                           animation: pulse 2s infinite;"></div>
+            </div>
+        </div>
+        <style>
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        </style>
+        """
+    }
+    
+    # Current injection block selection
+    CURRENT_HTML_INJECTION = 'security_banner'
     
     # Alternative injection payloads
     INJECTION_PAYLOADS = {
@@ -476,6 +568,9 @@ AttackConfig.SOCKET_PORTS = [9999, 8080, 12345]
 
 # TCP Attack Mode: MONITOR (log only), tamper (modify), DROP (block)
 AttackConfig.TCP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
+
+# HTTP Attack Mode: MONITOR (log only), TAMPER (inject content), DROP (block HTTP)
+AttackConfig.HTTP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
 
 print("✅ User configuration loaded successfully!")
 print("🎯 Attack targets configured:")

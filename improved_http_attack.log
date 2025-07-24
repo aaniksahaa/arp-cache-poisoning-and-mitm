@@ -1663,3 +1663,85 @@
 2025-07-18 23:54:59,004 - WARNING - ⚠️  Limited domain diversity - consider:
 2025-07-18 23:54:59,004 - WARNING -    • Testing with more varied browsing
 2025-07-18 23:54:59,004 - WARNING -    • Using multiple victim devices
+2025-07-24 15:20:52,927 - INFO - [ATTACK] 🚀 Starting improved ARP poisoning & HTTP injection
+2025-07-24 15:20:52,928 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-24 15:20:52,929 - INFO - [SETUP] Setting up local HTTP test server on port 8000
+2025-07-24 15:20:52,931 - INFO - [SETUP] ✅ Local HTTP server started
+2025-07-24 15:20:52,932 - INFO - [SETUP] 💡 Test by browsing to: http://localhost:8000/test_page.html
+2025-07-24 15:20:52,932 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 15:20:52,936 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-24 15:20:52,938 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
+2025-07-24 15:20:52,938 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
+2025-07-24 15:20:52,938 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-24 15:20:55,939 - INFO - [SETUP] Setting up iptables rule for packet interception
+2025-07-24 15:20:55,963 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-24 15:20:55,964 - INFO - [MITM] 🚀 Improved HTTP injection system started
+2025-07-24 15:20:55,965 - INFO - [MITM] 📡 Monitoring for HTTP traffic...
+2025-07-24 15:20:55,965 - INFO - [MITM] 🎯 Target: 192.168.0.159 -> Gateway: 192.168.0.125
+2025-07-24 15:20:55,966 - INFO - [MITM] 💉 Injection payload: demo
+2025-07-24 15:20:55,967 - INFO - [MITM] 🛑 Press Ctrl+C to stop and view statistics
+2025-07-24 15:20:57,229 - INFO - [HTTPS] 🔒 HTTPS traffic detected: 104.18.21.122:443 -> 192.168.0.159:50021
+2025-07-24 15:21:01,158 - INFO - [ARP-POISON] Sent 10 poison packets
+2025-07-24 15:21:03,402 - INFO - [HTTPS] 🔒 HTTPS traffic detected: 104.18.21.122:443 -> 192.168.0.159:50021
+2025-07-24 15:21:05,589 - INFO - [HTTPS] 🔒 HTTPS traffic detected: 104.18.21.122:443 -> 192.168.0.159:50021
+2025-07-24 15:21:11,378 - INFO - [ARP-POISON] Sent 20 poison packets
+2025-07-24 15:21:21,631 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-24 15:21:23,112 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-24 15:21:23,113 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-24 15:21:23,114 - INFO - [ARP-RESTORE] Restoring 192.168.0.159 -> 192.168.0.125 mapping
+2025-07-24 15:21:23,138 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.159 mapping
+2025-07-24 15:21:23,161 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 15:21:23,165 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 15:21:23,185 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 15:21:23,186 - INFO - 
+==================================================
+2025-07-24 15:21:23,187 - INFO - 📊 HTTP INTERCEPTOR STATISTICS
+2025-07-24 15:21:23,187 - INFO - ==================================================
+2025-07-24 15:21:23,188 - INFO - ⏱️  Runtime: 31.6 seconds
+2025-07-24 15:21:23,189 - INFO - 📦 Total packets: 106
+2025-07-24 15:21:23,189 - INFO - 🔓 HTTP packets: 0
+2025-07-24 15:21:23,190 - INFO - 🔒 HTTPS packets: 39
+2025-07-24 15:21:23,191 - INFO - ✅ Successful injections: 0
+2025-07-24 15:21:23,191 - INFO - ❌ Failed injections: 0
+2025-07-24 15:21:23,192 - INFO - ⏩ Skipped non-HTML: 0
+2025-07-24 15:21:23,193 - INFO - 🌐 Unique domains seen: 0
+2025-07-24 15:21:23,193 - INFO - 
+💡 RECOMMENDATIONS:
+2025-07-24 15:21:23,194 - WARNING - ⚠️  Most traffic is HTTPS - consider:
+2025-07-24 15:21:23,195 - WARNING -    • Setting up a local HTTP test server
+2025-07-24 15:21:23,196 - WARNING -    • Using DNS spoofing to redirect HTTPS to HTTP
+2025-07-24 15:21:23,197 - WARNING -    • Testing with specific HTTP-only sites
+2025-07-24 15:21:23,197 - WARNING - ⚠️  No successful injections - try:
+2025-07-24 15:21:23,198 - WARNING -    • Browsing to http://neverssl.com
+2025-07-24 15:21:23,199 - WARNING -    • Browsing to http://httpforever.com
+2025-07-24 15:21:23,200 - WARNING -    • Setting up a local HTTP web server
+2025-07-24 15:21:23,201 - WARNING - ⚠️  Limited domain diversity - consider:
+2025-07-24 15:21:23,202 - WARNING -    • Testing with more varied browsing
+2025-07-24 15:21:23,202 - WARNING -    • Using multiple victim devices
+2025-07-24 15:21:23,203 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-24 15:21:23,210 - INFO - 
+==================================================
+2025-07-24 15:21:23,211 - INFO - 📊 HTTP INTERCEPTOR STATISTICS
+2025-07-24 15:21:23,212 - INFO - ==================================================
+2025-07-24 15:21:23,213 - INFO - ⏱️  Runtime: 31.7 seconds
+2025-07-24 15:21:23,213 - INFO - 📦 Total packets: 106
+2025-07-24 15:21:23,214 - INFO - 🔓 HTTP packets: 0
+2025-07-24 15:21:23,215 - INFO - 🔒 HTTPS packets: 39
+2025-07-24 15:21:23,215 - INFO - ✅ Successful injections: 0
+2025-07-24 15:21:23,216 - INFO - ❌ Failed injections: 0
+2025-07-24 15:21:23,217 - INFO - ⏩ Skipped non-HTML: 0
+2025-07-24 15:21:23,217 - INFO - 🌐 Unique domains seen: 0
+2025-07-24 15:21:23,218 - INFO - 
+💡 RECOMMENDATIONS:
+2025-07-24 15:21:23,219 - WARNING - ⚠️  Most traffic is HTTPS - consider:
+2025-07-24 15:21:23,219 - WARNING -    • Setting up a local HTTP test server
+2025-07-24 15:21:23,220 - WARNING -    • Using DNS spoofing to redirect HTTPS to HTTP
+2025-07-24 15:21:23,221 - WARNING -    • Testing with specific HTTP-only sites
+2025-07-24 15:21:23,221 - WARNING - ⚠️  No successful injections - try:
+2025-07-24 15:21:23,222 - WARNING -    • Browsing to http://neverssl.com
+2025-07-24 15:21:23,223 - WARNING -    • Browsing to http://httpforever.com
+2025-07-24 15:21:23,223 - WARNING -    • Setting up a local HTTP web server
+2025-07-24 15:21:23,224 - WARNING - ⚠️  Limited domain diversity - consider:
+2025-07-24 15:21:23,225 - WARNING -    • Testing with more varied browsing
+2025-07-24 15:21:23,227 - WARNING -    • Using multiple victim devices

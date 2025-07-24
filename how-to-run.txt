@@ -19,10 +19,10 @@ TCP Socket Interception and Modification:
 First, run the tcp socket server and client
 
 Victim Server:
-python bidirectional_server.py 
+python tcp_server.py 
 
 Victim Client:
-python bidirectional_client.py
+python tcp_client.py
 
 Attacker PC:
 sudo /home/aaniksahaa/miniconda3/bin/python bidirectional_tcp_interceptor.py
@@ -34,5 +34,5 @@ DNS Interception and Modification:
 ==================================
 
 Attacker PC:
-sudo /home/aaniksahaa/miniconda3/bin/python dns_interceptor.py
+sudo "$HOME/miniconda3/bin/python" dns_interceptor.py
 

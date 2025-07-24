@@ -2836,3 +2836,393 @@
 2025-07-18 23:00:11,585 - INFO - 
 [CLEANUP] 🧹 Cleaning up...
 2025-07-18 23:00:11,586 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:24:40,296 - INFO - [ATTACK] 🚀 Starting simplified DNS interceptor
+2025-07-24 01:24:40,296 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 01:24:40,297 - INFO - [SETUP] Setting up iptables rules
+2025-07-24 01:24:40,308 - INFO - [SETUP] ✅ iptables rules configured
+2025-07-24 01:24:40,308 - INFO - [ARP] 🎯 Starting ARP poisoning
+2025-07-24 01:24:40,309 - INFO - [DNS] 🚀 Starting DNS interception
+2025-07-24 01:24:43,799 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:24:43,804 - INFO - [DNS-ANSWER] star-mini.c10r.facebook.com -> 57.144.210.1
+2025-07-24 01:24:43,805 - WARNING - [DNS-REDIRECT] 🎯 star-mini.c10r.facebook.com: 57.144.210.1 -> 142.250.77.142
+2025-07-24 01:24:43,806 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-24 01:24:43,811 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-24 01:24:44,399 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:24:44,404 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:24:49,695 - INFO - [ARP] Sent 30 poison packets
+2025-07-24 01:24:53,456 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:24:53,460 - INFO - [DNS-ANSWER] ssl.gstatic.com -> 142.250.183.163
+2025-07-24 01:24:53,461 - INFO - [DNS-PASS] No redirection for ssl.gstatic.com
+2025-07-24 01:24:53,462 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:24:53,466 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:24:53,471 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:24:59,949 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-24 01:24:59,950 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:25:00,133 - INFO - [CLEANUP] Removing iptables rules
+2025-07-24 01:25:00,177 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:25:00,181 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:25:00,182 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-24 01:25:00,183 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:25:00,383 - INFO - [CLEANUP] Removing iptables rules
+2025-07-24 01:25:00,399 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:25:00,403 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:25:31,703 - INFO - [ATTACK] 🚀 Starting simplified DNS interceptor
+2025-07-24 01:25:31,703 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 01:25:31,705 - INFO - [SETUP] Setting up iptables rules
+2025-07-24 01:25:31,716 - INFO - [SETUP] ✅ iptables rules configured
+2025-07-24 01:25:31,716 - INFO - [ARP] 🎯 Starting ARP poisoning
+2025-07-24 01:25:31,716 - INFO - [DNS] 🚀 Starting DNS interception
+2025-07-24 01:25:32,976 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:25:32,978 - INFO - [DNS-ANSWER] live.github.com -> 140.82.112.26
+2025-07-24 01:25:32,978 - INFO - [DNS-PASS] No redirection for live.github.com
+2025-07-24 01:25:32,978 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:25:40,853 - INFO - [ARP] Sent 30 poison packets
+2025-07-24 01:25:44,239 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:25:44,244 - INFO - [DNS-ANSWER] telemetry-incoming.r53-2.services.mozilla.com -> 34.120.208.123
+2025-07-24 01:25:44,245 - INFO - [DNS-PASS] No redirection for telemetry-incoming.r53-2.services.mozilla.com
+2025-07-24 01:25:44,246 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:25:44,251 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:25:44,256 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:25:44,261 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:25:44,265 - INFO - [DNS-ANSWER] play.google.com -> 142.251.43.142
+2025-07-24 01:25:44,266 - INFO - [DNS-PASS] No redirection for play.google.com
+2025-07-24 01:25:44,267 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:25:44,446 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:25:44,450 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:25:46,616 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-24 01:25:46,616 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:25:46,775 - INFO - [CLEANUP] Removing iptables rules
+2025-07-24 01:25:46,812 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:25:46,815 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:25:46,816 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-24 01:25:46,817 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:25:47,003 - INFO - [CLEANUP] Removing iptables rules
+2025-07-24 01:25:47,017 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:25:47,021 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:25:56,065 - INFO - [ATTACK] 🚀 Starting simplified DNS interceptor
+2025-07-24 01:25:56,066 - INFO - [SETUP] Enabling IP forwarding
+2025-07-24 01:25:56,067 - INFO - [SETUP] Setting up iptables rules
+2025-07-24 01:25:56,077 - INFO - [SETUP] ✅ iptables rules configured
+2025-07-24 01:25:56,078 - INFO - [ARP] 🎯 Starting ARP poisoning
+2025-07-24 01:25:56,078 - INFO - [DNS] 🚀 Starting DNS interception
+2025-07-24 01:25:58,574 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:25:58,580 - INFO - [DNS-ANSWER] star-mini.c10r.facebook.com -> 57.144.208.1
+2025-07-24 01:25:58,581 - WARNING - [DNS-REDIRECT] 🎯 star-mini.c10r.facebook.com: 57.144.208.1 -> 142.250.77.142
+2025-07-24 01:25:58,582 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-24 01:25:58,587 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-24 01:25:58,882 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:25:58,887 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:26:05,089 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:26:05,092 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-24 01:26:05,092 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-24 01:26:05,093 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:26:05,097 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:26:05,101 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:26:05,514 - INFO - [ARP] Sent 30 poison packets
+2025-07-24 01:26:16,265 - INFO - [ARP] Sent 60 poison packets
+2025-07-24 01:26:26,920 - INFO - [ARP] Sent 90 poison packets
+2025-07-24 01:26:32,158 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:26:32,160 - INFO - [DNS-ANSWER] s-part-0044.t-0009.t-msedge.net -> 13.107.246.72
+2025-07-24 01:26:32,161 - INFO - [DNS-PASS] No redirection for s-part-0044.t-0009.t-msedge.net
+2025-07-24 01:26:32,161 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:26:32,253 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:26:32,257 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:26:32,464 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:26:32,465 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:26:37,492 - INFO - [ARP] Sent 120 poison packets
+2025-07-24 01:26:48,122 - INFO - [ARP] Sent 150 poison packets
+2025-07-24 01:26:58,845 - INFO - [ARP] Sent 180 poison packets
+2025-07-24 01:27:09,610 - INFO - [ARP] Sent 210 poison packets
+2025-07-24 01:27:12,913 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:12,919 - INFO - [DNS-ANSWER] content-signature-chains.prod.autograph.services.mozaws.net -> 34.160.144.191
+2025-07-24 01:27:12,921 - INFO - [DNS-PASS] No redirection for content-signature-chains.prod.autograph.services.mozaws.net
+2025-07-24 01:27:12,922 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:12,929 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:12,934 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,219 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,225 - INFO - [DNS-ANSWER] prod.detectportal.prod.cloudops.mozgcp.net -> 34.107.221.82
+2025-07-24 01:27:13,225 - INFO - [DNS-PASS] No redirection for prod.detectportal.prod.cloudops.mozgcp.net
+2025-07-24 01:27:13,226 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,234 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,242 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,320 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,325 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,432 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,436 - INFO - [DNS-ANSWER] prod.remote-settings.prod.webservices.mozgcp.net -> 34.149.100.209
+2025-07-24 01:27:13,437 - INFO - [DNS-PASS] No redirection for prod.remote-settings.prod.webservices.mozgcp.net
+2025-07-24 01:27:13,437 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,443 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,448 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,507 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,513 - INFO - [DNS-ANSWER] attachments.prod.remote-settings.prod.webservices.mozgcp.net -> 34.107.152.202
+2025-07-24 01:27:13,513 - INFO - [DNS-PASS] No redirection for attachments.prod.remote-settings.prod.webservices.mozgcp.net
+2025-07-24 01:27:13,514 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,518 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,525 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,529 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,532 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,535 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,537 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,540 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,542 - INFO - [DNS-ANSWER] web.telegram.org -> 149.154.167.99
+2025-07-24 01:27:13,543 - INFO - [DNS-PASS] No redirection for web.telegram.org
+2025-07-24 01:27:13,543 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,545 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,548 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,549 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,550 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,552 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,554 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,555 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,557 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,559 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,562 - INFO - [DNS-ANSWER] chatgpt.com -> 172.64.155.209
+2025-07-24 01:27:13,562 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 172.64.155.209 -> 142.250.77.142
+2025-07-24 01:27:13,562 - INFO - [DNS-ANSWER] chatgpt.com -> 104.18.32.47
+2025-07-24 01:27:13,563 - WARNING - [DNS-REDIRECT] 🎯 chatgpt.com: 104.18.32.47 -> 142.250.77.142
+2025-07-24 01:27:13,563 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
+2025-07-24 01:27:13,565 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
+2025-07-24 01:27:13,567 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,569 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,570 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,572 - INFO - [DNS-ANSWER] github.com -> 20.205.243.166
+2025-07-24 01:27:13,573 - INFO - [DNS-PASS] No redirection for github.com
+2025-07-24 01:27:13,573 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,575 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,578 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,580 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,582 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,586 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,589 - INFO - [DNS-ANSWER] keep-alv.google.com -> 216.239.32.176
+2025-07-24 01:27:13,589 - INFO - [DNS-PASS] No redirection for keep-alv.google.com
+2025-07-24 01:27:13,590 - INFO - [DNS-ANSWER] keep-alv.google.com -> 216.239.34.176
+2025-07-24 01:27:13,590 - INFO - [DNS-PASS] No redirection for keep-alv.google.com
+2025-07-24 01:27:13,590 - INFO - [DNS-ANSWER] keep-alv.google.com -> 216.239.38.176
+2025-07-24 01:27:13,590 - INFO - [DNS-PASS] No redirection for keep-alv.google.com
+2025-07-24 01:27:13,591 - INFO - [DNS-ANSWER] keep-alv.google.com -> 216.239.36.176
+2025-07-24 01:27:13,591 - INFO - [DNS-PASS] No redirection for keep-alv.google.com
+2025-07-24 01:27:13,591 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,595 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,597 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,601 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,604 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,606 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,608 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,610 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,612 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,614 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,616 - INFO - [DNS-ANSWER] grok.com -> 104.18.29.234
+2025-07-24 01:27:13,616 - INFO - [DNS-PASS] No redirection for grok.com
+2025-07-24 01:27:13,616 - INFO - [DNS-ANSWER] grok.com -> 104.18.28.234
+2025-07-24 01:27:13,617 - INFO - [DNS-PASS] No redirection for grok.com
+2025-07-24 01:27:13,617 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,618 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,620 - INFO - [DNS-ANSWER] httpforever.com -> 146.190.62.39
+2025-07-24 01:27:13,621 - INFO - [DNS-PASS] No redirection for httpforever.com
+2025-07-24 01:27:13,621 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,623 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,624 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,626 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,628 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,630 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,632 - INFO - [DNS-ANSWER] neverssl.com -> 34.223.124.45
+2025-07-24 01:27:13,632 - INFO - [DNS-PASS] No redirection for neverssl.com
+2025-07-24 01:27:13,632 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,635 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,636 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,639 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,642 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,645 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,647 - INFO - [DNS-ANSWER] dyna.wikimedia.org -> 103.102.166.224
+2025-07-24 01:27:13,647 - INFO - [DNS-PASS] No redirection for dyna.wikimedia.org
+2025-07-24 01:27:13,647 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,662 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,664 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,670 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,672 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,682 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,686 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:13,691 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:13,698 - INFO - [DNS-ANSWER] push.services.mozilla.com -> 34.107.243.93
+2025-07-24 01:27:13,699 - INFO - [DNS-PASS] No redirection for push.services.mozilla.com
+2025-07-24 01:27:13,700 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,061 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,066 - INFO - [DNS-ANSWER] telemetry-incoming.r53-2.services.mozilla.com -> 34.120.208.123
+2025-07-24 01:27:14,067 - INFO - [DNS-PASS] No redirection for telemetry-incoming.r53-2.services.mozilla.com
+2025-07-24 01:27:14,068 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,075 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,080 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,164 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,168 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,178 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,185 - INFO - [DNS-ANSWER] example.org -> 96.7.128.186
+2025-07-24 01:27:14,186 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-24 01:27:14,187 - INFO - [DNS-ANSWER] example.org -> 23.215.0.133
+2025-07-24 01:27:14,187 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-24 01:27:14,189 - INFO - [DNS-ANSWER] example.org -> 96.7.128.192
+2025-07-24 01:27:14,190 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-24 01:27:14,191 - INFO - [DNS-ANSWER] example.org -> 23.215.0.132
+2025-07-24 01:27:14,191 - INFO - [DNS-PASS] No redirection for example.org
+2025-07-24 01:27:14,192 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,201 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,210 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,217 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,224 - INFO - [DNS-ANSWER] ipv4only.arpa -> 192.0.0.170
+2025-07-24 01:27:14,225 - INFO - [DNS-PASS] No redirection for ipv4only.arpa
+2025-07-24 01:27:14,226 - INFO - [DNS-ANSWER] ipv4only.arpa -> 192.0.0.171
+2025-07-24 01:27:14,226 - INFO - [DNS-PASS] No redirection for ipv4only.arpa
+2025-07-24 01:27:14,227 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,231 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,236 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:14,244 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:14,250 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:15,189 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:15,193 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:15,328 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:15,331 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:15,364 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:15,371 - INFO - [DNS-ANSWER] cdn.oaistatic.com -> 104.18.41.158
+2025-07-24 01:27:15,372 - INFO - [DNS-PASS] No redirection for cdn.oaistatic.com
+2025-07-24 01:27:15,372 - INFO - [DNS-ANSWER] cdn.oaistatic.com -> 172.64.146.98
+2025-07-24 01:27:15,373 - INFO - [DNS-PASS] No redirection for cdn.oaistatic.com
+2025-07-24 01:27:15,374 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:15,381 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:15,386 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:20,107 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:20,111 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:20,116 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:20,120 - INFO - [DNS-ANSWER] www.google.com -> 172.217.24.4
+2025-07-24 01:27:20,121 - INFO - [DNS-PASS] No redirection for www.google.com
+2025-07-24 01:27:20,121 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:20,126 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:20,131 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:20,374 - INFO - [ARP] Sent 240 poison packets
+2025-07-24 01:27:21,908 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:21,911 - INFO - [DNS-ANSWER] fonts.gstatic.com -> 142.251.222.195
+2025-07-24 01:27:21,911 - INFO - [DNS-PASS] No redirection for fonts.gstatic.com
+2025-07-24 01:27:21,911 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:21,942 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:21,946 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:21,969 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:21,972 - INFO - [DNS-ANSWER] paste-image-to-download.netlify.app -> 13.215.239.219
+2025-07-24 01:27:21,973 - INFO - [DNS-PASS] No redirection for paste-image-to-download.netlify.app
+2025-07-24 01:27:21,973 - INFO - [DNS-ANSWER] paste-image-to-download.netlify.app -> 52.74.6.109
+2025-07-24 01:27:21,973 - INFO - [DNS-PASS] No redirection for paste-image-to-download.netlify.app
+2025-07-24 01:27:21,974 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:22,039 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:22,044 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:22,205 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:22,210 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:23,054 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:27:23,063 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 57.129.37.75
+2025-07-24 01:27:23,064 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,065 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 92.223.88.7
+2025-07-24 01:27:23,065 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,066 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 92.223.88.41
+2025-07-24 01:27:23,066 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,067 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 57.129.37.28
+2025-07-24 01:27:23,067 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,068 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 92.223.88.232
+2025-07-24 01:27:23,068 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,069 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 185.229.190.236
+2025-07-24 01:27:23,069 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,070 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 195.181.174.167
+2025-07-24 01:27:23,071 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,072 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 185.229.191.44
+2025-07-24 01:27:23,073 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,073 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 57.129.19.230
+2025-07-24 01:27:23,074 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,075 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 185.229.191.39
+2025-07-24 01:27:23,075 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,075 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:23,086 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:27:23,096 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 92.223.88.41
+2025-07-24 01:27:23,096 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,097 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 57.129.37.28
+2025-07-24 01:27:23,098 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,098 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 185.229.190.236
+2025-07-24 01:27:23,099 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,099 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 57.129.37.75
+2025-07-24 01:27:23,100 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,100 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 92.223.88.232
+2025-07-24 01:27:23,101 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,102 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 185.229.191.44
+2025-07-24 01:27:23,103 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,104 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 185.229.191.39
+2025-07-24 01:27:23,105 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,106 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 195.181.174.167
+2025-07-24 01:27:23,107 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,107 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 92.223.88.7
+2025-07-24 01:27:23,108 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,108 - INFO - [DNS-ANSWER] boot-relays.net.anydesk.com -> 57.129.19.230
+2025-07-24 01:27:23,109 - INFO - [DNS-PASS] No redirection for boot-relays.net.anydesk.com
+2025-07-24 01:27:23,109 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:31,119 - INFO - [ARP] Sent 270 poison packets
+2025-07-24 01:27:41,874 - INFO - [ARP] Sent 300 poison packets
+2025-07-24 01:27:44,755 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,759 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,763 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,767 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,771 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,776 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,780 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,784 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,791 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,797 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,801 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,805 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,811 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,815 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:44,820 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:44,825 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:47,927 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:47,931 - INFO - [DNS-ANSWER] drive.google.com -> 142.251.223.14
+2025-07-24 01:27:47,932 - INFO - [DNS-PASS] No redirection for drive.google.com
+2025-07-24 01:27:47,932 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:47,936 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:47,939 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,132 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,136 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,143 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,149 - INFO - [DNS-ANSWER] plus.l.google.com -> 142.251.223.14
+2025-07-24 01:27:48,150 - INFO - [DNS-PASS] No redirection for plus.l.google.com
+2025-07-24 01:27:48,150 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,157 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,162 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,167 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,171 - INFO - [DNS-ANSWER] www.gstatic.com -> 142.250.195.227
+2025-07-24 01:27:48,174 - INFO - [DNS-PASS] No redirection for www.gstatic.com
+2025-07-24 01:27:48,177 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,184 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,187 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,196 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,200 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,208 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,219 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,316 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
+2025-07-24 01:27:48,318 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:48,951 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:27:48,955 - INFO - [DNS-ANSWER] dns.msftncsi.com -> 131.107.255.255
+2025-07-24 01:27:48,956 - INFO - [DNS-PASS] No redirection for dns.msftncsi.com
+2025-07-24 01:27:48,957 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:49,055 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.159
+2025-07-24 01:27:49,058 - INFO - [DNS-ANSWER] dns.msftncsi.com -> 131.107.255.255
+2025-07-24 01:27:49,058 - INFO - [DNS-PASS] No redirection for dns.msftncsi.com
+2025-07-24 01:27:49,059 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
+2025-07-24 01:27:52,591 - INFO - [ARP] Sent 330 poison packets
+2025-07-24 01:27:59,429 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-24 01:27:59,430 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:27:59,555 - INFO - [CLEANUP] Removing iptables rules
+2025-07-24 01:27:59,577 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:27:59,579 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-24 01:27:59,579 - INFO - 
+[CLEANUP] 🧹 Cleaning up...
+2025-07-24 01:27:59,580 - INFO - [CLEANUP] Restoring ARP tables
+2025-07-24 01:27:59,735 - INFO - [CLEANUP] Removing iptables rules
+2025-07-24 01:27:59,741 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-24 01:27:59,743 - INFO - [CLEANUP] ✅ Cleanup complete

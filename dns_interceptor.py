@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-DNS Interceptor - Simplified and Reliable Version
-Focuses on DNS response modification to redirect domains to Google
-"""
-
 from scapy.all import *
 from netfilterqueue import NetfilterQueue
 import os

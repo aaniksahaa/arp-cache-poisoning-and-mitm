@@ -79,7 +79,7 @@ class DeviceRegistry:
     
     phone_redmi = Device(
         name="phone", 
-        ip="192.168.0.201",
+        ip="192.168.0.111",
         mac="f4:30:8b:91:d6:1f",
         device_type="phone",
         description="Xiaomi Redmi Note 10"
@@ -135,7 +135,7 @@ class AttackConfig:
     # POISON_TARGET_2 = DeviceRegistry.laptop_dell
 
     POISON_TARGET_1 = DeviceRegistry.laptop_lenovo 
-    POISON_TARGET_2 = DeviceRegistry.laptop_dell
+    POISON_TARGET_2 = DeviceRegistry.phone_redmi
 
     # Gateway device (router)
     GATEWAY_DEVICE = DeviceRegistry.gateway
@@ -144,13 +144,13 @@ class AttackConfig:
     # in case of local server, 
     # we need to put the local server at gateway
     # and the victim at poison_target_1
-    GATEWAY_DEVICE = DeviceRegistry.laptop_lenovo
+    # GATEWAY_DEVICE = DeviceRegistry.laptop_lenovo
 
     # POISON_TARGET_1 = DeviceRegistry.laptop_dell 
     # POISON_TARGET_2 = DeviceRegistry.laptop_dell 
 
-    POISON_TARGET_1 = DeviceRegistry.phone_redmi
-    POISON_TARGET_2 = DeviceRegistry.phone_redmi
+    # POISON_TARGET_1 = DeviceRegistry.phone_redmi
+    # POISON_TARGET_2 = DeviceRegistry.phone_redmi
     
     # ===== BACKWARDS COMPATIBILITY =====
     # Keep old variable names for existing scripts

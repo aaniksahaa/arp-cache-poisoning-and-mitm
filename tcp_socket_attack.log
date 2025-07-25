@@ -1834,3 +1834,196 @@
 2025-07-24 01:14:27,472 - INFO - [DROP] ✂️  Packet intercepted and discarded
 2025-07-24 01:14:32,692 - INFO - [ARP-POISON] Sent 1020 poison packets
 2025-07-24 01:14:43,385 - INFO - [ARP-POISON] Sent 1050 poison packets
+2025-07-25 20:06:58,110 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket intercepting & dropping
+2025-07-25 20:06:58,110 - INFO - [ATTACK] 🔧 TCP Mode: DROP
+2025-07-25 20:06:58,111 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:06:58,111 - INFO - [SETUP] Enabling IP forwarding
+2025-07-25 20:06:58,113 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-25 20:06:58,113 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-25 20:06:58,114 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-25 20:06:58,114 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-25 20:06:58,114 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-25 20:06:58,117 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-25 20:06:58,117 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-25 20:06:58,117 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-25 20:06:58,118 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-25 20:06:58,118 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.111) - phone
+2025-07-25 20:06:58,118 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-25 20:06:58,118 - INFO - [MITM] 🔧 Mode: DROP
+2025-07-25 20:06:58,118 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
+2025-07-25 20:06:58,118 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-25 20:07:06,779 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-25 20:07:17,436 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-25 20:07:28,062 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-25 20:07:38,678 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-25 20:07:49,355 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-25 20:08:00,034 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-25 20:08:10,686 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-25 20:08:21,370 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-25 20:08:32,045 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-25 20:08:42,714 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-25 20:08:53,368 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-25 20:09:04,035 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-25 20:09:14,752 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-25 20:09:25,293 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-25 20:09:35,910 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-25 20:09:46,620 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-25 20:09:57,305 - INFO - [ARP-POISON] Sent 510 poison packets
+2025-07-25 20:10:07,960 - INFO - [ARP-POISON] Sent 540 poison packets
+2025-07-25 20:10:18,589 - INFO - [ARP-POISON] Sent 570 poison packets
+2025-07-25 20:10:29,210 - INFO - [ARP-POISON] Sent 600 poison packets
+2025-07-25 20:10:39,895 - INFO - [ARP-POISON] Sent 630 poison packets
+2025-07-25 20:10:50,543 - INFO - [ARP-POISON] Sent 660 poison packets
+2025-07-25 20:11:01,184 - INFO - [ARP-POISON] Sent 690 poison packets
+2025-07-25 20:11:11,864 - INFO - [ARP-POISON] Sent 720 poison packets
+2025-07-25 20:11:22,493 - INFO - [ARP-POISON] Sent 750 poison packets
+2025-07-25 20:11:33,054 - INFO - [ARP-POISON] Sent 780 poison packets
+2025-07-25 20:11:43,680 - INFO - [ARP-POISON] Sent 810 poison packets
+2025-07-25 20:11:54,368 - INFO - [ARP-POISON] Sent 840 poison packets
+2025-07-25 20:12:04,971 - INFO - [ARP-POISON] Sent 870 poison packets
+2025-07-25 20:12:15,548 - INFO - [ARP-POISON] Sent 900 poison packets
+2025-07-25 20:12:26,217 - INFO - [ARP-POISON] Sent 930 poison packets
+2025-07-25 20:12:36,743 - INFO - [ARP-POISON] Sent 960 poison packets
+2025-07-25 20:12:47,330 - INFO - [ARP-POISON] Sent 990 poison packets
+2025-07-25 20:12:57,950 - INFO - [ARP-POISON] Sent 1020 poison packets
+2025-07-25 20:13:08,598 - INFO - [ARP-POISON] Sent 1050 poison packets
+2025-07-25 20:13:19,258 - INFO - [ARP-POISON] Sent 1080 poison packets
+2025-07-25 20:13:29,978 - INFO - [ARP-POISON] Sent 1110 poison packets
+2025-07-25 20:13:40,629 - INFO - [ARP-POISON] Sent 1140 poison packets
+2025-07-25 20:13:51,316 - INFO - [ARP-POISON] Sent 1170 poison packets
+2025-07-25 20:14:01,949 - INFO - [ARP-POISON] Sent 1200 poison packets
+2025-07-25 20:14:12,582 - INFO - [ARP-POISON] Sent 1230 poison packets
+2025-07-25 20:14:23,324 - INFO - [ARP-POISON] Sent 1260 poison packets
+2025-07-25 20:14:33,947 - INFO - [ARP-POISON] Sent 1290 poison packets
+2025-07-25 20:14:44,624 - INFO - [ARP-POISON] Sent 1320 poison packets
+2025-07-25 20:14:55,288 - INFO - [ARP-POISON] Sent 1350 poison packets
+2025-07-25 20:15:05,924 - INFO - [ARP-POISON] Sent 1380 poison packets
+2025-07-25 20:15:16,580 - INFO - [ARP-POISON] Sent 1410 poison packets
+2025-07-25 20:15:27,173 - INFO - [ARP-POISON] Sent 1440 poison packets
+2025-07-25 20:15:37,824 - INFO - [ARP-POISON] Sent 1470 poison packets
+2025-07-25 20:15:48,382 - INFO - [ARP-POISON] Sent 1500 poison packets
+2025-07-25 20:15:58,947 - INFO - [ARP-POISON] Sent 1530 poison packets
+2025-07-25 20:16:09,492 - INFO - [ARP-POISON] Sent 1560 poison packets
+2025-07-25 20:16:20,129 - INFO - [ARP-POISON] Sent 1590 poison packets
+2025-07-25 20:16:30,765 - INFO - [ARP-POISON] Sent 1620 poison packets
+2025-07-25 20:16:41,435 - INFO - [ARP-POISON] Sent 1650 poison packets
+2025-07-25 20:16:52,131 - INFO - [ARP-POISON] Sent 1680 poison packets
+2025-07-25 20:17:02,812 - INFO - [ARP-POISON] Sent 1710 poison packets
+2025-07-25 20:17:13,494 - INFO - [ARP-POISON] Sent 1740 poison packets
+2025-07-25 20:17:24,158 - INFO - [ARP-POISON] Sent 1770 poison packets
+2025-07-25 20:17:34,825 - INFO - [ARP-POISON] Sent 1800 poison packets
+2025-07-25 20:17:45,475 - INFO - [ARP-POISON] Sent 1830 poison packets
+2025-07-25 20:17:56,107 - INFO - [ARP-POISON] Sent 1860 poison packets
+2025-07-25 20:18:06,744 - INFO - [ARP-POISON] Sent 1890 poison packets
+2025-07-25 20:18:17,407 - INFO - [ARP-POISON] Sent 1920 poison packets
+2025-07-25 20:18:28,103 - INFO - [ARP-POISON] Sent 1950 poison packets
+2025-07-25 20:18:38,701 - INFO - [ARP-POISON] Sent 1980 poison packets
+2025-07-25 20:18:49,336 - INFO - [ARP-POISON] Sent 2010 poison packets
+2025-07-25 20:19:00,019 - INFO - [ARP-POISON] Sent 2040 poison packets
+2025-07-25 20:19:10,697 - INFO - [ARP-POISON] Sent 2070 poison packets
+2025-07-25 20:19:21,398 - INFO - [ARP-POISON] Sent 2100 poison packets
+2025-07-25 20:19:32,006 - INFO - [ARP-POISON] Sent 2130 poison packets
+2025-07-25 20:19:42,716 - INFO - [ARP-POISON] Sent 2160 poison packets
+2025-07-25 20:19:53,408 - INFO - [ARP-POISON] Sent 2190 poison packets
+2025-07-25 20:20:04,022 - INFO - [ARP-POISON] Sent 2220 poison packets
+2025-07-25 20:20:14,697 - INFO - [ARP-POISON] Sent 2250 poison packets
+2025-07-25 20:20:25,375 - INFO - [ARP-POISON] Sent 2280 poison packets
+2025-07-25 20:20:36,065 - INFO - [ARP-POISON] Sent 2310 poison packets
+2025-07-25 20:20:46,756 - INFO - [ARP-POISON] Sent 2340 poison packets
+2025-07-25 20:20:57,464 - INFO - [ARP-POISON] Sent 2370 poison packets
+2025-07-25 20:21:08,155 - INFO - [ARP-POISON] Sent 2400 poison packets
+2025-07-25 20:21:18,837 - INFO - [ARP-POISON] Sent 2430 poison packets
+2025-07-25 20:21:29,512 - INFO - [ARP-POISON] Sent 2460 poison packets
+2025-07-25 20:21:40,185 - INFO - [ARP-POISON] Sent 2490 poison packets
+2025-07-25 20:21:50,835 - INFO - [ARP-POISON] Sent 2520 poison packets
+2025-07-25 20:22:01,482 - INFO - [ARP-POISON] Sent 2550 poison packets
+2025-07-25 20:22:12,142 - INFO - [ARP-POISON] Sent 2580 poison packets
+2025-07-25 20:22:22,782 - INFO - [ARP-POISON] Sent 2610 poison packets
+2025-07-25 20:22:33,441 - INFO - [ARP-POISON] Sent 2640 poison packets
+2025-07-25 20:22:44,163 - INFO - [ARP-POISON] Sent 2670 poison packets
+2025-07-25 20:22:54,874 - INFO - [ARP-POISON] Sent 2700 poison packets
+2025-07-25 20:23:05,537 - INFO - [ARP-POISON] Sent 2730 poison packets
+2025-07-25 20:23:16,177 - INFO - [ARP-POISON] Sent 2760 poison packets
+2025-07-25 20:23:26,834 - INFO - [ARP-POISON] Sent 2790 poison packets
+2025-07-25 20:23:37,486 - INFO - [ARP-POISON] Sent 2820 poison packets
+2025-07-25 20:23:48,195 - INFO - [ARP-POISON] Sent 2850 poison packets
+2025-07-25 20:23:58,870 - INFO - [ARP-POISON] Sent 2880 poison packets
+2025-07-25 20:24:09,634 - INFO - [ARP-POISON] Sent 2910 poison packets
+2025-07-25 20:24:20,308 - INFO - [ARP-POISON] Sent 2940 poison packets
+2025-07-25 20:24:30,937 - INFO - [ARP-POISON] Sent 2970 poison packets
+2025-07-25 20:24:41,576 - INFO - [ARP-POISON] Sent 3000 poison packets
+2025-07-25 20:24:52,201 - INFO - [ARP-POISON] Sent 3030 poison packets
+2025-07-25 20:25:02,855 - INFO - [ARP-POISON] Sent 3060 poison packets
+2025-07-25 20:25:13,512 - INFO - [ARP-POISON] Sent 3090 poison packets
+2025-07-25 20:25:24,163 - INFO - [ARP-POISON] Sent 3120 poison packets
+2025-07-25 20:25:34,819 - INFO - [ARP-POISON] Sent 3150 poison packets
+2025-07-25 20:25:45,512 - INFO - [ARP-POISON] Sent 3180 poison packets
+2025-07-25 20:25:56,215 - INFO - [ARP-POISON] Sent 3210 poison packets
+2025-07-25 20:26:06,874 - INFO - [ARP-POISON] Sent 3240 poison packets
+2025-07-25 20:26:17,492 - INFO - [ARP-POISON] Sent 3270 poison packets
+2025-07-25 20:26:28,175 - INFO - [ARP-POISON] Sent 3300 poison packets
+2025-07-25 20:26:38,811 - INFO - [ARP-POISON] Sent 3330 poison packets
+2025-07-25 20:26:49,468 - INFO - [ARP-POISON] Sent 3360 poison packets
+2025-07-25 20:27:00,167 - INFO - [ARP-POISON] Sent 3390 poison packets
+2025-07-25 20:27:10,794 - INFO - [ARP-POISON] Sent 3420 poison packets
+2025-07-25 20:27:21,483 - INFO - [ARP-POISON] Sent 3450 poison packets
+2025-07-25 20:27:32,112 - INFO - [ARP-POISON] Sent 3480 poison packets
+2025-07-25 20:27:42,794 - INFO - [ARP-POISON] Sent 3510 poison packets
+2025-07-25 20:27:53,450 - INFO - [ARP-POISON] Sent 3540 poison packets
+2025-07-25 20:28:04,099 - INFO - [ARP-POISON] Sent 3570 poison packets
+2025-07-25 20:28:14,780 - INFO - [ARP-POISON] Sent 3600 poison packets
+2025-07-25 20:28:25,438 - INFO - [ARP-POISON] Sent 3630 poison packets
+2025-07-25 20:28:36,103 - INFO - [ARP-POISON] Sent 3660 poison packets
+2025-07-25 20:28:46,770 - INFO - [ARP-POISON] Sent 3690 poison packets
+2025-07-25 20:28:57,445 - INFO - [ARP-POISON] Sent 3720 poison packets
+2025-07-25 20:29:08,166 - INFO - [ARP-POISON] Sent 3750 poison packets
+2025-07-25 20:29:09,954 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-25 20:29:09,955 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-25 20:29:10,084 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-25 20:29:10,085 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-25 20:29:10,089 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-25 20:29:10,103 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-25 20:29:10,104 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-25 20:33:04,115 - INFO - [ATTACK] 🚀 Starting bidirectional ARP poisoning & TCP socket intercepting & dropping
+2025-07-25 20:33:04,116 - INFO - [ATTACK] 🔧 TCP Mode: DROP
+2025-07-25 20:33:04,117 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:33:04,117 - INFO - [SETUP] Enabling IP forwarding
+2025-07-25 20:33:04,120 - INFO - [SETUP] ✅ IP forwarding enabled successfully
+2025-07-25 20:33:04,122 - INFO - [ARP-POISON] 🎯 Starting continuous bidirectional ARP poisoning
+2025-07-25 20:33:04,122 - INFO - [SETUP] Setting up iptables rule for bidirectional packet interception
+2025-07-25 20:33:04,122 - INFO - [ARP-POISON] Interval: 2 seconds
+2025-07-25 20:33:04,124 - INFO - [ARP-POISON] Targets: laptop ↔ phone
+2025-07-25 20:33:04,134 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
+2025-07-25 20:33:04,137 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
+2025-07-25 20:33:04,138 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
+2025-07-25 20:33:04,139 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-25 20:33:04,140 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.111) - phone
+2025-07-25 20:33:04,141 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
+2025-07-25 20:33:04,141 - INFO - [MITM] 🔧 Mode: DROP
+2025-07-25 20:33:04,142 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
+2025-07-25 20:33:04,142 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
+2025-07-25 20:33:12,803 - INFO - [ARP-POISON] Sent 30 poison packets
+2025-07-25 20:33:23,407 - INFO - [ARP-POISON] Sent 60 poison packets
+2025-07-25 20:33:34,084 - INFO - [ARP-POISON] Sent 90 poison packets
+2025-07-25 20:33:44,666 - INFO - [ARP-POISON] Sent 120 poison packets
+2025-07-25 20:33:55,264 - INFO - [ARP-POISON] Sent 150 poison packets
+2025-07-25 20:34:05,962 - INFO - [ARP-POISON] Sent 180 poison packets
+2025-07-25 20:34:16,619 - INFO - [ARP-POISON] Sent 210 poison packets
+2025-07-25 20:34:27,284 - INFO - [ARP-POISON] Sent 240 poison packets
+2025-07-25 20:34:37,990 - INFO - [ARP-POISON] Sent 270 poison packets
+2025-07-25 20:34:48,684 - INFO - [ARP-POISON] Sent 300 poison packets
+2025-07-25 20:34:59,369 - INFO - [ARP-POISON] Sent 330 poison packets
+2025-07-25 20:35:10,047 - INFO - [ARP-POISON] Sent 360 poison packets
+2025-07-25 20:35:20,780 - INFO - [ARP-POISON] Sent 390 poison packets
+2025-07-25 20:35:31,450 - INFO - [ARP-POISON] Sent 420 poison packets
+2025-07-25 20:35:42,140 - INFO - [ARP-POISON] Sent 450 poison packets
+2025-07-25 20:35:52,832 - INFO - [ARP-POISON] Sent 480 poison packets
+2025-07-25 20:35:57,414 - INFO - 
+[CLEANUP] 🧹 Starting cleanup process...
+2025-07-25 20:35:57,415 - INFO - [CLEANUP] Restoring ARP tables...
+2025-07-25 20:35:57,562 - INFO - [ARP-RESTORE] Restored ARP tables for laptop, phone, and gateway
+2025-07-25 20:35:57,562 - INFO - [CLEANUP] Disabling IP forwarding
+2025-07-25 20:35:57,565 - INFO - [CLEANUP] Removing iptables rules...
+2025-07-25 20:35:57,582 - INFO - [CLEANUP] ✅ Cleanup complete
+2025-07-25 20:35:57,583 - INFO - [CLEANUP] Removing iptables rules...

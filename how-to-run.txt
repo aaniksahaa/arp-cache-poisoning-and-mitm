@@ -47,3 +47,10 @@ DNS Interception and Modification:
 Attacker PC:
 sudo "$HOME/miniconda3/bin/python" dns_interceptor.py
 
+Defense:
+========
+
+sudo ./run_defense_prereq.sh
+sudo "$HOME/miniconda3/bin/python" arp_defense_system.py
+
+

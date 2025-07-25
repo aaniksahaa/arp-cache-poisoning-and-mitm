@@ -14,6 +14,32 @@ from datetime import datetime
 from collections import defaultdict
 import re
 
+# =====================================================================
+# SCAN CONFIGURATION - Control which scanning steps to execute
+# =====================================================================
+# Set which scanning steps to run (1, 2, 3 or combinations)
+# Step 1: Read existing ARP table (fastest)
+# Step 2: Active ARP scanning with Scapy/fallback (most reliable) 
+# Step 3: Enhanced ping sweep (catches devices that don't respond to ARP)
+
+# SCAN_STEPS = [1, 2, 3]  # Run all three steps by default
+SCAN_STEPS = [1, 2]   # Run only ARP table + ARP scanning (skip ping sweep)
+# SCAN_STEPS = [1, 3]   # Run only ARP table + ping sweep (skip active ARP)
+# SCAN_STEPS = [2, 3]   # Run only active scanning methods (skip ARP table)
+# SCAN_STEPS = [1]      # Run only ARP table reading (fastest)
+# SCAN_STEPS = [2]      # Run only active ARP scanning
+# SCAN_STEPS = [3]      # Run only ping sweep
+
+# Add Scapy for reliable ARP scanning
+try:
+    from scapy.all import ARP, Ether, srp, get_if_addr, conf
+    SCAPY_AVAILABLE = True
+    print("✅ Scapy available for enhanced ARP scanning")
+except ImportError:
+    SCAPY_AVAILABLE = False
+    print("⚠️  Scapy not available. Install with: pip install scapy")
+    print("   Using fallback discovery methods only")
+
 # Import centralized configuration
 from config import NetworkConfig, ScannerConfig, PathConfig
 
@@ -26,6 +52,11 @@ MAC_VENDOR_CACHE_FILE = ScannerConfig.MAC_VENDOR_CACHE_FILE
 SCAN_RESULTS_FILE = ScannerConfig.SCAN_RESULTS_FILE
 DEFAULT_SORT = ScannerConfig.DEFAULT_SORT
 SHOW_ENHANCED_VENDOR_INFO = ScannerConfig.SHOW_ENHANCED_VENDOR_INFO
+
+# Enhanced scanning configuration
+ARP_SCAN_ROUNDS = 3  # Number of ARP scanning passes
+ARP_TIMEOUT = 3      # Timeout for each ARP scan
+ARP_RETRY_DELAY = 0.5  # Delay between ARP scan rounds
 
 # Device type detection patterns
 DEVICE_PATTERNS = {
@@ -70,6 +101,20 @@ class NetworkDeviceScanner:
         
         print(f"🔍 Network Device Scanner initialized")
         print(f"   Interface: {self.interface}")
+        
+        # Check for root privileges if Scapy is available
+        if SCAPY_AVAILABLE:
+            self.check_privileges()
+    
+    def check_privileges(self):
+        """Check if running with sufficient privileges for raw socket access"""
+        import os
+        if os.geteuid() != 0:
+            print(f"ℹ️  Running without root privileges")
+            print(f"   • ARP scanning will use fallback methods")
+            print(f"   • For best results, run with: sudo python3 {__file__}")
+        else:
+            print(f"✅ Running with root privileges - full ARP scanning available")
     
     def load_mac_vendor_database(self):
         """Load MAC vendor database from online or local sources"""
@@ -528,6 +573,258 @@ class NetworkDeviceScanner:
         print(f"✅ Found {len(active_ips)} active devices")
         return active_ips
     
+    def arp_scan_scapy(self, network=DEFAULT_NETWORK_RANGE):
+        """
+        Comprehensive ARP scanning using Scapy for reliable device discovery
+        This method actively sends ARP requests to all IPs in the network range
+        """
+        if not SCAPY_AVAILABLE:
+            print("⚠️  Scapy not available, skipping ARP scan")
+            return {}
+        
+        print(f"🔎 Performing enhanced ARP scan on {network}...")
+        devices = {}
+        
+        try:
+            # Configure Scapy to be less verbose
+            conf.verb = 0
+            
+            # Create ARP request packet
+            arp_request = ARP(pdst=network)
+            broadcast = Ether(dst="ff:ff:ff:ff:ff:ff")
+            arp_request_broadcast = broadcast / arp_request
+            
+            # Perform multiple scanning rounds for better coverage
+            permission_error_count = 0
+            for round_num in range(1, ARP_SCAN_ROUNDS + 1):
+                print(f"   📡 ARP scan round {round_num}/{ARP_SCAN_ROUNDS}...")
+                
+                try:
+                    # Send ARP requests and receive responses
+                    answered_list = srp(arp_request_broadcast, timeout=ARP_TIMEOUT, verbose=False)[0]
+                    
+                    # Process responses
+                    round_devices = 0
+                    for element in answered_list:
+                        ip = element[1].psrc
+                        mac = element[1].hwsrc
+                        
+                        if ip not in devices:
+                            devices[ip] = {
+                                'hostname': None,
+                                'mac': mac,
+                                'interface': self.interface,
+                                'source': 'arp_scapy',
+                                'first_seen_round': round_num
+                            }
+                            round_devices += 1
+                    
+                    print(f"      ✅ Round {round_num}: {round_devices} new devices found")
+                    
+                    # Small delay between rounds to avoid overwhelming the network
+                    if round_num < ARP_SCAN_ROUNDS:
+                        time.sleep(ARP_RETRY_DELAY)
+                        
+                except PermissionError as e:
+                    permission_error_count += 1
+                    print(f"      ⚠️  Round {round_num} failed: Permission denied (need root/sudo)")
+                    continue
+                except OSError as e:
+                    if "Operation not permitted" in str(e) or "Permission denied" in str(e):
+                        permission_error_count += 1
+                        print(f"      ⚠️  Round {round_num} failed: Permission denied (need root/sudo)")
+                        continue
+                    else:
+                        print(f"      ⚠️  Round {round_num} failed: {e}")
+                        continue
+                except Exception as e:
+                    print(f"      ⚠️  Round {round_num} failed: {e}")
+                    continue
+            
+            # If all rounds failed due to permissions, show helpful message
+            if permission_error_count == ARP_SCAN_ROUNDS:
+                print(f"      💡 Tip: Run with 'sudo python3 network_device_scanner.py' for ARP scanning")
+                print(f"      📋 Falling back to alternative discovery methods...")
+            
+            print(f"✅ ARP scan complete! Found {len(devices)} devices total")
+            
+        except Exception as e:
+            print(f"❌ ARP scan failed: {e}")
+            return {}
+        
+        return devices
+    
+    def arp_scan_fallback(self, network=DEFAULT_NETWORK_RANGE):
+        """
+        Fallback ARP scanning method that doesn't require root privileges
+        Uses system commands to perform ARP discovery
+        """
+        print(f"🔄 Performing fallback ARP discovery on {network}...")
+        devices = {}
+        
+        # Extract network base
+        if network.endswith('/24'):
+            base = network[:-3]
+            base_parts = base.split('.')
+            network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
+        else:
+            network_base = "192.168.0"
+        
+        def arp_ping_ip(ip):
+            """Send ARP request using arping command"""
+            try:
+                # Try arping command (if available)
+                result = subprocess.run(['arping', '-c', '1', '-W', '1', ip], 
+                                      capture_output=True, text=True, timeout=3)
+                if result.returncode == 0 and 'reply' in result.stdout.lower():
+                    # Parse MAC from arping output
+                    lines = result.stdout.split('\n')
+                    for line in lines:
+                        if 'reply' in line.lower() and '[' in line and ']' in line:
+                            mac_match = re.search(r'\[([0-9a-fA-F:]{17})\]', line)
+                            if mac_match:
+                                return mac_match.group(1)
+                    return "unknown"
+            except (subprocess.TimeoutExpired, FileNotFoundError):
+                pass
+            
+            # Fallback: ping then check ARP table
+            try:
+                subprocess.run(['ping', '-c', '1', '-W', '1', ip], 
+                             capture_output=True, timeout=2)
+                
+                # Check ARP table for this specific IP
+                arp_result = subprocess.run(['arp', '-n', ip], 
+                                          capture_output=True, text=True, timeout=2)
+                if arp_result.returncode == 0 and 'ether' in arp_result.stdout:
+                    parts = arp_result.stdout.split()
+                    if len(parts) >= 3:
+                        return parts[2]  # MAC address
+            except:
+                pass
+            
+            return None
+        
+        # Try ARP discovery on all IPs
+        print(f"   🔍 Scanning {network_base}.1-254...")
+        
+        # Use threading for faster scanning
+        results = {}
+        threads = []
+        
+        def scan_ip_range(start, end):
+            for i in range(start, end + 1):
+                ip = f"{network_base}.{i}"
+                mac = arp_ping_ip(ip)
+                if mac:
+                    results[ip] = mac
+        
+        # Split into chunks for parallel processing
+        chunk_size = 64
+        for start in range(1, 255, chunk_size):
+            end = min(start + chunk_size - 1, 254)
+            thread = threading.Thread(target=scan_ip_range, args=(start, end))
+            threads.append(thread)
+            thread.start()
+        
+        # Wait for all threads
+        for thread in threads:
+            thread.join()
+        
+        # Convert results to device format
+        for ip, mac in results.items():
+            devices[ip] = {
+                'hostname': None,
+                'mac': mac,
+                'interface': self.interface,
+                'source': 'arp_fallback'
+            }
+        
+        print(f"✅ Fallback ARP discovery found {len(devices)} devices")
+        return devices
+    
+    def comprehensive_ping_sweep(self, network=DEFAULT_NETWORK_RANGE, rounds=2):
+        """
+        Enhanced ping sweep with multiple rounds for better device discovery
+        """
+        print(f"🔍 Performing enhanced ping sweep on {network} ({rounds} rounds)...")
+        
+        # Extract network base (simple implementation)
+        if network.endswith('/24'):
+            base = network[:-3]
+            base_parts = base.split('.')
+            network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
+        else:
+            network_base = "192.168.0"
+        
+        all_active_ips = set()
+        
+        for round_num in range(1, rounds + 1):
+            print(f"   🏓 Ping round {round_num}/{rounds}...")
+            round_active_ips = []
+            
+            def ping_ip(ip):
+                try:
+                    # Try both regular ping and faster ping
+                    result = subprocess.run(['ping', '-c', '2', '-W', '2', ip], 
+                                          capture_output=True, timeout=5)
+                    if result.returncode == 0:
+                        round_active_ips.append(ip)
+                except:
+                    pass
+            
+            # Ping all IPs in parallel
+            threads = []
+            for i in range(1, 255):
+                ip = f"{network_base}.{i}"
+                thread = threading.Thread(target=ping_ip, args=(ip,))
+                threads.append(thread)
+                thread.start()
+                
+                # Limit concurrent threads to avoid overwhelming the system
+                if len(threads) >= PING_SWEEP_THREADS:
+                    for t in threads:
+                        t.join()
+                    threads = []
+            
+            # Wait for remaining threads
+            for thread in threads:
+                thread.join()
+            
+            new_devices = len(set(round_active_ips) - all_active_ips)
+            all_active_ips.update(round_active_ips)
+            print(f"      ✅ Round {round_num}: {len(round_active_ips)} responses ({new_devices} new)")
+            
+            # Small delay between rounds
+            if round_num < rounds:
+                time.sleep(1)
+        
+        print(f"✅ Enhanced ping sweep complete! Found {len(all_active_ips)} active devices")
+        return list(all_active_ips)
+    
+    def get_network_interface_info(self):
+        """Get information about the network interface being used"""
+        interface_info = {
+            'interface': self.interface,
+            'ip': None,
+            'netmask': None,
+            'network': None
+        }
+        
+        try:
+            if SCAPY_AVAILABLE:
+                # Use Scapy to get interface IP
+                interface_info['ip'] = get_if_addr(self.interface)
+            else:
+                # Fallback method using socket
+                import socket
+                hostname = socket.gethostname()
+                interface_info['ip'] = socket.gethostbyname(hostname)
+        except Exception as e:
+            print(f"⚠️  Could not determine interface IP: {e}")
+        
+        return interface_info
+    
     def nmap_scan(self, ip):
         """Perform nmap scan for additional device information"""
         try:
@@ -625,39 +922,132 @@ class NetworkDeviceScanner:
         return info
     
     def scan_network(self, detailed=DETAILED_SCAN):
-        """Comprehensive network scan"""
+        """Comprehensive network scan using configurable discovery methods"""
         print("🚀 Starting comprehensive network scan...")
+        print(f"   Interface: {self.interface}")
+        print(f"   Network: {DEFAULT_NETWORK_RANGE}")
+        print(f"   Detailed scan: {'enabled' if detailed else 'disabled'}")
+        print(f"   Scan steps: {SCAN_STEPS}")
         
-        # Get devices from ARP table
-        devices = self.get_arp_table()
+        # Get interface information
+        interface_info = self.get_network_interface_info()
+        if interface_info['ip']:
+            print(f"   Interface IP: {interface_info['ip']}")
         
-        # Perform ping sweep to find additional devices
-        active_ips = self.ping_sweep()
+        devices = {}
         
-        # Add devices not in ARP table
-        for ip in active_ips:
-            if ip not in devices:
-                devices[ip] = {
-                    'hostname': None,
-                    'mac': None,
-                    'interface': self.interface,
-                    'source': 'ping'
-                }
+        # Step 1: Get devices from existing ARP table (fastest)
+        if 1 in SCAN_STEPS:
+            print(f"\n{'='*60}")
+            print("📋 Step 1: Reading existing ARP table...")
+            arp_devices = self.get_arp_table()
+            devices.update(arp_devices)
+            print(f"✅ Found {len(arp_devices)} devices in ARP table")
+        else:
+            print(f"\n{'='*60}")
+            print("⏭️  Step 1: Skipped (ARP table reading disabled)")
         
-        # Enhance device information
-        for ip, device in devices.items():
-            print(f"📡 Scanning {ip}...")
+        # Step 2: Scapy ARP scanning (most reliable)
+        if 2 in SCAN_STEPS:
+            print(f"\n{'='*60}")
+            print("📡 Step 2: Active ARP scanning with Scapy...")
+            if SCAPY_AVAILABLE:
+                scapy_devices = self.arp_scan_scapy()
+                
+                # If Scapy ARP scanning failed (likely due to permissions), try fallback
+                if len(scapy_devices) == 0:
+                    print("🔄 Scapy ARP scanning failed, trying fallback method...")
+                    scapy_devices = self.arp_scan_fallback()
+                
+                # Merge with existing devices
+                for ip, device_info in scapy_devices.items():
+                    if ip in devices:
+                        # Update existing device with MAC if it was missing
+                        if not devices[ip].get('mac') and device_info.get('mac'):
+                            devices[ip]['mac'] = device_info['mac']
+                            devices[ip]['source'] = f"{devices[ip]['source']},arp_enhanced"
+                    else:
+                        devices[ip] = device_info
+                
+                print(f"✅ Total devices after ARP scan: {len(devices)}")
+            else:
+                print("⚠️  Scapy ARP scanning skipped (not available)")
+                print("🔄 Trying fallback ARP discovery...")
+                fallback_devices = self.arp_scan_fallback()
+                
+                # Merge fallback devices
+                for ip, device_info in fallback_devices.items():
+                    if ip not in devices:
+                        devices[ip] = device_info
+                
+                print(f"✅ Total devices after fallback ARP: {len(devices)}")
+        else:
+            print(f"\n{'='*60}")
+            print("⏭️  Step 2: Skipped (Active ARP scanning disabled)")
+        
+        # Step 3: Enhanced ping sweep (for devices that don't respond to ARP)
+        if 3 in SCAN_STEPS:
+            print(f"\n{'='*60}")
+            print("🏓 Step 3: Enhanced ping sweep...")
+            ping_ips = self.comprehensive_ping_sweep()
+            
+            # Add ping-discovered devices
+            ping_only_devices = 0
+            for ip in ping_ips:
+                if ip not in devices:
+                    devices[ip] = {
+                        'hostname': None,
+                        'mac': None,
+                        'interface': self.interface,
+                        'source': 'ping_enhanced'
+                    }
+                    ping_only_devices += 1
+            
+            print(f"✅ Found {ping_only_devices} additional devices via ping")
+        else:
+            print(f"\n{'='*60}")
+            print("⏭️  Step 3: Skipped (Ping sweep disabled)")
+        
+        print(f"✅ Total devices discovered: {len(devices)}")
+        
+        # Phase 2: Enhance device information
+        print(f"\n{'='*60}")
+        print("🔍 Phase 2: Enhancing device information...")
+        
+        device_count = len(devices)
+        for idx, (ip, device) in enumerate(devices.items(), 1):
+            print(f"📡 Scanning {ip} ({idx}/{device_count})...")
+            
+            # Get MAC address if missing (for ping-only devices)
+            if not device.get('mac'):
+                # Try to get MAC from a fresh ARP lookup
+                try:
+                    # Send a ping first to populate ARP table
+                    subprocess.run(['ping', '-c', '1', '-W', '1', ip], 
+                                 capture_output=True, timeout=2)
+                    
+                    # Check ARP table again
+                    fresh_arp = self.get_arp_table()
+                    if ip in fresh_arp and fresh_arp[ip].get('mac'):
+                        device['mac'] = fresh_arp[ip]['mac']
+                        device['source'] = f"{device['source']},arp_refresh"
+                except:
+                    pass
             
             # Get vendor information
-            if device['mac']:
+            if device.get('mac'):
                 device['vendor'], device['vendor_details'] = self.get_vendor_from_mac(device['mac'])
             else:
                 device['vendor'] = 'Unknown'
+                device['vendor_details'] = None
             
-            # Enhanced scanning
+            # Enhanced scanning if requested
             if detailed:
-                enhanced_info = self.enhanced_device_scan(ip)
-                device.update(enhanced_info)
+                try:
+                    enhanced_info = self.enhanced_device_scan(ip)
+                    device.update(enhanced_info)
+                except Exception as e:
+                    print(f"      ⚠️  Enhanced scan failed for {ip}: {e}")
             else:
                 # Quick hostname lookup
                 device['hostname'] = device.get('hostname') or self.resolve_hostname(ip)
@@ -673,10 +1063,39 @@ class NetworkDeviceScanner:
             # Add icon
             device['icon'] = DEVICE_ICONS.get(device['device_type'], DEVICE_ICONS['unknown'])
             
+            # Add scan metadata
+            device['scan_timestamp'] = datetime.now().isoformat()
+            device['scan_method'] = device.get('source', 'unknown')
+            
             # Store in main devices dict
             self.devices[ip] = device
         
-        print(f"✅ Scan complete! Found {len(self.devices)} devices")
+        print(f"\n{'='*60}")
+        print(f"✅ Comprehensive scan complete!")
+        print(f"   📊 Total devices found: {len(self.devices)}")
+        
+        # Show statistics based on enabled steps
+        if 1 in SCAN_STEPS:
+            print(f"   📡 ARP table: {len([d for d in self.devices.values() if 'arp' in d.get('source', '') and 'arp_scapy' not in d.get('source', '') and 'arp_enhanced' not in d.get('source', '')])}")
+        if 2 in SCAN_STEPS:
+            print(f"   🔎 Active ARP: {len([d for d in self.devices.values() if 'arp_scapy' in d.get('source', '') or 'arp_fallback' in d.get('source', '') or 'arp_enhanced' in d.get('source', '')])}")
+        if 3 in SCAN_STEPS:
+            print(f"   🏓 Ping only: {len([d for d in self.devices.values() if d.get('source') == 'ping_enhanced'])}")
+        
+        print(f"   🔧 With MAC: {len([d for d in self.devices.values() if d.get('mac')])}")
+        print(f"   🏷️  With hostname: {len([d for d in self.devices.values() if d.get('hostname')])}")
+        
+        # Show device type summary
+        device_types = defaultdict(int)
+        for device in self.devices.values():
+            device_types[device.get('device_type', 'unknown')] += 1
+        
+        print(f"\n📊 Device types discovered:")
+        for dtype, count in sorted(device_types.items()):
+            icon = DEVICE_ICONS.get(dtype, '❓')
+            print(f"   {icon} {dtype.title()}: {count}")
+        
+        print(f"{'='*60}")
         return self.devices
     
     def display_devices(self, sort_by=DEFAULT_SORT):
@@ -857,7 +1276,7 @@ class NetworkDeviceScanner:
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(description="Network Device Scanner")
+    parser = argparse.ArgumentParser(description="Enhanced Network Device Scanner with configurable discovery steps")
     parser.add_argument("-i", "--interface", default=DEFAULT_INTERFACE,
                        help="Network interface to use")
     parser.add_argument("--detailed", action="store_true",
@@ -868,8 +1287,41 @@ def main():
     parser.add_argument("--load", help="Load results from file")
     parser.add_argument("--monitor", type=int, metavar="SECONDS",
                        help="Monitor network changes (check interval)")
+    parser.add_argument("--rounds", type=int, default=1,
+                       help="Number of scan rounds for better discovery (default: 1)")
+    parser.add_argument("--continuous", action="store_true",
+                       help="Continuous scanning mode (like your victim selector)")
+    parser.add_argument("--install-deps", action="store_true",
+                       help="Install required dependencies (scapy)")
     
     args = parser.parse_args()
+    
+    print(f"🔧 Configured scan steps: {SCAN_STEPS}")
+    step_descriptions = {
+        1: "ARP table reading",
+        2: "Active ARP scanning", 
+        3: "Ping sweep"
+    }
+    for step in SCAN_STEPS:
+        print(f"   Step {step}: {step_descriptions[step]}")
+    
+    # Handle dependency installation
+    if args.install_deps:
+        install_dependencies()
+        return
+    
+    # Check for Scapy and warn if not available
+    if not SCAPY_AVAILABLE and 2 in SCAN_STEPS:
+        print("⚠️  WARNING: Scapy is not installed but Step 2 (Active ARP) is enabled!")
+        print("   For best device discovery, install it with:")
+        print("   pip install scapy")
+        print("   Or run: python3 scanner.py --install-deps")
+        print("   Or disable Step 2 by editing SCAN_STEPS in the code")
+        print()
+        response = input("Continue without Scapy? (y/N): ").lower().strip()
+        if response != 'y':
+            print("Exiting. Install Scapy for enhanced discovery.")
+            return
     
     scanner = NetworkDeviceScanner(args.interface)
     
@@ -878,16 +1330,187 @@ def main():
             scanner.display_devices(args.sort)
         return
     
+    if args.continuous:
+        continuous_scan_mode(scanner)
+        return
+    
     if args.monitor:
         scanner.monitor_network_changes(args.monitor)
         return
     
-    # Perform scan
-    scanner.scan_network(detailed=args.detailed)
+    # Perform scan with multiple rounds if requested
+    if args.rounds > 1:
+        print(f"\n🔄 Performing {args.rounds} scan rounds for comprehensive discovery...")
+        all_devices = {}
+        
+        for round_num in range(1, args.rounds + 1):
+            print(f"\n{'='*80}")
+            print(f"🚀 SCAN ROUND {round_num}/{args.rounds}")
+            print(f"{'='*80}")
+            
+            round_devices = scanner.scan_network(detailed=args.detailed)
+            
+            # Merge devices from this round
+            for ip, device in round_devices.items():
+                if ip not in all_devices:
+                    all_devices[ip] = device
+                    device['first_discovered_round'] = round_num
+                else:
+                    # Update existing device info if we got better data
+                    if not all_devices[ip].get('mac') and device.get('mac'):
+                        all_devices[ip]['mac'] = device['mac']
+                    if not all_devices[ip].get('hostname') and device.get('hostname'):
+                        all_devices[ip]['hostname'] = device['hostname']
+            
+            print(f"\n📊 Round {round_num} Summary:")
+            print(f"   New devices this round: {len(round_devices)}")
+            print(f"   Total unique devices: {len(all_devices)}")
+            
+            if round_num < args.rounds:
+                print(f"\n⏳ Waiting before next round...")
+                time.sleep(2)
+        
+        # Update scanner's device list with merged results
+        scanner.devices = all_devices
+        
+        print(f"\n{'='*80}")
+        print(f"🎯 FINAL RESULTS AFTER {args.rounds} ROUNDS")
+        print(f"{'='*80}")
+    else:
+        # Single scan
+        scanner.scan_network(detailed=args.detailed)
+    
     scanner.display_devices(args.sort)
     
     if args.save:
         scanner.save_results(args.save)
+
+def install_dependencies():
+    """Install required dependencies"""
+    print("📦 Installing required dependencies...")
+    
+    try:
+        import subprocess
+        import sys
+        
+        # Install scapy
+        print("Installing scapy...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "scapy"])
+        
+        print("✅ Dependencies installed successfully!")
+        print("You can now run the scanner with full functionality.")
+        
+    except Exception as e:
+        print(f"❌ Failed to install dependencies: {e}")
+        print("Please install manually with: pip install scapy")
+
+def continuous_scan_mode(scanner):
+    """Continuous scanning mode similar to the victim selector"""
+    print("🔄 Starting continuous network scanning...")
+    print("This mode will continuously discover devices in real-time")
+    print("Press Ctrl+C to stop and show final results")
+    
+    discovered_devices = {}
+    running = True
+    scan_count = 0
+    
+    def display_live_results():
+        """Display results in real-time"""
+        while running:
+            try:
+                import os
+                os.system('cls' if os.name == 'nt' else 'clear')
+                
+                print(f"🔄 CONTINUOUS NETWORK SCAN - Round {scan_count}")
+                print(f"{'='*60}")
+                print(f"📊 Devices discovered: {len(discovered_devices)}")
+                print(f"⏰ Last scan: {datetime.now().strftime('%H:%M:%S')}")
+                print(f"{'='*60}")
+                
+                if discovered_devices:
+                    entries = list(discovered_devices.items())
+                    for i, (ip, device) in enumerate(entries, 1):
+                        vendor = device.get('vendor', 'Unknown')[:30]
+                        hostname = device.get('hostname', 'Unknown')[:20]
+                        device_type = device.get('device_type', 'unknown')
+                        icon = device.get('icon', '❓')
+                        mac = device.get('mac', 'Unknown')
+                        
+                        print(f"{i:2d}. {icon} {ip:15s} | {vendor:30s} | {hostname:20s}")
+                        if len(mac) > 10:  # Show MAC if available
+                            print(f"     MAC: {mac}")
+                
+                print(f"\n{'='*60}")
+                print("Press Ctrl+C to stop scanning and show detailed results")
+                
+                time.sleep(2)
+                
+            except KeyboardInterrupt:
+                break
+            except Exception as e:
+                pass
+    
+    # Start display thread
+    display_thread = threading.Thread(target=display_live_results, daemon=True)
+    display_thread.start()
+    
+    try:
+        while running:
+            scan_count += 1
+            
+            # Perform a quick scan
+            current_devices = scanner.arp_scan_scapy() if SCAPY_AVAILABLE else {}
+            
+            # Also try ARP table
+            arp_devices = scanner.get_arp_table()
+            current_devices.update(arp_devices)
+            
+            # Update discovered devices
+            for ip, device in current_devices.items():
+                if ip not in discovered_devices:
+                    # New device - get additional info
+                    device['vendor'], device['vendor_details'] = scanner.get_vendor_from_mac(device.get('mac', ''))
+                    device['hostname'] = device.get('hostname') or scanner.resolve_hostname(ip)
+                    device['device_type'] = scanner.detect_device_type(
+                        device.get('hostname'),
+                        device.get('vendor'),
+                        device.get('mac'),
+                        []
+                    )
+                    device['icon'] = DEVICE_ICONS.get(device['device_type'], DEVICE_ICONS['unknown'])
+                    device['first_seen'] = datetime.now().isoformat()
+                    
+                discovered_devices[ip] = device
+            
+            time.sleep(1)
+            
+    except KeyboardInterrupt:
+        running = False
+        print("\n\n🛑 Stopping continuous scan...")
+        time.sleep(1)
+    
+    # Update scanner's device list and show final results
+    scanner.devices = discovered_devices
+    
+    import os
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    print(f"🎯 FINAL SCAN RESULTS")
+    print(f"{'='*80}")
+    print(f"Total scan rounds: {scan_count}")
+    print(f"Devices discovered: {len(discovered_devices)}")
+    print(f"{'='*80}")
+    
+    scanner.display_devices()
+    
+    # Ask if user wants to save results
+    if discovered_devices:
+        save_results = input("\nSave results to file? (y/N): ").lower().strip()
+        if save_results == 'y':
+            filename = input("Enter filename (or press Enter for default): ").strip()
+            if not filename:
+                filename = f"scan_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+            scanner.save_results(filename)
 
 if __name__ == "__main__":
     main() 

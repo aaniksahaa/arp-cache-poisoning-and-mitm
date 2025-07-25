@@ -4,6 +4,10 @@ Setup:
 At first, run network_device_scanner.py to find device IP and MACs
 Set them up at config.py 
 
+
+sudo "$HOME/miniconda3/bin/python" scanner.py 
+
+
 HTTP Traffic Interception and Modification:
 ===========================================
 

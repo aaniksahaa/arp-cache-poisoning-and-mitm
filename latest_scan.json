@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-25T23:39:11.702181",
+  "timestamp": "2025-07-26T01:00:38.219267",
   "interface": "wlp2s0",
   "total_devices": 5,
   "devices": {
@@ -12,7 +12,7 @@
       "vendor_details": null,
       "device_type": "phone",
       "icon": "\ud83d\udcf1",
-      "scan_timestamp": "2025-07-25T23:39:10.206174",
+      "scan_timestamp": "2025-07-26T01:00:36.743418",
       "scan_method": "arp"
     },
     "192.168.0.1": {
@@ -24,7 +24,7 @@
       "vendor_details": null,
       "device_type": "router",
       "icon": "\ud83c\udf10",
-      "scan_timestamp": "2025-07-25T23:39:10.206335",
+      "scan_timestamp": "2025-07-26T01:00:36.743493",
       "scan_method": "arp"
     },
     "192.168.0.201": {
@@ -36,7 +36,7 @@
       "vendor_details": null,
       "device_type": "phone",
       "icon": "\ud83d\udcf1",
-      "scan_timestamp": "2025-07-25T23:39:10.309391",
+      "scan_timestamp": "2025-07-26T01:00:36.897851",
       "scan_method": "arp"
     },
     "192.168.0.125": {
@@ -48,7 +48,7 @@
       "vendor_details": null,
       "device_type": "unknown",
       "icon": "\u2753",
-      "scan_timestamp": "2025-07-25T23:39:10.354074",
+      "scan_timestamp": "2025-07-26T01:00:36.926882",
       "scan_method": "arp"
     },
     "192.168.0.141": {
@@ -60,7 +60,7 @@
       "vendor_details": null,
       "device_type": "unknown",
       "icon": "\u2753",
-      "scan_timestamp": "2025-07-25T23:39:11.701842",
+      "scan_timestamp": "2025-07-26T01:00:38.219165",
       "scan_method": "arp"
     }
   },

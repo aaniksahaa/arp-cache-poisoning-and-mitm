@@ -17,7 +17,7 @@ def print_banner():
     print(f"""{Fore.RED}{Style.BRIGHT}
 ╔══════════════════════════════════════════════════════════════════════╗
 ║                                                                      ║
-║    🛡️  UNIFIED ARP SPOOFING & MITM ATTACK SYSTEM  🛡️                ║
+║    🛡️  UNIFIED ARP SPOOFING & MITM ATTACK SYSTEM  🛡️                  ║
 ║                                                                      ║
 ║    📡 Network Discovery  🎯 Attack Selection  ⚙️  Auto-Configuration  ║
 ║                                                                      ║

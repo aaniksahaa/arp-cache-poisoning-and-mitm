@@ -1096,6 +1096,10 @@ class NetworkDeviceScanner:
             print(f"   {icon} {dtype.title()}: {count}")
         
         print(f"{'='*60}")
+        
+        # Automatically save results to fixed filename for use by main.py
+        self.save_results("latest_scan.json")
+        
         return self.devices
     
     def display_devices(self, sort_by=DEFAULT_SORT):

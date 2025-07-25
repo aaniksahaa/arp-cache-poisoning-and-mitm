@@ -7,6 +7,8 @@ Set them up at config.py
 
 sudo "$HOME/miniconda3/bin/python" scanner.py 
 
+sudo "$HOME/miniconda3/bin/python" main.py 
+
 
 HTTP Traffic Interception and Modification:
 ===========================================

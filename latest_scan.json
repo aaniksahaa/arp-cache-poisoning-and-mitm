@@ -1,0 +1,72 @@
+{
+  "timestamp": "2025-07-25T23:39:11.702181",
+  "interface": "wlp2s0",
+  "total_devices": 5,
+  "devices": {
+    "192.168.0.111": {
+      "hostname": null,
+      "mac": "24:fb:65:44:c4:b5",
+      "interface": "wlp2s0",
+      "source": "arp",
+      "vendor": "HUAWEI TECHNOLOGIES CO.,LTD",
+      "vendor_details": null,
+      "device_type": "phone",
+      "icon": "\ud83d\udcf1",
+      "scan_timestamp": "2025-07-25T23:39:10.206174",
+      "scan_method": "arp"
+    },
+    "192.168.0.1": {
+      "hostname": "_gateway",
+      "mac": "60:a4:b7:a9:77:05",
+      "interface": "wlp2s0",
+      "source": "arp",
+      "vendor": "TP-Link Systems Inc",
+      "vendor_details": null,
+      "device_type": "router",
+      "icon": "\ud83c\udf10",
+      "scan_timestamp": "2025-07-25T23:39:10.206335",
+      "scan_method": "arp"
+    },
+    "192.168.0.201": {
+      "hostname": null,
+      "mac": "f4:30:8b:91:d6:1f",
+      "interface": "wlp2s0",
+      "source": "arp",
+      "vendor": "Xiaomi Communications Co Ltd",
+      "vendor_details": null,
+      "device_type": "phone",
+      "icon": "\ud83d\udcf1",
+      "scan_timestamp": "2025-07-25T23:39:10.309391",
+      "scan_method": "arp"
+    },
+    "192.168.0.125": {
+      "hostname": null,
+      "mac": "24:b2:b9:3e:22:13",
+      "interface": "wlp2s0",
+      "source": "arp",
+      "vendor": "Liteon Technology Corporation",
+      "vendor_details": null,
+      "device_type": "unknown",
+      "icon": "\u2753",
+      "scan_timestamp": "2025-07-25T23:39:10.354074",
+      "scan_method": "arp"
+    },
+    "192.168.0.141": {
+      "hostname": null,
+      "mac": "9e:ff:60:86:f6:c7",
+      "interface": "wlp2s0",
+      "source": "arp",
+      "vendor": "Unknown Vendor",
+      "vendor_details": null,
+      "device_type": "unknown",
+      "icon": "\u2753",
+      "scan_timestamp": "2025-07-25T23:39:11.701842",
+      "scan_method": "arp"
+    }
+  },
+  "scan_metadata": {
+    "mac_vendor_database_size": 55101,
+    "enhanced_vendor_data": false,
+    "vendor_details_count": 0
+  }
+}

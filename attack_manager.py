@@ -389,9 +389,9 @@ def main():
     """Test the attack manager"""
     # Mock devices for testing
     test_devices = [
-        {'ip': '192.168.0.1', 'mac': '00:11:22:33:44:55', 'hostname': 'router', 'vendor': 'Netgear', 'device_type': 'router'},
-        {'ip': '192.168.0.100', 'mac': '00:11:22:33:44:56', 'hostname': 'laptop', 'vendor': 'Dell', 'device_type': 'laptop'},
-        {'ip': '192.168.0.101', 'mac': '00:11:22:33:44:57', 'hostname': 'phone', 'vendor': 'Samsung', 'device_type': 'phone'}
+        {'ip': '192.168.68.1', 'mac': '00:11:22:33:44:55', 'hostname': 'router', 'vendor': 'Netgear', 'device_type': 'router'},
+        {'ip': '192.168.68.100', 'mac': '00:11:22:33:44:56', 'hostname': 'laptop', 'vendor': 'Dell', 'device_type': 'laptop'},
+        {'ip': '192.168.68.101', 'mac': '00:11:22:33:44:57', 'hostname': 'phone', 'vendor': 'Samsung', 'device_type': 'phone'}
     ]
     
     manager = AttackManager(test_devices)

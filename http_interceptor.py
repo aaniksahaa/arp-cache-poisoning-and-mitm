@@ -757,7 +757,7 @@ def start_packet_interception():
         print(f"{Fore.RED}⚠️  Victim will be unable to browse HTTP sites{Style.RESET_ALL}")
         print(f"{Fore.YELLOW}💡 HTTPS sites will still work (encrypted){Style.RESET_ALL}")
         print(f"{Fore.CYAN}🔍 Debug logging enabled - watch for [DROP-DEBUG] messages{Style.RESET_ALL}")
-        print(f"{Fore.BLUE}💡 Try browsing to http://192.168.0.125:8000 from victim (192.168.0.201){Style.RESET_ALL}")
+        print(f"{Fore.BLUE}💡 Try browsing to http://192.168.68.125:8000 from victim (192.168.68.201){Style.RESET_ALL}")
     
     print(f"{Fore.WHITE}🛑 Press Ctrl+C to stop and view statistics{Style.RESET_ALL}")
     
@@ -773,7 +773,7 @@ def start_packet_interception():
             
             if HTTP_ATTACK_MODE == "DROP" and stats.total_packets == 0:
                 logger.info(f"[STATUS] 💡 No packets detected - Check ARP poisoning is working")
-                logger.info(f"[STATUS] 💡 From victim (192.168.0.201), try: http://192.168.0.125:8000")
+                logger.info(f"[STATUS] 💡 From victim (192.168.68.201), try: http://192.168.68.125:8000")
     
     status_thread = threading.Thread(target=status_logger, daemon=True)
     status_thread.start()

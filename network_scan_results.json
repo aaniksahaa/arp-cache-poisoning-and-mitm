@@ -1,0 +1,92 @@
+{
+  "timestamp": "2025-07-26T13:46:39.246755",
+  "interface": "wlp2s0",
+  "network": "192.168.68.0/24",
+  "total_devices": 5,
+  "scan_type": "continuous_arp",
+  "devices": {
+    "192.168.68.1": {
+      "ip": "192.168.68.1",
+      "mac": "20:23:51:77:df:00",
+      "vendor": "TP-Link Systems Inc",
+      "hostname": "_gateway",
+      "device_type": "router",
+      "icon": "\ud83c\udf10",
+      "interface": "wlp2s0",
+      "first_seen": "2025-07-26T13:46:02.488756",
+      "last_seen": "2025-07-26T13:46:25.332644",
+      "source": "continuous_arp",
+      "scan_round": 1,
+      "filter_reason": "gateway_device",
+      "device_priority": "gateway"
+    },
+    "192.168.68.106": {
+      "ip": "192.168.68.106",
+      "mac": "24:b2:b9:3e:22:13",
+      "vendor": "Liteon Technology Corporation",
+      "hostname": null,
+      "device_type": "unknown",
+      "icon": "\u2753",
+      "interface": "wlp2s0",
+      "first_seen": "2025-07-26T13:46:03.436258",
+      "last_seen": "2025-07-26T13:46:26.756529",
+      "source": "continuous_arp",
+      "scan_round": 1,
+      "filter_reason": "known_device:anik_laptop_loq",
+      "known_as": "anik_laptop_loq",
+      "device_priority": "known"
+    },
+    "192.168.68.155": {
+      "ip": "192.168.68.155",
+      "mac": "dc:21:48:db:ee:f3",
+      "vendor": "Intel Corporate",
+      "hostname": null,
+      "device_type": "unknown",
+      "icon": "\u2753",
+      "interface": "wlp2s0",
+      "first_seen": "2025-07-26T13:46:03.439493",
+      "last_seen": "2025-07-26T13:46:27.504936",
+      "source": "continuous_arp",
+      "scan_round": 1,
+      "filter_reason": "known_device:jaber_laptop_asus",
+      "known_as": "jaber_laptop_asus",
+      "device_priority": "known"
+    },
+    "192.168.68.169": {
+      "ip": "192.168.68.169",
+      "mac": "e4:84:d3:84:0e:84",
+      "vendor": "Xiaomi Communications Co Ltd",
+      "hostname": null,
+      "device_type": "phone",
+      "icon": "\ud83d\udcf1",
+      "interface": "wlp2s0",
+      "first_seen": "2025-07-26T13:46:03.737456",
+      "last_seen": "2025-07-26T13:46:03.737482",
+      "source": "continuous_arp",
+      "scan_round": 1,
+      "filter_reason": "known_device:jaber_phone",
+      "known_as": "jaber_phone",
+      "device_priority": "known"
+    },
+    "192.168.68.249": {
+      "ip": "192.168.68.249",
+      "mac": "f4:30:8b:91:d6:1f",
+      "vendor": "Xiaomi Communications Co Ltd",
+      "hostname": null,
+      "device_type": "phone",
+      "icon": "\ud83d\udcf1",
+      "interface": "wlp2s0",
+      "first_seen": "2025-07-26T13:46:22.122127",
+      "last_seen": "2025-07-26T13:46:22.122145",
+      "source": "continuous_arp",
+      "scan_round": 5,
+      "filter_reason": "known_device:anik_phone",
+      "known_as": "anik_phone",
+      "device_priority": "known"
+    }
+  },
+  "scan_metadata": {
+    "mac_vendor_database_size": 55101,
+    "filtering_enabled": true
+  }
+}

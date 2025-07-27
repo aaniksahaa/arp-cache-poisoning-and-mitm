@@ -60,16 +60,16 @@ def test_device_scanner():
         
         # Test utility methods
         test_devices = [
-            {'ip': '192.168.0.1', 'mac': '00:11:22:33:44:55', 'hostname': 'router', 'vendor': 'Netgear', 'device_type': 'router'},
-            {'ip': '192.168.0.100', 'mac': '00:11:22:33:44:56', 'hostname': 'laptop', 'vendor': 'Dell', 'device_type': 'laptop'},
-            {'ip': '192.168.0.101', 'mac': '00:11:22:33:44:57', 'hostname': 'phone', 'vendor': 'Samsung', 'device_type': 'phone'}
+            {'ip': '192.168.68.1', 'mac': '00:11:22:33:44:55', 'hostname': 'router', 'vendor': 'Netgear', 'device_type': 'router'},
+            {'ip': '192.168.68.100', 'mac': '00:11:22:33:44:56', 'hostname': 'laptop', 'vendor': 'Dell', 'device_type': 'laptop'},
+            {'ip': '192.168.68.101', 'mac': '00:11:22:33:44:57', 'hostname': 'phone', 'vendor': 'Samsung', 'device_type': 'phone'}
         ]
         
         scanner.device_list = test_devices
         print(f"   ✅ Mock device list set ({len(test_devices)} devices)")
         
         # Test device lookup methods
-        router = scanner.get_device_by_ip('192.168.0.1')
+        router = scanner.get_device_by_ip('192.168.68.1')
         if router and router['device_type'] == 'router':
             print(f"   ✅ Device lookup by IP works")
         
@@ -93,9 +93,9 @@ def test_attack_manager():
         
         # Create test devices
         test_devices = [
-            {'ip': '192.168.0.1', 'mac': '00:11:22:33:44:55', 'hostname': 'router', 'vendor': 'Netgear', 'device_type': 'router'},
-            {'ip': '192.168.0.100', 'mac': '00:11:22:33:44:56', 'hostname': 'laptop', 'vendor': 'Dell', 'device_type': 'laptop'},
-            {'ip': '192.168.0.101', 'mac': '00:11:22:33:44:57', 'hostname': 'phone', 'vendor': 'Samsung', 'device_type': 'phone'}
+            {'ip': '192.168.68.1', 'mac': '00:11:22:33:44:55', 'hostname': 'router', 'vendor': 'Netgear', 'device_type': 'router'},
+            {'ip': '192.168.68.100', 'mac': '00:11:22:33:44:56', 'hostname': 'laptop', 'vendor': 'Dell', 'device_type': 'laptop'},
+            {'ip': '192.168.68.101', 'mac': '00:11:22:33:44:57', 'hostname': 'phone', 'vendor': 'Samsung', 'device_type': 'phone'}
         ]
         
         # Create attack manager
@@ -133,9 +133,9 @@ def test_arp_poisoner():
             print(f"   ✅ ARPPoisoner instance created (running as root)")
             
             # Test adding configurations
-            device1 = {'ip': '192.168.0.100', 'mac': '00:11:22:33:44:56'}
-            device2 = {'ip': '192.168.0.101', 'mac': '00:11:22:33:44:57'}
-            gateway = {'ip': '192.168.0.1', 'mac': '00:11:22:33:44:55'}
+            device1 = {'ip': '192.168.68.100', 'mac': '00:11:22:33:44:56'}
+            device2 = {'ip': '192.168.68.101', 'mac': '00:11:22:33:44:57'}
+            gateway = {'ip': '192.168.68.1', 'mac': '00:11:22:33:44:55'}
             
             poisoner.add_bidirectional_poison(device1, device2, gateway)
             poisoner.add_gateway_poison(device1, gateway)
@@ -172,7 +172,7 @@ def test_ui_components():
         )
         
         # Test validation functions
-        valid_ips = ["192.168.0.1", "10.0.0.1", "172.16.0.1"]
+        valid_ips = ["192.168.68.1", "10.0.0.1", "172.16.0.1"]
         invalid_ips = ["256.256.256.256", "192.168", "not.an.ip"]
         
         for ip in valid_ips:
@@ -196,7 +196,7 @@ def test_ui_components():
         
         # Test other UI functions (they should not crash)
         test_device = {
-            'ip': '192.168.0.100',
+            'ip': '192.168.68.100',
             'mac': '00:11:22:33:44:56',
             'hostname': 'test-device',
             'vendor': 'Test Vendor',

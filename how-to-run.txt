@@ -5,16 +5,22 @@ At first, run network_device_scanner.py to find device IP and MACs
 Set them up at config.py 
 
 
-sudo "$HOME/miniconda3/bin/python" scanner.py 
+sudo "$HOME/miniconda3/bin/python" scanner.py
+
+sudo "$HOME/miniconda3/bin/python" new_scanner.py
 
 sudo "$HOME/miniconda3/bin/python" main.py 
+
+sudo "$HOME/miniconda3/bin/python" scanner.py --show-all
+
+sudo "$HOME/miniconda3/bin/python" scanner.py --list-known
 
 
 HTTP Traffic Interception and Modification:
 ===========================================
 
 In my end, it is working nicely, when I set up the server locally,
-say the server is listening at, 192.168.0.125:8000
+say the server is listening at, 192.168.68.125:8000
 
 Then, at gateway ip, i need to put this ip 
 

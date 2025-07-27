@@ -22,8 +22,8 @@ import re
 # Step 2: Active ARP scanning with Scapy/fallback (most reliable) 
 # Step 3: Enhanced ping sweep (catches devices that don't respond to ARP)
 
-# SCAN_STEPS = [1, 2, 3]  # Run all three steps by default
-SCAN_STEPS = [1, 2]   # Run only ARP table + ARP scanning (skip ping sweep)
+SCAN_STEPS = [1, 2, 3] 
+# SCAN_STEPS = [1, 2]   # Run only ARP table + ARP scanning (skip ping sweep)
 # SCAN_STEPS = [1, 3]   # Run only ARP table + ping sweep (skip active ARP)
 # SCAN_STEPS = [2, 3]   # Run only active scanning methods (skip ARP table)
 # SCAN_STEPS = [1]      # Run only ARP table reading (fastest)
@@ -41,7 +41,7 @@ except ImportError:
     print("   Using fallback discovery methods only")
 
 # Import centralized configuration
-from config import NetworkConfig, ScannerConfig, PathConfig
+from config import NetworkConfig, ScannerConfig, PathConfig, DeviceFilterConfig
 
 # Use configuration values
 DEFAULT_INTERFACE = NetworkConfig.INTERFACE
@@ -545,7 +545,7 @@ class NetworkDeviceScanner:
             base_parts = base.split('.')
             network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
         else:
-            network_base = "192.168.0"
+            network_base = "192.168.68"
         
         active_ips = []
         
@@ -668,7 +668,7 @@ class NetworkDeviceScanner:
             base_parts = base.split('.')
             network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
         else:
-            network_base = "192.168.0"
+            network_base = "192.168.68"
         
         def arp_ping_ip(ip):
             """Send ARP request using arping command"""
@@ -755,7 +755,7 @@ class NetworkDeviceScanner:
             base_parts = base.split('.')
             network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
         else:
-            network_base = "192.168.0"
+            network_base = "192.168.68"
         
         all_active_ips = set()
         
@@ -1074,6 +1074,68 @@ class NetworkDeviceScanner:
         print(f"✅ Comprehensive scan complete!")
         print(f"   📊 Total devices found: {len(self.devices)}")
         
+        # Apply device filtering if enabled
+        if DeviceFilterConfig.ENABLE_DEVICE_FILTERING:
+            print(f"\n🔽 Applying device filtering...")
+            original_count = len(self.devices)
+            filtered_devices = {}
+            known_devices = []
+            gateway_devices = []
+            filtered_out = []
+            
+            for ip, device in self.devices.items():
+                should_show, reason = DeviceFilterConfig.should_show_device(
+                    ip, 
+                    device.get('mac'),
+                    device.get('hostname'), 
+                    device.get('vendor'),
+                    device.get('device_type')
+                )
+                
+                if should_show:
+                    # Add filtering metadata to device
+                    device['filter_reason'] = reason
+                    
+                    # Enhance device name if it's a known device
+                    if 'known_device:' in reason:
+                        known_name = reason.split(':')[1]
+                        device['known_as'] = known_name
+                        device['device_priority'] = 'known'
+                        known_devices.append(ip)
+                    elif reason == 'gateway_device':
+                        device['device_priority'] = 'gateway'
+                        gateway_devices.append(ip)
+                    else:
+                        device['device_priority'] = 'normal'
+                    
+                    filtered_devices[ip] = device
+                else:
+                    filtered_out.append(ip)
+            
+            # Update devices dict with filtered results
+            self.devices = filtered_devices
+            
+            print(f"   ✅ Filtering complete:")
+            print(f"   📊 Total devices after filtering: {len(self.devices)}")
+            print(f"   🎯 Known devices: {len(known_devices)}")
+            print(f"   🌐 Gateway devices: {len(gateway_devices)}")
+            print(f"   🚫 Filtered out: {len(filtered_out)} devices")
+            
+            if known_devices:
+                print(f"   📱 Known devices found:")
+                for ip in known_devices:
+                    device = self.devices[ip]
+                    known_name = device.get('known_as', 'unknown')
+                    print(f"      • {ip} - {known_name}")
+            
+            if gateway_devices:
+                print(f"   🌐 Gateway devices found:")
+                for ip in gateway_devices:
+                    device = self.devices[ip]
+                    vendor = device.get('vendor', 'Unknown')
+                    hostname = device.get('hostname', 'Unknown')
+                    print(f"      • {ip} - {vendor} ({hostname})")
+        
         # Show statistics based on enabled steps
         if 1 in SCAN_STEPS:
             print(f"   📡 ARP table: {len([d for d in self.devices.values() if 'arp' in d.get('source', '') and 'arp_scapy' not in d.get('source', '') and 'arp_enhanced' not in d.get('source', '')])}")
@@ -1113,18 +1175,38 @@ class NetworkDeviceScanner:
         print(f"{'='*80}")
         print(f"📅 Scan Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"🔍 Total Devices: {len(self.devices)}")
+        
+        # Show filtering status
+        if DeviceFilterConfig.ENABLE_DEVICE_FILTERING:
+            known_count = len([d for d in self.devices.values() if d.get('device_priority') == 'known'])
+            gateway_count = len([d for d in self.devices.values() if d.get('device_priority') == 'gateway'])
+            print(f"🔽 Device Filtering: ENABLED")
+            print(f"   🎯 Known Devices: {known_count}")
+            print(f"   🌐 Gateway Devices: {gateway_count}")
+        else:
+            print(f"🔽 Device Filtering: DISABLED")
+        
         print(f"{'='*80}")
         
-        # Sort devices
+        # Sort devices with known devices first
         if sort_by == 'type':
             sorted_devices = sorted(self.devices.items(), 
                                   key=lambda x: x[1].get('device_type', 'unknown'))
         elif sort_by == 'vendor':
             sorted_devices = sorted(self.devices.items(), 
                                   key=lambda x: x[1].get('vendor', 'Unknown'))
-        else:  # sort by IP
-            sorted_devices = sorted(self.devices.items(), 
-                                  key=lambda x: tuple(map(int, x[0].split('.'))))
+        else:  # sort by IP, but prioritize known devices
+            def sort_key(item):
+                ip, device = item
+                priority = device.get('device_priority', 'normal')
+                if priority == 'known':
+                    return (0, tuple(map(int, ip.split('.'))))  # Known devices first
+                elif priority == 'gateway':
+                    return (1, tuple(map(int, ip.split('.'))))  # Gateway devices second
+                else:
+                    return (2, tuple(map(int, ip.split('.'))))  # Normal devices last
+            
+            sorted_devices = sorted(self.devices.items(), key=sort_key)
         
         for ip, device in sorted_devices:
             icon = device.get('icon', '❓')
@@ -1132,8 +1214,19 @@ class NetworkDeviceScanner:
             vendor = device.get('vendor', 'Unknown')
             hostname = device.get('hostname', 'Unknown')
             mac = device.get('mac', 'Unknown')
+            priority = device.get('device_priority', 'normal')
             
-            print(f"\n{icon} {device_type}")
+            # Special indicators for device priority
+            if priority == 'known':
+                priority_indicator = "🎯 KNOWN"
+                known_name = device.get('known_as', 'unknown')
+                device_type = f"{device_type} ({known_name})"
+            elif priority == 'gateway':
+                priority_indicator = "🌐 GATEWAY"
+            else:
+                priority_indicator = "📍 DEVICE"
+            
+            print(f"\n{priority_indicator} {icon} {device_type}")
             print(f"   📍 IP Address: {ip}")
             print(f"   🏷️  Hostname: {hostname}")
             print(f"   🔧 Vendor: {vendor}")
@@ -1161,6 +1254,11 @@ class NetworkDeviceScanner:
             
             print(f"   📝 MAC Address: {mac}")
             
+            # Show known device information
+            if priority == 'known':
+                known_as = device.get('known_as', 'unknown')
+                print(f"   ⭐ Known As: {known_as}")
+            
             if device.get('os'):
                 print(f"   💾 OS: {device['os']}")
             
@@ -1172,6 +1270,16 @@ class NetworkDeviceScanner:
             
             print(f"   🔗 Interface: {device.get('interface', 'Unknown')}")
             print(f"   📡 Source: {device.get('source', 'Unknown')}")
+            
+            # Show filtering reason if available
+            filter_reason = device.get('filter_reason')
+            if filter_reason:
+                if 'known_device:' in filter_reason:
+                    print(f"   🎯 Filter Status: Matched as known device")
+                elif filter_reason == 'gateway_device':
+                    print(f"   🌐 Filter Status: Identified as gateway/router")
+                else:
+                    print(f"   🔽 Filter Status: {filter_reason}")
         
         print(f"\n{'='*80}")
         
@@ -1179,10 +1287,12 @@ class NetworkDeviceScanner:
         device_types = defaultdict(int)
         vendors = defaultdict(int)
         block_types = defaultdict(int)
+        priority_counts = defaultdict(int)
         
         for device in self.devices.values():
             device_types[device.get('device_type', 'unknown')] += 1
             vendors[device.get('vendor', 'Unknown')] += 1
+            priority_counts[device.get('device_priority', 'normal')] += 1
             
             # Count block types if available
             vendor_details = device.get('vendor_details')
@@ -1194,6 +1304,14 @@ class NetworkDeviceScanner:
         for dtype, count in sorted(device_types.items()):
             icon = DEVICE_ICONS.get(dtype, '❓')
             print(f"   {icon} {dtype.title()}: {count}")
+        
+        # Show priority summary if filtering is enabled
+        if DeviceFilterConfig.ENABLE_DEVICE_FILTERING:
+            print(f"\n🎯 DEVICE PRIORITY SUMMARY:")
+            priority_icons = {'known': '🎯', 'gateway': '🌐', 'normal': '📍'}
+            for priority, count in sorted(priority_counts.items()):
+                icon = priority_icons.get(priority, '📍')
+                print(f"   {icon} {priority.title()}: {count}")
         
         print(f"\n🏭 TOP VENDORS:")
         for vendor, count in sorted(vendors.items(), key=lambda x: x[1], reverse=True)[:5]:
@@ -1297,6 +1415,12 @@ def main():
                        help="Continuous scanning mode (like your victim selector)")
     parser.add_argument("--install-deps", action="store_true",
                        help="Install required dependencies (scapy)")
+    parser.add_argument("--no-filter", action="store_true",
+                       help="Disable device filtering (show all devices)")
+    parser.add_argument("--show-all", action="store_true",
+                       help="Temporarily show all devices even when filtering is enabled")
+    parser.add_argument("--list-known", action="store_true",
+                       help="List configured known devices without performing a scan")
     
     args = parser.parse_args()
     
@@ -1329,6 +1453,21 @@ def main():
     
     scanner = NetworkDeviceScanner(args.interface)
     
+    # Apply filtering configuration
+    if args.no_filter:
+        DeviceFilterConfig.ENABLE_DEVICE_FILTERING = False
+        print("🔽 Device Filtering: DISABLED (Showing all devices)")
+    elif args.show_all:
+        DeviceFilterConfig.ENABLE_DEVICE_FILTERING = False
+        print("🔽 Device Filtering: DISABLED (Showing all devices)")
+    else:
+        DeviceFilterConfig.ENABLE_DEVICE_FILTERING = True
+        print("🔽 Device Filtering: ENABLED")
+        print(f"   🎯 Looking for {len(DeviceFilterConfig.KNOWN_DEVICES)} known devices:")
+        for name, mac in DeviceFilterConfig.KNOWN_DEVICES.items():
+            print(f"      • {name}: {mac}")
+        print(f"   🌐 Will also show gateway/router devices automatically")
+    
     if args.load:
         if scanner.load_results(args.load):
             scanner.display_devices(args.sort)
@@ -1342,6 +1481,13 @@ def main():
         scanner.monitor_network_changes(args.monitor)
         return
     
+    if args.list_known:
+        print("\n🔍 Listing configured known devices:")
+        for name, mac in DeviceFilterConfig.KNOWN_DEVICES.items():
+            print(f"   - {name}: {mac}")
+        print(f"{'='*60}")
+        return
+
     # Perform scan with multiple rounds if requested
     if args.rounds > 1:
         print(f"\n🔄 Performing {args.rounds} scan rounds for comprehensive discovery...")

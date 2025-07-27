@@ -16,12 +16,12 @@ import logging
 from datetime import datetime
 
 # Import centralized configuration
-from config import NetworkConfig, AttackConfig, SecurityConfig, PathConfig, DeviceRegistry
+from config import NetworkConfig, AttackConfig, SecurityConfig, PathConfig, DeviceRegistry, Device
 
-# Use configuration values
-target_1 = AttackConfig.POISON_TARGET_1  # First device (e.g., laptop)
-target_2 = AttackConfig.POISON_TARGET_2  # Second device (e.g., phone)
-gateway_device = AttackConfig.GATEWAY_DEVICE
+# Use configuration values - these will be set dynamically by run_tcp_attack()
+target_1 = None  # Will be set by run_tcp_attack()
+target_2 = None  # Will be set by run_tcp_attack()
+gateway_device = None  # Will be set by run_tcp_attack()
 interface = NetworkConfig.INTERFACE
 
 # Socket interception configuration
@@ -29,7 +29,7 @@ SOCKET_PORTS = AttackConfig.SOCKET_PORTS
 ENABLE_BIDIRECTIONAL_INTERCEPTION = AttackConfig.ENABLE_BIDIRECTIONAL_INTERCEPTION
 SOCKET_MODIFICATIONS = AttackConfig.SOCKET_MODIFICATIONS
 
-# TCP Attack Mode configuration
+# TCP Attack Mode configuration - will be set dynamically
 TCP_ATTACK_MODE = AttackConfig.TCP_ATTACK_MODE
 
 # Setup detailed logging
@@ -412,6 +412,46 @@ def display_configuration():
         if response.lower() not in ['yes', 'y']:
             print("❌ Attack cancelled by user")
             sys.exit(0)
+
+def run_tcp_attack(device_1, device_2, gateway, mode):
+    """Run TCP attack with specified devices and mode"""
+    
+    # Override the global variables with new device data
+    global target_1, target_2, gateway_device, TCP_ATTACK_MODE
+    
+    # Create Device objects from the device dictionaries
+    target_1 = Device(
+        name=device_1.get('hostname', 'device_1'),
+        ip=device_1['ip'],
+        mac=device_1['mac'],
+        device_type=device_1.get('device_type', 'unknown'),
+        description='Selected Device 1',
+        vendor=device_1.get('vendor', None)
+    )
+    
+    target_2 = Device(
+        name=device_2.get('hostname', 'device_2'),
+        ip=device_2['ip'],
+        mac=device_2['mac'],
+        device_type=device_2.get('device_type', 'unknown'),
+        description='Selected Device 2',
+        vendor=device_2.get('vendor', None)
+    )
+    
+    gateway_device = Device(
+        name=gateway.get('hostname', 'gateway'),
+        ip=gateway['ip'],
+        mac=gateway['mac'],
+        device_type=gateway.get('device_type', 'router'),
+        description='Selected Gateway',
+        vendor=gateway.get('vendor', None)
+    )
+    
+    # Set the mode
+    TCP_ATTACK_MODE = mode
+    
+    # Run the main function
+    main()
 
 def main():
     """Main function"""

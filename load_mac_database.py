@@ -6,7 +6,7 @@ Utility to import and test MAC vendor databases in JSON format
 
 import json
 import sys
-from network_device_scanner import NetworkDeviceScanner
+from scanner import NetworkDeviceScanner
 
 def load_mac_database_from_file(filename):
     """Load MAC vendor database from a local JSON file"""

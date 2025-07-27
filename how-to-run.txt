@@ -4,25 +4,27 @@ Setup:
 At first, run network_device_scanner.py to find device IP and MACs
 Set them up at config.py 
 
+
+sudo "$HOME/miniconda3/bin/python" scanner.py
+
+sudo "$HOME/miniconda3/bin/python" new_scanner.py
+
+sudo "$HOME/miniconda3/bin/python" main.py 
+
+sudo "$HOME/miniconda3/bin/python" scanner.py --show-all
+
+sudo "$HOME/miniconda3/bin/python" scanner.py --list-known
+
+
 HTTP Traffic Interception and Modification:
 ===========================================
 
 In my end, it is working nicely, when I set up the server locally,
-say the server is listening at, 192.168.0.125:8000
+say the server is listening at, 192.168.68.125:8000
 
 Then, at gateway ip, i need to put this ip 
 
-sudo /home/aaniksahaa/miniconda3/bin/python improved_http_interceptor.py 
-
-sudo /home/aaniksahaa/miniconda3/bin/python simple_http_interceptor.py 
-
-sudo /home/aaniksahaa/miniconda3/bin/python new_http_interceptor.py 
-
-sudo /home/aaniksahaa/miniconda3/bin/python new_http_interceptor.py
-
-sudo /home/aaniksahaa/miniconda3/bin/python http_interceptor.py
-
-sudo /home/aaniksahaa/miniconda3/bin/python debug_http_interceptor.py 
+sudo "$HOME/miniconda3/bin/python" http_interceptor.py
 
 TCP Socket Interception and Modification:
 =========================================
@@ -46,4 +48,14 @@ DNS Interception and Modification:
 
 Attacker PC:
 sudo "$HOME/miniconda3/bin/python" dns_interceptor.py
+
+Defense:
+========
+
+sudo ./run_defense_prereq.sh
+sudo "$HOME/miniconda3/bin/python" arp_defense_system.py
+
+Restoration: 
+sudo "$HOME/miniconda3/bin/python" arp_restore.py 
+
 

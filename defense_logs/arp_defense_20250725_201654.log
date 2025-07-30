@@ -1,0 +1,74 @@
+2025-07-25 20:16:54,950 - INFO - 🛡️  ARP Defense System starting - Log file: defense_logs/arp_defense_20250725_201654.log
+2025-07-25 20:16:54,950 - INFO - ✅ Loaded configuration: 4 known devices
+2025-07-25 20:17:33,093 - INFO - 💾 Configuration saved: 4 devices
+2025-07-25 20:17:33,098 - INFO - 🔒 Static ARP entry set: 192.168.0.1 -> 60:a4:b7:a9:77:05
+2025-07-25 20:17:33,109 - INFO - 👁️  ARP monitoring started
+2025-07-25 20:17:33,110 - INFO - 🛡️  Active defense started
+2025-07-25 20:17:33,131 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:34,789 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:34,808 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:34,884 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:34,889 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:34,890 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:34,899 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:34,959 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:34,967 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:36,943 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:36,966 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:37,067 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:37,075 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:37,076 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:37,098 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:37,174 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:37,182 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:39,091 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:39,114 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:39,183 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:39,191 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:39,192 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:39,220 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:39,290 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:39,297 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:41,243 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:41,254 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:41,325 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:41,328 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:41,342 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:41,355 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:41,447 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:41,454 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:43,152 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:43,292 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:43,319 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:43,397 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:43,405 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:43,407 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:43,431 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:43,515 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:43,522 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:45,443 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:45,466 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:45,574 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:45,583 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:45,584 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:45,611 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:45,712 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:45,719 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:47,594 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:47,615 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:47,659 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:47,663 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:47,663 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:47,672 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:47,738 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:47,741 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:49,745 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.1 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.1 claims to be d4:1b:81:20:a1:f3 but should be 60:a4:b7:a9:77:05
+2025-07-25 20:17:49,767 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:49,840 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:49,847 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:49,849 - CRITICAL - 🚨 ARP ATTACK: 192.168.0.111 (d4:1b:81:20:a1:f3) - MAC mismatch: 192.168.0.111 claims to be d4:1b:81:20:a1:f3 but should be 24:fb:65:44:c4:b5
+2025-07-25 20:17:49,876 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 20:17:49,981 - INFO - 📡 Sent 3 gratuitous ARP responses
+2025-07-25 20:17:49,989 - INFO - 🚫 Blocked attacker MAC: d4:1b:81:20:a1:f3
+2025-07-25 20:17:50,976 - INFO - 💾 Configuration saved: 4 devices
+2025-07-25 20:17:51,008 - INFO - 🛡️  ARP Defense System shutdown complete

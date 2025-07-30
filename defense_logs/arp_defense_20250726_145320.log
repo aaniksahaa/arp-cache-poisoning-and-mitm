@@ -1,0 +1,49 @@
+2025-07-26 14:53:20,887 - INFO - 🛡️  ARP Defense System starting - Log file: defense_logs/arp_defense_20250726_145320.log
+2025-07-26 14:53:20,888 - INFO - ✅ Loaded configuration: 4 known devices
+2025-07-26 14:53:39,594 - INFO - 📝 Learned legitimate mapping: 192.168.68.1 -> 98:25:4a:a1:05:e8
+2025-07-26 14:53:39,594 - INFO - 📝 Learned legitimate mapping: 192.168.68.144 -> d4:1b:81:20:a1:f3
+2025-07-26 14:53:39,595 - INFO - 💾 Configuration saved: 6 devices
+2025-07-26 14:53:39,597 - WARNING - Failed to set static ARP entry for 192.168.68.1: SIOCSARP: Network is unreachable
+
+2025-07-26 14:53:39,598 - WARNING - Failed to set static ARP entry for 192.168.0.1: SIOCSARP: Network is unreachable
+
+2025-07-26 14:53:39,609 - INFO - 👁️  ARP monitoring started
+2025-07-26 14:53:39,609 - INFO - 🛡️  Active defense started
+2025-07-26 14:53:39,622 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 14:53:39,695 - ERROR - Error in ARP monitoring: [Errno 100] Network is down
+2025-07-26 14:53:49,638 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 14:53:59,652 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 14:53:59,670 - ERROR - Failed to send gratuitous ARP for 192.168.0.197: [Errno 100] Network is down
+2025-07-26 14:53:59,692 - ERROR - Failed to send gratuitous ARP for 192.168.0.1: [Errno 100] Network is down
+2025-07-26 14:53:59,708 - ERROR - Failed to send gratuitous ARP for 192.168.0.111: [Errno 100] Network is down
+2025-07-26 14:53:59,769 - WARNING - ⚠️ Failed to send 6 gratuitous ARPs - check permissions
+2025-07-26 16:42:07,210 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:42:17,224 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:42:28,219 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:42:28,369 - INFO - 📡 Sent 6 gratuitous ARP responses
+2025-07-26 16:42:38,383 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:42:48,397 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:43:00,199 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:43:00,360 - INFO - 📡 Sent 6 gratuitous ARP responses
+2025-07-26 16:43:10,375 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:43:20,469 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:43:30,484 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:43:30,502 - ERROR - Failed to send gratuitous ARP for 192.168.0.197: [Errno 100] Network is down
+2025-07-26 16:43:30,533 - ERROR - Failed to send gratuitous ARP for 192.168.0.1: [Errno 100] Network is down
+2025-07-26 16:43:30,560 - ERROR - Failed to send gratuitous ARP for 192.168.0.111: [Errno 100] Network is down
+2025-07-26 16:43:30,633 - WARNING - ⚠️ Failed to send 6 gratuitous ARPs - check permissions
+2025-07-26 16:43:40,648 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:58:09,450 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:58:19,465 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:58:19,614 - INFO - 📡 Sent 6 gratuitous ARP responses
+2025-07-26 16:58:29,629 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:58:39,644 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:58:49,658 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:58:49,679 - ERROR - Failed to send gratuitous ARP for 192.168.0.197: [Errno 100] Network is down
+2025-07-26 16:58:49,706 - ERROR - Failed to send gratuitous ARP for 192.168.0.1: [Errno 100] Network is down
+2025-07-26 16:58:49,731 - ERROR - Failed to send gratuitous ARP for 192.168.0.111: [Errno 100] Network is down
+2025-07-26 16:58:49,803 - WARNING - ⚠️ Failed to send 6 gratuitous ARPs - check permissions
+2025-07-26 16:58:59,820 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:59:36,596 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:59:46,611 - INFO - 🔧 Restored 6 ARP entries
+2025-07-26 16:59:46,744 - INFO - 📡 Sent 6 gratuitous ARP responses

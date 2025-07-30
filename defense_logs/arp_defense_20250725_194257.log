@@ -1,0 +1,21 @@
+2025-07-25 19:42:57,793 - INFO - 🛡️  ARP Defense System starting - Log file: defense_logs/arp_defense_20250725_194257.log
+2025-07-25 19:42:57,793 - INFO - 📝 No existing configuration found, will learn network
+2025-07-25 19:42:58,028 - INFO - 📝 Learned legitimate mapping: 192.168.0.197 -> d4:1b:81:20:a1:f3
+2025-07-25 19:42:58,028 - INFO - 📝 Learned legitimate mapping: 192.168.0.1 -> 60:a4:b7:a9:77:05
+2025-07-25 19:42:58,029 - INFO - 💾 Configuration saved: 2 devices
+2025-07-25 19:42:58,031 - WARNING - Failed to set static ARP entry for 192.168.0.1: SIOCSARP: Operation not permitted
+
+2025-07-25 19:42:58,032 - INFO - 👁️  ARP monitoring started
+2025-07-25 19:42:58,032 - ERROR - Error in ARP monitoring: [Errno 1] Operation not permitted
+2025-07-25 19:42:58,032 - INFO - 🛡️  Active defense started
+2025-07-25 19:42:58,033 - ERROR - Failed to send gratuitous ARP for 192.168.0.197: [Errno 1] Operation not permitted
+2025-07-25 19:42:58,033 - ERROR - Failed to send gratuitous ARP for 192.168.0.1: [Errno 1] Operation not permitted
+2025-07-25 19:42:58,041 - INFO - 🔧 Restored 2 ARP entries
+2025-07-25 19:43:28,043 - ERROR - Failed to send gratuitous ARP for 192.168.0.197: [Errno 1] Operation not permitted
+2025-07-25 19:43:28,044 - ERROR - Failed to send gratuitous ARP for 192.168.0.1: [Errno 1] Operation not permitted
+2025-07-25 19:43:28,062 - INFO - 🔧 Restored 2 ARP entries
+2025-07-25 19:43:58,063 - ERROR - Failed to send gratuitous ARP for 192.168.0.197: [Errno 1] Operation not permitted
+2025-07-25 19:43:58,064 - ERROR - Failed to send gratuitous ARP for 192.168.0.1: [Errno 1] Operation not permitted
+2025-07-25 19:43:58,086 - INFO - 🔧 Restored 2 ARP entries
+2025-07-25 19:44:19,698 - INFO - 💾 Configuration saved: 2 devices
+2025-07-25 19:44:19,718 - INFO - 🛡️  ARP Defense System shutdown complete

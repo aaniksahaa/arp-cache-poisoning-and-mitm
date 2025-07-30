@@ -1,0 +1,12 @@
+2025-07-25 19:46:52,004 - INFO - 🛡️  ARP Defense System starting - Log file: defense_logs/arp_defense_20250725_194652.log
+2025-07-25 19:46:52,005 - INFO - ✅ Loaded configuration: 2 known devices
+2025-07-25 19:47:25,512 - INFO - 📝 Learned legitimate mapping: 192.168.0.111 -> 24:fb:65:44:c4:b5
+2025-07-25 19:47:25,513 - INFO - 💾 Configuration saved: 3 devices
+2025-07-25 19:47:25,517 - INFO - 🔒 Static ARP entry set: 192.168.0.1 -> 60:a4:b7:a9:77:05
+2025-07-25 19:47:25,538 - INFO - 👁️  ARP monitoring started
+2025-07-25 19:47:25,539 - INFO - 🛡️  Active defense started
+2025-07-25 19:47:25,551 - INFO - 🔧 Restored 3 ARP entries
+2025-07-25 19:47:30,715 - INFO - 📝 Learned new legitimate mapping: 192.168.0.125 -> 24:b2:b9:3e:22:13
+2025-07-25 19:47:35,571 - INFO - 🔧 Restored 4 ARP entries
+2025-07-25 19:47:44,398 - INFO - 💾 Configuration saved: 4 devices
+2025-07-25 19:47:44,408 - INFO - 🛡️  ARP Defense System shutdown complete

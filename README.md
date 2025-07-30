@@ -225,27 +225,3 @@ The system auto-detects your network interface, but you can override in `config.
 ```python
 INTERFACE = "wlp2s0"  # Your specific interface
 ```
-
-## 📝 License
-
-This project is for educational purposes only. Users are responsible for complying with applicable laws and regulations.
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📞 Support
-
-For issues or questions:
-1. Check the troubleshooting section
-2. Review the debug logs
-3. Ensure you're using the latest version
-4. Submit an issue with detailed information
-
----
-
-**Remember**: Always use this tool responsibly and only on networks you have permission to test! 🛡️ 

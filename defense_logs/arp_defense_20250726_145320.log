@@ -1,9 +1,9 @@
 2025-07-26 14:53:20,887 - INFO - 🛡️  ARP Defense System starting - Log file: defense_logs/arp_defense_20250726_145320.log
 2025-07-26 14:53:20,888 - INFO - ✅ Loaded configuration: 4 known devices
-2025-07-26 14:53:39,594 - INFO - 📝 Learned legitimate mapping: 192.168.68.1 -> 98:25:4a:a1:05:e8
-2025-07-26 14:53:39,594 - INFO - 📝 Learned legitimate mapping: 192.168.68.144 -> d4:1b:81:20:a1:f3
+2025-07-26 14:53:39,594 - INFO - 📝 Learned legitimate mapping: 192.168.0.1 -> 98:25:4a:a1:05:e8
+2025-07-26 14:53:39,594 - INFO - 📝 Learned legitimate mapping: 192.168.0.144 -> d4:1b:81:20:a1:f3
 2025-07-26 14:53:39,595 - INFO - 💾 Configuration saved: 6 devices
-2025-07-26 14:53:39,597 - WARNING - Failed to set static ARP entry for 192.168.68.1: SIOCSARP: Network is unreachable
+2025-07-26 14:53:39,597 - WARNING - Failed to set static ARP entry for 192.168.0.1: SIOCSARP: Network is unreachable
 
 2025-07-26 14:53:39,598 - WARNING - Failed to set static ARP entry for 192.168.0.1: SIOCSARP: Network is unreachable
 

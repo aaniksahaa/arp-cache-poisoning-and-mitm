@@ -1,16 +1,16 @@
 2025-07-25 20:53:56,717 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
-2025-07-25 20:53:56,717 - INFO - [ATTACK] Target: 192.168.68.111 ↔ Gateway: 192.168.68.1
+2025-07-25 20:53:56,717 - INFO - [ATTACK] Target: 192.168.0.111 ↔ Gateway: 192.168.0.1
 2025-07-25 20:53:56,718 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
 2025-07-25 20:53:56,718 - INFO - [SETUP] Enabling IP forwarding
 2025-07-25 20:53:56,719 - INFO - [SETUP] ✅ IP forwarding enabled successfully
 2025-07-25 20:53:56,719 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
 2025-07-25 20:53:56,719 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
 2025-07-25 20:53:59,720 - INFO - [ARP-CHECK] Our MAC address: d4:1b:81:20:a1:f3
-2025-07-25 20:53:59,721 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.68.1 has MAC d4:1b:81:20:a1:f3
-2025-07-25 20:53:59,721 - INFO - [ARP-CHECK] And gateway should think victim 192.168.68.111 has MAC d4:1b:81:20:a1:f3
+2025-07-25 20:53:59,721 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.0.1 has MAC d4:1b:81:20:a1:f3
+2025-07-25 20:53:59,721 - INFO - [ARP-CHECK] And gateway should think victim 192.168.0.111 has MAC d4:1b:81:20:a1:f3
 2025-07-25 20:53:59,722 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
-2025-07-25 20:53:59,723 - INFO - [SETUP] Target victim IP: 192.168.68.111
-2025-07-25 20:53:59,723 - INFO - [SETUP] Gateway IP: 192.168.68.1
+2025-07-25 20:53:59,723 - INFO - [SETUP] Target victim IP: 192.168.0.111
+2025-07-25 20:53:59,723 - INFO - [SETUP] Gateway IP: 192.168.0.1
 2025-07-25 20:53:59,724 - INFO - [SETUP] Interface: wlp2s0
 2025-07-25 20:53:59,736 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 20:53:59,737 - INFO - [SETUP] 🎯 Starting packet interception...
@@ -21,25 +21,25 @@
 2025-07-25 20:54:37,292 - INFO - 
 [CLEANUP] 🧹 Starting cleanup process...
 2025-07-25 20:54:37,293 - INFO - [CLEANUP] Restoring ARP tables...
-2025-07-25 20:54:37,294 - INFO - [ARP-RESTORE] Restoring 192.168.68.111 -> 192.168.68.1 mapping
-2025-07-25 20:54:37,317 - INFO - [ARP-RESTORE] Restoring 192.168.68.1 -> 192.168.68.111 mapping
+2025-07-25 20:54:37,294 - INFO - [ARP-RESTORE] Restoring 192.168.0.111 -> 192.168.0.1 mapping
+2025-07-25 20:54:37,317 - INFO - [ARP-RESTORE] Restoring 192.168.0.1 -> 192.168.0.111 mapping
 2025-07-25 20:54:37,342 - INFO - [CLEANUP] Disabling IP forwarding
 2025-07-25 20:54:37,346 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 20:54:37,363 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-25 20:54:37,364 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 21:09:22,509 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
-2025-07-25 21:09:22,510 - INFO - [ATTACK] Target: 192.168.68.111 ↔ Gateway: 192.168.68.125
+2025-07-25 21:09:22,510 - INFO - [ATTACK] Target: 192.168.0.111 ↔ Gateway: 192.168.0.125
 2025-07-25 21:09:22,511 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
 2025-07-25 21:09:22,511 - INFO - [SETUP] Enabling IP forwarding
 2025-07-25 21:09:22,515 - INFO - [SETUP] ✅ IP forwarding enabled successfully
 2025-07-25 21:09:22,517 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
 2025-07-25 21:09:22,517 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
 2025-07-25 21:09:25,521 - INFO - [ARP-CHECK] Our MAC address: d4:1b:81:20:a1:f3
-2025-07-25 21:09:25,521 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.68.125 has MAC d4:1b:81:20:a1:f3
-2025-07-25 21:09:25,521 - INFO - [ARP-CHECK] And gateway should think victim 192.168.68.111 has MAC d4:1b:81:20:a1:f3
+2025-07-25 21:09:25,521 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.0.125 has MAC d4:1b:81:20:a1:f3
+2025-07-25 21:09:25,521 - INFO - [ARP-CHECK] And gateway should think victim 192.168.0.111 has MAC d4:1b:81:20:a1:f3
 2025-07-25 21:09:25,521 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
-2025-07-25 21:09:25,522 - INFO - [SETUP] Target victim IP: 192.168.68.111
-2025-07-25 21:09:25,522 - INFO - [SETUP] Gateway IP: 192.168.68.125
+2025-07-25 21:09:25,522 - INFO - [SETUP] Target victim IP: 192.168.0.111
+2025-07-25 21:09:25,522 - INFO - [SETUP] Gateway IP: 192.168.0.125
 2025-07-25 21:09:25,522 - INFO - [SETUP] Interface: wlp2s0
 2025-07-25 21:09:25,536 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 21:09:25,537 - INFO - [SETUP] 🎯 Starting packet interception...
@@ -59,25 +59,25 @@
 2025-07-25 21:12:21,668 - INFO - 
 [CLEANUP] 🧹 Starting cleanup process...
 2025-07-25 21:12:21,669 - INFO - [CLEANUP] Restoring ARP tables...
-2025-07-25 21:12:21,670 - INFO - [ARP-RESTORE] Restoring 192.168.68.111 -> 192.168.68.125 mapping
-2025-07-25 21:12:21,695 - INFO - [ARP-RESTORE] Restoring 192.168.68.125 -> 192.168.68.111 mapping
+2025-07-25 21:12:21,670 - INFO - [ARP-RESTORE] Restoring 192.168.0.111 -> 192.168.0.125 mapping
+2025-07-25 21:12:21,695 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.111 mapping
 2025-07-25 21:12:21,718 - INFO - [CLEANUP] Disabling IP forwarding
 2025-07-25 21:12:21,719 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 21:12:21,746 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-25 21:12:21,747 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 22:18:08,573 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
-2025-07-25 22:18:08,575 - INFO - [ATTACK] Target: 192.168.68.111 ↔ Gateway: 192.168.68.125
+2025-07-25 22:18:08,575 - INFO - [ATTACK] Target: 192.168.0.111 ↔ Gateway: 192.168.0.125
 2025-07-25 22:18:08,576 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
 2025-07-25 22:18:08,576 - INFO - [SETUP] Enabling IP forwarding
 2025-07-25 22:18:08,580 - INFO - [SETUP] ✅ IP forwarding enabled successfully
 2025-07-25 22:18:08,581 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
 2025-07-25 22:18:08,582 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
 2025-07-25 22:18:11,585 - INFO - [ARP-CHECK] Our MAC address: d4:1b:81:20:a1:f3
-2025-07-25 22:18:11,587 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.68.125 has MAC d4:1b:81:20:a1:f3
-2025-07-25 22:18:11,587 - INFO - [ARP-CHECK] And gateway should think victim 192.168.68.111 has MAC d4:1b:81:20:a1:f3
+2025-07-25 22:18:11,587 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.0.125 has MAC d4:1b:81:20:a1:f3
+2025-07-25 22:18:11,587 - INFO - [ARP-CHECK] And gateway should think victim 192.168.0.111 has MAC d4:1b:81:20:a1:f3
 2025-07-25 22:18:11,588 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
-2025-07-25 22:18:11,589 - INFO - [SETUP] Target victim IP: 192.168.68.111
-2025-07-25 22:18:11,589 - INFO - [SETUP] Gateway IP: 192.168.68.125
+2025-07-25 22:18:11,589 - INFO - [SETUP] Target victim IP: 192.168.0.111
+2025-07-25 22:18:11,589 - INFO - [SETUP] Gateway IP: 192.168.0.125
 2025-07-25 22:18:11,590 - INFO - [SETUP] Interface: wlp2s0
 2025-07-25 22:18:11,628 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 22:18:11,629 - INFO - [SETUP] 🎯 Starting packet interception...
@@ -87,38 +87,38 @@
 2025-07-25 22:18:52,438 - INFO - 
 [CLEANUP] 🧹 Starting cleanup process...
 2025-07-25 22:18:52,439 - INFO - [CLEANUP] Restoring ARP tables...
-2025-07-25 22:18:52,440 - INFO - [ARP-RESTORE] Restoring 192.168.68.111 -> 192.168.68.125 mapping
-2025-07-25 22:18:52,464 - INFO - [ARP-RESTORE] Restoring 192.168.68.125 -> 192.168.68.111 mapping
+2025-07-25 22:18:52,440 - INFO - [ARP-RESTORE] Restoring 192.168.0.111 -> 192.168.0.125 mapping
+2025-07-25 22:18:52,464 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.111 mapping
 2025-07-25 22:18:52,488 - INFO - [CLEANUP] Disabling IP forwarding
 2025-07-25 22:18:52,492 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 22:18:52,507 - INFO - [CLEANUP] ✅ Cleanup complete
 2025-07-25 22:18:52,508 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 22:18:56,445 - INFO - [ATTACK] 🚀 Starting HTTP TAMPER attack
-2025-07-25 22:18:56,446 - INFO - [ATTACK] Target: 192.168.68.201 ↔ Gateway: 192.168.68.125
+2025-07-25 22:18:56,446 - INFO - [ATTACK] Target: 192.168.0.201 ↔ Gateway: 192.168.0.125
 2025-07-25 22:18:56,447 - INFO - [ATTACK] Attacker MAC: d4:1b:81:20:a1:f3
 2025-07-25 22:18:56,447 - INFO - [SETUP] Enabling IP forwarding
 2025-07-25 22:18:56,451 - INFO - [SETUP] ✅ IP forwarding enabled successfully
 2025-07-25 22:18:56,451 - INFO - [ARP-POISON] 🎯 Starting continuous ARP poisoning
 2025-07-25 22:18:56,451 - INFO - [ATTACK] Waiting 3 seconds for ARP poisoning to take effect...
 2025-07-25 22:18:59,453 - INFO - [ARP-CHECK] Our MAC address: d4:1b:81:20:a1:f3
-2025-07-25 22:18:59,454 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.68.125 has MAC d4:1b:81:20:a1:f3
-2025-07-25 22:18:59,454 - INFO - [ARP-CHECK] And gateway should think victim 192.168.68.201 has MAC d4:1b:81:20:a1:f3
+2025-07-25 22:18:59,454 - INFO - [ARP-CHECK] ARP poisoning should make victim think gateway 192.168.0.125 has MAC d4:1b:81:20:a1:f3
+2025-07-25 22:18:59,454 - INFO - [ARP-CHECK] And gateway should think victim 192.168.0.201 has MAC d4:1b:81:20:a1:f3
 2025-07-25 22:18:59,455 - INFO - [SETUP] Setting up iptables rules for HTTP TAMPER mode
-2025-07-25 22:18:59,456 - INFO - [SETUP] Target victim IP: 192.168.68.201
-2025-07-25 22:18:59,456 - INFO - [SETUP] Gateway IP: 192.168.68.125
+2025-07-25 22:18:59,456 - INFO - [SETUP] Target victim IP: 192.168.0.201
+2025-07-25 22:18:59,456 - INFO - [SETUP] Gateway IP: 192.168.0.125
 2025-07-25 22:18:59,457 - INFO - [SETUP] Interface: wlp2s0
 2025-07-25 22:18:59,486 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 22:18:59,487 - INFO - [SETUP] 🎯 Starting packet interception...
 2025-07-25 22:19:04,467 - INFO - [PACKET-COUNT] Processed 0 packets so far...
-2025-07-25 22:19:04,493 - INFO - [HTTP] HTTP response detected from 192.168.68.125:8000
+2025-07-25 22:19:04,493 - INFO - [HTTP] HTTP response detected from 192.168.0.125:8000
 2025-07-25 22:19:04,494 - INFO - [TAMPER] ✅ Successfully injected content into HTML response
 2025-07-25 22:19:04,494 - INFO - [TAMPER] ✅ Packet modified and forwarded
 2025-07-25 22:19:04,502 - INFO - [PACKET-COUNT] Processed 10 packets so far...
 2025-07-25 22:19:08,746 - INFO - 
 [CLEANUP] 🧹 Starting cleanup process...
 2025-07-25 22:19:08,747 - INFO - [CLEANUP] Restoring ARP tables...
-2025-07-25 22:19:08,747 - INFO - [ARP-RESTORE] Restoring 192.168.68.201 -> 192.168.68.125 mapping
-2025-07-25 22:19:08,774 - INFO - [ARP-RESTORE] Restoring 192.168.68.125 -> 192.168.68.201 mapping
+2025-07-25 22:19:08,747 - INFO - [ARP-RESTORE] Restoring 192.168.0.201 -> 192.168.0.125 mapping
+2025-07-25 22:19:08,774 - INFO - [ARP-RESTORE] Restoring 192.168.0.125 -> 192.168.0.201 mapping
 2025-07-25 22:19:08,804 - INFO - [CLEANUP] Disabling IP forwarding
 2025-07-25 22:19:08,808 - INFO - [CLEANUP] Removing iptables rules...
 2025-07-25 22:19:08,829 - INFO - [CLEANUP] ✅ Cleanup complete

@@ -26,12 +26,12 @@
 2025-07-25 21:38:59,044 - INFO - [SETUP] ✅ iptables rules configured
 2025-07-25 21:38:59,044 - INFO - [ARP] 🎯 Starting ARP poisoning
 2025-07-25 21:38:59,044 - INFO - [DNS] 🚀 Starting DNS interception
-2025-07-25 21:39:24,763 - INFO - [DNS-RESPONSE] 📥 192.168.68.1 -> 192.168.68.125
+2025-07-25 21:39:24,763 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
 2025-07-25 21:39:24,765 - INFO - [DNS-ANSWER] star-mini.c10r.facebook.com -> 57.144.142.1
 2025-07-25 21:39:24,765 - WARNING - [DNS-REDIRECT] 🎯 star-mini.c10r.facebook.com: 57.144.142.1 -> 142.250.77.142
 2025-07-25 21:39:24,765 - INFO - [DNS-MODIFY] ✅ DNS response modified successfully
 2025-07-25 21:39:24,766 - INFO - [DNS-SUCCESS] 🔧 Packet modified and forwarded
-2025-07-25 21:39:25,074 - INFO - [DNS-RESPONSE] 📥 192.168.68.1 -> 192.168.68.125
+2025-07-25 21:39:25,074 - INFO - [DNS-RESPONSE] 📥 192.168.0.1 -> 192.168.0.125
 2025-07-25 21:39:25,075 - INFO - [DNS-PASS] 📤 Packet passed through unchanged
 2025-07-25 21:39:28,391 - INFO - [ARP] Sent 30 poison packets
 2025-07-25 21:39:29,831 - INFO - 

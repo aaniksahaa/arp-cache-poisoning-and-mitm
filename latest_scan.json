@@ -1,12 +1,12 @@
 {
   "timestamp": "2025-07-26T14:25:13.264469",
   "interface": "wlp2s0",
-  "network": "192.168.68.0/24",
+  "network": "192.168.0.0/24",
   "total_devices": 4,
   "scan_type": "continuous_arp",
   "devices": {
-    "192.168.68.1": {
-      "ip": "192.168.68.1",
+    "192.168.0.1": {
+      "ip": "192.168.0.1",
       "mac": "98:25:4a:a1:05:e8",
       "vendor": "TP-Link Systems Inc",
       "hostname": "_gateway",
@@ -20,8 +20,8 @@
       "filter_reason": "gateway_device",
       "device_priority": "gateway"
     },
-    "192.168.68.141": {
-      "ip": "192.168.68.141",
+    "192.168.0.141": {
+      "ip": "192.168.0.141",
       "mac": "dc:21:48:db:ee:f3",
       "vendor": "Intel Corporate",
       "hostname": null,
@@ -36,8 +36,8 @@
       "known_as": "jaber_laptop_asus",
       "device_priority": "known"
     },
-    "192.168.68.143": {
-      "ip": "192.168.68.143",
+    "192.168.0.143": {
+      "ip": "192.168.0.143",
       "mac": "f4:30:8b:91:d6:1f",
       "vendor": "Xiaomi Communications Co Ltd",
       "hostname": null,
@@ -52,8 +52,8 @@
       "known_as": "anik_phone",
       "device_priority": "known"
     },
-    "192.168.68.145": {
-      "ip": "192.168.68.145",
+    "192.168.0.145": {
+      "ip": "192.168.0.145",
       "mac": "24:b2:b9:3e:22:13",
       "vendor": "Liteon Technology Corporation",
       "hostname": null,

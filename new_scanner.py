@@ -49,7 +49,7 @@ try:
 except ImportError:
     # Fallback configuration if config.py not available
     DEFAULT_INTERFACE = "eth0"
-    DEFAULT_NETWORK_RANGE = "192.168.68.1/24"
+    DEFAULT_NETWORK_RANGE = "192.168.0.1/24"
     MAC_VENDOR_CACHE_FILE = "mac_vendors.json"
     SCAN_RESULTS_FILE = "scan_results.json"
     class DeviceFilterConfig:

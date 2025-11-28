@@ -11,7 +11,7 @@ import time
 import sys
 
 # Configuration
-SERVER_IP = "192.168.68.125"  # Change this to your server's IP address
+SERVER_IP = "192.168.0.125"  # Change this to your server's IP address
 SERVER_PORT = 9999
 
 def receive_messages(client, client_name="Client"):

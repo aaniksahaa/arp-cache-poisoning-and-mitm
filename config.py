@@ -61,7 +61,7 @@ class NetworkConfig:
     # INTERFACE = "wlp8s0"
     
     # Network range for scanning
-    NETWORK_RANGE = "192.168.68.0/24"  # Adjust to your network
+    NETWORK_RANGE = "192.168.0.0/24"  # Adjust to your network
     
     # Connection timeouts
     ARP_TIMEOUT = 3
@@ -78,7 +78,7 @@ class DeviceRegistry:
     # Define your devices here
     laptop_lenovo = Device(
         name="laptop",
-        ip="192.168.68.125",
+        ip="192.168.0.125",
         mac="24:b2:b9:3e:22:13",
         device_type="laptop",
         description="Lenovo LOQ Laptop"
@@ -86,7 +86,7 @@ class DeviceRegistry:
 
     laptop_hp = Device(
         name="laptop",
-        ip="192.168.68.197",
+        ip="192.168.0.197",
         mac="d4:1b:81:20:a1:f3",
         device_type="laptop",
         description="HP Laptop"
@@ -94,7 +94,7 @@ class DeviceRegistry:
 
     laptop_dell = Device(
         name="laptop",
-        ip="192.168.68.159",
+        ip="192.168.0.159",
         mac="54:35:30:a5:98:59",
         device_type="laptop",
         description="Dell Laptop"
@@ -102,7 +102,7 @@ class DeviceRegistry:
     
     phone_redmi = Device(
         name="phone", 
-        ip="192.168.68.201",
+        ip="192.168.0.201",
         mac="f4:30:8b:91:d6:1f",
         device_type="phone",
         description="Xiaomi Redmi Note 10"
@@ -110,14 +110,14 @@ class DeviceRegistry:
     
     gateway = Device(
         name="gateway",
-        ip="192.168.68.1",
+        ip="192.168.0.1",
         mac="60:a4:b7:a9:77:05", 
         device_type="router",
         description="WiFi Router/Gateway"
     )
     
     # Add more devices as needed
-    # desktop = Device("desktop", "192.168.68.XXX", "XX:XX:XX:XX:XX:XX", "desktop")
+    # desktop = Device("desktop", "192.168.0.XXX", "XX:XX:XX:XX:XX:XX", "desktop")
     
     @classmethod
     def get_device(cls, name):
@@ -629,7 +629,7 @@ from config import Device, DeviceRegistry, AttackConfig, NetworkConfig
 
 # Your network interface (find with: ip addr show)
 NetworkConfig.INTERFACE = "wlp2s0"  # Change to your interface
-NetworkConfig.NETWORK_RANGE = "192.168.68.0/24"  # Change to your network
+NetworkConfig.NETWORK_RANGE = "192.168.0.0/24"  # Change to your network
 
 # ==========================================
 # DEVICE REGISTRY
@@ -638,7 +638,7 @@ NetworkConfig.NETWORK_RANGE = "192.168.68.0/24"  # Change to your network
 # Define your actual devices here
 DeviceRegistry.laptop = Device(
     name="ubuntu_server",
-    ip="192.168.68.105",           # Replace with actual IP
+    ip="192.168.0.105",           # Replace with actual IP
     mac="XX:XX:XX:XX:XX:XX",      # Replace with actual MAC
     device_type="laptop",
     description="Ubuntu Server Laptop"
@@ -646,7 +646,7 @@ DeviceRegistry.laptop = Device(
 
 DeviceRegistry.phone = Device(
     name="windows_client", 
-    ip="192.168.68.150",           # Replace with actual IP
+    ip="192.168.0.150",           # Replace with actual IP
     mac="YY:YY:YY:YY:YY:YY",      # Replace with actual MAC
     device_type="laptop",
     description="Windows Client Laptop"
@@ -654,7 +654,7 @@ DeviceRegistry.phone = Device(
 
 DeviceRegistry.gateway = Device(
     name="router",
-    ip="192.168.68.1",             # Replace with actual router IP
+    ip="192.168.0.1",             # Replace with actual router IP
     mac="ZZ:ZZ:ZZ:ZZ:ZZ:ZZ",      # Replace with actual router MAC
     device_type="router",
     description="WiFi Router"
@@ -667,75 +667,75 @@ DeviceRegistry.gateway = Device(
 # Set your attack targets (which devices to intercept between)
 AttackConfig.POISON_TARGET_1 = Device(
         name="None",
-        ip="192.168.68.125",
+        ip="192.168.0.125",
         mac="24:b2:b9:3e:22:13",
         device_type="unknown",
         description="Selected Device 1"
     )
         name="None",
-        ip="192.168.68.125",
+        ip="192.168.0.125",
         mac="24:b2:b9:3e:22:13",
         device_type="unknown",
         description="Selected Device 1"
     )
         name="None",
-        ip="192.168.68.125",
+        ip="192.168.0.125",
         mac="24:b2:b9:3e:22:13",
         device_type="unknown",
         description="Selected Device 1"
     )
         name="None",
-        ip="192.168.68.125",
+        ip="192.168.0.125",
         mac="24:b2:b9:3e:22:13",
         device_type="unknown",
         description="Selected Device 1"
     )# Server
 AttackConfig.POISON_TARGET_2 = Device(
         name="None",
-        ip="192.168.68.201",
+        ip="192.168.0.201",
         mac="f4:30:8b:91:d6:1f",
         device_type="phone",
         description="Selected Device 2"
     )
         name="None",
-        ip="192.168.68.201",
+        ip="192.168.0.201",
         mac="f4:30:8b:91:d6:1f",
         device_type="phone",
         description="Selected Device 2"
     )
         name="None",
-        ip="192.168.68.201",
+        ip="192.168.0.201",
         mac="f4:30:8b:91:d6:1f",
         device_type="phone",
         description="Selected Device 2"
     )
         name="None",
-        ip="192.168.68.141",
+        ip="192.168.0.141",
         mac="9e:ff:60:86:f6:c7",
         device_type="unknown",
         description="Selected Device 2"
     )# Client
 AttackConfig.GATEWAY_DEVICE = Device(
         name="_gateway",
-        ip="192.168.68.1",
+        ip="192.168.0.1",
         mac="60:a4:b7:a9:77:05",
         device_type="router",
         description="Selected Gateway"
     )
         name="_gateway",
-        ip="192.168.68.1",
+        ip="192.168.0.1",
         mac="60:a4:b7:a9:77:05",
         device_type="router",
         description="Selected Gateway"
     )
         name="_gateway",
-        ip="192.168.68.1",
+        ip="192.168.0.1",
         mac="60:a4:b7:a9:77:05",
         device_type="router",
         description="Selected Gateway"
     )
         name="_gateway",
-        ip="192.168.68.1",
+        ip="192.168.0.1",
         mac="60:a4:b7:a9:77:05",
         device_type="router",
         description="Selected Gateway"

@@ -545,7 +545,7 @@ class NetworkDeviceScanner:
             base_parts = base.split('.')
             network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
         else:
-            network_base = "192.168.68"
+            network_base = "192.168.0"
         
         active_ips = []
         
@@ -668,7 +668,7 @@ class NetworkDeviceScanner:
             base_parts = base.split('.')
             network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
         else:
-            network_base = "192.168.68"
+            network_base = "192.168.0"
         
         def arp_ping_ip(ip):
             """Send ARP request using arping command"""
@@ -755,7 +755,7 @@ class NetworkDeviceScanner:
             base_parts = base.split('.')
             network_base = f"{base_parts[0]}.{base_parts[1]}.{base_parts[2]}"
         else:
-            network_base = "192.168.68"
+            network_base = "192.168.0"
         
         all_active_ips = set()
         

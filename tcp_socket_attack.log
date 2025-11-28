@@ -10,9 +10,9 @@
 2025-07-25 20:52:21,470 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 20:52:21,471 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
 2025-07-25 20:52:21,473 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
-2025-07-25 20:52:21,474 - INFO - [MITM] 🎯 Target 1: laptop (192.168.68.125) - laptop
-2025-07-25 20:52:21,475 - INFO - [MITM] 🎯 Target 2: phone (192.168.68.111) - phone
-2025-07-25 20:52:21,475 - INFO - [MITM] 🌐 Gateway: gateway (192.168.68.1) - router
+2025-07-25 20:52:21,474 - INFO - [MITM] 🎯 Target 1: laptop (192.168.0.125) - laptop
+2025-07-25 20:52:21,475 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.111) - phone
+2025-07-25 20:52:21,475 - INFO - [MITM] 🌐 Gateway: gateway (192.168.0.1) - router
 2025-07-25 20:52:21,475 - INFO - [MITM] 🔧 Mode: DROP
 2025-07-25 20:52:21,476 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
 2025-07-25 20:52:21,476 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
@@ -42,9 +42,9 @@
 2025-07-25 22:21:40,876 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 22:21:40,878 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
 2025-07-25 22:21:40,882 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
-2025-07-25 22:21:40,883 - INFO - [MITM] 🎯 Target 1: phone (192.168.68.201) - phone
-2025-07-25 22:21:40,884 - INFO - [MITM] 🎯 Target 2: phone (192.168.68.201) - phone
-2025-07-25 22:21:40,885 - INFO - [MITM] 🌐 Gateway: laptop (192.168.68.125) - laptop
+2025-07-25 22:21:40,883 - INFO - [MITM] 🎯 Target 1: phone (192.168.0.201) - phone
+2025-07-25 22:21:40,884 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-25 22:21:40,885 - INFO - [MITM] 🌐 Gateway: laptop (192.168.0.125) - laptop
 2025-07-25 22:21:40,886 - INFO - [MITM] 🔧 Mode: DROP
 2025-07-25 22:21:40,886 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
 2025-07-25 22:21:40,887 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
@@ -68,25 +68,25 @@
 2025-07-25 22:21:51,316 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 22:21:51,317 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
 2025-07-25 22:21:51,317 - INFO - [MITM] ❌ Intercepting and dropping socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
-2025-07-25 22:21:51,318 - INFO - [MITM] 🎯 Target 1: phone (192.168.68.201) - phone
-2025-07-25 22:21:51,318 - INFO - [MITM] 🎯 Target 2: phone (192.168.68.201) - phone
-2025-07-25 22:21:51,318 - INFO - [MITM] 🌐 Gateway: laptop (192.168.68.125) - laptop
+2025-07-25 22:21:51,318 - INFO - [MITM] 🎯 Target 1: phone (192.168.0.201) - phone
+2025-07-25 22:21:51,318 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-25 22:21:51,318 - INFO - [MITM] 🌐 Gateway: laptop (192.168.0.125) - laptop
 2025-07-25 22:21:51,319 - INFO - [MITM] 🔧 Mode: DROP
 2025-07-25 22:21:51,319 - INFO - [MITM] ❌ Aggressive blocking - all target packets dropped
 2025-07-25 22:21:51,319 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
-2025-07-25 22:21:53,871 - INFO - [DROP] ❌ 22:21:53 | phone → Gateway | 192.168.68.201:41082 → 192.168.68.125:9999
+2025-07-25 22:21:53,871 - INFO - [DROP] ❌ 22:21:53 | phone → Gateway | 192.168.0.201:41082 → 192.168.0.125:9999
 2025-07-25 22:21:53,872 - INFO - [DROP] 🚫 DROPPED: 'hi'
 2025-07-25 22:21:53,872 - INFO - [DROP] ✂️  Packet intercepted and discarded
-2025-07-25 22:21:54,047 - INFO - [DROP] ❌ 22:21:54 | phone → Gateway | 192.168.68.201:41082 → 192.168.68.125:9999
+2025-07-25 22:21:54,047 - INFO - [DROP] ❌ 22:21:54 | phone → Gateway | 192.168.0.201:41082 → 192.168.0.125:9999
 2025-07-25 22:21:54,048 - INFO - [DROP] 🚫 DROPPED: 'hi'
 2025-07-25 22:21:54,048 - INFO - [DROP] ✂️  Packet intercepted and discarded
-2025-07-25 22:21:54,229 - INFO - [DROP] ❌ 22:21:54 | phone → Gateway | 192.168.68.201:41082 → 192.168.68.125:9999
+2025-07-25 22:21:54,229 - INFO - [DROP] ❌ 22:21:54 | phone → Gateway | 192.168.0.201:41082 → 192.168.0.125:9999
 2025-07-25 22:21:54,230 - INFO - [DROP] 🚫 DROPPED: 'hi'
 2025-07-25 22:21:54,231 - INFO - [DROP] ✂️  Packet intercepted and discarded
-2025-07-25 22:21:54,707 - INFO - [DROP] ❌ 22:21:54 | phone → Gateway | 192.168.68.201:41082 → 192.168.68.125:9999
+2025-07-25 22:21:54,707 - INFO - [DROP] ❌ 22:21:54 | phone → Gateway | 192.168.0.201:41082 → 192.168.0.125:9999
 2025-07-25 22:21:54,707 - INFO - [DROP] 🚫 DROPPED: 'hi'
 2025-07-25 22:21:54,708 - INFO - [DROP] ✂️  Packet intercepted and discarded
-2025-07-25 22:21:55,607 - INFO - [DROP] ❌ 22:21:55 | phone → Gateway | 192.168.68.201:41082 → 192.168.68.125:9999
+2025-07-25 22:21:55,607 - INFO - [DROP] ❌ 22:21:55 | phone → Gateway | 192.168.0.201:41082 → 192.168.0.125:9999
 2025-07-25 22:21:55,608 - INFO - [DROP] 🚫 DROPPED: 'hi'
 2025-07-25 22:21:55,609 - INFO - [DROP] ✂️  Packet intercepted and discarded
 2025-07-25 22:21:56,694 - INFO - 
@@ -109,14 +109,14 @@
 2025-07-25 22:22:40,342 - INFO - [SETUP] ✅ iptables NFQUEUE rule successfully added
 2025-07-25 22:22:40,343 - INFO - [MITM] 🚀 Bidirectional TCP Socket interception system started
 2025-07-25 22:22:40,344 - INFO - [MITM] 🔧 Intercepting and modifying socket traffic on ports: [9999, 8080, 12345, 22, 23, 21]
-2025-07-25 22:22:40,346 - INFO - [MITM] 🎯 Target 1: phone (192.168.68.201) - phone
-2025-07-25 22:22:40,346 - INFO - [MITM] 🎯 Target 2: phone (192.168.68.201) - phone
-2025-07-25 22:22:40,347 - INFO - [MITM] 🌐 Gateway: laptop (192.168.68.125) - laptop
+2025-07-25 22:22:40,346 - INFO - [MITM] 🎯 Target 1: phone (192.168.0.201) - phone
+2025-07-25 22:22:40,346 - INFO - [MITM] 🎯 Target 2: phone (192.168.0.201) - phone
+2025-07-25 22:22:40,347 - INFO - [MITM] 🌐 Gateway: laptop (192.168.0.125) - laptop
 2025-07-25 22:22:40,349 - INFO - [MITM] 🔧 Mode: TAMPER
 2025-07-25 22:22:40,350 - INFO - [MITM] 🔀 Modifications: {'hello': 'HACK!', 'hi': 'NO', 'secret': 'PUBLIC', 'username': 'GARBAGE', 'password': 'GARBAGE', 'admin': 'GUEST', 'error': 'ALERT', 'login': 'ENTER', 'token': 'BADGE', 'abort': 'RETRY', 'accept': 'REJECT', 'delete': 'CREATE', 'access': 'DENIED', 'secure': 'PUBLIC', 'verify': 'IGNORE', 'server': 'CLIENT', 'upload': 'BACKUP', 'logout': 'LOGIN!', 'getkey': 'SETVAL', 'update': 'REBOOT', 'welcome': 'GETOUT!'}
 2025-07-25 22:22:40,351 - INFO - [MITM] 💡 Modifications preserve TCP packet sizes
 2025-07-25 22:22:40,352 - INFO - [MITM] 🛑 Press Ctrl+C to stop and cleanup
-2025-07-25 22:22:44,839 - INFO - [TAMPER] 🔧 22:22:44 | phone → Gateway | 192.168.68.201:41082 → 192.168.68.125:9999
+2025-07-25 22:22:44,839 - INFO - [TAMPER] 🔧 22:22:44 | phone → Gateway | 192.168.0.201:41082 → 192.168.0.125:9999
 2025-07-25 22:22:44,840 - INFO - [TAMPER] 📨 Original: 'hello'
 2025-07-25 22:22:44,841 - INFO - [TAMPER] 🎯 Modified: 'HACK!'
 2025-07-25 22:22:44,845 - INFO - [TAMPER] ✅ Message successfully modified and forwarded!
